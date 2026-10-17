@@ -11,7 +11,11 @@ No package below is complete merely because this plan exists.
 Package 01 is complete: the user approved the
 [review contract](../reference/review-contract.md) on 18 October 2026. The
 [checkpoint evidence](evidence/01-foundation-and-review-contract.md) records the
-decision. The core workflow remains upstream material pending package 02.
+decision. Package 02 implements the entry point and templates on
+`codex/package-02-core-workflow`; its
+[verification and decision record](evidence/02-core-workflow-and-routing.md)
+awaits the core-workflow human checkpoint. Inherited guide audits remain in
+package 03.
 
 ## Work packages
 

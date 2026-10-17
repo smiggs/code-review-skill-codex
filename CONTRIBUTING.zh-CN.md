@@ -49,6 +49,8 @@ code-review-codex/
 - `description` 必须以 `Use when...` 开头。
 - 不要在 `description` 里概括完整工作流。
 - 正文只保留流程和导航，不堆详细参考资料。
+- 流程和模板应与已批准的[审查约定](reference/review-contract.md)保持一致。
+  约定中的证据和权限规则优先于继承指南中与其冲突的建议。
 
 ### `agents/openai.yaml`
 
@@ -103,7 +105,7 @@ code-review-codex/
 向 Codex 提示：
 
 ```text
-Use code-review-codex to review these changes for bugs, regressions, and missing tests.
+Use code-review-codex to review these changes for supported bugs, regressions, and violated requirements.
 ```
 
 预期结果：
@@ -124,6 +126,10 @@ Review these changes for security issues and maintainability problems.
 
 - Codex 会把它识别成代码审查任务
 - 回答会强调 findings、严重性和具体审查意见
+
+还应检查无关的实现请求、无缺陷重构、无法访问仓库的补丁，以及审查工具不可用的情况。
+无关请求不应触发审查模式；干净的变更可以没有问题；缺少上下文或工具时应如实说明限制，
+而不是编造缺陷。仅凭审查输出不得修改代码、发布审查、批准或合并。
 
 ## 非目标
 

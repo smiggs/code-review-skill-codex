@@ -1,8 +1,9 @@
 # Review contract
 
 Status: approved by the user on 18 October 2026 at the package 01 human checkpoint.
-Package 02 will route the entry point and align the templates. The existing workflow and
-guides have not yet been reconciled with this contract.
+Package 02 aligns the entry point and templates with this contract. Inherited
+language and topic guides await their package 03 audit; this contract governs
+any conflicting review advice.
 
 ## Scope and modes
 

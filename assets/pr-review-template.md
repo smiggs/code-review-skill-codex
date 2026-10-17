@@ -1,114 +1,53 @@
-# PR Review Template
+# Review report template
 
-Copy and use this template for your code reviews.
+Follow the [review contract](../reference/review-contract.md). Copy the relevant
+sections below, replace the uppercase placeholders, and omit unused optional
+sections. Repeat a finding only for a distinct supported defect. Honour a
+required output schema rather than imposing this Markdown format.
 
----
+## Findings
 
-## Summary
+### [PRIORITY] FINDING_TITLE
 
-[Brief overview of what was reviewed - 1-2 sentences]
+`FILE_PATH:START_LINE–END_LINE` (new or old side as appropriate)
 
-**PR Size:** [Small/Medium/Large] (~X lines)
-**Review Time:** [X minutes]
+When TRIGGER occurs, the change causes OBSERVABLE_IMPACT rather than
+EXPECTED_BEHAVIOUR. EVIDENCE establishes the causal link. CORRECTION_DIRECTION
+is optional when it helps the reader act.
 
-## Strengths
+Verification: REPRODUCTION_RESULT or STATIC_TRACE_OR_REQUIREMENT. Disclose
+REMAINING_ASSUMPTIONS separately from priority. Use P0–P3 according to the
+contract, or explain the target project's severity mapping. Keep the location
+as small as useful; if lines are unavailable, cite a symbol or patch hunk and
+state that limit.
 
-- [What was done well]
-- [Good patterns or approaches used]
-- [Improvements from previous code]
+If there are no supported findings, replace the finding block with:
 
-## Required Changes
+> No actionable findings in the reviewed scope.
 
-🔴 **[blocking]** [Issue description]
-> [Code location or example]
-> [Suggested fix or explanation]
+## Material questions (optional)
 
-🔴 **[blocking]** [Issue description]
-> [Details]
+UNRESOLVED_PREMISE could change MATERIAL_CONCLUSION. MISSING_EVIDENCE would
+settle it. Keep speculation here without a defect priority.
 
-## Important Suggestions
+## Scope and verification
 
-🟡 **[important]** [Issue description]
-> [Why this matters]
-> [Suggested approach]
+Reviewed REVIEW_MODE and COMPONENT_OR_FILES, comparing BASE to HEAD_OR_WORKING_FILES.
+List included untracked files and exclusions where relevant. If revisions or
+repository context are unavailable, identify the supplied patch or excerpt and
+state the limit.
 
-## Minor Suggestions
+Checks run: COMMAND_OR_INSPECTION and OBSERVED_RESULT.
 
-🟢 **[nit]** [Minor improvement suggestion]
+Relevant checks not run: CHECK and REASON. Record unavailable callers,
+requirements, or runtime context that materially limit conclusions. Never imply
+that a proposed check was executed.
 
-💡 **[suggestion]** [Alternative approach to consider]
+## Optional notes
 
-## Questions
+Include useful or requested suggestions separately from defects. Identify any
+material pre-existing issue as outside the change scope. Omit this section when
+there is nothing to add.
 
-❓ [Clarification needed about X]
-
-❓ [Question about design decision Y]
-
-## Security Considerations
-
-- [ ] No hardcoded secrets
-- [ ] Input validation present
-- [ ] Authorization checks in place
-- [ ] No SQL/XSS injection risks
-
-## Test Coverage
-
-- [ ] Unit tests added/updated
-- [ ] Edge cases covered
-- [ ] Error cases tested
-
-## Verdict
-
-**[ ] ✅ Approve** - Ready to merge
-**[ ] 💬 Comment** - Minor suggestions, can merge
-**[ ] 🔄 Request Changes** - Must address blocking issues
-
----
-
-## Quick Copy Templates
-
-### Blocking Issue
-```
-🔴 **[blocking]** [Title]
-
-[Description of the issue]
-
-**Location:** `file.ts:123`
-
-**Suggested fix:**
-\`\`\`typescript
-// Your suggested code
-\`\`\`
-```
-
-### Important Suggestion
-```
-🟡 **[important]** [Title]
-
-[Why this is important]
-
-**Consider:**
-- Option A: [description]
-- Option B: [description]
-```
-
-### Minor Suggestion
-```
-🟢 **[nit]** [Suggestion]
-
-Not blocking, but consider [improvement].
-```
-
-### Praise
-```
-🎉 **[praise]** Great work on [specific thing]!
-
-[Why this is good]
-```
-
-### Question
-```
-❓ **[question]** [Your question]
-
-I'm curious about the decision to [X]. Could you explain [Y]?
-```
+The report is advisory. It neither submits an external review nor supplies the
+user or target project's approval for fixes, publication, or merging.
