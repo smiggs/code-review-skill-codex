@@ -1,5 +1,8 @@
 # Package 02: core workflow and reference routing
 
+Status: implementation prepared on `codex/package-02-core-workflow`; human
+checkpoint pending. See the [verification and decision record](evidence/02-core-workflow-and-routing.md).
+
 ## Outcome
 
 Make the entry point short, usable in ChatGPT/Codex, and focused on supported

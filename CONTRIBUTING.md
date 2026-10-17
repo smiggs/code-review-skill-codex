@@ -49,6 +49,9 @@ code-review-codex/
 - Start the description with `Use when...`.
 - Do not summarize the full workflow in the description.
 - Keep the body focused on process and navigation.
+- Keep the workflow and templates aligned with the approved
+  [review contract](reference/review-contract.md). Its evidence and authority
+  rules take precedence over conflicting inherited guide advice.
 
 ### `agents/openai.yaml`
 
@@ -103,7 +106,7 @@ Use a fresh Codex session after installation.
 Ask Codex:
 
 ```text
-Use code-review-codex to review these changes for bugs, regressions, and missing tests.
+Use code-review-codex to review these changes for supported bugs, regressions, and violated requirements.
 ```
 
 Expected result:
@@ -124,6 +127,12 @@ Expected result:
 
 - Codex recognizes this as a code review task
 - the response emphasizes findings, severity, and concrete review feedback
+
+Also inspect an unrelated implementation request, a clean refactor, a patch
+without repository access, and unavailable review tools. The unrelated request
+should not activate review mode. A clean change should allow no findings; missing
+context or tools should produce honest limits rather than invented defects.
+Review output alone must not fix code, post reviews, approve, or merge.
 
 ## Non-Goals
 

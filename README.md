@@ -4,9 +4,18 @@
 
 Reference: adapted from https://github.com/awesome-skills/code-review-skill
 
+This fork is preparing an adaptation of NefelibataBIGR/code-review-skill-codex.
+The [upstream baseline and inventory](plans/evidence/01-upstream-inventory.md)
+record attribution and the preserved MIT licence. The
+[review contract](reference/review-contract.md) was approved on 18 October 2026.
+The package 02 entry point and templates follow it and await human review;
+inherited guides await their package 03 audit. This describes the working branch,
+not the upstream checkout installed by the commands below.
+
 A modular skill for Codex that turns code review into a structured, high-signal process.
 
-It is designed for pull requests, patch review, architecture review, security review, and general code quality work across multi-language repositories.
+It supports pull requests, patch review, and local-change review across
+multi-language repositories, with architecture and security audits as explicit modes.
 
 ## What This Repository Contains
 
@@ -42,9 +51,9 @@ The skill is discovered through the metadata in [SKILL.md](./SKILL.md). Its trig
 - reviewing code changes
 - conducting architecture reviews
 - conducting security reviews
-- checking code quality
-- finding bugs
-- giving structured review feedback
+- giving structured review feedback on patches or local changes
+
+Implementation and debugging requests without a review task do not activate it.
 
 Once loaded, Codex can selectively read files from `reference/` instead of pulling the entire skill into context at once.
 
@@ -82,7 +91,7 @@ Ask Codex to use the skill directly:
 
 ```text
 Use code-review-codex to review this PR.
-Focus on bugs, regressions, security issues, and missing tests.
+Focus on supported bugs, regressions, and violated requirements.
 ```
 
 ### Natural-language triggering
@@ -103,13 +112,19 @@ Check this service for security problems before merge.
 
 ## Review Style
 
-This skill is optimized for reviews that:
+This skill supports reviews that:
 
-- prioritize bugs and regressions over style trivia
-- separate blocking issues from minor suggestions
-- focus on correctness, security, performance, and maintainability
-- use constructive, specific feedback
-- lean on language-specific guides only when relevant
+- Prioritise bugs, regressions, and violated requirements over preferences.
+- Give each finding a precise location, trigger, impact, and evidence.
+- Keep priority separate from confidence, and questions separate from findings.
+- Accept no actionable findings and disclose scope and verification limits.
+- Load language and topic guides only when relevant.
+
+A review request authorises analysis and an advisory report. Fixing code, posting
+comments or reviews, approving, and merging need separate authorisation and any
+target-project approvals. See the [report template](assets/pr-review-template.md)
+for the findings-first format. Architecture and security checks relevant to a
+change do not automatically expand into whole-system audits.
 
 ## Repository Layout
 
@@ -119,6 +134,7 @@ code-review-codex/
 |-- agents/
 |   `-- openai.yaml
 |-- reference/
+|   |-- review-contract.md
 |   |-- react.md
 |   |-- vue.md
 |   |-- typescript.md

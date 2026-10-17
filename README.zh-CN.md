@@ -4,9 +4,16 @@
 
 参考来源：https://github.com/awesome-skills/code-review-skill
 
+本分支正在准备对 NefelibataBIGR/code-review-skill-codex 进行适配。
+[上游基线与文件清单](plans/evidence/01-upstream-inventory.md)记录来源及保留的 MIT 许可证。
+[审查约定](reference/review-contract.md)已于 2026 年 10 月 18 日获用户批准。
+工作包 02 的入口和模板已按约定改写，等待人工审查；继承的指南将在工作包 03 中审计。
+此处说明的是当前工作分支，而非下方安装命令克隆的上游版本。
+目前约定和验证记录仅提供英文版本。
+
 这是一个面向 Codex 的模块化 skill，用来把代码审查变成更结构化、信息密度更高的工作流。
 
-它适用于 PR 审查、补丁审查、架构审查、安全审查，以及多语言仓库中的常规代码质量检查。
+它支持多语言仓库中的 PR、补丁和本地变更审查，并将架构审计和安全审计作为显式模式。
 
 ## 仓库内容
 
@@ -42,9 +49,9 @@ Codex 通过 [SKILL.md](./SKILL.md) 中的元数据发现这个 skill。触发�
 - 审查代码变更
 - 做架构审查
 - 做安全审查
-- 检查代码质量
-- 排查 bug
-- 输出结构化审查意见
+- 对补丁或本地变更输出结构化审查意见
+
+没有审查任务的实现或调试请求不应触发此 skill。
 
 skill 被加载后，Codex 会优先按需读取 `reference/` 下的文件，而不是一次把所有内容都塞进上下文。
 
@@ -82,7 +89,7 @@ git clone https://github.com/NefelibataBIGR/code-review-skill-codex.git `
 
 ```text
 Use code-review-codex to review this PR.
-Focus on bugs, regressions, security issues, and missing tests.
+Focus on supported bugs, regressions, and violated requirements.
 ```
 
 ### 自然语言触发
@@ -105,11 +112,15 @@ Check this service for security problems before merge.
 
 这个 skill 适合以下类型的 review：
 
-- 优先找 bug 和行为回归，而不是纠缠格式细节
-- 明确区分阻塞问题和普通建议
-- 关注正确性、安全性、性能和可维护性
-- 反馈要具体、可执行
-- 只在必要时读取语言专属指南
+- 优先查找 bug、回归和违反要求的问题，而非个人偏好。
+- 每条问题都提供精确位置、触发条件、影响和证据。
+- 将优先级与置信程度分开，将待确认问题与已证实问题分开。
+- 允许没有可执行问题的结果，并说明范围和验证限制。
+- 仅在相关时读取语言或专题指南。
+
+审查请求仅授权分析和建议报告。修改代码、发布评论或审查、批准以及合并都需要单独授权，
+并遵守目标项目的人工批准要求。[报告模板](assets/pr-review-template.md)采用问题优先的格式。
+检查与变更有关的架构或安全影响，不会自动扩展为全系统审计。
 
 ## 仓库结构
 
@@ -119,6 +130,7 @@ code-review-codex/
 |-- agents/
 |   `-- openai.yaml
 |-- reference/
+|   |-- review-contract.md
 |   |-- react.md
 |   |-- vue.md
 |   |-- typescript.md

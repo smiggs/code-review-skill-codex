@@ -1,5 +1,10 @@
 # Package 01: foundation and review contract
 
+Status: complete; the user approved the contract on 18 October 2026. See the
+[approved contract](../reference/review-contract.md),
+[upstream inventory](evidence/01-upstream-inventory.md), and
+[verification and decision record](evidence/01-foundation-and-review-contract.md).
+
 ## Outcome
 
 Define what the adapted skill reviews, what makes a finding actionable, and
