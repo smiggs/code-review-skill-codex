@@ -4,6 +4,12 @@
 
 Reference: adapted from https://github.com/awesome-skills/code-review-skill
 
+This fork is preparing an adaptation of NefelibataBIGR/code-review-skill-codex.
+The [upstream baseline and inventory](plans/evidence/01-upstream-inventory.md)
+record attribution and the preserved MIT licence. The
+[review contract](reference/review-contract.md) was approved on 18 October 2026;
+the installed entry point and templates still use the upstream workflow.
+
 A modular skill for Codex that turns code review into a structured, high-signal process.
 
 It is designed for pull requests, patch review, architecture review, security review, and general code quality work across multi-language repositories.

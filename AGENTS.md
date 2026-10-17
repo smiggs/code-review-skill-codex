@@ -4,8 +4,9 @@
 
 This repository maintains the `code-review-codex` skill, adapted from
 NefelibataBIGR/code-review-skill-codex and its recorded upstream sources.
-The current skill is functional upstream material; the adaptation is planned
-in [plans/README.md](plans/README.md), not yet implemented.
+The current entry point is functional upstream material. The adaptation is
+tracked in [plans/README.md](plans/README.md); the foundation contract is approved,
+and the core workflow rewrite belongs to package 02.
 
 `SKILL.md` defines discovery and the core review process. `agents/openai.yaml`
 contains UI metadata. `reference/` holds selectively loaded language and topic

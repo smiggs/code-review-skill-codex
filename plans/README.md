@@ -8,6 +8,11 @@ deliverables, verification, human judgement, and exit criteria.
 The scope is adaptation of this skill, not implementation of the photo pipeline.
 No package below is complete merely because this plan exists.
 
+Package 01 is complete: the user approved the
+[review contract](../reference/review-contract.md) on 18 October 2026. The
+[checkpoint evidence](evidence/01-foundation-and-review-contract.md) records the
+decision. The core workflow remains upstream material pending package 02.
+
 ## Work packages
 
 1. [Foundation and review contract](01-foundation-and-review-contract.md):

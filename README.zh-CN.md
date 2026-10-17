@@ -4,6 +4,11 @@
 
 参考来源：https://github.com/awesome-skills/code-review-skill
 
+本分支正在准备对 NefelibataBIGR/code-review-skill-codex 进行适配。
+[上游基线与文件清单](plans/evidence/01-upstream-inventory.md)记录来源及保留的 MIT 许可证。
+[审查约定](reference/review-contract.md)已于 2026 年 10 月 18 日获用户批准；安装后的入口和模板仍使用上游流程。
+目前约定和验证记录仅提供英文版本。
+
 这是一个面向 Codex 的模块化 skill，用来把代码审查变成更结构化、信息密度更高的工作流。
 
 它适用于 PR 审查、补丁审查、架构审查、安全审查，以及多语言仓库中的常规代码质量检查。
