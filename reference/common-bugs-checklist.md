@@ -2,6 +2,13 @@
 
 Language-specific bugs and issues to watch for during code review.
 
+Use patterns in this inherited guide as inspection prompts under the
+[review contract](review-contract.md), not as findings or fixed severity rules.
+Confirm the target's versions, caller behaviour, trigger, and impact. The
+[reference status](reference-status.md) records unaudited framework examples.
+Missing tests, an external test dependency, or a familiar pattern alone is not
+proof of a defect.
+
 ## Universal Issues
 
 ### Logic Errors
@@ -752,55 +759,11 @@ watch(total, () => { sideEffect.value++ })
 
 ## Python
 
-### Mutable Default Arguments
-```python
-# ❌ Bug: List shared across all calls
-def add_item(item, items=[]):
-    items.append(item)
-    return items
-
-# ✅ Correct
-def add_item(item, items=None):
-    if items is None:
-        items = []
-    items.append(item)
-    return items
-```
-
-### Exception Handling
-```python
-# ❌ Catching everything, including KeyboardInterrupt
-try:
-    risky_operation()
-except:
-    pass
-
-# ✅ Catch specific exceptions
-try:
-    risky_operation()
-except ValueError as e:
-    logger.error(f"Invalid value: {e}")
-    raise
-```
-
-### Class Attributes
-```python
-# ❌ Shared mutable class attribute
-class User:
-    permissions = []  # Shared across all instances!
-
-# ✅ Initialize in __init__
-class User:
-    def __init__(self):
-        self.permissions = []
-```
-
-### Common Mistakes
-- [ ] Using `is` instead of `==` for value comparison
-- [ ] Forgetting `self` parameter in methods
-- [ ] Modifying list while iterating
-- [ ] String concatenation in loops (use join)
-- [ ] Not closing files (use `with` statement)
+Use the [Python review guide](python.md) for checked examples and version limits.
+Inspect shared mutable defaults or class state, swallowed failures, resource
+cleanup, exhausted iterators, cancellation, and input boundaries where relevant.
+Intentional sharing and broad boundary handlers need their actual contracts;
+string concatenation or missing annotations alone do not establish defects.
 
 ## Rust
 

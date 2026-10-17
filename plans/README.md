@@ -11,11 +11,14 @@ No package below is complete merely because this plan exists.
 Package 01 is complete: the user approved the
 [review contract](../reference/review-contract.md) on 18 October 2026. The
 [checkpoint evidence](evidence/01-foundation-and-review-contract.md) records the
-decision. Package 02 implements the entry point and templates on
-`codex/package-02-core-workflow`; its
-[verification and decision record](evidence/02-core-workflow-and-routing.md)
-awaits the core-workflow human checkpoint. Inherited guide audits remain in
-package 03.
+decision. Package 02's entry point and templates were merged into `main`; its
+[decision record](evidence/02-core-workflow-and-routing.md) records the user's
+confirmation. Package 03's scoped Python and reference audit was approved on
+18 October 2026 and is complete on
+`codex/package-03-reference-quality`; its
+[evidence](evidence/03-python-and-reference-quality.md) records the human decision.
+The [reference status](../reference/reference-status.md)
+records the scoped checks and remaining technical deferrals.
 
 ## Work packages
 

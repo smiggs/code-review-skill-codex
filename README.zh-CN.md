@@ -7,9 +7,10 @@
 本分支正在准备对 NefelibataBIGR/code-review-skill-codex 进行适配。
 [上游基线与文件清单](plans/evidence/01-upstream-inventory.md)记录来源及保留的 MIT 许可证。
 [审查约定](reference/review-contract.md)已于 2026 年 10 月 18 日获用户批准。
-工作包 02 的入口和模板已按约定改写，等待人工审查；继承的指南将在工作包 03 中审计。
+工作包 02 的入口和模板已合并到 `main`。工作包 03 限定范围内的 Python 和专题指南变更已于 2026 年 10 月 18 日获用户批准；
+[参考指南状态](reference/reference-status.md)记录已核验的范围与暂缓的技术检查。
+改写后的指南、约定和验证记录仅提供英文版本。
 此处说明的是当前工作分支，而非下方安装命令克隆的上游版本。
-目前约定和验证记录仅提供英文版本。
 
 这是一个面向 Codex 的模块化 skill，用来把代码审查变成更结构化、信息密度更高的工作流。
 
@@ -130,6 +131,7 @@ code-review-codex/
 |-- agents/
 |   `-- openai.yaml
 |-- reference/
+|   |-- reference-status.md
 |   |-- review-contract.md
 |   |-- react.md
 |   |-- vue.md

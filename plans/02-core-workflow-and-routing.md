@@ -1,7 +1,8 @@
 # Package 02: core workflow and reference routing
 
-Status: implementation prepared on `codex/package-02-core-workflow`; human
-checkpoint pending. See the [verification and decision record](evidence/02-core-workflow-and-routing.md).
+Status: complete; the user confirmed the merge into `main` on 18 October 2026
+and requested package 03. See the
+[verification and decision record](evidence/02-core-workflow-and-routing.md).
 
 ## Outcome
 

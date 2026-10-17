@@ -2,6 +2,11 @@
 
 CSS 及预处理器代码审查指南，覆盖性能、可维护性、响应式设计和浏览器兼容性。
 
+Apply the [review contract](review-contract.md) before using these inherited
+prompts. Counts, preferred layouts, and familiar patterns are not independent
+defect evidence. Browser and preprocessor examples remain technically unverified;
+see the [reference status](reference-status.md).
+
 ## CSS 变量 vs 硬编码
 
 ### 应该使用变量的场景
@@ -169,9 +174,10 @@ button.my-btn {
 ### 审查问题
 
 ```markdown
-🔴 [blocking] "发现 15 处 !important，请说明每处的必要性"
-🟡 [important] "这个 !important 可以通过调整选择器特异性来解决"
-💡 [suggestion] "考虑使用 CSS Layers (@layer) 来管理样式优先级"
+Inspect the affected element and supported viewport or browser. Establish the
+expected and observed rendering before reporting a defect. A count of !important
+uses does not assign priority; selector or layer changes are optional suggestions
+unless a concrete requirement or failure supports them.
 ```
 
 ---
@@ -604,7 +610,7 @@ $primary-color: #3b82f6;
 
 ## 快速审查清单
 
-### 🔴 必须修复
+### Correctness inspection prompts
 
 ```markdown
 □ transition: all
@@ -614,7 +620,7 @@ $primary-color: #3b82f6;
 □ 选择器嵌套 >4 层
 ```
 
-### 🟡 建议修复
+### Compatibility and behaviour prompts
 
 ```markdown
 □ 缺少响应式处理
@@ -624,7 +630,7 @@ $primary-color: #3b82f6;
 □ CSS 变量作用域过大
 ```
 
-### 🟢 优化建议
+### Optional performance investigation
 
 ```markdown
 □ 可以使用 CSS Grid 简化布局
