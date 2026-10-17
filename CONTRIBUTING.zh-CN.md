@@ -131,6 +131,18 @@ Review these changes for security issues and maintainability problems.
 无关请求不应触发审查模式；干净的变更可以没有问题；缺少上下文或工具时应如实说明限制，
 而不是编造缺陷。仅凭审查输出不得修改代码、发布审查、批准或合并。
 
+### 工作包 03 示例检查
+
+工作包 03 提供仅使用 Python 标准库的独立示例检查，已在支持符号链接的 Linux 环境和
+Python 3.10.12 上运行：
+
+```bash
+python3 plans/evidence/03-python-examples.py
+```
+
+这些检查验证指南示例和合成使用方，不验证差异统计脚本或独立审查质量。
+[参考指南状态](reference/reference-status.md)说明技术审计与翻译限制；这不表示已有配置好的测试套件。
+
 ## 非目标
 
 - 不要把这个 skill 变成通用编程教程。

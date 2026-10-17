@@ -8,9 +8,11 @@ This fork is preparing an adaptation of NefelibataBIGR/code-review-skill-codex.
 The [upstream baseline and inventory](plans/evidence/01-upstream-inventory.md)
 record attribution and the preserved MIT licence. The
 [review contract](reference/review-contract.md) was approved on 18 October 2026.
-The package 02 entry point and templates follow it and await human review;
-inherited guides await their package 03 audit. This describes the working branch,
-not the upstream checkout installed by the commands below.
+The package 02 entry point and templates were merged into `main`. Package 03's
+scoped Python and topic-guide changes were approved on 18 October 2026; the
+[reference status](reference/reference-status.md) records verified scope and
+deferred technical checks. Rewritten guides and evidence are English only.
+This describes the working branch, not the upstream checkout installed below.
 
 A modular skill for Codex that turns code review into a structured, high-signal process.
 
@@ -134,6 +136,7 @@ code-review-codex/
 |-- agents/
 |   `-- openai.yaml
 |-- reference/
+|   |-- reference-status.md
 |   |-- review-contract.md
 |   |-- react.md
 |   |-- vue.md

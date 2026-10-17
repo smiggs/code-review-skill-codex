@@ -1,9 +1,9 @@
 # Review contract
 
 Status: approved by the user on 18 October 2026 at the package 01 human checkpoint.
-Package 02 aligns the entry point and templates with this contract. Inherited
-language and topic guides await their package 03 audit; this contract governs
-any conflicting review advice.
+Package 02 aligns the entry point and templates with this contract. The
+[reference status](reference-status.md) records the package 03 audit scope and
+remaining inherited-guide limits. This contract governs conflicting review advice.
 
 ## Scope and modes
 

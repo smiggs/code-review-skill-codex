@@ -4,7 +4,9 @@
 
 Prepared on 18 October 2026 on `codex/package-02-core-workflow`, based on
 `1285a4014f6bd984af054a71e37531bd9e9c1298`. Implementation is ready for the
-core-workflow human checkpoint; no human decision has been supplied for package 02.
+core-workflow human checkpoint at that revision. The user subsequently confirmed
+its merge into `main` and requested package 03 on 18 October 2026. Merge commit:
+`e246f01fa284bde7a59e41c02a3d818670599ffd` (PR #1).
 
 Changed material:
 
@@ -266,12 +268,15 @@ decision. Changes to reviewed material require proportionate revalidation.
   while retaining the fresh-session discovery and independent evaluation limits.
 - Human judgement requested: clarity, useful evidence, acceptable no-findings
   output, and whether the entry point is understandable without all guides.
-- Human decision, date, reason, and reviewer: not supplied; pending.
-- Remaining work: record the decision and requested changes; audit inherited
+- Human decision: accepted through merge. The user confirmed "merged in main"
+  and requested package 03 in this chat on 18 October 2026. No separate review
+  rationale or reviewer identity was supplied; no requested changes were supplied.
+- Remaining work: audit inherited
   references in package 03, validate the helper in package 04, and evaluate review
   behaviour independently in package 05. This change does not install or publish.
 
 The human checkpoint is required by the
 [package plan](../02-core-workflow-and-routing.md) and
-[checkpoint policy](../human-ai-checkpoints.md). Package 02 remains open pending
-that decision; preparing its implementation and examples does not imply approval.
+[checkpoint policy](../human-ai-checkpoints.md). The user's confirmed merge
+satisfies that checkpoint for the merged package 02 revision. Package 02 is
+complete; subsequent changes are assessed in their own package evidence.

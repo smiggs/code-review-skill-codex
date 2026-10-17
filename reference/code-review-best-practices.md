@@ -1,136 +1,56 @@
-# Code Review Best Practices
+# Review communication and process
 
-Comprehensive guidelines for conducting effective code reviews.
+Use this reference when review communication or team process is part of the
+request. The [review contract](review-contract.md) governs findings, priority,
+scope, and authority. A team may supply its own response targets and approval
+process; this guide sets no review-time budget or automatic PR-size rule.
 
-## Review Philosophy
+## Communicate a supported problem
 
-### Goals of Code Review
+Lead with the defect and explain the concrete trigger, impact, location, and
+evidence. Direct statements help the author distinguish verified behaviour from
+uncertainty. Use a question when a material premise is missing, rather than
+turning a known defect into a rhetorical question.
 
-**Primary Goals:**
-- Catch bugs and edge cases before production
-- Ensure code maintainability and readability
-- Share knowledge across the team
-- Enforce coding standards consistently
-- Improve design and architecture decisions
+For example, when the target accepts zero as an immediate timeout:
 
-**Secondary Goals:**
-- Mentor junior developers
-- Build team culture and trust
-- Document design decisions through discussions
+> [P2] Preserve zero as a valid timeout
+>
+> `wait.py:2`: Supplying `0` selects the new `30` fallback and delays an operation
+> that the documented contract requires to return immediately. Static evaluation
+> of `0 or 30` establishes the regression.
 
-### What Code Review is NOT
+Priority describes urgency and impact; confidence describes evidence. Follow the
+contract's P0–P3 mapping or explain the target's own mapping. A pattern, a test gap,
+a naming preference, or a large file does not establish a defect on its own.
 
-- A gatekeeping mechanism to block progress
-- An opportunity to show off knowledge
-- A place to nitpick formatting (use linters)
-- A way to rewrite code to personal preference
+## Keep the report useful
 
-## Review Timing
+Put findings first. Record scope, checks, results, and material verification limits.
+A clean review can say "No actionable findings in the reviewed scope" without
+praise, suggestions, or approval language. Use the
+[report template](../assets/pr-review-template.md) when it helps.
 
-### When to Review
+Keep optional improvements separate and include them only when useful or requested.
+Consolidate repeated symptoms of one cause. Offer a correction direction when
+supported, without expanding a review into an unrequested rewrite.
 
-| Trigger | Action |
-|---------|--------|
-| PR opened | Review within 24 hours, ideally same day |
-| Changes requested | Re-review within 4 hours |
-| Blocking issue found | Communicate immediately |
+## Resolve disagreement with evidence
 
-### Time Allocation
+Check the relevant requirement, caller, reproduction, or dependency contract.
+If the evidence disproves a concern, remove it. If evidence is missing, record
+what would settle the question. Escalation and human sign-off follow the target
+project's process; an AI recommendation supplies neither.
 
-- **Small PR (<100 lines)**: 10-15 minutes
-- **Medium PR (100-400 lines)**: 20-40 minutes
-- **Large PR (>400 lines)**: Request to split, or 60+ minutes
+For large changes, identify the reviewed areas and any omitted paths. Request a
+narrower scope only when needed to give a useful review, explaining the specific
+limit. Line counts alone do not require splitting a PR.
 
-## Review Depth Levels
+## Learn from outcomes
 
-### Level 1: Skim Review (5 minutes)
-- Check PR description and linked issues
-- Verify CI/CD status
-- Look at file changes overview
-- Identify if deeper review needed
-
-### Level 2: Standard Review (20-30 minutes)
-- Full code walkthrough
-- Logic verification
-- Test coverage check
-- Security scan
-
-### Level 3: Deep Review (60+ minutes)
-- Architecture evaluation
-- Performance analysis
-- Security audit
-- Edge case exploration
-
-## Communication Guidelines
-
-### Tone and Language
-
-**Use collaborative language:**
-- "What do you think about..." instead of "You should..."
-- "Could we consider..." instead of "This is wrong"
-- "I'm curious about..." instead of "Why didn't you..."
-
-**Be specific and actionable:**
-- Include code examples when suggesting changes
-- Link to documentation or past discussions
-- Explain the "why" behind suggestions
-
-### Handling Disagreements
-
-1. **Seek to understand**: Ask clarifying questions
-2. **Acknowledge valid points**: Show you've considered their perspective
-3. **Provide data**: Use benchmarks, docs, or examples
-4. **Escalate if needed**: Involve senior dev or architect
-5. **Know when to let go**: Not every hill is worth dying on
-
-## Review Prioritization
-
-### Must Fix (Blocking)
-- Security vulnerabilities
-- Data corruption risks
-- Breaking changes without migration
-- Critical performance issues
-- Missing error handling for user-facing features
-
-### Should Fix (Important)
-- Test coverage gaps
-- Moderate performance concerns
-- Code duplication
-- Unclear naming or structure
-- Missing documentation for complex logic
-
-### Nice to Have (Non-blocking)
-- Style preferences beyond linting
-- Minor optimizations
-- Additional test cases
-- Documentation improvements
-
-## Anti-Patterns to Avoid
-
-### Reviewer Anti-Patterns
-- **Rubber stamping**: Approving without actually reviewing
-- **Bike shedding**: Debating trivial details extensively
-- **Scope creep**: "While you're at it, can you also..."
-- **Ghosting**: Requesting changes then disappearing
-- **Perfectionism**: Blocking for minor style preferences
-
-### Author Anti-Patterns
-- **Mega PRs**: Submitting 1000+ line changes
-- **No context**: Missing PR description or linked issues
-- **Defensive responses**: Arguing every suggestion
-- **Silent updates**: Making changes without responding to comments
-
-## Metrics and Improvement
-
-### Track These Metrics
-- Time to first review
-- Review cycle time
-- Number of review rounds
-- Defect escape rate
-- Review coverage percentage
-
-### Continuous Improvement
-- Hold retrospectives on review process
-- Share learnings from escaped bugs
-- Update checklists based on common issues
-- Celebrate good reviews and catches
+Where the team requests process evaluation, inspect escaped defects, false
+positives, repeated misunderstandings, and the quality of evidence. Response time,
+review counts, and coverage can give context; they are not proof of review quality.
+Use synthetic or explicitly permitted artifacts for experiments. A review request
+does not authorise source fixes, external comments, submitted reviews, approval,
+or merging. Preserve the target's human approval requirements.

@@ -1,265 +1,71 @@
-# Security Review Guide
+# Security review guide
 
-Security-focused code review checklist based on OWASP Top 10 and best practices.
+Use this guide for a requested security audit or a concrete trust boundary affected
+by a change. Establish assets, actors, supported configurations, and scope under
+the [review contract](review-contract.md). See the
+[reference status](reference-status.md) for the limits of this guide's audit.
 
-## Authentication & Authorization
+## Trace authority and data
 
-### Authentication
-- [ ] Passwords hashed with strong algorithm (bcrypt, argon2)
-- [ ] Password complexity requirements enforced
-- [ ] Account lockout after failed attempts
-- [ ] Secure password reset flow
-- [ ] Multi-factor authentication for sensitive operations
-- [ ] Session tokens are cryptographically random
-- [ ] Session timeout implemented
+Follow untrusted input to the operation it controls. Identify authentication,
+resource authorisation, tenancy, privileged actions, and sensitive outputs.
+An authenticated user can still lack permission for a particular object or action;
+check the target's access rules and failure behaviour. Public endpoints do not
+inherently require authentication. See the
+[OWASP authorisation guidance](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html).
 
-### Authorization
-- [ ] Authorization checks on every request
-- [ ] Principle of least privilege applied
-- [ ] Role-based access control (RBAC) properly implemented
-- [ ] No privilege escalation paths
-- [ ] Direct object reference checks (IDOR prevention)
-- [ ] API endpoints protected appropriately
+Inspect token verification, session handling, and reset flows against the actual
+identity system's contract and installed library version. Do not treat a copied
+JWT configuration or a particular access-control model as universally secure.
+A missing defence is a finding only with an evidenced exposure or violated
+requirement; unexplored defence-in-depth ideas remain suggestions or questions.
 
-### JWT Security
-```typescript
-// ❌ Insecure JWT configuration
-jwt.sign(payload, 'weak-secret');
+## Input and execution boundaries
 
-// ✅ Secure JWT configuration
-jwt.sign(payload, process.env.JWT_SECRET, {
-  algorithm: 'RS256',
-  expiresIn: '15m',
-  issuer: 'your-app',
-  audience: 'your-api'
-});
+Inspect SQL parameters, command arguments, rendered output, filesystem paths,
+redirects, and outbound requests where those sinks are reachable. Determine the
+applicable escaping, validation, and authorisation mechanism from the target API.
+A "sanitise input" instruction without a sink-specific contract is insufficient.
 
-// ❌ Not verifying JWT properly
-const decoded = jwt.decode(token);  // No signature verification!
+Avoid constructing shell commands from untrusted text. A direct executable launch
+with separate arguments removes ordinary shell parsing, but attacker-controlled
+arguments may still become executable options. Validate executable selection and
+program-specific arguments. Platform behaviour matters, including Windows batch
+files. See [OWASP command injection guidance](https://cheatsheetseries.owasp.org/cheatsheets/OS_Command_Injection_Defense_Cheat_Sheet.html)
+and [Python subprocess security](https://docs.python.org/3.10/library/subprocess.html#security-considerations).
 
-// ✅ Verify signature and claims
-const decoded = jwt.verify(token, publicKey, {
-  algorithms: ['RS256'],
-  issuer: 'your-app',
-  audience: 'your-api'
-});
-```
+For paths, compare resolved path components rather than textual prefixes. Account
+for traversal, symlinks, and concurrent replacement according to the threat model.
+Taking a basename alone neither establishes authorisation nor prevents name
+collisions. See the bounded [Python path example](python.md) for a stable-tree
+case; it does not claim race-free hostile filesystem access.
 
-## Input Validation
+## Sensitive state and availability
 
-### SQL Injection Prevention
-```python
-# ❌ Vulnerable to SQL injection
-query = f"SELECT * FROM users WHERE id = {user_id}"
+Inspect reachable secret exposure in source, logs, errors, responses, build output,
+and configuration. Determine the target's encryption, retention, and deletion
+requirements rather than asserting a legal conclusion. Do not copy real secret
+values into a report; cite the location and describe the exposure.
 
-# ✅ Use parameterized queries
-cursor.execute("SELECT * FROM users WHERE id = %s", (user_id,))
+For dependencies, verify the affected installed version, reachable vulnerable
+behaviour, and authoritative advisory before claiming a vulnerability. Do not
+invent advisory identifiers or infer safety from a clean scanner result.
 
-# ✅ Use ORM with proper escaping
-User.objects.filter(id=user_id)
-```
+For availability, establish supported resource bounds, request sizes, timeouts,
+retry behaviour, and abuse paths. Rate limiting, lockout, and validation rules
+need the system's requirements and threat model; their mere absence does not
+assign a severity.
 
-### XSS Prevention
-```typescript
-// ❌ Vulnerable to XSS
-element.innerHTML = userInput;
+## Evidence, severity, and authority
 
-// ✅ Use textContent for plain text
-element.textContent = userInput;
+For each finding, identify attacker capability, input, affected asset, observable
+impact, and the path establishing reachability. Use a safe reproduction or static
+trace; do not run an exploit, export sensitive material, or mutate a live service
+as an evaluation side effect. If essential configuration or reachability is unknown,
+record a material question.
 
-// ✅ Use DOMPurify for HTML
-element.innerHTML = DOMPurify.sanitize(userInput);
-
-// ✅ React automatically escapes (but watch dangerouslySetInnerHTML)
-return <div>{userInput}</div>;  // Safe
-return <div dangerouslySetInnerHTML={{__html: userInput}} />;  // Dangerous!
-```
-
-### Command Injection Prevention
-```python
-# ❌ Vulnerable to command injection
-os.system(f"convert {filename} output.png")
-
-# ✅ Use subprocess with list arguments
-subprocess.run(['convert', filename, 'output.png'], check=True)
-
-# ✅ Validate and sanitize input
-import shlex
-safe_filename = shlex.quote(filename)
-```
-
-### Path Traversal Prevention
-```typescript
-// ❌ Vulnerable to path traversal
-const filePath = `./uploads/${req.params.filename}`;
-
-// ✅ Validate and sanitize path
-const path = require('path');
-const safeName = path.basename(req.params.filename);
-const filePath = path.join('./uploads', safeName);
-
-// Verify it's still within uploads directory
-if (!filePath.startsWith(path.resolve('./uploads'))) {
-  throw new Error('Invalid path');
-}
-```
-
-## Data Protection
-
-### Sensitive Data Handling
-- [ ] No secrets in source code
-- [ ] Secrets stored in environment variables or secret manager
-- [ ] Sensitive data encrypted at rest
-- [ ] Sensitive data encrypted in transit (HTTPS)
-- [ ] PII handled according to regulations (GDPR, etc.)
-- [ ] Sensitive data not logged
-- [ ] Secure data deletion when required
-
-### Configuration Security
-```yaml
-# ❌ Secrets in config files
-database:
-  password: "super-secret-password"
-
-# ✅ Reference environment variables
-database:
-  password: ${DATABASE_PASSWORD}
-```
-
-### Error Messages
-```typescript
-// ❌ Leaking sensitive information
-catch (error) {
-  return res.status(500).json({
-    error: error.stack,  // Exposes internal details
-    query: sqlQuery      // Exposes database structure
-  });
-}
-
-// ✅ Generic error messages
-catch (error) {
-  logger.error('Database error', { error, userId });  // Log internally
-  return res.status(500).json({
-    error: 'An unexpected error occurred'
-  });
-}
-```
-
-## API Security
-
-### Rate Limiting
-- [ ] Rate limiting on all public endpoints
-- [ ] Stricter limits on authentication endpoints
-- [ ] Per-user and per-IP limits
-- [ ] Graceful handling when limits exceeded
-
-### CORS Configuration
-```typescript
-// ❌ Overly permissive CORS
-app.use(cors({ origin: '*' }));
-
-// ✅ Restrictive CORS
-app.use(cors({
-  origin: ['https://your-app.com'],
-  methods: ['GET', 'POST'],
-  credentials: true
-}));
-```
-
-### HTTP Headers
-```typescript
-// Security headers to set
-app.use(helmet({
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc: ["'self'"],
-      scriptSrc: ["'self'"],
-      styleSrc: ["'self'", "'unsafe-inline'"],
-    }
-  },
-  hsts: { maxAge: 31536000, includeSubDomains: true },
-  noSniff: true,
-  xssFilter: true,
-  frameguard: { action: 'deny' }
-}));
-```
-
-## Cryptography
-
-### Secure Practices
-- [ ] Using well-established algorithms (AES-256, RSA-2048+)
-- [ ] Not implementing custom cryptography
-- [ ] Using cryptographically secure random number generation
-- [ ] Proper key management and rotation
-- [ ] Secure key storage (HSM, KMS)
-
-### Common Mistakes
-```typescript
-// ❌ Weak random generation
-const token = Math.random().toString(36);
-
-// ✅ Cryptographically secure random
-const crypto = require('crypto');
-const token = crypto.randomBytes(32).toString('hex');
-
-// ❌ MD5/SHA1 for passwords
-const hash = crypto.createHash('md5').update(password).digest('hex');
-
-// ✅ Use bcrypt or argon2
-const bcrypt = require('bcrypt');
-const hash = await bcrypt.hash(password, 12);
-```
-
-## Dependency Security
-
-### Checklist
-- [ ] Dependencies from trusted sources only
-- [ ] No known vulnerabilities (npm audit, cargo audit)
-- [ ] Dependencies kept up to date
-- [ ] Lock files committed (package-lock.json, Cargo.lock)
-- [ ] Minimal dependency usage
-- [ ] License compliance verified
-
-### Audit Commands
-```bash
-# Node.js
-npm audit
-npm audit fix
-
-# Python
-pip-audit
-safety check
-
-# Rust
-cargo audit
-
-# General
-snyk test
-```
-
-## Logging & Monitoring
-
-### Secure Logging
-- [ ] No sensitive data in logs (passwords, tokens, PII)
-- [ ] Logs protected from tampering
-- [ ] Appropriate log retention
-- [ ] Security events logged (login attempts, permission changes)
-- [ ] Log injection prevented
-
-```typescript
-// ❌ Logging sensitive data
-logger.info(`User login: ${email}, password: ${password}`);
-
-// ✅ Safe logging
-logger.info('User login attempt', { email, success: true });
-```
-
-## Security Review Severity Levels
-
-| Severity | Description | Action |
-|----------|-------------|--------|
-| **Critical** | Immediate exploitation possible, data breach risk | Block merge, fix immediately |
-| **High** | Significant vulnerability, requires specific conditions | Block merge, fix before release |
-| **Medium** | Moderate risk, defense in depth concern | Should fix, can merge with tracking |
-| **Low** | Minor issue, best practice violation | Nice to fix, non-blocking |
-| **Info** | Suggestion for improvement | Optional enhancement |
+Map urgency and impact to the contract's P0–P3 labels or explain the project's
+severity mapping. A conditional exposure can still be urgent. Confidence and
+unverified assumptions stay separate. A security recommendation does not approve,
+block, or merge changes through an external service; target human approvals remain
+required. Use the [report template](../assets/pr-review-template.md).

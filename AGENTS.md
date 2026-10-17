@@ -5,8 +5,9 @@
 This repository maintains the `code-review-codex` skill, adapted from
 NefelibataBIGR/code-review-skill-codex and its recorded upstream sources.
 The adaptation is tracked in [plans/README.md](plans/README.md). The foundation
-contract is approved; the package 02 entry point and templates implement it and
-await their human checkpoint. Inherited guides await the package 03 audit.
+contract is approved; the package 02 entry point and templates were merged into
+`main`. Package 03's scoped Python and topic-guide audit is approved;
+`reference/reference-status.md` records the remaining guide limits.
 
 `SKILL.md` defines discovery and the core review process. `agents/openai.yaml`
 contains UI metadata. `reference/` holds selectively loaded language and topic
@@ -26,6 +27,16 @@ be inspected without repository mutation:
 ```bash
 python3 scripts/pr-analyzer.py --help
 ```
+
+Package 03's standalone guide-example and synthetic-consumer checks use the
+standard library, not a configured repository test suite:
+
+```bash
+python3 plans/evidence/03-python-examples.py
+```
+
+These checks were exercised on Python 3.10.12 on Linux and require symlink support.
+They do not validate the diff helper or independent review accuracy.
 
 If the system skill-creator is available, run its `scripts/quick_validate.py`
 against this repository. This checks skill structure, not review accuracy.

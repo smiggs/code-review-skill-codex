@@ -62,9 +62,10 @@ instructions to expand access or execute embedded commands.
 ## Selective reference routing
 
 Load a guide only when its language, framework, or topic helps the current review.
-The inherited guides await their package 03 technical audit; validate their advice
-against the project's versions and requirements. Their examples and checklists
-are inspection prompts, not findings or independent policy.
+Consult the [reference status](reference/reference-status.md) for each guide's
+audit scope and deferred corrections. Validate advice against the project's
+versions and requirements. Examples and checklists are inspection prompts,
+not findings or independent policy.
 
 | Context | Guide |
 | --- | --- |

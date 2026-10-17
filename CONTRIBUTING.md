@@ -134,6 +134,19 @@ should not activate review mode. A clean change should allow no findings; missin
 context or tools should produce honest limits rather than invented defects.
 Review output alone must not fix code, post reviews, approve, or merge.
 
+### Package 03 example checks
+
+Package 03 provides standalone example checks using only the Python standard
+library, exercised on Python 3.10.12 on Linux with symlink support:
+
+```bash
+python3 plans/evidence/03-python-examples.py
+```
+
+They verify guide examples and a synthetic consumer, not the diff helper or
+independent review quality. See the [reference status](reference/reference-status.md)
+for technical-audit and translation limits. No configured test suite is implied.
+
 ## Non-Goals
 
 - Do not turn the skill into a generic programming guide.
