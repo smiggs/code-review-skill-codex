@@ -164,3 +164,10 @@ code-review-codex/
 - 示例尽量贴近真实代码审查场景。
 
 贡献和验证说明见 [CONTRIBUTING.zh-CN.md](./CONTRIBUTING.zh-CN.md)。
+
+## 差异统计与验证
+
+可选的差异统计脚本仅报告文件数和文本行数，不提供复杂度评分或批准建议。
+[输入契约与验证命令](reference/helper-tooling.md)说明支持的 UTF-8 Git 差异格式、
+错误行为、Python 要求和结构检查。这些检查不证明代码审查准确性。
+详细说明目前以英文为准，尚无完整中文翻译。

@@ -17,8 +17,10 @@ The root English and Chinese README and contribution files document usage.
 
 ## Development commands
 
-There is no dependency manifest, configured test suite, or CI workflow in the
-initial fork. Do not describe planned checks as available commands.
+The initial fork had no test setup. Package 04 adds standard-library helper
+tests, a PyYAML structural validator, and CI. See
+[helper tooling](reference/helper-tooling.md) for setup, input limits, and the
+portable validation commands. Do not describe unrun checks as passing.
 
 For documentation changes, run `git diff --check` and `git diff --stat`, then
 verify relative links and cross-document consistency. The existing helper can

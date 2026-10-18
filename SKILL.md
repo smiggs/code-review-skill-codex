@@ -87,6 +87,6 @@ not findings or independent policy.
 | Requested review communication or team-process advice | [Review practices](reference/code-review-best-practices.md) |
 
 Use the [review checklist](assets/review-checklist.md) as an optional inspection
-aid. The [diff-statistics helper](scripts/pr-analyzer.py) supplies inherited
-heuristics, not proof of defects or a required review step; its validation is
-planned in package 04.
+aid. The [diff-statistics helper](scripts/pr-analyzer.py) supplies file and text-line
+counts as optional context, never proof of defects. See its
+[input limits and validation commands](reference/helper-tooling.md).
