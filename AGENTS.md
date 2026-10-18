@@ -7,7 +7,9 @@ NefelibataBIGR/code-review-skill-codex and its recorded upstream sources.
 The adaptation is tracked in [plans/README.md](plans/README.md). The foundation
 contract is approved; the package 02 entry point and templates were merged into
 `main`. Package 03's scoped Python and topic-guide audit is approved;
-`reference/reference-status.md` records the remaining guide limits.
+`reference/reference-status.md` records the remaining guide limits. Package 04
+was approved and merged in PR 3; its helper tests, structural validation, and CI
+are in `main`. Package 05 behavioural evaluation remains outstanding.
 
 `SKILL.md` defines discovery and the core review process. `agents/openai.yaml`
 contains UI metadata. `reference/` holds selectively loaded language and topic

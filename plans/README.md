@@ -20,10 +20,12 @@ confirmation. Package 03's scoped Python and reference audit was approved on
 The [reference status](../reference/reference-status.md)
 records the scoped checks and remaining technical deferrals.
 
-Package 04 implementation is prepared for the human checkpoint. Its
-[evidence](evidence/04-helper-tooling-and-validation.md) records the retained
-counts-only helper, input limits, local checks, and pending human judgement.
-The evidence also records the CI correction and CodeRabbit review follow-up.
+Package 04 is complete: the user approved and merged
+[PR 3](https://github.com/smiggs/code-review-skill-codex/pull/3) on
+18 October 2026. Its
+[evidence](evidence/04-helper-tooling-and-validation.md) records the accepted
+counts-only helper, input limits, resolved review comments, and passing CI on
+merged revision `e5c3a10`. Package 05 is the next work package.
 
 ## Work packages
 

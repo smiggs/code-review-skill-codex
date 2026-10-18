@@ -1,8 +1,10 @@
 # Package 04 evidence: helper tooling and validation
 
 Date: 18 October 2026.
-Status: implementation prepared; human retention decision pending. CI passed
-after the whitespace correction; the review follow-up requires a fresh run. Package 04 is not recorded as approved or complete.
+Status: complete. The user approved and merged PR 3 on 18 October 2026.
+Final PR head: `bdea4cda918236d88bb1da3f26f4cbc2f5dd80ba`.
+Merged revision: `e5c3a103f4ccc80f4d2e570a79f3c9f76e3712d0`.
+CI passed on the merged revision for both Python matrix jobs and the final gate.
 Base revision: `4e1366f72ec6f494ef5ae4120e14621c00c16e97`.
 
 ## Audit and recommendation
@@ -87,11 +89,36 @@ The workflow action pins were resolved from official release pages:
 The YAML dependency version was checked against
 [PyYAML on PyPI](https://pypi.org/project/PyYAML/6.0.3/).
 
-## Outstanding checkpoint and limits
+## Human decision and completion
 
-Human judgement remains pending on whether the counts-only helper is useful
-enough to retain and whether its limitations are sufficiently visible. No human
-approval is inferred from the request to begin this package.
+Checkpoint: package 04 helper retention and visibility of limitations.
+AI recommendation: retain the optional counts-only helper with the documented
+input limits and no correctness or approval recommendations.
+Human decision: approved. On 18 October 2026, the user stated "approved and
+merged, refresh main" after reviewing the fixes, then instructed the assistant
+to complete the record and push it to `main`. This approves the retained helper
+and documented scope. No separate rationale or reviewer name was supplied.
+
+[PR 3](https://github.com/smiggs/code-review-skill-codex/pull/3) merged the final
+reviewed head `bdea4cd` into `main` as `e5c3a10`. The
+[final PR CI run](https://github.com/smiggs/code-review-skill-codex/actions/runs/39140977891)
+and the [merged main CI run](https://github.com/smiggs/code-review-skill-codex/actions/runs/39141672235)
+both passed Python 3.10/3.14 validation and `all-checks-passed`. The two Minor
+CodeRabbit comments were fixed; the inline thread was replied to and resolved.
+
+All package 04 exit criteria are met:
+
+- The retained helper has expected-count, error, read-only, unusual-path, and
+  Git-configuration regression checks, with supported and rejected inputs documented.
+- Structural validation has a portable setup and runnable command.
+- Statistics produce no correctness judgements or automatic approval requirements.
+- The final checks pass, and no repository settings were changed.
+
+No package 04 implementation work remains. Package 05 must separately evaluate
+review behaviour; approval of this package does not approve review accuracy or
+distribution.
+
+## Remaining limitations
 
 The first GitHub run passed the tests and structural checks on both matrix
 legs, then failed the whitespace step; see the CI follow-up below. The installed CI hygiene scanner
@@ -100,14 +127,16 @@ live pull-request mutation, approval, merge, or repository settings change was
 used for evaluation. Structural and helper tests do not establish independent
 review accuracy; that remains package 05 work.
 
-## Candidate identity
+## Approved implementation identity
 
-Implementation fingerprint: `d89f22d27235974e29237bf428ef5ab39ebda0d65a28e2b3248eed2bce3bca61`.
+Approved implementation fingerprint: `d89f22d27235974e29237bf428ef5ab39ebda0d65a28e2b3248eed2bce3bca61`.
 This is SHA-256 over sorted file entries changed from the recorded base revision, each
 encoded as path, NUL, lowercase SHA-256 of file bytes, and newline. The evidence
 file itself is excluded to avoid a self-reference; all other changed files
-reported by `git diff --name-only 4e1366f72ec6f494ef5ae4120e14621c00c16e97` are included. Refresh this
-fingerprint and relevant checks after implementation changes.
+reported by comparing base `4e1366f` with approved PR head `bdea4cd` are
+included. This identifies the approved snapshot before the documentation-only
+completion-record update. Refresh the relevant evidence after implementation
+changes.
 
 ## CI follow-up for PR 3
 
@@ -121,8 +150,7 @@ A temporary local clone with `--no-local --depth 1` reproduced exactly those two
 errors. Fetching depth 2 and running `git diff --check HEAD^ HEAD` passed. The
 workflow now explicitly fetches two commits and checks the first-parent diff.
 This preserves whitespace checking for the PR merge's changes and for the tip
-commit on pushes, without modifying inherited guide content. The pending human
-retention checkpoint is unchanged. The corrected
+commit on pushes, without modifying inherited guide content. The corrected
 [GitHub run](https://github.com/smiggs/code-review-skill-codex/actions/runs/39140102654)
 passed both Python matrix jobs and `all-checks-passed` for commit `db0d219`.
 
@@ -139,5 +167,5 @@ configuration and disable terminal prompts; all three configurations pass.
 The updated helper/structure suite passes all 18 tests on Python 3.10.12 with
 PyYAML 6.0.3. Structural/link validation, the system skill-creator validator, and
 `git diff --check` pass. Package 03 material is unchanged. No review accuracy
-claim or human retention approval is inferred from these corrections. A new
-remote CI result is pending for this follow-up.
+claim is inferred from these corrections. The subsequent PR and merged-main
+CI runs passed; the human decision is recorded above.
