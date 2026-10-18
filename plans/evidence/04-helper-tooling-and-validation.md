@@ -1,8 +1,8 @@
 # Package 04 evidence: helper tooling and validation
 
 Date: 18 October 2026.
-Status: implementation prepared; human retention decision and remote CI result
-pending. Package 04 is not recorded as approved or complete.
+Status: implementation prepared; human retention decision pending. CI passed
+after the whitespace correction; the review follow-up requires a fresh run. Package 04 is not recorded as approved or complete.
 Base revision: `4e1366f72ec6f494ef5ae4120e14621c00c16e97`.
 
 ## Audit and recommendation
@@ -102,7 +102,7 @@ review accuracy; that remains package 05 work.
 
 ## Candidate identity
 
-Implementation fingerprint: `ad3bb12dcc3f8d3fce0dd0247b6d664c46f7ec40489aa62316623da0a530cf8f`.
+Implementation fingerprint: `d89f22d27235974e29237bf428ef5ab39ebda0d65a28e2b3248eed2bce3bca61`.
 This is SHA-256 over sorted file entries changed from the recorded base revision, each
 encoded as path, NUL, lowercase SHA-256 of file bytes, and newline. The evidence
 file itself is excluded to avoid a self-reference; all other changed files
@@ -122,4 +122,22 @@ errors. Fetching depth 2 and running `git diff --check HEAD^ HEAD` passed. The
 workflow now explicitly fetches two commits and checks the first-parent diff.
 This preserves whitespace checking for the PR merge's changes and for the tip
 commit on pushes, without modifying inherited guide content. The pending human
-retention checkpoint is unchanged. A fresh GitHub run is required after push.
+retention checkpoint is unchanged. The corrected
+[GitHub run](https://github.com/smiggs/code-review-skill-codex/actions/runs/39140102654)
+passed both Python matrix jobs and `all-checks-passed` for commit `db0d219`.
+
+## CodeRabbit review follow-up
+
+Both Minor comments on PR 3 were verified against commit `db0d219`. The Git
+fixture inherited contributor configuration: forced diff colours, disabled
+rename detection, and required signing each caused a reproducible failure while
+the clean control passed. A permanent regression test reproduced all three
+failures before the fix. Fixture Git commands now ignore global/system Git
+configuration and disable terminal prompts; all three configurations pass.
+`AGENTS.md` now describes the helper's optional file and text-line counts.
+
+The updated helper/structure suite passes all 18 tests on Python 3.10.12 with
+PyYAML 6.0.3. Structural/link validation, the system skill-creator validator, and
+`git diff --check` pass. Package 03 material is unchanged. No review accuracy
+claim or human retention approval is inferred from these corrections. A new
+remote CI result is pending for this follow-up.

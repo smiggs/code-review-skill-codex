@@ -12,7 +12,7 @@ contract is approved; the package 02 entry point and templates were merged into
 `SKILL.md` defines discovery and the core review process. `agents/openai.yaml`
 contains UI metadata. `reference/` holds selectively loaded language and topic
 guides; preserve that existing singular directory name. `assets/` holds review
-templates, and `scripts/pr-analyzer.py` provides heuristic diff statistics.
+templates, and `scripts/pr-analyzer.py` provides optional file and text-line counts.
 The root English and Chinese README and contribution files document usage.
 
 ## Development commands

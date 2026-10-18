@@ -1,5 +1,6 @@
 import importlib.util
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -91,7 +92,10 @@ class DiffTests(unittest.TestCase):
             root = Path(directory)
 
             def git(*args):
-                return subprocess.run(['git', *args], cwd=root, capture_output=True, check=True).stdout
+                env = {**os.environ, 'GIT_CONFIG_GLOBAL': os.devnull,
+                       'GIT_CONFIG_NOSYSTEM': '1', 'GIT_TERMINAL_PROMPT': '0'}
+                return subprocess.run(['git', *args], cwd=root, env=env,
+                                      capture_output=True, check=True).stdout
 
             git('init', '-q')
             names = ['old.py', 'gone', 'picture', 'hello world.py', 'café.py', 'tab\tline\n.py']
@@ -118,6 +122,26 @@ class DiffTests(unittest.TestCase):
                 'tab\tline\n.py': (1, 1, False), 'empty': (0, 0, False)})
             after = {p.relative_to(root): p.read_bytes() for p in root.rglob('*') if p.is_file()}
             self.assertEqual(before, after)
+
+    def test_git_fixture_ignores_contributor_config(self):
+        configurations = (
+            '[color]\n\tdiff = always\n',
+            '[diff]\n\trenames = false\n',
+            '[commit]\n\tgpgsign = true\n[gpg]\n\tprogram = /bin/false\n',
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            config = Path(directory) / 'gitconfig'
+            for configuration in configurations:
+                with self.subTest(configuration=configuration):
+                    config.write_text(configuration, encoding='utf-8')
+                    env = {**os.environ, 'GIT_CONFIG_GLOBAL': str(config),
+                           'GIT_CONFIG_NOSYSTEM': '1', 'GIT_TERMINAL_PROMPT': '0'}
+                    result = subprocess.run(
+                        [sys.executable, '-B', '-m', 'unittest', 'discover',
+                         '-s', str(ROOT / 'tests'), '-p', 'test_pr_analyzer.py',
+                         '-k', 'test_real_git_diff_and_checkout_remain_unchanged'],
+                        env=env, capture_output=True, text=True, timeout=30)
+                    self.assertEqual(result.returncode, 0, result.stderr)
 
     def test_cli_errors_have_no_partial_report(self):
         for data in [b'bad', edit().encode() + b'bad\n', b'\xff']:

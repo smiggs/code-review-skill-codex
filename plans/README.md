@@ -23,7 +23,7 @@ records the scoped checks and remaining technical deferrals.
 Package 04 implementation is prepared for the human checkpoint. Its
 [evidence](evidence/04-helper-tooling-and-validation.md) records the retained
 counts-only helper, input limits, local checks, and pending human judgement.
-Remote CI execution remains unverified until the workflow runs on GitHub.
+The evidence also records the CI correction and CodeRabbit review follow-up.
 
 ## Work packages
 
