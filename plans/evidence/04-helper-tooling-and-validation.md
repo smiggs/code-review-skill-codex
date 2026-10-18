@@ -93,8 +93,8 @@ Human judgement remains pending on whether the counts-only helper is useful
 enough to retain and whether its limitations are sufficiently visible. No human
 approval is inferred from the request to begin this package.
 
-GitHub has not run the workflow in this session; the Python 3.14 matrix leg and
-remote runner behaviour remain unverified. The installed CI hygiene scanner
+The first GitHub run passed the tests and structural checks on both matrix
+legs, then failed the whitespace step; see the CI follow-up below. The installed CI hygiene scanner
 passed, but zizmor and actionlint were unavailable locally. No private code,
 live pull-request mutation, approval, merge, or repository settings change was
 used for evaluation. Structural and helper tests do not establish independent
@@ -102,9 +102,24 @@ review accuracy; that remains package 05 work.
 
 ## Candidate identity
 
-Implementation fingerprint: `37001297108902b3c0762ddd7b8321f5506882750ca5ae79890bc9600bc2d3d7`.
-This is SHA-256 over sorted changed/untracked non-ignored file entries, each
+Implementation fingerprint: `ad3bb12dcc3f8d3fce0dd0247b6d664c46f7ec40489aa62316623da0a530cf8f`.
+This is SHA-256 over sorted file entries changed from the recorded base revision, each
 encoded as path, NUL, lowercase SHA-256 of file bytes, and newline. The evidence
 file itself is excluded to avoid a self-reference; all other changed files
-reported by `git ls-files -m -o --exclude-standard` are included. Refresh this
+reported by `git diff --name-only 4e1366f72ec6f494ef5ae4120e14621c00c16e97` are included. Refresh this
 fingerprint and relevant checks after implementation changes.
+
+## CI follow-up for PR 3
+
+The initial [CI run](https://github.com/smiggs/code-review-skill-codex/actions/runs/39139926954)
+failed both validation jobs at `git show --format= --check HEAD`. Checkout's
+single-commit shallow boundary made Git compare the whole tree as a root commit,
+reporting two inherited trailing spaces in `reference/qt.md`. The tests and
+structural checks passed on Python 3.10.22 and 3.14.8 in that run.
+
+A temporary local clone with `--no-local --depth 1` reproduced exactly those two
+errors. Fetching depth 2 and running `git diff --check HEAD^ HEAD` passed. The
+workflow now explicitly fetches two commits and checks the first-parent diff.
+This preserves whitespace checking for the PR merge's changes and for the tip
+commit on pushes, without modifying inherited guide content. The pending human
+retention checkpoint is unchanged. A fresh GitHub run is required after push.

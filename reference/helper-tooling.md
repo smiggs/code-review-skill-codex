@@ -95,5 +95,8 @@ against this repository. That external check supplements the portable validator;
 CI does not depend on an installed Codex skill.
 
 CI runs the documented checks with read-only repository permissions and pinned
-actions. Its final job fails if validation fails, is cancelled, or is skipped.
+actions. The whitespace step fetches the first parent and checks `HEAD^` to
+`HEAD`, so a shallow history boundary cannot expose inherited whitespace as
+new changes. On pull requests this checks the synthetic merge against its first
+parent; on pushes it checks the tip commit. Its final job fails if validation fails, is cancelled, or is skipped.
 Repository rulesets and required-check settings remain a separate human decision.
