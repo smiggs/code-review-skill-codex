@@ -20,6 +20,11 @@ confirmation. Package 03's scoped Python and reference audit was approved on
 The [reference status](../reference/reference-status.md)
 records the scoped checks and remaining technical deferrals.
 
+Package 04 implementation is prepared for the human checkpoint. Its
+[evidence](evidence/04-helper-tooling-and-validation.md) records the retained
+counts-only helper, input limits, local checks, and pending human judgement.
+The evidence also records the CI correction and CodeRabbit review follow-up.
+
 ## Work packages
 
 1. [Foundation and review contract](01-foundation-and-review-contract.md):

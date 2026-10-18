@@ -145,10 +145,20 @@ python3 plans/evidence/03-python-examples.py
 
 They verify guide examples and a synthetic consumer, not the diff helper or
 independent review quality. See the [reference status](reference/reference-status.md)
-for technical-audit and translation limits. No configured test suite is implied.
+for technical-audit and translation limits. These checks remain separate from the helper test suite.
 
 ## Non-Goals
 
 - Do not turn the skill into a generic programming guide.
 - Do not duplicate large sections from `reference/` into `SKILL.md`.
 - Do not add extra docs unless they materially improve installation, contribution, or bilingual usability.
+
+## Helper and structural checks
+
+Use Python 3.10 or later and Git on Linux. The helper uses the standard library;
+structural checks use the pinned PyYAML dependency in `requirements-dev.txt`.
+Run the [local validation commands](reference/helper-tooling.md#local-validation)
+before submitting helper or package changes. CI runs the same checks on Python
+3.10 and 3.14. The tests verify counts, explicit errors, read-only operation, and
+structural invariants; they do not measure independent review accuracy. Review
+link anchors, prose consistency, and the documented unsupported cases manually.

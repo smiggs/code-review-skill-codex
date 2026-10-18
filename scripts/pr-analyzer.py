@@ -1,366 +1,223 @@
 #!/usr/bin/env python3
-"""
-PR Analyzer - Analyze PR complexity and suggest review approach.
+"""Counts text changes in a strict subset of UTF-8 Git unified diffs."""
 
-Usage:
-    python pr-analyzer.py [--diff-file FILE] [--stats]
-
-    Or pipe diff directly:
-    git diff main...HEAD | python pr-analyzer.py
-"""
-
-import sys
-import re
 import argparse
-from collections import defaultdict
-from dataclasses import dataclass
-from typing import List, Dict, Optional
+from dataclasses import asdict, dataclass
+import json
+from pathlib import Path
+import re
+import sys
 
 
 @dataclass
 class FileStats:
-    """Statistics for a single file."""
+    """Stores counts for one file; binary counts exclude binary contents."""
+
     filename: str
     additions: int = 0
     deletions: int = 0
-    is_test: bool = False
-    is_config: bool = False
-    language: str = "unknown"
+    binary: bool = False
 
 
-@dataclass
-class PRAnalysis:
-    """Complete PR analysis results."""
-    total_files: int
-    total_additions: int
-    total_deletions: int
-    files: List[FileStats]
-    complexity_score: float
-    size_category: str
-    estimated_review_time: int
-    risk_factors: List[str]
-    suggestions: List[str]
+def decode_path(value: str) -> str:
+    """Decodes Git C-quoted UTF-8 paths, rejecting malformed escapes."""
+    if not value.startswith('"'):
+        if not value or any(ord(c) < 32 for c in value) or '"' in value:
+            raise ValueError('invalid unquoted path')
+        return value
+    if not value.endswith('"'):
+        raise ValueError('unterminated quoted path')
+    data = bytearray()
+    i = 1
+    escapes = {'a': 7, 'b': 8, 't': 9, 'n': 10, 'v': 11, 'f': 12,
+               'r': 13, '\\': 92, '"': 34}
+    while i < len(value) - 1:
+        char = value[i]
+        if char == '"':
+            raise ValueError('unexpected quote in path')
+        if char != '\\':
+            data.extend(char.encode('utf-8'))
+            i += 1
+            continue
+        i += 1
+        if i >= len(value) - 1:
+            raise ValueError('incomplete path escape')
+        if value[i] in escapes:
+            data.append(escapes[value[i]])
+            i += 1
+        elif re.fullmatch(r'[0-3][0-7]{2}', value[i:i + 3]):
+            data.append(int(value[i:i + 3], 8))
+            i += 3
+        else:
+            raise ValueError('unsupported path escape')
+    path = data.decode('utf-8', errors='strict')
+    if not path or '\x00' in path:
+        raise ValueError('empty or NUL path')
+    return path
 
 
-def detect_language(filename: str) -> str:
-    """Detect programming language from filename."""
-    extensions = {
-        '.py': 'Python',
-        '.js': 'JavaScript',
-        '.ts': 'TypeScript',
-        '.tsx': 'TypeScript/React',
-        '.jsx': 'JavaScript/React',
-        '.rs': 'Rust',
-        '.go': 'Go',
-        '.c': 'C',
-        '.h': 'C/C++',
-        '.cpp': 'C++',
-        '.hpp': 'C++',
-        '.cc': 'C++',
-        '.cxx': 'C++',
-        '.hh': 'C++',
-        '.hxx': 'C++',
-        '.java': 'Java',
-        '.rb': 'Ruby',
-        '.sql': 'SQL',
-        '.md': 'Markdown',
-        '.json': 'JSON',
-        '.yaml': 'YAML',
-        '.yml': 'YAML',
-        '.toml': 'TOML',
-        '.css': 'CSS',
-        '.scss': 'SCSS',
-        '.html': 'HTML',
-    }
-    for ext, lang in extensions.items():
-        if filename.endswith(ext):
-            return lang
-    return 'unknown'
+def header_paths(line: str) -> tuple[str, str]:
+    """Returns prefixed header paths, rejecting ambiguous separators."""
+    value = line.removeprefix('diff --git ')
+    if value.startswith('"'):
+        match = re.match(r'("(?:[^"\\]|\\.)*") (.+)$', value)
+        if not match:
+            raise ValueError('invalid quoted diff header')
+        left, right = match.groups()
+    else:
+        separators = list(re.finditer(r' (?=b/|"b/)', value))
+        if len(separators) != 1:
+            raise ValueError('ambiguous or malformed diff header')
+        split = separators[0].start()
+        left, right = value[:split], value[split + 1:]
+    old, new = decode_path(left), decode_path(right)
+    if not old.startswith('a/') or not new.startswith('b/') or len(old) < 3 or len(new) < 3:
+        raise ValueError('expected a/ and b/ path prefixes')
+    return old, new
 
 
-def is_test_file(filename: str) -> bool:
-    """Check if file is a test file."""
-    test_patterns = [
-        r'test_.*\.py$',
-        r'.*_test\.py$',
-        r'.*\.test\.(js|ts|tsx)$',
-        r'.*\.spec\.(js|ts|tsx)$',
-        r'tests?/',
-        r'__tests__/',
-    ]
-    return any(re.search(p, filename) for p in test_patterns)
-
-
-def is_config_file(filename: str) -> bool:
-    """Check if file is a configuration file."""
-    config_patterns = [
-        r'\.env',
-        r'config\.',
-        r'\.json$',
-        r'\.yaml$',
-        r'\.yml$',
-        r'\.toml$',
-        r'Cargo\.toml$',
-        r'package\.json$',
-        r'tsconfig\.json$',
-    ]
-    return any(re.search(p, filename) for p in config_patterns)
-
-
-def parse_diff(diff_content: str) -> List[FileStats]:
-    """Parse git diff output and extract file statistics."""
+def parse_diff(diff_content: str) -> list[FileStats]:
+    """Returns complete file counts or raises ValueError without partial results."""
+    if not diff_content:
+        return []
+    lines = diff_content.split('\n')
+    if lines[-1] == '':
+        lines.pop()
     files = []
-    current_file = None
-
-    for line in diff_content.split('\n'):
-        # New file header
-        if line.startswith('diff --git'):
-            if current_file:
-                files.append(current_file)
-            # Extract filename from "diff --git a/path b/path"
-            match = re.search(r'b/(.+)$', line)
-            if match:
-                filename = match.group(1)
-                current_file = FileStats(
-                    filename=filename,
-                    language=detect_language(filename),
-                    is_test=is_test_file(filename),
-                    is_config=is_config_file(filename),
-                )
-        elif current_file:
-            if line.startswith('+') and not line.startswith('+++'):
-                current_file.additions += 1
-            elif line.startswith('-') and not line.startswith('---'):
-                current_file.deletions += 1
-
-    if current_file:
-        files.append(current_file)
-
+    i = 0
+    while i < len(lines):
+        if not lines[i].startswith('diff --git '):
+            raise ValueError(f'line {i + 1}: expected diff --git header')
+        old, new = header_paths(lines[i])
+        stats = FileStats(new[2:])
+        i += 1
+        metadata = {}
+        while i < len(lines) and not lines[i].startswith(('diff ', '--- ', 'Binary ', '@@')):
+            line = lines[i]
+            match = re.fullmatch(
+                r'(old mode|new mode|new file mode|deleted file mode) ([0-7]{6})|'
+                r'(index) ([0-9a-f]+\.\.[0-9a-f]+(?: [0-7]{6})?)|'
+                r'(similarity index|dissimilarity index) (100%|[0-9]{1,2}%)|'
+                r'(rename from|rename to|copy from|copy to) (.+)', line)
+            if not match:
+                raise ValueError(f'line {i + 1}: unsupported or malformed metadata')
+            parts = [part for part in match.groups() if part is not None]
+            key, value = parts
+            if key in metadata:
+                raise ValueError('duplicate metadata')
+            metadata[key] = value
+            i += 1
+        moved = False
+        for kind in ('rename', 'copy'):
+            source, target = metadata.get(kind + ' from'), metadata.get(kind + ' to')
+            if source is not None or target is not None:
+                if source is None or target is None:
+                    raise ValueError('incomplete rename/copy metadata')
+                if decode_path(source) != old[2:] or decode_path(target) != new[2:]:
+                    raise ValueError('rename/copy path mismatch')
+                moved = True
+        if old[2:] != new[2:] and not moved:
+            raise ValueError('changed path requires rename/copy metadata')
+        if ('old mode' in metadata) != ('new mode' in metadata):
+            raise ValueError('incomplete mode change')
+        created = 'new file mode' in metadata
+        deleted = 'deleted file mode' in metadata
+        if created and deleted:
+            raise ValueError('conflicting creation/deletion metadata')
+        has_content = False
+        if i < len(lines) and lines[i].startswith('Binary files '):
+            # Binary summaries carry no line counts and must stand alone.
+            expected_old = '/dev/null' if created else old
+            expected_new = '/dev/null' if deleted else new
+            binary_match = re.fullmatch(r'Binary files (.+) and (.+) differ', lines[i])
+            if not binary_match or tuple(map(decode_path, binary_match.groups())) != (expected_old, expected_new):
+                raise ValueError('invalid or ambiguous binary summary')
+            stats.binary = True
+            has_content = True
+            i += 1
+        elif i < len(lines) and lines[i].startswith('--- '):
+            before = decode_path(lines[i][4:].removesuffix('\t'))
+            i += 1
+            if i >= len(lines) or not lines[i].startswith('+++ '):
+                raise ValueError('missing +++ file marker')
+            after = decode_path(lines[i][4:].removesuffix('\t'))
+            if (before, after) != ('/dev/null' if created else old,
+                                   '/dev/null' if deleted else new):
+                raise ValueError('file markers do not match diff header/modes')
+            i += 1
+            previous_old_end = previous_new_end = 0
+            while i < len(lines) and lines[i].startswith('@@ '):
+                hunk = re.fullmatch(r'@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@(?: .*)?', lines[i])
+                if not hunk:
+                    raise ValueError(f'line {i + 1}: malformed hunk header')
+                old_start, old_count, new_start, new_count = hunk.groups()
+                old_start, new_start = int(old_start), int(new_start)
+                remaining_old = int(old_count) if old_count is not None else 1
+                remaining_new = int(new_count) if new_count is not None else 1
+                if (old_start < previous_old_end or new_start < previous_new_end
+                        or (remaining_old and not old_start) or (remaining_new and not new_start)
+                        or not (remaining_old or remaining_new)):
+                    raise ValueError('invalid or overlapping hunk range')
+                previous_old_end = old_start + remaining_old
+                previous_new_end = new_start + remaining_new
+                if (created and remaining_old) or (deleted and remaining_new):
+                    raise ValueError('hunk conflicts with creation/deletion')
+                i += 1
+                while remaining_old or remaining_new:
+                    if i >= len(lines) or not lines[i] or lines[i][0] not in ' +-':
+                        raise ValueError('truncated or malformed hunk')
+                    prefix = lines[i][0]
+                    remaining_old -= prefix in ' -'
+                    remaining_new -= prefix in ' +'
+                    if remaining_old < 0 or remaining_new < 0:
+                        raise ValueError('hunk exceeds declared line counts')
+                    stats.additions += prefix == '+'
+                    stats.deletions += prefix == '-'
+                    i += 1
+                    if i < len(lines) and lines[i] == '\\ No newline at end of file':
+                        i += 1
+                has_content = True
+            if not has_content:
+                raise ValueError('file markers without hunks')
+        if not has_content and not (moved or 'old mode' in metadata or created or deleted):
+            raise ValueError('file section has no supported change')
+        if i < len(lines) and not lines[i].startswith('diff --git '):
+            raise ValueError(f'line {i + 1}: unexpected content after file section')
+        files.append(stats)
     return files
 
 
-def calculate_complexity(files: List[FileStats]) -> float:
-    """Calculate complexity score (0-1 scale)."""
-    if not files:
-        return 0.0
-
-    total_changes = sum(f.additions + f.deletions for f in files)
-
-    # Base complexity from size
-    size_factor = min(total_changes / 1000, 1.0)
-
-    # Factor for number of files
-    file_factor = min(len(files) / 20, 1.0)
-
-    # Factor for non-test code ratio
-    test_lines = sum(f.additions + f.deletions for f in files if f.is_test)
-    non_test_ratio = 1 - (test_lines / max(total_changes, 1))
-
-    # Factor for language diversity
-    languages = set(f.language for f in files if f.language != 'unknown')
-    lang_factor = min(len(languages) / 5, 1.0)
-
-    complexity = (
-        size_factor * 0.4 +
-        file_factor * 0.2 +
-        non_test_ratio * 0.2 +
-        lang_factor * 0.2
-    )
-
-    return round(complexity, 2)
-
-
-def categorize_size(total_changes: int) -> str:
-    """Categorize PR size."""
-    if total_changes < 50:
-        return "XS (Extra Small)"
-    elif total_changes < 200:
-        return "S (Small)"
-    elif total_changes < 400:
-        return "M (Medium)"
-    elif total_changes < 800:
-        return "L (Large)"
-    else:
-        return "XL (Extra Large) - Consider splitting"
-
-
-def estimate_review_time(files: List[FileStats], complexity: float) -> int:
-    """Estimate review time in minutes."""
-    total_changes = sum(f.additions + f.deletions for f in files)
-
-    # Base time: ~1 minute per 20 lines
-    base_time = total_changes / 20
-
-    # Adjust for complexity
-    adjusted_time = base_time * (1 + complexity)
-
-    # Minimum 5 minutes, maximum 120 minutes
-    return max(5, min(120, int(adjusted_time)))
-
-
-def identify_risk_factors(files: List[FileStats]) -> List[str]:
-    """Identify potential risk factors in the PR."""
-    risks = []
-
-    total_changes = sum(f.additions + f.deletions for f in files)
-    test_changes = sum(f.additions + f.deletions for f in files if f.is_test)
-
-    # Large PR
-    if total_changes > 400:
-        risks.append("Large PR (>400 lines) - harder to review thoroughly")
-
-    # No tests
-    if test_changes == 0 and total_changes > 50:
-        risks.append("No test changes - verify test coverage")
-
-    # Low test ratio
-    if total_changes > 100 and test_changes / max(total_changes, 1) < 0.2:
-        risks.append("Low test ratio (<20%) - consider adding more tests")
-
-    # Security-sensitive files
-    security_patterns = ['.env', 'auth', 'security', 'password', 'token', 'secret']
-    for f in files:
-        if any(p in f.filename.lower() for p in security_patterns):
-            risks.append(f"Security-sensitive file: {f.filename}")
-            break
-
-    # Database changes
-    for f in files:
-        if 'migration' in f.filename.lower() or f.language == 'SQL':
-            risks.append("Database changes detected - review carefully")
-            break
-
-    # Config changes
-    config_files = [f for f in files if f.is_config]
-    if config_files:
-        risks.append(f"Configuration changes in {len(config_files)} file(s)")
-
-    return risks
-
-
-def generate_suggestions(files: List[FileStats], complexity: float, risks: List[str]) -> List[str]:
-    """Generate review suggestions."""
-    suggestions = []
-
-    total_changes = sum(f.additions + f.deletions for f in files)
-
-    if total_changes > 800:
-        suggestions.append("Consider splitting this PR into smaller, focused changes")
-
-    if complexity > 0.7:
-        suggestions.append("High complexity - allocate extra review time")
-        suggestions.append("Consider pair reviewing for critical sections")
-
-    if "No test changes" in str(risks):
-        suggestions.append("Request test additions before approval")
-
-    # Language-specific suggestions
-    languages = set(f.language for f in files)
-    if 'TypeScript' in languages or 'TypeScript/React' in languages:
-        suggestions.append("Check for proper type usage (avoid 'any')")
-    if 'Rust' in languages:
-        suggestions.append("Check for unwrap() usage and error handling")
-    if 'C' in languages or 'C++' in languages or 'C/C++' in languages:
-        suggestions.append("Check for memory safety, bounds checks, and UB risks")
-    if 'SQL' in languages:
-        suggestions.append("Review for SQL injection and query performance")
-
-    if not suggestions:
-        suggestions.append("Standard review process should suffice")
-
-    return suggestions
-
-
-def analyze_pr(diff_content: str) -> PRAnalysis:
-    """Perform complete PR analysis."""
-    files = parse_diff(diff_content)
-
-    total_additions = sum(f.additions for f in files)
-    total_deletions = sum(f.deletions for f in files)
-    total_changes = total_additions + total_deletions
-
-    complexity = calculate_complexity(files)
-    risks = identify_risk_factors(files)
-    suggestions = generate_suggestions(files, complexity, risks)
-
-    return PRAnalysis(
-        total_files=len(files),
-        total_additions=total_additions,
-        total_deletions=total_deletions,
-        files=files,
-        complexity_score=complexity,
-        size_category=categorize_size(total_changes),
-        estimated_review_time=estimate_review_time(files, complexity),
-        risk_factors=risks,
-        suggestions=suggestions,
-    )
-
-
-def print_analysis(analysis: PRAnalysis, show_files: bool = False):
-    """Print analysis results."""
-    print("\n" + "=" * 60)
-    print("PR ANALYSIS REPORT")
-    print("=" * 60)
-
-    print(f"\n📊 SUMMARY")
-    print(f"   Files changed: {analysis.total_files}")
-    print(f"   Additions: +{analysis.total_additions}")
-    print(f"   Deletions: -{analysis.total_deletions}")
-    print(f"   Total changes: {analysis.total_additions + analysis.total_deletions}")
-
-    print(f"\n📏 SIZE: {analysis.size_category}")
-    print(f"   Complexity score: {analysis.complexity_score}/1.0")
-    print(f"   Estimated review time: ~{analysis.estimated_review_time} minutes")
-
-    if analysis.risk_factors:
-        print(f"\n⚠️  RISK FACTORS:")
-        for risk in analysis.risk_factors:
-            print(f"   • {risk}")
-
-    print(f"\n💡 SUGGESTIONS:")
-    for suggestion in analysis.suggestions:
-        print(f"   • {suggestion}")
-
-    if show_files:
-        print(f"\n📁 FILES:")
-        # Group by language
-        by_lang: Dict[str, List[FileStats]] = defaultdict(list)
-        for f in analysis.files:
-            by_lang[f.language].append(f)
-
-        for lang, lang_files in sorted(by_lang.items()):
-            print(f"\n   [{lang}]")
-            for f in lang_files:
-                prefix = "🧪" if f.is_test else "⚙️" if f.is_config else "📄"
-                print(f"   {prefix} {f.filename} (+{f.additions}/-{f.deletions})")
-
-    print("\n" + "=" * 60)
-
-
-def main():
-    parser = argparse.ArgumentParser(description='Analyze PR complexity')
-    parser.add_argument('--diff-file', '-f', help='Path to diff file')
-    parser.add_argument('--stats', '-s', action='store_true', help='Show file details')
+def main() -> int:
+    parser = argparse.ArgumentParser(description='Count diff files and text lines; no correctness judgements.')
+    parser.add_argument('--diff-file', '-f', help='UTF-8 Git unified diff (default: stdin)')
+    parser.add_argument('--stats', '-s', action='store_true', help='Show escaped file identities')
+    parser.add_argument('--json', action='store_true', help='Emit deterministic JSON with file details')
     args = parser.parse_args()
-
-    # Read diff from file or stdin
-    if args.diff_file:
-        with open(args.diff_file, 'r') as f:
-            diff_content = f.read()
-    elif not sys.stdin.isatty():
-        diff_content = sys.stdin.read()
+    try:
+        if args.diff_file:
+            content = Path(args.diff_file).read_bytes().decode('utf-8', errors='strict')
+        elif not sys.stdin.isatty():
+            content = sys.stdin.buffer.read().decode('utf-8', errors='strict')
+        else:
+            parser.error('provide --diff-file or pipe a diff to stdin')
+        files = parse_diff(content)
+    except (OSError, ValueError) as error:
+        print(f'pr-analyzer: {error}', file=sys.stderr)
+        return 2
+    report = {'total_files': len(files), 'total_additions': sum(f.additions for f in files),
+              'total_deletions': sum(f.deletions for f in files),
+              'files': [asdict(f) for f in files]}
+    if args.json:
+        print(json.dumps(report, ensure_ascii=True, sort_keys=True))
     else:
-        print("Usage: git diff main...HEAD | python pr-analyzer.py")
-        print("       python pr-analyzer.py -f diff.txt")
-        sys.exit(1)
-
-    if not diff_content.strip():
-        print("No diff content provided")
-        sys.exit(1)
-
-    analysis = analyze_pr(diff_content)
-    print_analysis(analysis, show_files=args.stats)
+        print('Diff statistics (context only; binary contents excluded)')
+        print(f"Files: {report['total_files']}  Additions: {report['total_additions']}  Deletions: {report['total_deletions']}")
+        if args.stats:
+            for file in files:
+                print(f'{json.dumps(file.filename)} +{file.additions}/-{file.deletions}'
+                      + (' [binary]' if file.binary else ''))
+    return 0
 
 
 if __name__ == '__main__':
-    main()
+    sys.exit(main())

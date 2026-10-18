@@ -141,10 +141,19 @@ python3 plans/evidence/03-python-examples.py
 ```
 
 这些检查验证指南示例和合成使用方，不验证差异统计脚本或独立审查质量。
-[参考指南状态](reference/reference-status.md)说明技术审计与翻译限制；这不表示已有配置好的测试套件。
+[参考指南状态](reference/reference-status.md)说明技术审计与翻译限制；这些检查与辅助脚本测试套件分开运行。
 
 ## 非目标
 
 - 不要把这个 skill 变成通用编程教程。
 - 不要把 `reference/` 的大段内容复制回 `SKILL.md`。
 - 不要新增无实际价值的辅助文档，除非它确实改善了安装、贡献或双语可用性。
+
+## 辅助脚本与结构检查
+
+在 Linux 上使用 Python 3.10 或更高版本以及 Git。差异统计脚本仅使用标准库；
+结构检查使用 `requirements-dev.txt` 中固定版本的 PyYAML。
+提交脚本或技能包修改前，请运行[本地验证命令](reference/helper-tooling.md#local-validation)。
+CI 在 Python 3.10 和 3.14 上运行相同检查。测试验证统计、明确的错误、只读行为和
+结构约束，不验证独立审查准确性。请人工检查链接锚点、文档一致性和不支持的输入。
+详细的输入契约目前以英文为准，尚无完整中文翻译。

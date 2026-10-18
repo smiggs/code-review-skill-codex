@@ -169,3 +169,11 @@ code-review-codex/
 - Keep examples realistic and review-oriented.
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for contribution and validation guidance.
+
+## Diff helper and validation
+
+The optional diff helper reports file and text-line counts, with no complexity
+scores or approval recommendations. See the [input contract and validation
+commands](reference/helper-tooling.md) for supported UTF-8 Git diffs, explicit
+failure behaviour, Python requirements, and structural checks. These checks do
+not establish code review accuracy.

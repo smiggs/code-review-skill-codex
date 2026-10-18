@@ -1,0 +1,2 @@
+# YAML parsing for structural validation; helper tests use unittest.
+PyYAML==6.0.3
