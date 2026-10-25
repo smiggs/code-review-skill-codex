@@ -46,6 +46,17 @@ for human adjudication; no human pass is recorded.
 6. [Documentation and distribution](06-documentation-and-distribution.md):
    installation verification, attribution, companion docs, and release evidence.
 
+7. [TypeScript, React, and Vue](07-typescript-react-and-vue.md):
+   scoped technical audit and verification of retained guidance.
+8. [Go and Rust](08-go-and-rust.md):
+   scoped technical audit and verification of retained guidance.
+9. [Java](09-java.md):
+   scoped technical audit and verification of retained guidance.
+10. [C, C++, and Qt](10-c-cpp-and-qt.md):
+   scoped technical audit and verification of retained guidance.
+11. [CSS, Less, and Sass](11-css-less-and-sass.md):
+   scoped technical audit and verification of retained guidance.
+
 [Human and AI checkpoints](human-ai-checkpoints.md) records the judgements that
 automated checks cannot establish.
 
@@ -58,6 +69,50 @@ after the agreed checks and evaluation criteria are met and the package 05
 human checkpoint records a pass for the evaluated revision. A finished evaluation
 run with failed or unresolved criteria is evidence of outstanding work, not
 completion of package 05.
+
+## Language audit requirements
+
+Packages 07–11 are planned follow-on audits of the references deferred by package
+03. Their numbering preserves the existing package records; they do not require
+package 06 to run first. Planning authorisation does not mark implementation,
+validation, or human checkpoints complete. No guide is verified by these plans.
+
+The language groups can proceed independently after their scope is agreed.
+Coordinate edits to the common-bug checklist and reference status across groups.
+Preserve package 05's agreed evaluation scope: add language fixtures in separately
+agreed batches with acceptance criteria fixed before model runs. New guide
+changes require proportionate re-evaluation of affected behaviour before any
+release claim for that revision. Package 06's existing evaluation gate remains.
+
+Each audit follows the Python package's method:
+
+- Start with declared language, compiler, runtime, framework, and platform
+  versions. Check retained technical claims in primary documentation and record
+  versioned sources where available, access dates, and evidence limitations.
+- Replace inherited good/bad recipes with concrete triggers, consequences, and
+  project requirements. Preserve useful language-specific coverage while
+  removing unsupported blanket rules and automatic priorities.
+- Exercise meaningful examples with synthetic inputs, failure paths, and clean
+  controls. Separate runnable examples from illustrative fragments. Use the
+  installed TDD skill for behavioural code introduced during implementation.
+- Consolidate only the corresponding sections of the common-bug checklist,
+  checking callers and routing before removing duplicate guidance.
+- Preserve reference paths, the skill name, and upstream MIT attribution. Keep
+  the entry point concise and selectively routed.
+- Update reference-status.md only to the extent supported by recorded evidence.
+  Record translation limits honestly; align English and Chinese companion
+  guidance if shared installation or usage behaviour changes.
+- Run git diff --check, git diff --stat, the repository structural validator,
+  and the system skill-creator quick validator when available. Verify links
+  and cross-document consistency. These checks do not measure review accuracy.
+- Use package 05's evidence and authority boundaries for separate behavioural
+  evaluation: distributable fixtures, withheld answer keys, agreed criteria,
+  raw reports, false positives, misses, and tool limits. Do not use private code
+  or live PR mutations as evaluation side effects.
+
+Installation, publishing, helper redesign, and unrelated language rewrites stay
+outside these audit packages. Record package evidence under plans/evidence/
+when work produces it; do not create placeholder success records.
 
 ## Cross-cutting rules
 
