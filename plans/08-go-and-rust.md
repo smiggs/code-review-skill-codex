@@ -34,7 +34,8 @@ Follow the [shared audit requirements](README.md#language-audit-requirements).
 ## Tests and verification
 
 Exercise worker input boundaries, cancellation, channel closure, and task
-shutdown with bounded waits. Compile Rust examples and test partial I/O and
+shutdown with bounded waits. Compile retained Go examples under the declared
+Go and module versions. Compile Rust examples and test partial I/O and
 cancellation using controlled readers. Use race detection or unsafe-code tools
 where supported and relevant, recording their limits. Include intentional
 panic invariants and valid ownership patterns as clean controls.
