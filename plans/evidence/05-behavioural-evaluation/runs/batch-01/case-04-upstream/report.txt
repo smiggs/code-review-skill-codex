@@ -1,0 +1,13 @@
+One blocking finding:
+
+- **[P1] Preserve the payload contract used by `render()` — `head/serializer.py:5`.** Returning `json.dumps(...)` changes `status_payload()` from a dictionary to a string, but the unchanged `caller.py:5` still evaluates `status_payload()["status"]`. Every call to the supported `render()` entry point now raises `TypeError: string indices must be integers` instead of returning `"ready"`. Preserve the dictionary return value or update the consumer consistently.
+
+Scope: reviewed the supplied diff, both snapshots, their instructions, and the unchanged caller. Used the supplied candidate skill and its Python reference.
+
+Verification: copied both snapshots into `/tmp/review-eval-nst3qki6/scratch` and ran, separately in each copy, Python 3.10.12 with:
+
+```bash
+python3 -B -c 'from caller import render; assert render() == "ready"; print(repr(render()))'
+```
+
+Base passed and printed `'ready'`; head failed with the exception above. No test suite was supplied; this check covers the required entry point only. No source changes or external actions were performed.

@@ -1,0 +1,9 @@
+🔴 **[blocking] Retain the backup until the destination write succeeds** — [recovery.py:6](/tmp/review-eval-jtebgwaz/input/head/recovery.py:6)
+
+Moving `backup.unlink()` before `destination.write_bytes(data)` deletes the potentially only surviving copy before recovery succeeds. When the destination parent is missing, the write raises `FileNotFoundError`, leaving neither file available for retry. This violates the explicit backup-retention requirement. Keep deletion after a successful write.
+
+Scope: reviewed `change.diff`, both complete snapshots, and their applicable `AGENTS.md` instructions using the supplied candidate skill and its Python reference. No other callers were supplied.
+
+Checks actually run: copied both snapshots into `/tmp/review-eval-jtebgwaz/scratch` and ran a Python 3.10.12 standard-library reproduction against each. With a missing destination parent, base retained the backup; head deleted it. Successful-write controls passed for both versions, preserving destination contents and removing the backup.
+
+Limits: no supplied test suite; permission failures, disk exhaustion, and interrupted writes were not exercised. Source snapshots were unchanged. Advisory recommendation: address this finding before merging.

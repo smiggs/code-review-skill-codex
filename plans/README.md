@@ -25,7 +25,11 @@ Package 04 is complete: the user approved and merged
 18 October 2026. Its
 [evidence](evidence/04-helper-tooling-and-validation.md) records the accepted
 counts-only helper, input limits, resolved review comments, and passing CI on
-merged revision `e5c3a10`. Package 05 is the next work package.
+merged revision `e5c3a10`. Package 05's criteria were agreed on 25 October 2026 and its initial 20 reviews
+are finished. The [results](evidence/05-behavioural-evaluation/runs/batch-01/README.md)
+record four detected defects and no false positives in both arms, two adapted
+severity mismatches, and unresolved evaluator isolation. Package 05 remains open
+for human adjudication; no human pass is recorded.
 
 ## Work packages
 

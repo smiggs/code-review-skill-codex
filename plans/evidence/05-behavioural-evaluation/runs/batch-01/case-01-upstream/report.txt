@@ -1,0 +1,9 @@
+Scope: reviewed `change.diff`, both complete `wait.py` snapshots, all supplied target instructions, and the candidate skill’s Python guide. No callers were supplied.
+
+- **[blocking] Preserve an explicit zero timeout — `head/wait.py:2`.** `timeout or 30` treats `0` as missing and returns `30`, violating the requirement that zero means an immediate return. A caller requesting no wait instead receives a 30-second timeout. Retain the explicit `None` check so valid zero values survive.
+
+Checks actually run: copied both snapshots into `/tmp/review-eval-jq6ni6my/scratch`, then used Python 3.10.12 and standard-library `runpy.run_path` to compare `resolve_timeout` against the documented contract for `None`, `0`, `1`, `30`, and `60`. All five base cases matched; head failed only `0` (`expected=0`, `actual=30`). The comparison script exited successfully because it printed results rather than asserting them.
+
+Limits: no supplied test suite or callers; actual waiting behaviour was not exercised. No source changes or external actions were performed.
+
+Advisory recommendation: address the zero-timeout regression before merging.
