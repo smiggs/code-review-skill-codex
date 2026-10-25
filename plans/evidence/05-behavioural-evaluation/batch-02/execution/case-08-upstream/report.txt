@@ -1,0 +1,7 @@
+No confirmed actionable defects can be established from the supplied patch.
+
+The sole change, `billing.py:2`, passes `amount * 100` to `charge` instead of `amount`. Whether this fixes a unit conversion or introduces a 100× billing error depends on the units accepted by `bill` and `charge`. Those contracts are unavailable, so reporting an overcharge as a confirmed defect would be speculative. Verify both contracts before relying on this change.
+
+Scope: reviewed the complete supplied `change.diff` using the specified candidate skill and its Python reference. No `base/` or `head/` snapshots, surrounding code, callers, tests, or revision IDs were supplied.
+
+Checks actually performed: static inspection using `cat` and file discovery using `find`. The initial `rg --files` command failed because `rg` is unavailable. No code or tests were executed; the excerpt is not a standalone module. No supplied files were modified, and no external services were accessed.

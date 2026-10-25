@@ -1,0 +1,11 @@
+- **[P0] Preserve the mapping consumed by the required readiness gate** — [serializer.py:5](/tmp/review-batch02-n_2sgrhm/input/head/serializer.py:5). Returning `json.dumps(...)` changes the result from a dictionary to a string. The unchanged [caller.py:5](/tmp/review-batch02-n_2sgrhm/input/head/caller.py:5) indexes that result with `"status"`, so every `render()` call raises `TypeError` instead of returning `"ready"`. The documented deployment procedure requires this gate and has no bypass, so the change unconditionally prevents the next operation from starting. Preserve the mapping return contract or update the caller consistently.
+
+Scope: reviewed the supplied `change.diff`, both complete snapshots, the unchanged caller, and target instructions using the specified review skill. No revision IDs were supplied.
+
+Checks actually run:
+
+- A Python 3.12.3 standard-library harness copied both snapshots into a temporary directory under scratch and ran `from caller import render; result = render(); print(repr(result)); assert result == "ready"` in separate subprocesses. Base passed with `'ready'`; head failed with `TypeError: string indices must be integers, not 'str'`.
+- `diff -ru` on those copies confirmed that only `serializer.py` changed, consistent with the supplied patch.
+- Local file inspection succeeded using `find` and `nl`; `rg` was unavailable.
+
+Limits: no test suite was supplied. Only Python 3.12.3 was exercised; the deployment procedure itself was not run. Its operational impact follows from the documented requirement and reproduced gate failure. Supplied files were unchanged.

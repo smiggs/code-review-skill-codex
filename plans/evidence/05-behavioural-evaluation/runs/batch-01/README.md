@@ -1,5 +1,11 @@
 # Batch 01 results and human checkpoint
 
+Historical batch results below retain their original scores and limits. The
+later [completion decision](../../../05-completion-and-exceptions.md) accepts
+package 05 with explicit limitations and unblocks package 06; it does not
+retroactively pass this batch. Earlier pending/blocking statements describe
+status at the time of batch 01.
+
 The initial 20 reviews are finished. The adapted skill found every seeded defect
 and produced no false positives, but it did not meet the agreed severity
 criterion in two cases. Evaluation independence is unresolved because the
@@ -118,10 +124,11 @@ and an inspection of the initial context before dispatching review cases.
 
 ## Human checkpoint and follow-up
 
-AI assessment: the agreed adapted-skill criteria are not all met. Human decision:
-pending, with the overall checkpoint unresolved. Read the raw reports alongside
-the key and settle the two severity disagreements; do not silently relax the
-pre-agreed P2 expectations after seeing P1 outputs.
+AI assessment: the agreed adapted-skill criteria are not all met. The user
+accepted the severity adjudication on 25 October 2026: case 03 has ambiguous
+impact evidence, and case 04's expected P2 is insufficiently justified by its
+fixture. The overall checkpoint remains unresolved; original scores and
+pre-agreed criteria are unchanged.
 
 No runtime skill correction or rerun was made. The P1 judgements refer to risks
 and core-path failure that the existing severity contract can plausibly support;
@@ -131,6 +138,11 @@ runtime instructions. Those issues need resolution before a justified narrow
 correction can be selected. A fully isolated repeat of 20 reviews exceeds the
 agreed six-review correction bound and needs a separately agreed batch.
 
+The [severity adjudication record](adjudication.md) presents the evidence,
+accepted recommendations, and the user's decision. Neither dispute establishes
+faulty skill guidance. Future fixture impact and severity expectations need
+clarification and agreement before evaluation.
+
 Retain this finished run regardless of the decision. Only a later recorded
 human pass against criteria met by the evaluated revision can complete package
 05 and permit package 06. Approval of the criteria was not approval of results.
@@ -139,5 +151,5 @@ human pass against criteria met by the evaluated revision can complete package
 
 On 25 October 2026 the user requested, "Record the scoring only". The
 20-report scorecard and raw reports are saved. No further evaluation, runtime
-correction, or rerun follows this instruction. Human adjudication remains
-pending; package 05 is open and package 06 remains blocked.
+correction, or rerun followed that instruction. The subsequent severity
+adjudication is recorded above; package 05 is open and package 06 remains blocked.

@@ -1,0 +1,6 @@
+{
+  "exit_code": 0,
+  "stderr": "WARNING: proceeding, even though we could not create PATH aliases: Refusing to create helper binaries under temporary dir \"/tmp\" (codex_home: AbsolutePathBuf(\"/tmp/review-batch02-auth-d0505rhg/codex-home\"))\n",
+  "requested_model_present": true,
+  "scope": "Model catalogue connectivity diagnostic only; no inference or review."
+}

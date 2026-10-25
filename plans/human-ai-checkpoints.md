@@ -17,9 +17,10 @@ Changes affecting the decision require the relevant evidence to be refreshed.
 |---|---|---|
 | Review contract | Example findings, severity mapping, scope and authority | Whether findings are actionable and approval boundaries are clear |
 | Core workflow | Concise entry point and sample reports | Clarity, useful detail, and acceptable no-findings output |
-| Reference quality | Python rewrite and audit disposition; scoped language audits in packages 07–11 | Technical scope, supported versions, deferred work, and translation expectations for each audited revision |
+| Reference quality | Python rewrite and audit disposition; scoped language audits in packages 08–12 | Technical scope, supported versions, deferred work, and translation expectations for each audited revision |
 | Helper tooling | Tested behaviour and heuristic limitations | Whether the helper is useful enough to retain |
 | Evaluation | Raw reports, answer keys, scored outcomes | Disputed findings and a pass, fail, or unresolved decision against pre-agreed acceptance criteria |
+| Severity calibration follow-up | Assessment of priority boundaries, proposed correction or no change, and bounded diagnostic evidence | Impact interpretation and criteria before evaluation; final disposition for the exact candidate, with limitations retained |
 | Distribution | Installable candidate, validation and limitations | Readiness of the exact candidate and any publication request |
 
 ## Operating boundaries
@@ -30,5 +31,9 @@ Changes affecting the decision require the relevant evidence to be refreshed.
   part of an offline evaluation.
 - If a checkpoint is pending, continue independent authorised work and report
   exactly which dependent decision remains open.
-- A failed or unresolved evaluation keeps package 05 open and blocks package 06.
-  Record the run and outstanding work without marking the package complete.
+- A failed or unresolved evaluation alone keeps package 05 open and blocks
+  package 06. A human may explicitly approve a named exception to package exit
+  criteria for an exact evaluated revision. Record that change and its limits
+  separately; preserve original scores and do not relabel the run as passing.
+  The [package 05 completion decision](evidence/05-completion-and-exceptions.md)
+  records the approved severity and incomplete-comparison exceptions.

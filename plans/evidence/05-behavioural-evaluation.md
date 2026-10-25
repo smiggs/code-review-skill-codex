@@ -1,11 +1,12 @@
 # Package 05 preparation and decision record
 
-Current status: the initial 20 reviews are finished following criteria agreement.
-The [batch results](05-behavioural-evaluation/runs/batch-01/README.md) record
-complete defect detection and no false positives in both arms, two adapted
-severity mismatches, and unresolved evaluator independence. No human pass is
-recorded; package 05 remains open and package 06 remains blocked. The preparation
-sections below retain their historical status at the time they were written.
+Current status: package 05 is complete with human-accepted limitations on
+25 October 2026. Package 06 is unblocked and has not started. The
+[completion decision](05-completion-and-exceptions.md) accepts advisory severity
+calibration and the incomplete upstream comparison for evaluated runtime
+`677beab3a37af42b08f9c46e5344b44afe84b3cf`. This changes package completion
+requirements explicitly; original batch criteria and scores remain unchanged.
+The records below preserve their status at each historical stage.
 
 ## Preparation snapshot and evaluated revision
 
@@ -154,3 +155,118 @@ No runtime change or corrective review was justified before that adjudication.
 A new isolated 20-review batch would exceed the accepted six-review correction
 bound and requires separate agreement. Nothing in this finished run completes
 package 05 or authorises package 06.
+
+## Severity adjudication accepted
+
+On 25 October 2026 the user replied, "OK I accept your recommendations", after
+clarification that the original P2 expectations were too rigid for the supplied
+evidence. The [adjudication record](05-behavioural-evaluation/runs/batch-01/adjudication.md)
+links reports, requirements, and the contract for evaluated adapted revision
+`677beab3a37af42b08f9c46e5344b44afe84b3cf`.
+
+The accepted classifications are ambiguous fixture impact evidence for case 03
+and insufficient justification for case 04's expected priority. Neither
+establishes faulty skill guidance. Clarify fixture impact and agree severity
+expectations before another batch; no replacement priority was approved.
+
+Original criteria, fixtures, reports, and scores remain unchanged. This decision
+does not retrospectively pass batch 01 or authorise further reviews. Evaluator
+independence and the overall human checkpoint remain unresolved. Package 05
+stays open and package 06 remains blocked.
+
+## Isolated batch 02 prepared for agreement
+
+The [batch 02 proposal](05-behavioural-evaluation/batch-02/README.md) retains both
+runtime revisions and executable fixture bytes. It adds operational impact to
+case 03 and 04's target requirements and proposes P2/P1 respectively. The
+revised key and criteria belong to this separate batch; batch 01 is unchanged.
+
+Two local case-free CLI context renders, outside this repository with an empty
+Codex home, contain no repository instructions or prior conclusions. The
+[isolation record](05-behavioural-evaluation/batch-02/isolation/README.md)
+preserves exact commands, contexts, and tool help. Bundled system guidance
+remains visible. No model call, authentication test, or review was performed;
+actual evaluator independence is not yet established.
+
+The proposal requests separate agreement for 20 standalone reviews with
+`gpt-6.1-sol`, medium reasoning, and CLI `0.164.0-alpha.11.1`. The CLI differs
+from batch 01, equally for both arms. No corrective reruns are included.
+Agreement is pending; package 05 remains open and package 06 remains blocked.
+
+## Batch 02 approval and execution
+
+On 25 October 2026 the user replied, "approved", to the batch 02 proposal and
+criteria. The [agreement](05-behavioural-evaluation/batch-02/execution/agreement.json)
+pins criteria SHA-256
+`ea68388fe5ea9ce43ed2bcab0b71b2bd9355a52df017b0a6349adb26d9dab595`
+and manifest SHA-256
+`b4bc3bbe296a54519416df9ef249c65ce25478422238d3df45f2b193cfad71d0`.
+The preparation-time pending statements above and in the frozen inputs are
+historical. Approval permits the 20 standalone reviews and disclosed limits,
+not replacement runs or a final human quality pass.
+
+The [execution record](05-behavioural-evaluation/batch-02/execution/README.md)
+preserves authentication checks, launch context, commands, and reports. The
+first upstream slot failed on backend routing before producing a report.
+It is retained without retry. The next adapted slot completed after launching
+outside the outer shell sandbox while retaining its own scratch-only sandbox.
+Live context extraction confirms the expected messages without repository
+guidance; extra goal-management, image-generation, and web tool schemas are
+disclosed and unused. All planned slots have finished with 19 reports and the
+single retained failure. The [scorecard](05-behavioural-evaluation/batch-02/execution/scorecard.json)
+credits adapted detection of four of four defects, zero false positives, and
+three of four severity matches. Case 04's P0 fails the agreed P1 expectation;
+the [adjudication brief](05-behavioural-evaluation/batch-02/execution/adjudication.md)
+presents the dispute without changing scores.
+
+The output manifest froze 388 execution artefacts before scoring, with SHA-256
+`825e4fe393e0361998d425a6065eab262118395475aa21b174daca76324da543`.
+All 20 live contexts were audited; the 19 successful reviews had identical
+tool schemas. All candidate/input hashes were unchanged. No review was repeated
+and no runtime correction was made. The missing upstream report and severity
+dispute leave the overall checkpoint unresolved; package 06 remains blocked.
+
+## Completion accepted with exceptions
+
+The user replied, "Yes approved", to completing package 05 with two recorded
+exceptions and unblocking package 06. The [completion record](05-completion-and-exceptions.md)
+pins the evaluated runtime, original scorecard hashes, acceptance rationale,
+and limits to carry into package 06. Severity calibration is accepted as an
+advisory limitation. The missing upstream case 01 report is accepted as a
+comparison limitation, with no claim of superiority over upstream.
+
+The original failed severity score and unresolved comparison slot remain.
+This is human acceptance under amended package requirements, not a pass against
+the frozen original rubric. No further model review or runtime correction is
+required for package 05 closure. Package 06 is unblocked, not started, and
+retains its own release-candidate and publication approval requirements.
+
+## Completion-record validation
+
+- Repository structure/link validation and the system skill-creator validator
+  passed after the completion changes.
+- British house style lint passed for all 11 changed instruction, plan,
+  decision, and result documents, with no errors or warnings; Google variant used.
+- All four manifests still verified: 640 preparation/execution entries matched.
+  Both scorecards also matched the hashes in the completion record.
+- `git diff --check` passed and `git diff --stat` was inspected. Authored
+  completion documentation has no whitespace diagnostics. Frozen raw evidence
+  retains its captured formatting.
+
+No model reviews, source corrections, commits, PR submissions, or publication
+were performed as part of recording this approval. Package 05 is complete with
+the accepted limitations; package 06 is unblocked and has not started.
+
+## Commit and PR preparation
+
+On 25 October 2026, the user requested committing, pushing, and opening a PR.
+The local checks passed: 18 helper/structural tests, 13 guide checks, seven
+fixture checks per batch, repository and system skill validators, and all
+640 manifest entries. No additional model reviews were launched.
+
+The full staged PR diff initially failed Git whitespace checks on frozen
+patch context, captured help, a raw report, and tool-schema differences.
+Scoped `.gitattributes` entries preserve those captured bytes. A synthetic
+Git check confirmed that captured output is accepted while trailing spaces
+in authored Markdown are still rejected. Both staged commit and full PR
+whitespace checks passed after the attribute change; no manifest was altered.

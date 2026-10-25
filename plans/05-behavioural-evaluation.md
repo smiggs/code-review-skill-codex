@@ -40,10 +40,12 @@ Where outputs vary, record that variability rather than selecting the best run.
 A human reviews raw reports alongside answer keys, resolves disputed findings,
 and decides whether the evidence meets the pre-agreed acceptance criteria.
 Record pass, fail, or unresolved against the evaluated revision. Record finished
-evaluation runs even when criteria fail or remain unresolved. Such runs do not
-complete this package or permit package 06 to start.
+evaluation runs even when criteria fail or remain unresolved. Such runs alone
+do not complete this package or permit package 06 to start. The explicit
+human-approved completion exception below provides a separate disposition
+for the recorded evaluated revision.
 
-## Exit criteria
+## Original exit criteria
 
 - Evaluation can be repeated from recorded artefacts and instructions.
 - Pre-agreed acceptance criteria, including critical-case and false-positive
@@ -51,3 +53,19 @@ complete this package or permit package 06 to start.
   limitations were explicitly permitted before evaluation.
 - No fixture code, secrets, or private PR data escaped its permitted workspace.
 - Evidence demonstrates target instructions are honoured without global coupling.
+
+## Approved completion exception
+
+On 25 October 2026 the user approved completing this package for adapted runtime
+`677beab3a37af42b08f9c46e5344b44afe84b3cf` with two accepted limitations:
+advisory severity calibration and an incomplete upstream comparison. The
+[completion decision](evidence/05-completion-and-exceptions.md) records the
+approval, evidence, exact score identities, and downstream disclosure duties.
+
+That human acceptance satisfies the package checkpoint through an explicit
+exception to the original completion requirements. Package 05 is complete and
+package 06 is unblocked. Original failed and unresolved scores are preserved;
+neither batch is relabelled as passing its original rubric. No superiority
+claim, further evaluation, runtime correction, or publication is authorised.
+For another runtime revision, the original exit criteria still apply unless
+a separate human decision changes them.

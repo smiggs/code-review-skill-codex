@@ -1,0 +1,1 @@
+{"type": "item.completed", "item": {"id": "item_0", "type": "error", "message": "Falling back from WebSockets to HTTPS transport. workspace routing discovery failed"}}

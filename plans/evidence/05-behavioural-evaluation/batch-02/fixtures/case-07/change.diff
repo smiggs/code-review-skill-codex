@@ -1,0 +1,7 @@
+diff --git a/view.py b/view.py
+--- a/view.py
++++ b/view.py
+@@ -1,2 +1,2 @@
+ def present(items, display):
+-    display(items)
++    display(sorted(items))

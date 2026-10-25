@@ -1,5 +1,10 @@
 # Package 06: documentation and distribution
 
+Status: unblocked, not started. The user accepted package 05's
+[completion exceptions](evidence/05-completion-and-exceptions.md) on 25 October
+2026. This removes the package dependency; it does not approve a release or
+publication.
+
 ## Outcome
 
 Make the adapted skill installable and maintainable with honest capability
@@ -25,6 +30,9 @@ claims, preserved attribution, and a recorded verified revision.
   discovery, reference resolution, and operation without optional integrations.
 - Record release candidate revision, validation commands, evaluation results,
   known limitations, and update/rollback instructions.
+- Disclose the accepted severity-calibration limitation and incomplete upstream
+  comparison in capability claims and release evidence. Do not claim that the
+  original evaluation criteria all passed or that the adaptation is superior.
 - Keep push, tags, public release publication, and live PR comments as distinct
   actions requiring user authorisation, not implicit results of packaging.
 

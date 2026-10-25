@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/usr/lib/chatgpt/resources/codex",
+    "debug",
+    "prompt-input",
+    "Context inspection only. No review case has been supplied. Do not inspect files, call tools, or perform a review."
+  ],
+  "cwd": "/tmp/review-isolation-preflight-7b9pyl9x/workspace",
+  "environment_keys": [
+    "CODEX_HOME",
+    "HOME",
+    "LANG",
+    "PATH"
+  ],
+  "exit_code": 0
+}

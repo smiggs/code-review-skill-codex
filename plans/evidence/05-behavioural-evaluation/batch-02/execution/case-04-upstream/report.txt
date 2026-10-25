@@ -1,0 +1,7 @@
+- **[blocking] Preserve the return contract required by `render()`** — [head/serializer.py:5](/tmp/review-batch02-zvce99h6/input/head/serializer.py:5). `json.dumps()` changes `status_payload()` from a dictionary to a string. The unchanged `caller.py:5` uses `status_payload()["status"]`, so every `render()` call now raises `TypeError` instead of returning `"ready"`. Because `render()` is the required deployment readiness gate with no supported bypass, this prevents the next operation from starting. Preserve the dictionary return value, or update the caller to deserialize it.
+
+Scope: Reviewed `change.diff`, both complete snapshots, the unchanged caller, and target instructions, using the specified skill and its Python guide.
+
+Checks actually run: A Python 3.12.3 standard-library script copied both snapshots into a temporary directory under `scratch` and ran `from caller import render; result = render(); print(repr(result)); assert result == "ready"` in each copy. Base passed; head failed with `TypeError: string indices must be integers, not 'str'`. File discovery initially used `rg`, which was unavailable; `find` succeeded.
+
+Limits: No test suite or deployment procedure implementation was supplied. The operational impact follows the documented requirements; the entry-point failure was reproduced directly. Supplied files were unchanged.

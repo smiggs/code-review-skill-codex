@@ -1,0 +1,13 @@
+One finding: **[important / P2] Preserve zero for indefinite retention** — [head/retention.py:3](/tmp/review-batch02-kjgszygu/input/head/retention.py:3).
+
+`return value or 7` converts the valid input `0` to `7`, so an indefinite archive’s advisory preview incorrectly shows seven days. Restore the explicit `None` check so zero survives normalization. Per the target instructions, this affects only the preview; stored policy and actual expiry remain correct.
+
+Scope: Reviewed `change.diff`, both complete snapshots, and target instructions using the supplied review skill and its Python guide. No callers or test suite were supplied.
+
+Checks actually run:
+
+- Used `cat` and `ls` to inspect instructions, skill guidance, and patch. `rg --files` failed because `rg` is unavailable; Python enumerated the snapshot files instead.
+- Ran a Python 3.12.3 standard-library script in scratch, copying both snapshots to a temporary directory before inspecting and executing them.
+- Checked inputs `None`, `0`, `1`, `7`, and `30`: base passed 5/5; head passed 4/5, failing only `0` (`7` returned, `0` expected).
+
+Verification is limited to the supplied function and documented operational context; preview integration and expiry behavior could not be independently tested. Supplied files were unchanged.

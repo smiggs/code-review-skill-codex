@@ -1,0 +1,7 @@
+# Preserve manifest-pinned diff context and captured output bytes.
+# Authored documentation retains the normal whitespace checks.
+plans/evidence/05-behavioural-evaluation/fixtures/**/change.diff whitespace=-blank-at-eol
+plans/evidence/05-behavioural-evaluation/batch-02/fixtures/**/change.diff whitespace=-blank-at-eol
+plans/evidence/05-behavioural-evaluation/batch-02/execution/**/tool-schema-difference.diff whitespace=-blank-at-eol,-blank-at-eof
+plans/evidence/05-behavioural-evaluation/batch-02/execution/case-01-adapted/report.txt whitespace=-blank-at-eol
+plans/evidence/05-behavioural-evaluation/batch-02/isolation/*help.txt whitespace=-blank-at-eol
