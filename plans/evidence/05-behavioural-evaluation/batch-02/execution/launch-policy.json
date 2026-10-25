@@ -1,0 +1,7 @@
+{
+  "case-01-upstream": "Outer exec_command sandbox use_default; backend routing failed before report.",
+  "remaining_planned_pairs": "Outer exec_command require_escalated for backend connectivity, approved automatically; each nested CLI still uses the frozen scratch-only workspace-write permission profile.",
+  "credential_method": "Per-workspace temporary auth.json symlink to existing local login; no general user configuration loaded.",
+  "configuration_change": "None in evaluator command arguments; authentication link added before repeated context inspection.",
+  "retries": "No review pair reinvoked. CLI internal connection reconnects retained in failed first pair."
+}

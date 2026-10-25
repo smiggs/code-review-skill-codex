@@ -1,0 +1,10 @@
+diff --git a/serializer.py b/serializer.py
+--- a/serializer.py
++++ b/serializer.py
+@@ -1,2 +1,5 @@
++import json
++
++
+ def status_payload():
+-    return {"status": "ready"}
++    return json.dumps({"status": "ready"})

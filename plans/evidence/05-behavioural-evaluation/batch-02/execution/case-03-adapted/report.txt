@@ -1,0 +1,7 @@
+- **[P2] Preserve zero as indefinite retention** — [head/retention.py:3](/tmp/review-batch02-uool1h_8/input/head/retention.py:3). `value or 7` converts the supported input `0` into `7`, making the advisory preview show seven days instead of indefinite retention. The base correctly returns `0`. Default only when `value is None`. This affects preview accuracy; the documented stored policy and expiry behavior remain unaffected.
+
+Scope: Reviewed the supplied base-to-head snapshots, `change.diff`, and all supplied target instructions. No callers or tests were supplied, and no revision identifiers were available.
+
+Checks actually run: A Python 3.12.3 standard-library script copied both snapshots and the patch into a temporary scratch directory, confirmed the snapshot diff matched `change.diff`, and compared inputs `None`, `0`, `1`, `7`, and `30`. Only `0` regressed. The script exited successfully after confirming that regression. File discovery used `find` after `rg` proved unavailable.
+
+Limits: No application-level preview or expiry checks were possible with the supplied files; operational impact is bounded by the target’s documented requirements. No source files were modified.

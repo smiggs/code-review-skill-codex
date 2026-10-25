@@ -1,0 +1,141 @@
+[
+  {
+    "turn_id": "01a1753f-b4d0-7202-87b8-ee8a95a1747f",
+    "root_turn_id": "01a1753f-b4d0-7202-87b8-ee8a95a1747f",
+    "disabled_plugin_ids": [],
+    "cwd": "/tmp/review-batch02-b_8auotx/scratch",
+    "approval_policy": "never",
+    "approvals_reviewer": "user",
+    "sandbox_policy": {
+      "type": "workspace-write",
+      "network_access": false,
+      "exclude_tmpdir_env_var": true,
+      "exclude_slash_tmp": true
+    },
+    "permission_profile": {
+      "type": "managed",
+      "file_system": {
+        "type": "restricted",
+        "entries": [
+          {
+            "path": {
+              "type": "special",
+              "value": {
+                "kind": "root"
+              }
+            },
+            "access": "read"
+          },
+          {
+            "path": {
+              "type": "path",
+              "path": "/tmp/review-batch02-b_8auotx/scratch"
+            },
+            "access": "write"
+          },
+          {
+            "path": {
+              "type": "path",
+              "path": "/tmp/review-batch02-b_8auotx/scratch/.git"
+            },
+            "access": "read",
+            "missing_path_behavior": "skip"
+          },
+          {
+            "path": {
+              "type": "path",
+              "path": "/tmp/review-batch02-b_8auotx/scratch/.agents"
+            },
+            "access": "read",
+            "missing_path_behavior": "skip"
+          },
+          {
+            "path": {
+              "type": "path",
+              "path": "/tmp/review-batch02-b_8auotx/scratch/.codex"
+            },
+            "access": "read",
+            "missing_path_behavior": "skip"
+          },
+          {
+            "path": {
+              "type": "path",
+              "path": "/tmp/review-batch02-b_8auotx/scratch/.aws"
+            },
+            "access": "read",
+            "missing_path_behavior": "skip"
+          }
+        ]
+      },
+      "network": "restricted"
+    },
+    "file_system_sandbox_policy": {
+      "kind": "restricted",
+      "entries": [
+        {
+          "path": {
+            "type": "special",
+            "value": {
+              "kind": "root"
+            }
+          },
+          "access": "read"
+        },
+        {
+          "path": {
+            "type": "path",
+            "path": "/tmp/review-batch02-b_8auotx/scratch"
+          },
+          "access": "write"
+        },
+        {
+          "path": {
+            "type": "path",
+            "path": "/tmp/review-batch02-b_8auotx/scratch/.git"
+          },
+          "access": "read",
+          "missing_path_behavior": "skip"
+        },
+        {
+          "path": {
+            "type": "path",
+            "path": "/tmp/review-batch02-b_8auotx/scratch/.agents"
+          },
+          "access": "read",
+          "missing_path_behavior": "skip"
+        },
+        {
+          "path": {
+            "type": "path",
+            "path": "/tmp/review-batch02-b_8auotx/scratch/.codex"
+          },
+          "access": "read",
+          "missing_path_behavior": "skip"
+        },
+        {
+          "path": {
+            "type": "path",
+            "path": "/tmp/review-batch02-b_8auotx/scratch/.aws"
+          },
+          "access": "read",
+          "missing_path_behavior": "skip"
+        }
+      ]
+    },
+    "model": "gpt-6.1-sol",
+    "comp_hash": "3000",
+    "collaboration_mode": {
+      "mode": "default",
+      "settings": {
+        "model": "gpt-6.1-sol",
+        "reasoning_effort": "medium",
+        "developer_instructions": null
+      }
+    },
+    "multi_agent_version": "v2",
+    "realtime_active": false,
+    "cyber_access_program": "standard",
+    "effort": "medium",
+    "summary": "none"
+  }
+]

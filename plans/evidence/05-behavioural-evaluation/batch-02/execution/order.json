@@ -1,0 +1,82 @@
+[
+  {
+    "case": "case-01",
+    "arm": "upstream"
+  },
+  {
+    "case": "case-01",
+    "arm": "adapted"
+  },
+  {
+    "case": "case-02",
+    "arm": "adapted"
+  },
+  {
+    "case": "case-02",
+    "arm": "upstream"
+  },
+  {
+    "case": "case-03",
+    "arm": "upstream"
+  },
+  {
+    "case": "case-03",
+    "arm": "adapted"
+  },
+  {
+    "case": "case-04",
+    "arm": "adapted"
+  },
+  {
+    "case": "case-04",
+    "arm": "upstream"
+  },
+  {
+    "case": "case-05",
+    "arm": "upstream"
+  },
+  {
+    "case": "case-05",
+    "arm": "adapted"
+  },
+  {
+    "case": "case-06",
+    "arm": "adapted"
+  },
+  {
+    "case": "case-06",
+    "arm": "upstream"
+  },
+  {
+    "case": "case-07",
+    "arm": "upstream"
+  },
+  {
+    "case": "case-07",
+    "arm": "adapted"
+  },
+  {
+    "case": "case-08",
+    "arm": "adapted"
+  },
+  {
+    "case": "case-08",
+    "arm": "upstream"
+  },
+  {
+    "case": "case-09",
+    "arm": "upstream"
+  },
+  {
+    "case": "case-09",
+    "arm": "adapted"
+  },
+  {
+    "case": "case-10",
+    "arm": "adapted"
+  },
+  {
+    "case": "case-10",
+    "arm": "upstream"
+  }
+]

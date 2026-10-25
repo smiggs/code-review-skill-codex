@@ -1,0 +1,35 @@
+{
+  "argv": [
+    "/usr/lib/chatgpt/resources/codex",
+    "-c",
+    "model=\"gpt-6.1-sol\"",
+    "-c",
+    "model_reasoning_effort=\"medium\"",
+    "-c",
+    "approval_policy=\"never\"",
+    "-c",
+    "sandbox_mode=\"workspace-write\"",
+    "-c",
+    "sandbox_workspace_write.exclude_slash_tmp=true",
+    "-c",
+    "sandbox_workspace_write.exclude_tmpdir_env_var=true",
+    "-c",
+    "sandbox_workspace_write.network_access=false",
+    "exec",
+    "--skip-git-repo-check",
+    "--json",
+    "--color",
+    "never",
+    "--output-last-message",
+    "/tmp/review-batch02-5fxevcko/final-report.txt",
+    "-"
+  ],
+  "cwd": "/tmp/review-batch02-5fxevcko/scratch",
+  "environment_keys": [
+    "CODEX_HOME",
+    "HOME",
+    "LANG",
+    "PATH"
+  ],
+  "stdin": "prompt.md"
+}

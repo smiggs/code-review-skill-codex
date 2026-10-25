@@ -1,0 +1,5 @@
+- **[P1] Retain the backup until the destination write succeeds** — [recovery.py:6](/tmp/review-eval-nvltynsr/input/head/recovery.py:6). Moving `backup.unlink()` before `destination.write_bytes(data)` destroys the backup when the write fails. A missing destination parent is explicitly supported: it causes `FileNotFoundError`, leaving neither backup nor destination and potentially losing the only surviving copy. Delete the backup only after a successful write.
+
+Reproduced using Python 3.10.12 and standard-library checks on copies in `/tmp/review-eval-nvltynsr/scratch`: the missing-parent case retained the backup in base but deleted it in head. Successful-recovery controls passed for both versions; the check command exited 0.
+
+Scope: supplied `change.diff`, complete base/head snapshots, and applicable target instructions. No callers or test suite were supplied; other destination-write failures were not exercised. Source snapshots were preserved, and no external services were accessed.

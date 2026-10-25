@@ -1,0 +1,8 @@
+- **[P2] Preserve zero as a valid timeout** — [head/wait.py:2](/tmp/review-batch02-mg1h94t1/input/head/wait.py:2)  
+  `timeout or 30` returns `30` when passed `0`, violating the explicit requirement that zero means an immediate return. The base returns `0` for this input. Preserve the explicit `None` check so zero remains valid.
+
+Scope: Reviewed the supplied `change.diff`, both complete snapshots, and their `AGENTS.md` requirements using the specified review skill. No callers or tests were supplied; no revision IDs were provided.
+
+Checks actually run: Used `cat` and `find` for static inspection. An attempted `rg` listing failed because `rg` is unavailable; `find` succeeded. Ran a Python 3.12.3 standard-library check via `python3` in temporary snapshot copies under `scratch`, comparing inputs `None`, `0`, `1`, `30`, and `100`. Only zero violated the requirement in head; all sampled inputs passed in base. The check confirmed the regression and exited successfully.
+
+Limits: No integration or actual waiting behavior could be checked because the snapshots contain only the resolver and instructions. Supplied files were unchanged.

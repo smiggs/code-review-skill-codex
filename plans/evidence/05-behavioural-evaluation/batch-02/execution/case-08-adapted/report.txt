@@ -1,0 +1,14 @@
+No actionable findings in the reviewed scope.
+
+The patch changes `billing.py:2` in `bill(amount)` from `charge(amount)` to `charge(amount * 100)`. Whether this introduces incorrect billing depends on the units expected by `bill` and `charge`. Those contracts are unavailable, so reporting overcharging or a missing conversion would require an unsupported assumption.
+
+The material unresolved question is whether `amount` arrives in major currency units and `charge` expects minor units. The function contracts and representative callers would settle this.
+
+Scope and verification:
+
+- Reviewed the sole supplied hunk in `input/change.diff`, following `input/AGENTS.md` and the candidate skill’s `SKILL.md` and `reference/review-contract.md`.
+- Ran `ls -la` on the input directory and `cat` on those four files; all commands succeeded.
+- Performed static inspection of the before/after expressions. No executable checks were run: the function is an excerpt, and `charge`, callers, and tests are unavailable.
+- No base/head snapshots or Git revision IDs were supplied, so surrounding behavior and integration correctness could not be verified.
+
+No input files were modified.

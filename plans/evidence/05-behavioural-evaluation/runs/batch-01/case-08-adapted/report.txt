@@ -1,0 +1,7 @@
+No actionable findings in the reviewed scope.
+
+The supplied `billing.py` hunk changes `bill(amount)` to pass `amount * 100` to `charge`, instead of passing `amount` unchanged. Whether that conversion is correct depends on the units accepted by both functions. The available evidence does not establish those units, so reporting overcharging or incorrect conversion as a defect would require an unsupported assumption.
+
+Material question: does `amount` use major currency units while `charge` expects minor units? The API contract or representative caller would settle this.
+
+Scope and verification: reviewed only `/tmp/review-eval-empk_1ec/input/change.diff`, with the target’s `AGENTS.md`, using the candidate skill’s `SKILL.md`, review contract and reference status. Local `cat` and `ls` commands succeeded. Verification was static inspection; no executable checks were run because the function is an excerpt and `charge`, callers, tests and revision IDs are unavailable. No source or external state was changed.

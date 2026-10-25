@@ -1,0 +1,11 @@
+diff --git a/stats.py b/stats.py
+--- a/stats.py
++++ b/stats.py
+@@ -3,5 +3,5 @@
+ 
+ 
+ def total(values):
+-    result = sum(values)
+-    return result
++    amount = sum(values)
++    return amount

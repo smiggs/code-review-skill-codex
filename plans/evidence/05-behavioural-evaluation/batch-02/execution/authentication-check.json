@@ -1,0 +1,27 @@
+{
+  "temporary_root": "/tmp/review-batch02-auth-d0505rhg",
+  "credential_environment_presence": {
+    "OPENAI_API_KEY": false,
+    "CODEX_API_KEY": false,
+    "CODEX_ACCESS_TOKEN": false,
+    "CHATGPT_ACCESS_TOKEN": false
+  },
+  "default_auth_file_exists": true,
+  "isolated": {
+    "exit_code": 1,
+    "chatgpt_login_reported": false,
+    "not_logged_in_reported": true,
+    "api_key_login_reported": false
+  },
+  "existing": {
+    "exit_code": 0,
+    "chatgpt_login_reported": true,
+    "not_logged_in_reported": false,
+    "api_key_login_reported": false
+  },
+  "isolated_with_auth_link": {
+    "exit_code": 0,
+    "chatgpt_login_reported": true,
+    "credential_method": "Temporary auth.json symlink to existing local login; no configuration imported or token values recorded."
+  }
+}

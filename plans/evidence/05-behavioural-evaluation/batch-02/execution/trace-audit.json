@@ -1,0 +1,29 @@
+{
+  "planned_slots": 20,
+  "completed_reports": 19,
+  "failed_slots": [
+    "case-01-upstream"
+  ],
+  "actual_context_audits": 20,
+  "initial_user_messages_per_context": 2,
+  "successful_tool_schema_groups": {
+    "8b70e1d074da95604af535f2a26ef16b6ad76d8e00025c8093e5ac173347ae84": 19
+  },
+  "command_events": 129,
+  "command_exit_codes": {
+    "0": 112,
+    "127": 16,
+    "1": 1
+  },
+  "rg_unavailable_outputs": 18,
+  "trace_item_types": [
+    "command_execution",
+    "error"
+  ],
+  "all_candidate_input_hashes_unchanged": true,
+  "started_at": "2026-10-25T22:37:00.640538+00:00",
+  "finished_at": "2026-10-25T22:48:47.285127+00:00",
+  "runtime_python": "Python 3.12.3 in evaluator checks",
+  "host_git": "git version 2.43.0",
+  "status": "Derived audit after raw output freeze; not a model score or human decision."
+}

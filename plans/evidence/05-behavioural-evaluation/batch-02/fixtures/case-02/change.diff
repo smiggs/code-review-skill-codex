@@ -1,0 +1,10 @@
+diff --git a/recovery.py b/recovery.py
+--- a/recovery.py
++++ b/recovery.py
+@@ -3,5 +3,5 @@
+ 
+ def recover(backup: Path, destination: Path):
+     data = backup.read_bytes()
++    backup.unlink()
+     destination.write_bytes(data)
+-    backup.unlink()

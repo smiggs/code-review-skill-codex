@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-25",
+  "user_message": "Agree acceptance criteria before evaluation",
+  "context": "Reply to request to approve the criteria and fresh subagents for the 20-review upstream/adapted comparison.",
+  "criteria_sha256": "5f0fcb9c0b26a15e613e34fdcf431f388439f608654903ca214991dca5cd5de6",
+  "manifest_sha256": "57d621aa80a721bde6cdff774575ded1566070688900e9f5a461b37181e9c0ab",
+  "protocol_sha256": "c7e1d7d692360f760ec48c605d84ca2df38c11e5a77b65c25af4a98caf93050b",
+  "evaluator_arrangement": "Fresh subagent context per case/arm, fork_turns=none; same inherited model and reasoning settings; no model override.",
+  "limits": "All limits and correction bounds in the agreed criteria; final human checkpoint remains pending.",
+  "recorded_at_utc": "2026-10-25T17:27:07.690973+00:00"
+}

@@ -25,7 +25,17 @@ Package 04 is complete: the user approved and merged
 18 October 2026. Its
 [evidence](evidence/04-helper-tooling-and-validation.md) records the accepted
 counts-only helper, input limits, resolved review comments, and passing CI on
-merged revision `e5c3a10`. Package 05 is the next work package.
+merged revision `e5c3a10`. Package 05 is complete with human-accepted limitations
+on 25 October 2026 for runtime `677beab3a37af42b08f9c46e5344b44afe84b3cf`.
+The [completion decision](evidence/05-completion-and-exceptions.md) records the
+explicit change to its original exit requirements: severity calibration remains
+advisory and the upstream comparison is incomplete. Original scores, reports,
+and failed attempts remain unchanged; neither batch is retroactively passed.
+The [batch 02 results](evidence/05-behavioural-evaluation/batch-02/execution/README.md)
+record all four defects detected, zero false positives, three of four severity
+matches, and successful context isolation under disclosed runtime limits.
+Package 06 is unblocked and has not started. No superiority claim or publication
+is authorised by this completion decision.
 
 ## Work packages
 
@@ -42,15 +52,18 @@ merged revision `e5c3a10`. Package 05 is the next work package.
 6. [Documentation and distribution](06-documentation-and-distribution.md):
    installation verification, attribution, companion docs, and release evidence.
 
-7. [TypeScript, React, and Vue](07-typescript-react-and-vue.md):
+7. [Severity calibration](07-severity-calibration.md):
+   optional assessment of priority boundaries and a separately agreed diagnostic of
+   at most six adapted reviews; no reopening of package 05.
+8. [TypeScript, React, and Vue](08-typescript-react-and-vue.md):
    scoped technical audit and verification of retained guidance.
-8. [Go and Rust](08-go-and-rust.md):
+9. [Go and Rust](09-go-and-rust.md):
    scoped technical audit and verification of retained guidance.
-9. [Java](09-java.md):
+10. [Java](10-java.md):
    scoped technical audit and verification of retained guidance.
-10. [C, C++, and Qt](10-c-cpp-and-qt.md):
+11. [C, C++, and Qt](11-c-cpp-and-qt.md):
    scoped technical audit and verification of retained guidance.
-11. [CSS, Less, and Sass](11-css-less-and-sass.md):
+12. [CSS, Less, and Sass](12-css-less-and-sass.md):
    scoped technical audit and verification of retained guidance.
 
 [Human and AI checkpoints](human-ai-checkpoints.md) records the judgements that
@@ -60,25 +73,33 @@ automated checks cannot establish.
 
 Agree the contract in package 01 before changing the core workflow. Packages
 02 and 03 can then progress independently. Package 04 supplies mechanical
-checks; package 05 evaluates the resulting behaviour. Package 06 follows only
-after the agreed checks and evaluation criteria are met and the package 05
-human checkpoint records a pass for the evaluated revision. A finished evaluation
-run with failed or unresolved criteria is evidence of outstanding work, not
-completion of package 05.
+checks; package 05 evaluates the resulting behaviour. Package 06 follows a
+recorded human pass against the original criteria or an explicit human-approved
+exception to package completion requirements for the evaluated revision. The
+[package 05 decision](evidence/05-completion-and-exceptions.md) records the latter.
+A finished failed or unresolved evaluation alone does not complete a package.
+
+Task 07 is an optional follow-up to the accepted advisory severity limitation.
+It does not block package 06 or require further package 05 reviews. Its scope
+is planning only; agree any diagnostic inputs and run criteria before evaluation.
 
 ## Language audit requirements
 
-Packages 07–11 are planned follow-on audits of the references deferred by package
-03. Their numbering preserves the existing package records; they do not require
-package 06 to run first. Planning authorisation does not mark implementation,
-validation, or human checkpoints complete. No guide is verified by these plans.
+Packages 08–12 are planned follow-on audits of the references deferred by package
+03. The user requested insertion of task 07 on 25 October 2026; pending language
+audits formerly numbered 07–11 are now 08–12. Package 06 retains its number
+and scope. The language audits do not require package 06 or task 07 to run first.
+Planning authorisation does not mark implementation, validation, or human
+checkpoints complete. No guide is verified by these plans.
 
 The language groups can proceed independently after their scope is agreed.
 Coordinate edits to the common-bug checklist and reference status across groups.
 Preserve package 05's agreed evaluation scope: add language fixtures in separately
 agreed batches with acceptance criteria fixed before model runs. New guide
 changes require proportionate re-evaluation of affected behaviour before any
-release claim for that revision. Package 06's existing evaluation gate remains.
+release claim for that revision. Package 06's release-candidate checks and
+disclosure requirements still apply.
+Package 05's accepted completion exceptions are not reopened by these audits.
 
 Each audit follows the Python package's method:
 

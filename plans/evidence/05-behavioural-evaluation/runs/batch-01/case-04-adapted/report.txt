@@ -1,0 +1,7 @@
+- **[P1] Preserve the payload mapping consumed by `render()`** — `head/serializer.py:5`. Returning `json.dumps(...)` changes `status_payload()` from a dictionary to a string. The unchanged caller at `head/caller.py:5` indexes the result with `"status"`, so every call to the supported `render()` entry point now raises `TypeError` instead of returning `"ready"`. Preserve the mapping or update the caller consistently with the required behaviour. This failure was reproduced.
+
+Scope: reviewed the supplied `change.diff`, both snapshots, their instructions, and the unchanged caller. No revision identifiers were supplied.
+
+Checks actually run: copied `base/` and `head/` into `/tmp/review-eval-srvrximo/scratch/`, then ran `python3 -B -c 'from caller import render; print(repr(render()))'` separately in each copy using Python 3.10.12. Base exited 0 and printed `'ready'`; head exited 1 with `TypeError: string indices must be integers`.
+
+Limits: no test suite was supplied; verification covered the documented entry point and available source only. Supplied sources were not modified.

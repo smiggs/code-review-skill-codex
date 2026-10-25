@@ -1,0 +1,37 @@
+{
+  "case": "case-01",
+  "arm": "upstream",
+  "workspace": "/tmp/review-batch02-vl9obmxt",
+  "date": "2026-10-25",
+  "model_requested": "gpt-6.1-sol",
+  "reasoning_requested": "medium",
+  "cli": "0.164.0-alpha.11.1",
+  "environment_keys": [
+    "CODEX_HOME",
+    "HOME",
+    "LANG",
+    "PATH"
+  ],
+  "authentication": "existing-login-file symlink",
+  "status": "failed",
+  "case_free_audit": {
+    "user_messages": 2,
+    "repository_instructions": false,
+    "repository_path": false,
+    "grader_inputs": false
+  },
+  "revision": "dcd254772fc253143889b6ab0184f31296482426",
+  "review_context_audit": {
+    "user_messages": 2,
+    "repository_instructions": false,
+    "repository_path": false,
+    "grader_inputs": false
+  },
+  "started_at": "2026-10-25T22:37:00.640538+00:00",
+  "exit_code": 1,
+  "finished_at": "2026-10-25T22:37:20.347014+00:00",
+  "inputs_unchanged": true,
+  "session_files": [
+    "/tmp/review-batch02-vl9obmxt/codex-home/sessions/2026/10/25/rollout-2026-10-25T22-37-03-01a17535-c63d-7342-9f7d-af778deec2ea.jsonl"
+  ]
+}

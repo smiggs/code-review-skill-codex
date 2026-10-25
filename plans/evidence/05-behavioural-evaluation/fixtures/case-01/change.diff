@@ -1,0 +1,7 @@
+diff --git a/wait.py b/wait.py
+--- a/wait.py
++++ b/wait.py
+@@ -1,2 +1,2 @@
+ def resolve_timeout(timeout):
+-    return 30 if timeout is None else timeout
++    return timeout or 30

@@ -1,0 +1,7 @@
+diff --git a/billing.py b/billing.py
+--- a/billing.py
++++ b/billing.py
+@@ -1,2 +1,2 @@
+ def bill(amount):
+-    return charge(amount)
++    return charge(amount * 100)

@@ -1,0 +1,9 @@
+No verified actionable defects.
+
+Reviewed the supplied `billing.py` hunk at line 2, which changes `charge(amount)` to `charge(amount * 100)`, using the candidate skill’s `SKILL.md` and Python guide.
+
+The unit conversion remains unresolved: its correctness depends on the units accepted by `bill` and expected by `charge`. Those contracts are unavailable, so the patch alone cannot establish either correct conversion or overcharging.
+
+Checks actually run: static inspection using `cat` and file inventory using `rg --files`. The input contains only `AGENTS.md` and `change.diff`; no snapshots, surrounding code, callers, tests, or revision IDs were supplied. No executable checks were run. No files or external services were changed.
+
+Advisory outcome: insufficient evidence to determine billing correctness.

@@ -1,0 +1,11 @@
+- **[P1] Retain the backup until the destination write succeeds** — [head/recovery.py:6](/tmp/review-batch02-zer7mu9q/input/head/recovery.py:6). Moving `backup.unlink()` before `destination.write_bytes(data)` deletes the potentially only surviving copy when the write fails. With a missing destination parent, head raises `FileNotFoundError` after deleting the backup; creating the parent and retrying then fails because the backup is gone. Base preserves the backup and permits that retry. This violates the explicit retention requirement. Delete the backup only after a successful write.
+
+Scope: Reviewed the supplied `change.diff`, both complete snapshots, and all applicable `AGENTS.md` files using the specified review skill. No callers or tests were supplied; no commit identifiers were available.
+
+Checks actually run:
+
+- `diff -ru input/base input/head`: confirmed the sole source change is the operation ordering; exit 1 indicates differences.
+- Python 3.12.3 standard-library reproduction in temporary scratch copies: verified missing-parent failure and retry behavior in both snapshots. Also verified successful restoration preserves exact bytes and removes the backup in both. All reproduction assertions passed.
+- File discovery initially attempted `rg`, which was unavailable; used `find` instead.
+
+Limits: No supplied test suite. Other write failures, partial writes, and process interruption were not exercised. Supplied files were unchanged.

@@ -1,0 +1,12 @@
+Found one high-priority defect.
+
+- **[important] Retain the backup until the destination write succeeds** — [head/recovery.py:6](/tmp/review-batch02-n92qp7sn/input/head/recovery.py:6). Moving `backup.unlink()` before `destination.write_bytes(data)` destroys the only surviving copy if the write fails. With a missing destination parent, head raises `FileNotFoundError` after deleting the backup; creating the parent and retrying then fails because the backup is gone. Base preserves the backup and permits retry. Move deletion after the successful write to satisfy the explicit retention requirement.
+
+Scope: reviewed `change.diff`, both complete snapshots, and their `AGENTS.md` instructions using the specified skill and its Python guide. No callers or test suite were supplied.
+
+Checks actually run:
+
+- `cat`, `ls`, and `find … -exec cat` inspected instructions, patch, and snapshot contents. `rg --files` failed because `rg` is unavailable; `find` provided the inventory.
+- A `python3 - <<'PY'` standard-library harness ran under Python 3.12.3 against temporary snapshot copies in scratch. It compared successful recovery, a missing destination parent, a destination that is a directory, and retry after creating the missing parent. Both versions passed successful recovery. Both failure cases retained the backup in base and deleted it in head; only base could retry successfully. All comparison assertions passed.
+
+Limits: checks covered these local filesystem cases, not disk-full, permission, or process-interruption scenarios. Temporary copies were removed; supplied files were unchanged. This is an advisory review; no approval or submission was performed.

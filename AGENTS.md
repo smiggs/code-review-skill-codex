@@ -9,7 +9,13 @@ contract is approved; the package 02 entry point and templates were merged into
 `main`. Package 03's scoped Python and topic-guide audit is approved;
 `reference/reference-status.md` records the remaining guide limits. Package 04
 was approved and merged in PR 3; its helper tests, structural validation, and CI
-are in `main`. Package 05 behavioural evaluation remains outstanding.
+are in `main`. Package 05 is complete with human-accepted severity-calibration
+and incomplete-comparison limitations, recorded in
+[the completion decision](plans/evidence/05-completion-and-exceptions.md).
+Package 06 is unblocked and has not started.
+Task 07 is an optional severity-calibration follow-up, scoped in
+[its plan](plans/07-severity-calibration.md). Pending language audits are numbered
+08–12; neither they nor task 07 reopen package 05's completion.
 
 `SKILL.md` defines discovery and the core review process. `agents/openai.yaml`
 contains UI metadata. `reference/` holds selectively loaded language and topic
