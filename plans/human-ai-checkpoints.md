@@ -17,7 +17,7 @@ Changes affecting the decision require the relevant evidence to be refreshed.
 |---|---|---|
 | Review contract | Example findings, severity mapping, scope and authority | Whether findings are actionable and approval boundaries are clear |
 | Core workflow | Concise entry point and sample reports | Clarity, useful detail, and acceptable no-findings output |
-| Reference quality | Python rewrite and audit disposition | Technical scope, deferred work, and translation expectations |
+| Reference quality | Python rewrite and audit disposition; scoped language audits in packages 07–11 | Technical scope, supported versions, deferred work, and translation expectations for each audited revision |
 | Helper tooling | Tested behaviour and heuristic limitations | Whether the helper is useful enough to retain |
 | Evaluation | Raw reports, answer keys, scored outcomes | Disputed findings and a pass, fail, or unresolved decision against pre-agreed acceptance criteria |
 | Distribution | Installable candidate, validation and limitations | Readiness of the exact candidate and any publication request |
