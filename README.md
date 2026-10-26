@@ -1,179 +1,102 @@
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
-# Code Review Skill for Codex
+# Code review for Codex
 
-Reference: adapted from https://github.com/awesome-skills/code-review-skill
+`code-review-codex` reviews pull requests, supplied patches, and local changes for
+supported bugs, regressions, and violated requirements. Architecture and security
+audits are explicit modes with agreed boundaries. It uses local files or available
+connected tools; no CodeRabbit, GitHub CLI, MCP server, or other integration is
+required. The optional counts helper requires Python 3.10 or later.
 
-This fork is preparing an adaptation of NefelibataBIGR/code-review-skill-codex.
-The [upstream baseline and inventory](plans/evidence/01-upstream-inventory.md)
-record attribution and the preserved MIT licence. The
-[review contract](reference/review-contract.md) was approved on 18 October 2026.
-The package 02 entry point and templates were merged into `main`. Package 03's
-scoped Python and topic-guide changes were approved on 18 October 2026; the
-[reference status](reference/reference-status.md) records verified scope and
-deferred technical checks. Rewritten guides and evidence are English only.
-This describes the working branch, not the upstream checkout installed below.
+This adaptation comes from
+[NefelibataBIGR/code-review-skill-codex](https://github.com/NefelibataBIGR/code-review-skill-codex),
+which credits [awesome-skills/code-review-skill](https://github.com/awesome-skills/code-review-skill).
+The [MIT licence](LICENSE) and original copyright notice are preserved. See
+[provenance and measured scope](reference/provenance.md) for baseline revisions,
+local changes, evaluation results, and unresolved provenance limits.
 
-A modular skill for Codex that turns code review into a structured, high-signal process.
+## Review behaviour and limits
 
-It supports pull requests, patch review, and local-change review across
-multi-language repositories, with architecture and security audits as explicit modes.
+The [entry point](SKILL.md) routes to relevant references and the
+[review contract](reference/review-contract.md). Findings require a precise
+location, trigger, impact, and evidence. Questions and suggestions stay separate;
+an empty findings list is valid. A review authorises analysis and an advisory
+report. Fixes, commits, posted reviews, approval, and merging require separate
+authorisation and the target project's approvals.
 
-## What This Repository Contains
+Python and selected topic guides have a scoped audit. React, Vue, TypeScript,
+Rust, Java, Go, C, C++, Qt, CSS/Less/Sass, and inherited common-bug examples have
+remaining technical checks. Read the [reference status](reference/reference-status.md)
+before relying on language or version advice. The rewritten runtime guidance is
+English; the Chinese companion documents align installation and contribution
+steps, but do not provide a full technical translation or bilingual validation.
 
-- `SKILL.md`: the primary skill entrypoint and trigger metadata
-- `agents/openai.yaml`: Codex UI metadata
-- `reference/`: language- and topic-specific review guides loaded as needed
-- `assets/`: reusable templates and checklists
-- `scripts/`: helper tooling, including PR analysis support
+The accepted synthetic evaluation detected four seeded defects with zero false
+positives, but matched only three of four priorities. Severity remains advisory:
+one agreed P1 was reported as P0. One upstream run failed before producing a
+report, so the comparison is incomplete and establishes no superiority over
+upstream. The original acceptance criteria did not all pass. Results do not
+establish accuracy on other languages, production repositories, large diffs, or
+repeated runs. See the [evaluation summary](reference/provenance.md#verification).
 
-## Supported Review Areas
+## Install a pinned copy
 
-- React
-- Vue
-- TypeScript
-- Python
-- Java
-- Go
-- Rust
-- C
-- C++
-- CSS / Less / Sass
-- Qt
-- Architecture review
-- Performance review
-- Security review
-- Common bug patterns
-
-## How Codex Uses This Skill
-
-The skill is discovered through the metadata in [SKILL.md](./SKILL.md). Its trigger description is intentionally focused on when the skill should load:
-
-- reviewing pull requests
-- reviewing code changes
-- conducting architecture reviews
-- conducting security reviews
-- giving structured review feedback on patches or local changes
-
-Implementation and debugging requests without a review task do not activate it.
-
-Once loaded, Codex can selectively read files from `reference/` instead of pulling the entire skill into context at once.
-
-## Install
-
-### Global installation
-
-Clone or copy this repository into your Codex skills directory:
+Use Git and Python 3.10 or later on Linux for the documented commands. Choose a
+full commit ID from a human-approved release-candidate record. `APPROVED_COMMIT`
+is a placeholder, not a published version. Package 06's candidate is awaiting its
+human checkpoint; no release has been published by this work.
 
 ```bash
-# macOS / Linux
-git clone https://github.com/NefelibataBIGR/code-review-skill-codex.git \
-  ~/.codex/skills/code-review-codex
-
-# Windows PowerShell
-git clone https://github.com/NefelibataBIGR/code-review-skill-codex.git `
-  "$env:USERPROFILE\.codex\skills\code-review-codex"
+git clone https://github.com/smiggs/code-review-skill-codex.git /tmp/code-review-source
+git -C /tmp/code-review-source checkout --detach APPROVED_COMMIT
+git -C /tmp/code-review-source rev-parse HEAD
 ```
 
-### Alternative location
+Confirm the resolved revision matches your chosen ID. From that checkout, follow
+[distribution and installation](reference/distribution.md) to build and inspect
+the allowlisted ZIP, then extract it into `~/.agents/skills`. The complete skill
+includes `reference/`, `assets/`, `agents/`, `scripts/pr-analyzer.py`, and `LICENSE`;
+copying only `SKILL.md` loses its supporting material. Avoid duplicate copies
+with the same skill name in other scanned locations.
 
-If your setup prefers personal agent skills, copy it into:
+OpenAI documents personal skills in `~/.agents/skills` and repository skills in
+`.agents/skills`. Codex detects changes automatically; restart it if the skill
+does not appear. In CLI or IDE, use `/skills` or `$code-review-codex` to select it.
+These are documented behaviours, not a claim that every client was tested here.
+See [official skill guidance](https://learn.chatgpt.com/docs/build-skills), checked
+on 25 October 2026, and the candidate evidence for the environments actually tested.
 
-```bash
-~/.agents/skills/code-review-codex
-```
+## Use the skill
 
-After installation, restart Codex so the new skill metadata is picked up.
-
-## Usage
-
-### Explicit invocation
-
-Ask Codex to use the skill directly:
+Explicit invocation:
 
 ```text
-Use code-review-codex to review this PR.
-Focus on supported bugs, regressions, and violated requirements.
+Use code-review-codex to review these changes for supported bugs, regressions, and violated requirements.
 ```
 
-### Natural-language triggering
-
-The skill is also designed to trigger from ordinary requests such as:
+Ordinary review request:
 
 ```text
-Review these changes for bugs and maintainability issues.
+Review these changes for bugs and regressions.
 ```
 
-```text
-Do an architecture review of this refactor.
-```
+Provide the patch or repository and intended comparison. The skill establishes
+scope, reads project requirements, investigates concrete failure paths, and
+reports findings first with checks and verification limits. Implementation and
+debugging requests without a review task are outside its trigger scope.
 
-```text
-Check this service for security problems before merge.
-```
+The optional [diff helper](reference/helper-tooling.md) supplies file and text-line
+counts, not risk scores or approval recommendations. It runs without third-party
+Python packages. Its documented restricted Git-diff input contract still applies.
 
-## Review Style
+## Distribution and maintenance
 
-This skill supports reviews that:
+The [distribution guide](reference/distribution.md) defines archive contents,
+installation, update, rollback, and conditional ChatGPT upload guidance. The ZIP
+is a standalone skill folder, not a plugin or a universally supported ChatGPT
+attachment. Upload availability and execution support must be checked in the
+specific surface and account; no upload was performed here.
 
-- Prioritise bugs, regressions, and violated requirements over preferences.
-- Give each finding a precise location, trigger, impact, and evidence.
-- Keep priority separate from confidence, and questions separate from findings.
-- Accept no actionable findings and disclose scope and verification limits.
-- Load language and topic guides only when relevant.
-
-A review request authorises analysis and an advisory report. Fixing code, posting
-comments or reviews, approving, and merging need separate authorisation and any
-target-project approvals. See the [report template](assets/pr-review-template.md)
-for the findings-first format. Architecture and security checks relevant to a
-change do not automatically expand into whole-system audits.
-
-## Repository Layout
-
-```text
-code-review-codex/
-|-- SKILL.md
-|-- agents/
-|   `-- openai.yaml
-|-- reference/
-|   |-- reference-status.md
-|   |-- review-contract.md
-|   |-- react.md
-|   |-- vue.md
-|   |-- typescript.md
-|   |-- python.md
-|   |-- java.md
-|   |-- go.md
-|   |-- rust.md
-|   |-- c.md
-|   |-- cpp.md
-|   |-- qt.md
-|   |-- css-less-sass.md
-|   |-- architecture-review-guide.md
-|   |-- performance-review-guide.md
-|   |-- security-review-guide.md
-|   |-- common-bugs-checklist.md
-|   `-- code-review-best-practices.md
-|-- assets/
-|   |-- review-checklist.md
-|   `-- pr-review-template.md
-`-- scripts/
-    `-- pr-analyzer.py
-```
-
-## Notes for Maintainers
-
-- Keep `SKILL.md` focused on triggers and core process, not exhaustive reference material.
-- Put detailed patterns in `reference/`.
-- Update both language docs when installation or usage changes.
-- Keep examples realistic and review-oriented.
-
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for contribution and validation guidance.
-
-## Diff helper and validation
-
-The optional diff helper reports file and text-line counts, with no complexity
-scores or approval recommendations. See the [input contract and validation
-commands](reference/helper-tooling.md) for supported UTF-8 Git diffs, explicit
-failure behaviour, Python requirements, and structural checks. These checks do
-not establish code review accuracy.
+See [contribution guidance](CONTRIBUTING.md) for validation and change boundaries.
+Full planning and evaluation records live under `plans/` in the source checkout;
+they are deliberately excluded from the installable archive.

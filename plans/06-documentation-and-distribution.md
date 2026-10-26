@@ -1,6 +1,9 @@
 # Package 06: documentation and distribution
 
-Status: unblocked, not started. The user accepted package 05's
+Status: candidate prepared and checked; human distribution approval pending.
+[Package 06 evidence](evidence/06-documentation-and-distribution.md) records the
+manifest-pinned working candidate, completed checks, and remaining limits.
+The user accepted package 05's
 [completion exceptions](evidence/05-completion-and-exceptions.md) on 25 October
 2026. This removes the package dependency; it does not approve a release or
 publication.

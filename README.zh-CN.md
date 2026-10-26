@@ -1,173 +1,76 @@
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
-# 适用于 Codex 的 Code Review Skill
+# Codex 代码审查技能
 
-参考来源：https://github.com/awesome-skills/code-review-skill
+`code-review-codex` 审查拉取请求、补丁和本地变更，寻找有证据支持的缺陷、回归和需求违背。
+架构与安全审计需要明确范围。可使用本地文件或已有连接工具，不依赖 CodeRabbit、
+GitHub CLI 或特定 MCP 服务。可选统计脚本需要 Python 3.10 或更高版本。
 
-本分支正在准备对 NefelibataBIGR/code-review-skill-codex 进行适配。
-[上游基线与文件清单](plans/evidence/01-upstream-inventory.md)记录来源及保留的 MIT 许可证。
-[审查约定](reference/review-contract.md)已于 2026 年 10 月 18 日获用户批准。
-工作包 02 的入口和模板已合并到 `main`。工作包 03 限定范围内的 Python 和专题指南变更已于 2026 年 10 月 18 日获用户批准；
-[参考指南状态](reference/reference-status.md)记录已核验的范围与暂缓的技术检查。
-改写后的指南、约定和验证记录仅提供英文版本。
-此处说明的是当前工作分支，而非下方安装命令克隆的上游版本。
+本适配源自 [NefelibataBIGR/code-review-skill-codex](https://github.com/NefelibataBIGR/code-review-skill-codex)，
+其注明更早来源为 [awesome-skills/code-review-skill](https://github.com/awesome-skills/code-review-skill)。
+保留原始版权声明与 [MIT 许可证](LICENSE)。基线、改动和来源核查限制见
+[来源与验证范围](reference/provenance.md)。
 
-这是一个面向 Codex 的模块化 skill，用来把代码审查变成更结构化、信息密度更高的工作流。
+## 行为与限制
 
-它支持多语言仓库中的 PR、补丁和本地变更审查，并将架构审计和安全审计作为显式模式。
+[入口](SKILL.md) 按需加载参考指南，[审查约定](reference/review-contract.md)规定证据与权限边界。
+每个问题应包含位置、触发条件、影响和证据；疑问与建议分开，无可操作问题也是有效结果。
+审查请求只授权分析和建议报告，修复、提交、发布审查、批准和合并需要单独授权及目标项目批准。
 
-## 仓库内容
+Python 与部分专题指南已完成限定范围核查。React、Vue、TypeScript、Rust、Java、Go、C、C++、
+Qt、CSS/Less/Sass 及继承的常见错误示例仍有技术核查待办。请先阅读
+[参考指南状态](reference/reference-status.md)。重写的运行指导为英文，中文文档对齐安装、使用和贡献步骤，
+但未完成技术全文翻译或双语验证。
 
-- `SKILL.md`：skill 主入口和触发元数据
-- `agents/openai.yaml`：Codex UI 元数据
-- `reference/`：按需加载的语言和专题审查指南
-- `assets/`：可复用模板与检查清单
-- `scripts/`：辅助脚本，包括 PR 分析工具
+已接受的合成评估发现四个预置缺陷，误报为零，但四个优先级只匹配三个：一个约定为 P1 的问题被报为 P0。
+严重性仍需人工判断。一次上游运行未生成报告，因此比较不完整，不能据此声称优于上游。
+原始验收标准并未全部通过，也不能推断其他语言、生产仓库、大型差异或重复运行的准确性。
+详情见[验证摘要](reference/provenance.md#verification)。
 
-## 支持的审查范围
+## 固定提交安装
 
-- React
-- Vue
-- TypeScript
-- Python
-- Java
-- Go
-- Rust
-- C
-- C++
-- CSS / Less / Sass
-- Qt
-- 架构审查
-- 性能审查
-- 安全审查
-- 常见 Bug 模式检查
-
-## Codex 如何使用这个 Skill
-
-Codex 通过 [SKILL.md](./SKILL.md) 中的元数据发现这个 skill。触发描述刻意只强调“什么时候该加载”：
-
-- 审查 pull request
-- 审查代码变更
-- 做架构审查
-- 做安全审查
-- 对补丁或本地变更输出结构化审查意见
-
-没有审查任务的实现或调试请求不应触发此 skill。
-
-skill 被加载后，Codex 会优先按需读取 `reference/` 下的文件，而不是一次把所有内容都塞进上下文。
-
-## 安装
-
-### 全局安装
-
-把这个仓库克隆或复制到 Codex skills 目录：
+以下命令针对 Linux，需要 Git 和 Python 3.10 或更高版本。请从人工批准的候选记录选择完整提交 ID。
+`APPROVED_COMMIT` 是占位符，不是已发布版本。工作包 06 候选仍待人工检查，本次工作未发布版本。
 
 ```bash
-# macOS / Linux
-git clone https://github.com/NefelibataBIGR/code-review-skill-codex.git \
-  ~/.codex/skills/code-review-codex
-
-# Windows PowerShell
-git clone https://github.com/NefelibataBIGR/code-review-skill-codex.git `
-  "$env:USERPROFILE\.codex\skills\code-review-codex"
+git clone https://github.com/smiggs/code-review-skill-codex.git /tmp/code-review-source
+git -C /tmp/code-review-source checkout --detach APPROVED_COMMIT
+git -C /tmp/code-review-source rev-parse HEAD
 ```
 
-### 备用位置
+确认输出与所选 ID 一致后，在该检出目录按照[分发与安装指南](reference/distribution.md)构建并检查白名单 ZIP，
+然后解压到 `~/.agents/skills`。完整包包含 `reference/`、`assets/`、`agents/`、
+`scripts/pr-analyzer.py` 和 `LICENSE`，不能只复制 `SKILL.md`。避免在多个扫描位置安装同名技能。
 
-如果你的环境偏向个人 agent skills，也可以复制到：
+[OpenAI 官方指导](https://learn.chatgpt.com/docs/build-skills)（2026 年 10 月 25 日查阅）
+列出的个人位置为 `~/.agents/skills`，仓库位置为 `.agents/skills`。
+Codex 自动检测技能变化；若未显示，再重启。CLI 或 IDE 可用 `/skills` 或 `$code-review-codex` 选择。
+这些是文档说明，不代表本项目已测试所有客户端；实际环境见候选证据。
 
-```bash
-~/.agents/skills/code-review-codex
-```
+## 使用
 
-安装后需要重启 Codex，让新的 skill 元数据生效。
-
-## 使用方式
-
-### 显式调用
-
-直接在提示词里引用 skill：
+显式调用：
 
 ```text
-Use code-review-codex to review this PR.
-Focus on supported bugs, regressions, and violated requirements.
+Use code-review-codex to review these changes for supported bugs, regressions, and violated requirements.
 ```
 
-### 自然语言触发
-
-这个 skill 也支持通过普通请求自然触发，例如：
+普通审查请求：
 
 ```text
-Review these changes for bugs and maintainability issues.
+Review these changes for bugs and regressions.
 ```
 
-```text
-Do an architecture review of this refactor.
-```
+提供补丁或仓库及比较范围。技能读取项目需求，调查具体故障路径，优先输出问题并说明实际检查和限制。
+没有审查任务的实现或调试请求不在触发范围内。
 
-```text
-Check this service for security problems before merge.
-```
+可选[差异统计工具](reference/helper-tooling.md)仅提供文件数和文本行数，不输出风险分数或批准建议，
+无需第三方 Python 包；仍受其 Git 差异输入契约限制。
 
-## 审查风格
+## 分发与维护
 
-这个 skill 适合以下类型的 review：
+[分发指南](reference/distribution.md)提供包内容、安装、更新、回退和有条件的 ChatGPT 上传说明。
+ZIP 是独立技能目录，不是插件，也不是所有 ChatGPT 界面都支持的附件。需核实具体界面和账户的导入及执行支持；
+本次没有执行上传。指南以英文为准，尚无完整中文翻译。
 
-- 优先查找 bug、回归和违反要求的问题，而非个人偏好。
-- 每条问题都提供精确位置、触发条件、影响和证据。
-- 将优先级与置信程度分开，将待确认问题与已证实问题分开。
-- 允许没有可执行问题的结果，并说明范围和验证限制。
-- 仅在相关时读取语言或专题指南。
-
-审查请求仅授权分析和建议报告。修改代码、发布评论或审查、批准以及合并都需要单独授权，
-并遵守目标项目的人工批准要求。[报告模板](assets/pr-review-template.md)采用问题优先的格式。
-检查与变更有关的架构或安全影响，不会自动扩展为全系统审计。
-
-## 仓库结构
-
-```text
-code-review-codex/
-|-- SKILL.md
-|-- agents/
-|   `-- openai.yaml
-|-- reference/
-|   |-- reference-status.md
-|   |-- review-contract.md
-|   |-- react.md
-|   |-- vue.md
-|   |-- typescript.md
-|   |-- python.md
-|   |-- java.md
-|   |-- go.md
-|   |-- rust.md
-|   |-- c.md
-|   |-- cpp.md
-|   |-- qt.md
-|   |-- css-less-sass.md
-|   |-- architecture-review-guide.md
-|   |-- performance-review-guide.md
-|   |-- security-review-guide.md
-|   |-- common-bugs-checklist.md
-|   `-- code-review-best-practices.md
-|-- assets/
-|   |-- review-checklist.md
-|   `-- pr-review-template.md
-`-- scripts/
-    `-- pr-analyzer.py
-```
-
-## 维护说明
-
-- `SKILL.md` 只保留触发条件和核心流程，不堆砌大段参考资料。
-- 详细模式和最佳实践放进 `reference/`。
-- 安装或使用方式变化时，同时更新中英文文档。
-- 示例尽量贴近真实代码审查场景。
-
-贡献和验证说明见 [CONTRIBUTING.zh-CN.md](./CONTRIBUTING.zh-CN.md)。
-
-## 差异统计与验证
-
-可选的差异统计脚本仅报告文件数和文本行数，不提供复杂度评分或批准建议。
-[输入契约与验证命令](reference/helper-tooling.md)说明支持的 UTF-8 Git 差异格式、
-错误行为、Python 要求和结构检查。这些检查不证明代码审查准确性。
-详细说明目前以英文为准，尚无完整中文翻译。
+贡献与检查见[贡献说明](CONTRIBUTING.zh-CN.md)。完整计划和评估记录位于源码仓库的 `plans/`，不进入安装包。

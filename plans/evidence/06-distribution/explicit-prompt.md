@@ -1,0 +1,1 @@
+Use code-review-codex to review the changes in change.diff against the base and head snapshots. Read the target instructions in head/AGENTS.md. Review only; do not change files or use external services.

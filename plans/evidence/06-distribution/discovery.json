@@ -1,0 +1,33 @@
+{
+  "initialize": {
+    "id": 1,
+    "result": {
+      "userAgent": "Codex Desktop/0.164.0-alpha.11.1 (Ubuntu 24.4.0; x86_64) dumb (package-06-smoke; 1)",
+      "codexHome": "/home/andrew/.codex",
+      "platformFamily": "unix",
+      "platformOs": "linux"
+    }
+  },
+  "cwd": "/tmp/package-06-consumer",
+  "matches": [
+    {
+      "name": "code-review-codex",
+      "description": "Use when asked to review pull requests, patches, or local code changes for bugs, regressions, and violated requirements, or to conduct an architecture or security review. Do not use for implementation or debugging requests without a review task.",
+      "interface": {
+        "displayName": "Code Review Codex",
+        "shortDescription": "Review changes for supported bugs and regressions",
+        "iconSmall": null,
+        "iconLarge": null,
+        "iconSmallUrl": null,
+        "iconLargeUrl": null,
+        "brandColor": null,
+        "defaultPrompt": null
+      },
+      "path": "/tmp/package-06-consumer/.agents/skills/code-review-codex/SKILL.md",
+      "scope": "repo",
+      "enabled": true,
+      "pluginId": null
+    }
+  ],
+  "errors": []
+}

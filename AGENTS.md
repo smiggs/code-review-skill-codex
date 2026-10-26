@@ -12,7 +12,8 @@ was approved and merged in PR 3; its helper tests, structural validation, and CI
 are in `main`. Package 05 is complete with human-accepted severity-calibration
 and incomplete-comparison limitations, recorded in
 [the completion decision](plans/evidence/05-completion-and-exceptions.md).
-Package 06 is unblocked and has not started.
+Package 06 has a local distribution candidate; its evidence records validation
+and the pending human distribution checkpoint. No release or publication is approved.
 Task 07 is an optional severity-calibration follow-up, scoped in
 [its plan](plans/07-severity-calibration.md). Pending language audits are numbered
 08–12; neither they nor task 07 reopen package 05's completion.

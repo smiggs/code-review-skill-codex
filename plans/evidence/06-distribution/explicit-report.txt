@@ -1,0 +1,5 @@
+- **[P2] Preserve zero as an immediate timeout** — [head/wait.py:2](/tmp/package-06-consumer/head/wait.py:2). `timeout or 30` converts `0` to `30`, violating `head/AGENTS.md`’s requirement that zero means immediate return. Reproduced with Python 3: `resolve_timeout(0)` returns `0` in base and `30` in head. Restore the explicit `None` check.
+
+Reviewed both changes in `change.diff` against the base and head snapshots. No actionable finding in the `total.py` rename.
+
+Checks run: Python 3 comparisons for timeouts `None`, `0`, and `5`, plus empty and mixed-integer totals. No test suite was supplied; `python` was unavailable, so checks used `python3`. No files changed or external services used.
