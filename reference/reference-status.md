@@ -7,7 +7,7 @@ verified. The [review contract](review-contract.md) governs all inherited advice
 ## Reading the status
 
 "Verified within scope" means the checks described in the
-[package 03 evidence](../plans/evidence/03-python-and-reference-quality.md) were
+[audit summary](provenance.md#verification) were
 performed. It does not establish compatibility with every runtime or framework.
 "Retained, not technically verified" means the guide remains available as a
 source of inspection prompts, with version-specific claims to be checked against

@@ -34,8 +34,11 @@ and failed attempts remain unchanged; neither batch is retroactively passed.
 The [batch 02 results](evidence/05-behavioural-evaluation/batch-02/execution/README.md)
 record all four defects detected, zero false positives, three of four severity
 matches, and successful context isolation under disclosed runtime limits.
-Package 06 is unblocked and has not started. No superiority claim or publication
-is authorised by this completion decision.
+Package 06 has a local distribution candidate; its
+[evidence](evidence/06-documentation-and-distribution.md) records validation and
+the human approval conditional on a successful CodeRabbit loop and merge of
+PR 6. No superiority claim or publication
+is authorised by package 05's completion decision.
 
 ## Work packages
 

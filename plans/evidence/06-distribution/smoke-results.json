@@ -1,0 +1,33 @@
+{
+  "explicit": {
+    "exit_code": 0,
+    "tool_types": [
+      "agent_message",
+      "command_execution"
+    ],
+    "commands": 5,
+    "nonzero_command_exits": [
+      {
+        "exit_code": 127,
+        "command": "/bin/bash -lc \"python -B - <<'PY'\nfrom pathlib import Path\nfor snapshot in ('base', 'head'):\n    wait = {}\n    total = {}\n    exec(compile(Path(snapshot, 'wait.py').read_text(), snapshot + '/wait.py', 'exec'), wait)\n    exec(compile(Path(snapshot, 'total.py').read_text(), snapshot + '/total.py', 'exec'), total)\n    print(snapshot, 'timeouts:', [(x, wait['resolve_timeout'](x)) for x in (None, 0, 5)])\n    print(snapshot, 'totals:', [total['total'](x) for x in ([], [1, -2, 3])])\nPY\""
+      }
+    ],
+    "manual_result": "One supported P2 zero-timeout finding; no finding for harmless total rename; scope and fallback checks disclosed."
+  },
+  "ordinary": {
+    "exit_code": 0,
+    "tool_types": [
+      "agent_message",
+      "command_execution"
+    ],
+    "commands": 7,
+    "nonzero_command_exits": [
+      {
+        "exit_code": 127,
+        "command": "/bin/bash -lc \"python -B - <<'PY'\nfrom pathlib import Path\nfor version in ('base', 'head'):\n    wait = {}\n    totals = {}\n    exec(compile(Path(version, 'wait.py').read_text(), version + '/wait.py', 'exec'), wait)\n    exec(compile(Path(version, 'total.py').read_text(), version + '/total.py', 'exec'), totals)\n    print(version, 'timeouts:', [(x, wait['resolve_timeout'](x)) for x in (None, 0, 5)])\n    print(version, 'totals:', [(x, totals['total'](x)) for x in ([], [1, -2, 3])])\nPY\""
+      }
+    ],
+    "manual_result": "One supported P2 zero-timeout finding; no finding for harmless total rename; scope and fallback checks disclosed."
+  },
+  "post_run_integrity": "All installed files still match candidate manifest; all six target files match expected fixture input bytes. Read-only review sandbox and tool trace show no source writes."
+}

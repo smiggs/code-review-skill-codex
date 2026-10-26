@@ -61,6 +61,8 @@ suite runs on Linux and requires symlinks for the package 03 examples and POSIX
 filenames for the unusual-path fixture. CI targets Python 3.10 and 3.14; other
 versions and operating systems have not been validated by this package.
 
+The following development checks require the full source checkout; tests,
+validation dependencies, and evidence are excluded from the installed skill.
 From the repository root, create an isolated environment and install the one
 pinned validation dependency:
 
