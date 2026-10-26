@@ -209,6 +209,14 @@ release, plugin publication, or ChatGPT upload.
 The conditions are a completed clean CodeRabbit review for the final head, all
 inline threads resolved, review-body findings disposed of with PR replies,
 passing checks, and a mergeable PR with no blocking rule or open decision.
+Before merge, compare the final head's Git tree against all 31 paths and hashes
+in the preparation manifest. If every distributed file is unchanged, the existing
+archive and package evidence remain applicable. If any path or byte differs,
+rebuild the archive, refresh its manifest and hashes, and repeat proportionate
+structural, reference, helper, and invocation checks on a fresh extracted copy.
+Record the refreshed evidence and obtain a clean review and passing checks for
+that head before treating package 06 as complete. Source changes cannot inherit
+an older archive's validation solely because CI or CodeRabbit is clean.
 The final head, clean review, checks, disposition ledger, and merge result will
 be recorded in the PR conversation when the conditions hold. This conditional
 decision supersedes the earlier request for a separate distribution approval;
