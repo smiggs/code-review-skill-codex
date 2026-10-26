@@ -182,9 +182,8 @@ publication, user installation, or live PR action needs separate authorisation.
 
 ## Subsequent installation and Git handoff
 
-On 26 October 2026, the user authorised local installation; the
-[installation record](06-local-installation.md) identifies the destination and
-verified contents. The user then instructed "commit, push and open a PR",
+On 26 October 2026, the user authorised local installation. The user then
+instructed "commit, push and open a PR",
 authorising those Git actions separately. Neither instruction is recorded as
 approval of the pending package 06 distribution checkpoint or public release.
 
