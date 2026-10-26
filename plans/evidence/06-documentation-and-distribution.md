@@ -2,13 +2,14 @@
 
 ## Status and candidate identity
 
-Prepared on 25 October 2026. Human distribution approval is pending. No commit,
-push, tag, public release, ChatGPT upload, live PR comment, or personal skill
-installation was performed as part of this package. Tests installed a copy only
-under `/tmp/package-06-consumer/.agents/skills/code-review-codex`.
+Prepared on 25 October 2026. Human distribution approval is pending. At that
+preparation checkpoint, no commit, push, tag, public release, ChatGPT upload,
+live PR comment, or personal installation had been performed. Tests installed
+a copy only under `/tmp/package-06-consumer/.agents/skills/code-review-codex`.
+Subsequent installation and Git handoff are recorded below.
 
 Source base: `f251b9b5ab9ae54187614196087d368219c79255` plus the package 06
-working changes. This is an uncommitted candidate, not a Git release revision.
+working changes. This was an uncommitted candidate at preparation, not a Git release revision.
 The exact 31 distributed files are pinned by the
 [SHA-256 manifest](06-distribution/manifest.json); the
 [archive record](06-distribution/archive.json) pins the ZIP bytes and entry list.
@@ -178,3 +179,20 @@ recorded and its archive manifest checked against this candidate. README
 chosen. The local working-copy identity above is sufficient to review these
 contents but is not a remotely installable published revision. Any push, tag,
 publication, user installation, or live PR action needs separate authorisation.
+
+## Subsequent installation and Git handoff
+
+On 26 October 2026, the user authorised local installation; the
+[installation record](06-local-installation.md) identifies the destination and
+verified contents. The user then instructed "commit, push and open a PR",
+authorising those Git actions separately. Neither instruction is recorded as
+approval of the pending package 06 distribution checkpoint or public release.
+
+Committed candidate source: `b7996cfec64ba2fde27e2dbd5c555ad3d47d70a4`, on `codex/package-06`, based on
+`origin/main` at `2dfc944`. Every one of its 31 distributed files was checked
+directly from the Git object against the existing manifest and matched. The
+installed copy also matches. This revision makes the candidate source available
+for a pinned checkout after the authorised push; it is not an approved release.
+The following evidence-only commit records this source identity without changing
+the distributed files, ZIP, or installation. The preparation snapshot and its
+base revision remain above as historical evidence.
