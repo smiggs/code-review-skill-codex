@@ -195,3 +195,22 @@ for a pinned checkout after the authorised push; it is not an approved release.
 The following evidence-only commit records this source identity without changing
 the distributed files, ZIP, or installation. The preparation snapshot and its
 base revision remain above as historical evidence.
+
+## Conditional completion approval
+
+On 26 October 2026, the user requested the full CodeRabbit loop through merge
+and stated that it is approved once successfully complete. Reviewer identity:
+the user in this chat; no personal name was supplied. This supplies conditional
+package 06 approval and authorises PR replies, fixes, thread resolution, and a
+merge commit for PR 6 after the loop's gates pass. No further approval question
+is required if those conditions hold. It does not authorise a tag, public
+release, plugin publication, or ChatGPT upload.
+
+The conditions are a completed clean CodeRabbit review for the final head, all
+inline threads resolved, review-body findings disposed of with PR replies,
+passing checks, and a mergeable PR with no blocking rule or open decision.
+The final head, clean review, checks, disposition ledger, and merge result will
+be recorded in the PR conversation when the conditions hold. This conditional
+decision supersedes the earlier request for a separate distribution approval;
+it does not relabel any package 05 score or widen the tested scope. The
+manifest-pinned archive remains the checked preparation snapshot.

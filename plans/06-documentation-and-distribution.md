@@ -1,6 +1,8 @@
 # Package 06: documentation and distribution
 
-Status: candidate prepared and checked; human distribution approval pending.
+Status: candidate prepared and checked; the user conditionally approved package
+06 on 26 October 2026, effective when PR 6 completes the CodeRabbit loop and
+merges under its gates.
 [Package 06 evidence](evidence/06-documentation-and-distribution.md) records the
 manifest-pinned working candidate, completed checks, and remaining limits.
 The user accepted package 05's

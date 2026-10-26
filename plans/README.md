@@ -36,7 +36,8 @@ record all four defects detected, zero false positives, three of four severity
 matches, and successful context isolation under disclosed runtime limits.
 Package 06 has a local distribution candidate; its
 [evidence](evidence/06-documentation-and-distribution.md) records validation and
-the pending human distribution checkpoint. No superiority claim or publication
+the human approval conditional on a successful CodeRabbit loop and merge of
+PR 6. No superiority claim or publication
 is authorised by package 05's completion decision.
 
 ## Work packages

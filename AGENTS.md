@@ -13,7 +13,8 @@ are in `main`. Package 05 is complete with human-accepted severity-calibration
 and incomplete-comparison limitations, recorded in
 [the completion decision](plans/evidence/05-completion-and-exceptions.md).
 Package 06 has a local distribution candidate; its evidence records validation
-and the pending human distribution checkpoint. No release or publication is approved.
+and human approval conditional on PR 6 completing the CodeRabbit loop and
+merging under its gates. No release publication is approved.
 Task 07 is an optional severity-calibration follow-up, scoped in
 [its plan](plans/07-severity-calibration.md). Pending language audits are numbered
 08–12; neither they nor task 07 reopen package 05's completion.
