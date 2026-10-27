@@ -1,0 +1,10 @@
+test_additional_initial_message_is_rejected (__main__.LiveBaselineComparison.test_additional_initial_message_is_rejected) ... ok
+test_changed_plugin_guidance_is_rejected (__main__.LiveBaselineComparison.test_changed_plugin_guidance_is_rejected) ... ok
+test_changed_tool_schema_is_rejected (__main__.LiveBaselineComparison.test_changed_tool_schema_is_rejected) ... ok
+test_only_layout_and_approved_final_prompt_can_differ (__main__.LiveBaselineComparison.test_only_layout_and_approved_final_prompt_can_differ) ... ok
+test_unapproved_final_prompt_is_rejected (__main__.LiveBaselineComparison.test_unapproved_final_prompt_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.002s
+
+OK

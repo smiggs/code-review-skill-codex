@@ -1,0 +1,6 @@
+{"actual_context_items": 7, "rendered_context_items": 7, "message_core_matches": [false, false, false, true, true, true, true], "agents_md_states": [{}], "repository_guidance_absent": true, "repository_path_absent": true, "grader_material_absent": true, "models": ["gpt-6.1-sol"], "reasoning": ["medium"], "private_reasoning_and_account_metadata": "Excluded from saved session extracts.", "commands": 6, "public_tool_items": 6}
+Traceback (most recent call last):
+  File "/home/andrew/projects/code-review-skill-codex/plans/evidence/07-severity-execution/audit-slot.py", line 68, in <module>
+    assert all(messages_match[1:]), 'Substantive live message change'
+           ~~~^^^^^^^^^^^^^^^^^^^^
+AssertionError: Substantive live message change

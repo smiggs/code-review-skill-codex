@@ -1,0 +1,5 @@
+- **[P2] Preserve the final full page** — [head/export.py:3](/tmp/task07-case04-lk8bktif/input/head/export.py:3). For any nonempty input whose length is divisible by `page_size`, `remainder or page_size` subtracts one full page from `full_end`. The loop omits that page, and `if remainder` skips the trailing append. Reproduced: `[1, 2, 3, 4, 5, 6]` with page size `3` returns `[1, 2, 3]`; base returns all six rows. This violates the supplied preservation requirement. Restore `len(values) - remainder`. Impact is bounded to the advisory export: authoritative records remain intact, and the documented page size `4` works for this example.
+
+Reviewed only the supplied base-to-head diff, both complete snapshots, requirements, and relevant review references. No commit IDs, callers, or test suite were supplied.
+
+Checks ran on disposable scratch copies using Python 3.14.4: 210 length/page-size combinations per snapshot, plus the documented six-row examples and input-mutation assertions. Base had no mismatches; head had 56, all for nonempty lengths divisible by page size. Inputs remained unchanged. Other Python versions were not exercised.

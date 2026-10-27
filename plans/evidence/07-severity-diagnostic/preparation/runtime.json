@@ -1,0 +1,26 @@
+{
+  "executable": "/usr/lib/chatgpt/resources/codex",
+  "executable_sha256": "e6d386e8822288f6d5f327e966a5a5e1de928de8795bb6149716005a410f38f2",
+  "python": "Python 3.14.4",
+  "settings": [
+    "-c",
+    "model=\"gpt-6.1-sol\"",
+    "-c",
+    "model_reasoning_effort=\"medium\"",
+    "-c",
+    "approval_policy=\"never\"",
+    "-c",
+    "sandbox_mode=\"workspace-write\"",
+    "-c",
+    "sandbox_workspace_write.exclude_slash_tmp=true",
+    "-c",
+    "sandbox_workspace_write.exclude_tmpdir_env_var=true",
+    "-c",
+    "sandbox_workspace_write.network_access=false"
+  ],
+  "authentication": "Not attempted; no credentials linked or copied.",
+  "review_attempts": 0,
+  "version_exit_code": 0,
+  "exec-help_exit_code": 0,
+  "prompt-input-help_exit_code": 0
+}

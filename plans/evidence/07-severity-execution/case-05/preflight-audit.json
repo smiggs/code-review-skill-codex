@@ -1,0 +1,18 @@
+{
+  "case": "case-05",
+  "status": "passed",
+  "contexts": [
+    {
+      "render": "case-free",
+      "complete_semantic_context_matches_approved": true
+    },
+    {
+      "render": "prompted",
+      "complete_semantic_context_matches_approved": true
+    }
+  ],
+  "executable_unchanged": true,
+  "candidate_inputs_match_manifest": true,
+  "reviews_dispatched": 0,
+  "authentication_verified": true
+}

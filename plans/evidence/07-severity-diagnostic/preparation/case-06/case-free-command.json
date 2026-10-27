@@ -1,0 +1,30 @@
+{
+  "argv": [
+    "/usr/lib/chatgpt/resources/codex",
+    "-c",
+    "model=\"gpt-6.1-sol\"",
+    "-c",
+    "model_reasoning_effort=\"medium\"",
+    "-c",
+    "approval_policy=\"never\"",
+    "-c",
+    "sandbox_mode=\"workspace-write\"",
+    "-c",
+    "sandbox_workspace_write.exclude_slash_tmp=true",
+    "-c",
+    "sandbox_workspace_write.exclude_tmpdir_env_var=true",
+    "-c",
+    "sandbox_workspace_write.network_access=false",
+    "debug",
+    "prompt-input",
+    "Context inspection only. No review case has been supplied. Do not inspect files, call tools, or perform a review."
+  ],
+  "cwd": "/tmp/task07-case06-fsmnbrp_/scratch",
+  "environment": {
+    "PATH": "/usr/bin:/bin",
+    "HOME": "/home/andrew",
+    "LANG": "C.UTF-8",
+    "CODEX_HOME": "/tmp/task07-case06-fsmnbrp_/codex-home"
+  },
+  "exit_code": 0
+}

@@ -37,6 +37,12 @@ jobs:
         run: python -B scripts/validate-skill.py
       - name: Check guide examples
         run: python -B plans/evidence/03-python-examples.py
+      - name: Check severity diagnostic evidence
+        run: |
+          python -B plans/evidence/07-severity-diagnostic/check-fixtures.py
+          python -B plans/evidence/07-severity-execution/test_live_baseline.py
+          python -B plans/evidence/07-severity-execution/test_candidate_archive.py
+          python -B plans/evidence/07-severity-execution/verify_candidate_archive.py
       - name: Check patch whitespace
         run: git diff --check HEAD^ HEAD
 

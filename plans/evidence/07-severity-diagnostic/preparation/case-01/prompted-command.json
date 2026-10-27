@@ -1,0 +1,30 @@
+{
+  "argv": [
+    "/usr/lib/chatgpt/resources/codex",
+    "-c",
+    "model=\"gpt-6.1-sol\"",
+    "-c",
+    "model_reasoning_effort=\"medium\"",
+    "-c",
+    "approval_policy=\"never\"",
+    "-c",
+    "sandbox_mode=\"workspace-write\"",
+    "-c",
+    "sandbox_workspace_write.exclude_slash_tmp=true",
+    "-c",
+    "sandbox_workspace_write.exclude_tmpdir_env_var=true",
+    "-c",
+    "sandbox_workspace_write.network_access=false",
+    "debug",
+    "prompt-input",
+    "Use the review skill at /tmp/task07-case01-jy32e6hy/candidate/SKILL.md to review only the supplied base-to-head change in /tmp/task07-case01-jy32e6hy/input/change.diff. Complete base and head snapshots, callers, and target requirements are under /tmp/task07-case01-jy32e6hy/input/base and /tmp/task07-case01-jy32e6hy/input/head. Read the supplied target requirements and relevant candidate references. These snapshots are the full scope; no commit IDs are supplied. Report actionable findings first with priorities, precise locations, triggers, impact and evidence, then scope and verification limits. An empty findings list is valid. Review is advisory only. Do not edit inputs, access external services, delegate, or read sibling cases, grading material, prior reports, this preparation repository, or other installed skills. Read only the supplied input and candidate plus ordinary runtime/library files needed for understood checks. Run checks only in disposable copies under /tmp/task07-case01-jy32e6hy/scratch; do not write into input or candidate. State which checks actually ran and any missing context.\n"
+  ],
+  "cwd": "/tmp/task07-case01-jy32e6hy/scratch",
+  "environment": {
+    "PATH": "/usr/bin:/bin",
+    "HOME": "/home/andrew",
+    "LANG": "C.UTF-8",
+    "CODEX_HOME": "/tmp/task07-case01-jy32e6hy/codex-home"
+  },
+  "exit_code": 0
+}

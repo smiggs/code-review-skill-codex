@@ -5,3 +5,8 @@ plans/evidence/05-behavioural-evaluation/batch-02/fixtures/**/change.diff whites
 plans/evidence/05-behavioural-evaluation/batch-02/execution/**/tool-schema-difference.diff whitespace=-blank-at-eol,-blank-at-eof
 plans/evidence/05-behavioural-evaluation/batch-02/execution/case-01-adapted/report.txt whitespace=-blank-at-eol
 plans/evidence/05-behavioural-evaluation/batch-02/isolation/*help.txt whitespace=-blank-at-eol
+
+# Task 07 evidence preserves approved raw capture bytes.
+plans/evidence/07-severity-diagnostic/fixtures/**/change.diff whitespace=-blank-at-eol
+plans/evidence/07-severity-diagnostic/preparation/*help.txt whitespace=-blank-at-eol
+plans/evidence/07-severity-diagnostic/preparation/red.txt whitespace=-blank-at-eol

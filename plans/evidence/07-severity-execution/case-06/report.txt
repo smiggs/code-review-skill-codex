@@ -1,0 +1,7 @@
+No actionable findings in the reviewed scope.
+
+Reviewed the supplied base-to-head diff, both complete snapshots, target requirements, and relevant candidate references. The internal JSON format change is permitted, and its sole caller decodes it consistently.
+
+Checks run: Python 3.14.4, in disposable scratch copies with bytecode disabled. All 1,006 supported-input cases passed in both snapshots, with identical output, including zero and large integers.
+
+Limits: No test suite or commit IDs were supplied. Other Python versions were not exercised. Inputs were unchanged; review is advisory only.

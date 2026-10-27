@@ -1,0 +1,10 @@
+diff --git a/inventory.py b/inventory.py
+--- a/inventory.py
++++ b/inventory.py
+@@ -1,5 +1,5 @@
+ def summary(items):
+-    return f"Items: {len(items)}."
++    return f"Items: {len(items)}"
+ 
+ 
+ def data(items):

@@ -1,0 +1,23 @@
+test_cli_empty_and_missing_file (test_pr_analyzer.DiffTests.test_cli_empty_and_missing_file) ... ok
+test_cli_errors_have_no_partial_report (test_pr_analyzer.DiffTests.test_cli_errors_have_no_partial_report) ... ok
+test_cli_is_read_only_deterministic_and_cwd_independent (test_pr_analyzer.DiffTests.test_cli_is_read_only_deterministic_and_cwd_independent) ... ok
+test_empty (test_pr_analyzer.DiffTests.test_empty) ... ok
+test_git_fixture_ignores_contributor_config (test_pr_analyzer.DiffTests.test_git_fixture_ignores_contributor_config) ... ok
+test_git_quoted_utf8_and_control_characters (test_pr_analyzer.DiffTests.test_git_quoted_utf8_and_control_characters) ... ok
+test_no_newline_and_multiple_hunks (test_pr_analyzer.DiffTests.test_no_newline_and_multiple_hunks) ... ok
+test_normal_multiple_and_header_like_content (test_pr_analyzer.DiffTests.test_normal_multiple_and_header_like_content) ... ok
+test_real_git_diff_and_checkout_remain_unchanged (test_pr_analyzer.DiffTests.test_real_git_diff_and_checkout_remain_unchanged) ... ok
+test_rejects_partial_and_unsupported_input (test_pr_analyzer.DiffTests.test_rejects_partial_and_unsupported_input) ... ok
+test_rename_deletion_creation_binary_and_mode (test_pr_analyzer.DiffTests.test_rename_deletion_creation_binary_and_mode) ... ok
+test_space_and_unicode_paths (test_pr_analyzer.DiffTests.test_space_and_unicode_paths) ... ok
+test_broken_relative_link (test_validate_skill.StructureTests.test_broken_relative_link) ... ok
+test_metadata_empty_or_wrong_type (test_validate_skill.StructureTests.test_metadata_empty_or_wrong_type) ... ok
+test_missing_package_file (test_validate_skill.StructureTests.test_missing_package_file) ... ok
+test_reference_links_and_code_fences (test_validate_skill.StructureTests.test_reference_links_and_code_fences) ... ok
+test_valid_package_from_other_directory (test_validate_skill.StructureTests.test_valid_package_from_other_directory) ... ok
+test_yaml_types_name_and_duplicates (test_validate_skill.StructureTests.test_yaml_types_name_and_duplicates) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 4.228s
+
+OK

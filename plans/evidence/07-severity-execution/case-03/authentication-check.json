@@ -1,0 +1,6 @@
+{
+  "exit_code": 0,
+  "method": "Existing local login via temporary auth.json symlink; no credential bytes read or retained",
+  "authenticated": true,
+  "raw_identity_output": "Not retained"
+}

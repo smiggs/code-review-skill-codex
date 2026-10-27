@@ -1,0 +1,23 @@
+diff --git a/adapter.py b/adapter.py
+--- a/adapter.py
++++ b/adapter.py
+@@ -1,2 +1,5 @@
++import json
++
++
+ def encode(pending):
+-    return {"pending": pending}
++    return json.dumps({"pending": pending})
+diff --git a/display.py b/display.py
+--- a/display.py
++++ b/display.py
+@@ -1,6 +1,8 @@
++import json
++
+ from adapter import encode
+ 
+ 
+ def render(pending):
+-    payload = encode(pending)
++    payload = json.loads(encode(pending))
+     return f"Pending: {payload['pending']}"

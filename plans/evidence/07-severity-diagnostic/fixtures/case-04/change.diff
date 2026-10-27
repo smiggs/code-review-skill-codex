@@ -1,0 +1,11 @@
+diff --git a/export.py b/export.py
+--- a/export.py
++++ b/export.py
+@@ -1,6 +1,6 @@
+ def export_rows(values, page_size):
+     remainder = len(values) % page_size
+-    full_end = len(values) - remainder
++    full_end = len(values) - (remainder or page_size)
+     result = []
+     for start in range(0, full_end, page_size):
+         result.extend(values[start:start + page_size])
