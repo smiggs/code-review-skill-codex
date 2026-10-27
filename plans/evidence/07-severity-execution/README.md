@@ -30,8 +30,10 @@ cannot establish calibration reliability or a causal improvement from the edit.
 
 The user approved the original six-review package on 27 October 2026. The
 [agreement](agreement.json) pins its exact preparation/candidate/input manifests.
-The frozen preparation remains unchanged; its pending statements describe that
-earlier stage. Reviews use the specified local CLI, requested `gpt-6.1-sol`,
+Frozen file bytes and manifests remain unchanged; its pending statements describe
+that earlier stage. The copied candidate now uses [lossless archive storage](archive-storage.md)
+to meet CodeRabbit's 300-file PR limit. Historical candidate-directory paths
+are materialised temporarily when verifying the original manifests. Reviews use the specified local CLI, requested `gpt-6.1-sol`,
 medium reasoning and fresh homes with temporary existing-login symlinks.
 
 Case 01 ran from 21:04:43 to 21:05:05 UTC. Both authenticated debug previews

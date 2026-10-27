@@ -49,9 +49,11 @@ The branch is `codex/task-07-severity-calibration`, based on `main` at
 will be recorded in the PR conversation when all gates hold. This avoids a
 post-review bookkeeping push that would invalidate the verified head.
 
-The existing evidence whitespace policy is extended to four narrowly scoped
-task 07 patterns: the byte-identical inherited Qt guide in the candidate,
-unified fixture patches, captured CLI help and the initial red-test output.
+The existing evidence whitespace policy is extended to three narrowly scoped
+task 07 patterns: unified fixture patches, captured CLI help and the initial
+red-test output. The unchanged candidate is stored in a byte-verified archive
+after CodeRabbit reported its 300-file limit; see the
+[storage record](07-severity-execution/archive-storage.md).
 This preserves manifest-pinned bytes while retaining normal checks on authored
 prose and code. It changes no frozen candidate or raw evidence.
 

@@ -253,3 +253,15 @@ records the exact assessed candidate, accepted isolation limitation and required
 current-head review/check/merge gates. It supersedes the earlier request for
 another final acceptance question. Frozen proposals, scores and raw evidence
 remain historical artefacts and are not rewritten to record this later decision.
+
+
+## PR file-limit storage adjustment
+
+CodeRabbit skipped the first PR head because 323 files exceeded its 300-file
+limit. The [storage record](07-severity-execution/archive-storage.md) explains
+lossless archiving of the 31 duplicate candidate files. Every original candidate
+file byte is recovered and verified, and all seven original manifests verify
+with the archived paths materialised temporarily. The assessed runtime, fixture
+inputs, reports, scores and accepted limitations remain unchanged. Authored
+runtime and evaluation tooling stay directly reviewable; no reviewer setting
+or repository gate is bypassed.
