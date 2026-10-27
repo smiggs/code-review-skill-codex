@@ -1,0 +1,7 @@
+{
+  "base": "1bc100147099d08e7ad7189d766c4f8f6ff07d8f",
+  "changed_runtime_files": [
+    "reference/review-contract.md"
+  ],
+  "candidate_matches_working_source": true
+}

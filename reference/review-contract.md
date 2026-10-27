@@ -84,6 +84,14 @@ are the proposed Codex P0–P3 labels for this skill's reports:
 | P2 | Normal; address in the normal correction cycle | A supported defect with bounded impact, such as incorrect results on an edge case or a failure with a practical workaround. |
 | P3 | Low; address when practical | A real defect or requirement violation with small user or maintenance impact. A preference alone does not qualify. |
 
+Assess impact, urgency, breadth, and triggering conditions separately. For
+P0, explain the evidence requiring immediate action as well as the broad
+severe consequence. Failure on every invocation, or a requirement to block
+a release, does not alone establish that urgency and impact. A core-path
+failure that must be corrected before the affected release or next supported
+use can warrant P1. Do not infer an ongoing incident from a failed future
+operation. Supported conditional triggers can still warrant high priority.
+
 Target-project severity definitions govern when supplied. Explain any mapping
 to these labels rather than silently replacing the project's definitions.
 Priority communicates advice and creates no approval or merge authority.

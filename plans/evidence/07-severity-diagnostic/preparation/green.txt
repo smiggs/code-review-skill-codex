@@ -1,0 +1,11 @@
+test_adapter_and_consumer_change_preserves_public_results (__main__.FixturePremises.test_adapter_and_consumer_change_preserves_public_results) ... ok
+test_all_supported_service_operations_fail_in_head (__main__.FixturePremises.test_all_supported_service_operations_fail_in_head) ... ok
+test_export_loss_is_bounded_and_workaround_is_complete (__main__.FixturePremises.test_export_loss_is_bounded_and_workaround_is_complete) ... ok
+test_permission_refactor_preserves_complete_supported_matrix (__main__.FixturePremises.test_permission_refactor_preserves_complete_supported_matrix) ... ok
+test_punctuation_has_no_machine_data_consequence (__main__.FixturePremises.test_punctuation_has_no_machine_data_consequence) ... ok
+test_supplier_collision_omits_a_posting_only_in_head (__main__.FixturePremises.test_supplier_collision_omits_a_posting_only_in_head) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 1.097s
+
+OK

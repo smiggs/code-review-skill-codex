@@ -1,0 +1,13 @@
+{
+  "verified_manifests": {
+    "candidate-sha256sums.txt": "64915ca703ad8bfef44fd31757ac54bb795e0d3991049ed243ae1c3b4b436bbc",
+    "inputs-sha256sums.txt": "bd799c0e58c99d7e66650ae167a9998ab0a9492329481897a61b8c46c81548ee",
+    "preparation-sha256sums.txt": "91121c929ed1ea3c4046c91d79a3a6f9bc0fe2b7b48da0a7c720df4975ac421d",
+    "outputs-sha256sums.txt": "e0f00c32342b920f2156786d0f2ac2103e4975e2908a5af906cda70a4ad01016",
+    "continuation-sha256sums.txt": "7d971412dd210eb1388254a1edd0a7d2d7baf08e489b06096c0d61b1bf92c1f8",
+    "all-outputs-sha256sums.txt": "d7d29c52a2c4bc88e1c0b7913b81cb1375edabfcc6eaca412cbb054089aafc82"
+  },
+  "candidate_matches_working_runtime": true,
+  "authored_new_markdown_python_whitespace_checks": 62,
+  "temporary_authentication_links_remaining": 0
+}

@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-27",
+  "human": "User in this chat; no personal name supplied",
+  "reply": "Approved",
+  "scope": "Amendment for the five unused slots, case-01 live context as baseline, no retries, original case-01 isolation remains unresolved",
+  "continuation_manifest_sha256": "7d971412dd210eb1388254a1edd0a7d2d7baf08e489b06096c0d61b1bf92c1f8",
+  "maximum_total_attempts": 6,
+  "remaining_cases": [
+    "case-02",
+    "case-03",
+    "case-04",
+    "case-05",
+    "case-06"
+  ],
+  "final_disposition_accepted": false
+}

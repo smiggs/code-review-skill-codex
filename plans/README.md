@@ -84,7 +84,18 @@ A finished failed or unresolved evaluation alone does not complete a package.
 
 Task 07 is an optional follow-up to the accepted advisory severity limitation.
 It does not block package 06 or require further package 05 reviews. Its scope
-is planning only; agree any diagnostic inputs and run criteria before evaluation.
+began with planning; the user agreed the priority interpretation and preparation
+on 27 October 2026. The [decision brief](evidence/07-severity-calibration.md)
+records that checkpoint. A general contract clarification and six checked
+fixtures are prepared; the [frozen diagnostic proposal](evidence/07-severity-diagnostic/README.md)
+was approved on 27 October 2026. The [execution record](evidence/07-severity-execution/README.md)
+retains six reports: four defects and priorities match, both controls pass,
+and zero unsupported findings are observed. Case 01's original context gate
+remains unresolved; the other five pass under the user-approved live-baseline
+amendment. The [completion proposal](evidence/07-severity-execution/completion-proposal.md)
+has [conditional human acceptance](evidence/07-severity-pr-approval.md) of the
+exact candidate and retained limitations, effective after the requested
+CodeRabbit loop and PR merge gates hold. Task 07 awaits those gates.
 
 ## Language audit requirements
 

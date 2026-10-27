@@ -1,0 +1,69 @@
+[
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--stat"
+    ],
+    "exit_code": 0,
+    "stdout": " plans/07-severity-calibration.md | 13 +++++++++++--\n plans/README.md                  |  6 +++++-\n reference/review-contract.md     |  8 ++++++++\n 3 files changed, 24 insertions(+), 3 deletions(-)\n",
+    "stderr": ""
+  },
+  {
+    "new_files_checked_and_counted": 139,
+    "authored_prose_and_code_whitespace": "passed",
+    "preserved_data_exceptions": [
+      {
+        "path": "plans/evidence/07-severity-diagnostic/candidate/reference/qt.md",
+        "diagnostics": "plans/evidence/07-severity-diagnostic/candidate/reference/qt.md:109: trailing whitespace.\n+    list[0] = 1; \nplans/evidence/07-severity-diagnostic/candidate/reference/qt.md:126: trailing whitespace.\n+    void run() override { ... } \n",
+        "reason": "Two inherited whitespace lines; candidate is byte-identical to HEAD guide."
+      },
+      {
+        "path": "plans/evidence/07-severity-diagnostic/fixtures/case-02/change.diff",
+        "diagnostics": "plans/evidence/07-severity-diagnostic/fixtures/case-02/change.diff:8: trailing whitespace.\n+ \nplans/evidence/07-severity-diagnostic/fixtures/case-02/change.diff:9: trailing whitespace.\n+ \n",
+        "reason": "Required blank context markers in unified patch data."
+      },
+      {
+        "path": "plans/evidence/07-severity-diagnostic/fixtures/case-03/change.diff",
+        "diagnostics": "plans/evidence/07-severity-diagnostic/fixtures/case-03/change.diff:5: trailing whitespace.\n+ \nplans/evidence/07-severity-diagnostic/fixtures/case-03/change.diff:6: trailing whitespace.\n+ \n",
+        "reason": "Required blank context markers in unified patch data."
+      },
+      {
+        "path": "plans/evidence/07-severity-diagnostic/fixtures/case-05/change.diff",
+        "diagnostics": "plans/evidence/07-severity-diagnostic/fixtures/case-05/change.diff:5: trailing whitespace.\n+ \nplans/evidence/07-severity-diagnostic/fixtures/case-05/change.diff:6: trailing whitespace.\n+ \n",
+        "reason": "Required blank context markers in unified patch data."
+      },
+      {
+        "path": "plans/evidence/07-severity-diagnostic/fixtures/case-06/change.diff",
+        "diagnostics": "plans/evidence/07-severity-diagnostic/fixtures/case-06/change.diff:18: trailing whitespace.\n+ \nplans/evidence/07-severity-diagnostic/fixtures/case-06/change.diff:19: trailing whitespace.\n+ \n",
+        "reason": "Required blank context markers in unified patch data."
+      },
+      {
+        "path": "plans/evidence/07-severity-diagnostic/preparation/exec-help.txt",
+        "diagnostics": "plans/evidence/07-severity-diagnostic/preparation/exec-help.txt:23: trailing whitespace.\n+          \nplans/evidence/07-severity-diagnostic/preparation/exec-help.txt:55: trailing whitespace.\n+          \nplans/evidence/07-severity-diagnostic/preparation/exec-help.txt:84: trailing whitespace.\n+          \nplans/evidence/07-severity-diagnostic/preparation/exec-help.txt:104: trailing whitespace.\n+          \n",
+        "reason": "Raw captured CLI/test output retained without whitespace normalisation."
+      },
+      {
+        "path": "plans/evidence/07-severity-diagnostic/preparation/prompt-input-help.txt",
+        "diagnostics": "plans/evidence/07-severity-diagnostic/preparation/prompt-input-help.txt:14: trailing whitespace.\n+          \n",
+        "reason": "Raw captured CLI/test output retained without whitespace normalisation."
+      },
+      {
+        "path": "plans/evidence/07-severity-diagnostic/preparation/red.txt",
+        "diagnostics": "plans/evidence/07-severity-diagnostic/preparation/red.txt:6: trailing whitespace.\n+test_supplier_collision_omits_a_posting_only_in_head (__main__.FixturePremises.test_supplier_collision_omits_a_posting_only_in_head) ... \n",
+        "reason": "Raw captured CLI/test output retained without whitespace normalisation."
+      }
+    ],
+    "candidate_matches_source": true
+  }
+]

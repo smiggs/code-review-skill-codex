@@ -1,0 +1,5 @@
+- **[P3] Restore the required final full stop** — [head/inventory.py:2](/tmp/task07-case02-2amr_sfk/input/head/inventory.py:2). Any supported list triggers a format violation: for example, `summary([])` now returns `"Items: 0"` instead of the exact required `"Items: 0."`. The requirement explicitly includes the full stop. Restore it in the return value. Reproduced for empty, one-item and two-item lists; base passes all three. Impact is limited to human-facing punctuation; inventory operations remain unaffected.
+
+Scope: reviewed the supplied base-to-head diff, both complete snapshots and their requirements, using the specified review skill and relevant Python reference. No commit IDs were supplied.
+
+Verification: ran comparisons on Python 3.14.4 in disposable scratch copies; `data()` passed for all three inputs in both snapshots. No test suite or additional callers were supplied. Other Python versions were not exercised. Inputs were unchanged; no external services were accessed.

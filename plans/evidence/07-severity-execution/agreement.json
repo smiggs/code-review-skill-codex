@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-27",
+  "human": "User in this chat; no personal name supplied",
+  "reply": "Approved",
+  "scope": "Six standalone adapted reviews, one per case, gpt-6.1-sol, medium reasoning, temporary existing-login symlink, no retries; exact frozen package and disclosed limits from the immediately preceding approval request",
+  "preparation_manifest_sha256": "91121c929ed1ea3c4046c91d79a3a6f9bc0fe2b7b48da0a7c720df4975ac421d",
+  "candidate_manifest_sha256": "64915ca703ad8bfef44fd31757ac54bb795e0d3991049ed243ae1c3b4b436bbc",
+  "inputs_manifest_sha256": "bd799c0e58c99d7e66650ae167a9998ab0a9492329481897a61b8c46c81548ee",
+  "maximum_attempts": 6,
+  "final_disposition_accepted": false
+}

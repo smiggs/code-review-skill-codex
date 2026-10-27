@@ -1,0 +1,11 @@
+diff --git a/permissions.py b/permissions.py
+--- a/permissions.py
++++ b/permissions.py
+@@ -3,6 +3,4 @@
+ 
+ 
+ def allowed(role, action):
+-    if action not in ACTIONS:
+-        return False
+-    return action in RIGHTS.get(role, set())
++    return action in ACTIONS and action in RIGHTS.get(role, set())

@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/home/andrew/projects/code-review-skill-codex/plans/evidence/07-severity-execution/test_live_baseline.py", line 6, in <module>
+    from live_baseline import compare_contexts
+ModuleNotFoundError: No module named 'live_baseline'

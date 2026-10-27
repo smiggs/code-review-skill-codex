@@ -1,0 +1,5 @@
+{
+  "agreed_baseline": "case-01/actual-initial-context.json",
+  "shared_context_matches": true,
+  "normalisation": "Layout path and exact slot-specific final review prompt only"
+}

@@ -1,0 +1,12 @@
+{
+  "case": "case-01",
+  "model_requested": "gpt-6.1-sol",
+  "reasoning_requested": "medium",
+  "workspace": "/tmp/task07-case01-jy32e6hy",
+  "status": "finished",
+  "started_at": "2026-10-27T21:04:43.069804+00:00",
+  "exit_code": 0,
+  "inputs_unchanged": true,
+  "finished_at": "2026-10-27T21:05:05.612719+00:00",
+  "authentication_link_removed": true
+}

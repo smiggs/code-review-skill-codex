@@ -1,0 +1,132 @@
+[
+  {
+    "cwd": "/tmp/task07-case05-pubydd47/scratch",
+    "approval_policy": "never",
+    "sandbox_policy": {
+      "type": "workspace-write",
+      "network_access": false,
+      "exclude_tmpdir_env_var": true,
+      "exclude_slash_tmp": true
+    },
+    "permission_profile": {
+      "type": "managed",
+      "file_system": {
+        "type": "restricted",
+        "entries": [
+          {
+            "path": {
+              "type": "special",
+              "value": {
+                "kind": "root"
+              }
+            },
+            "access": "read"
+          },
+          {
+            "path": {
+              "type": "path",
+              "path": "/tmp/task07-case05-pubydd47/scratch"
+            },
+            "access": "write"
+          },
+          {
+            "path": {
+              "type": "path",
+              "path": "/tmp/task07-case05-pubydd47/scratch/.git"
+            },
+            "access": "read",
+            "missing_path_behavior": "skip"
+          },
+          {
+            "path": {
+              "type": "path",
+              "path": "/tmp/task07-case05-pubydd47/scratch/.agents"
+            },
+            "access": "read",
+            "missing_path_behavior": "skip"
+          },
+          {
+            "path": {
+              "type": "path",
+              "path": "/tmp/task07-case05-pubydd47/scratch/.codex"
+            },
+            "access": "read",
+            "missing_path_behavior": "skip"
+          },
+          {
+            "path": {
+              "type": "path",
+              "path": "/tmp/task07-case05-pubydd47/scratch/.aws"
+            },
+            "access": "read",
+            "missing_path_behavior": "skip"
+          }
+        ]
+      },
+      "network": "restricted"
+    },
+    "file_system_sandbox_policy": {
+      "kind": "restricted",
+      "entries": [
+        {
+          "path": {
+            "type": "special",
+            "value": {
+              "kind": "root"
+            }
+          },
+          "access": "read"
+        },
+        {
+          "path": {
+            "type": "path",
+            "path": "/tmp/task07-case05-pubydd47/scratch"
+          },
+          "access": "write"
+        },
+        {
+          "path": {
+            "type": "path",
+            "path": "/tmp/task07-case05-pubydd47/scratch/.git"
+          },
+          "access": "read",
+          "missing_path_behavior": "skip"
+        },
+        {
+          "path": {
+            "type": "path",
+            "path": "/tmp/task07-case05-pubydd47/scratch/.agents"
+          },
+          "access": "read",
+          "missing_path_behavior": "skip"
+        },
+        {
+          "path": {
+            "type": "path",
+            "path": "/tmp/task07-case05-pubydd47/scratch/.codex"
+          },
+          "access": "read",
+          "missing_path_behavior": "skip"
+        },
+        {
+          "path": {
+            "type": "path",
+            "path": "/tmp/task07-case05-pubydd47/scratch/.aws"
+          },
+          "access": "read",
+          "missing_path_behavior": "skip"
+        }
+      ]
+    },
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "collaboration_mode": {
+      "mode": "default",
+      "settings": {
+        "model": "gpt-6.1-sol",
+        "reasoning_effort": "medium",
+        "developer_instructions": null
+      }
+    }
+  }
+]

@@ -1,6 +1,17 @@
 # Task 07: severity calibration
 
-Status: scoped on 25 October 2026; implementation and evaluation have not begun.
+Status: all six approved reviews finished on 27 October 2026, with no retries.
+Four of four seeded defects and priorities match; both clean controls pass,
+with zero unsupported findings observed. Case 01's original preview/live
+context mismatch remains unresolved; cases 02–06 pass under the explicitly
+approved live-baseline amendment. The [execution record](evidence/07-severity-execution/README.md)
+and [completion proposal](evidence/07-severity-execution/completion-proposal.md)
+identify the exact assessed candidate, frozen outputs and retained limits.
+The user supplied [conditional human acceptance](evidence/07-severity-pr-approval.md)
+after the diagnostic, effective when the requested CodeRabbit loop and PR merge
+gates hold. The original all-criteria result remains not passed; no further
+acceptance question is required once those conditions hold.
+
 The user requested a separate severity-calibration follow-up, retaining package
 06 and moving the pending language audits to packages 08–12.
 
@@ -61,8 +72,14 @@ to select a preferred label or retrospectively alter their acceptance criteria.
 
 ## Boundaries and stopping rule
 
-This plan authorises scoping only. Agree the six-review diagnostic and its
-immutable inputs before dispatch. No automatic repeats, replacement reports,
+The original plan authorised scoping only. On 27 October 2026, the user agreed
+the proposed priority interpretation and preparation of the clarification and
+concrete fixtures. That agreement authorises the prepared runtime edit and
+fixture work, not model dispatch. The user subsequently approved the exact
+six-review package and the bounded live-context amendment, recorded in the
+[execution agreements](evidence/07-severity-execution/README.md#agreements-and-the-retained-context-stop).
+All six slots are now consumed. No further reviews or retries are proposed.
+No automatic repeats, replacement reports,
 correction batch, or upstream comparison are included. Failed or incomplete
 reviews remain recorded; further reviews need separate agreement.
 
