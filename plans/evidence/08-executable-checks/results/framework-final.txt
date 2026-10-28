@@ -1,0 +1,39 @@
+Compiled exact TypeScript/React/Vue guide blocks and both SFC compiler modes.
+✔ value reader accepts strings and rejects malformed external values (3.256973ms)
+✔ type controls distinguish safe length, unchecked access, and assertions (0.728206ms)
+✔ returned rejection has an awaiting owner and Promise.all does not cancel work (0.78183ms)
+✔ React: latest completion wins with abortAware=false (29.097025ms)
+✔ React: latest completion wins with abortAware=true (17.406179ms)
+✔ React: obsolete rejection cannot replace current success (5.91681ms)
+✔ React: obsolete settlement cannot clear current loading (7.677115ms)
+✔ React: disposal before resolve aborts and consumes settlement (4.596259ms)
+✔ React: disposal before reject aborts and consumes settlement (3.9764ms)
+✔ Vue: latest completion wins with abortAware=false (32.961216ms)
+✔ Vue: latest completion wins with abortAware=true (4.340852ms)
+✔ Vue: obsolete rejection cannot replace current success (2.749758ms)
+✔ Vue: obsolete settlement cannot clear current loading (2.729988ms)
+✔ Vue: disposal before resolve aborts and consumes settlement (2.268355ms)
+✔ Vue: disposal before reject aborts and consumes settlement (1.770111ms)
+✔ React: replacing loader invalidates the previous request (3.831717ms)
+✔ React: root strict-effects cleanup leaves only its final request active (11.843034ms)
+✔ React: conditional child and conditional use(context) are clean controls (9.678879ms)
+✔ React: nested types reset local state while stable types preserve it (154.482598ms)
+✔ Vue: getter input obeys its declared reactive contract (3.268691ms)
+✔ Vue: fixed input obeys its declared reactive contract (1.782898ms)
+✔ Vue: explicit stop prevents a late result from changing the exposed ref (2.235488ms)
+✔ Vue 34: exact props SFC reflects the compiler boundary (31.721893ms)
+✔ Vue 35: exact props SFC reflects the compiler boundary (4.273567ms)
+✔ Vue: props getter and explicit prop/update event remain valid designs (4.8204ms)
+✔ Vue 3.5: destructured array defaults render without supplied props (1.847229ms)
+✔ React DOM: form status observes a parent form, not a form created by its caller (14.140619ms)
+✔ React: action state receives previous state before the payload (3.539323ms)
+✔ Query v5: refetch error coexists with cached data in a Suspense query (44.725778ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 29
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1965.3549
+$ node prepare.mjs && node --test --test-isolation=none --test-concurrency=1 checks.test.mjs

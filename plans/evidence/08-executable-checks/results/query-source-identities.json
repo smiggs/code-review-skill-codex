@@ -1,0 +1,9 @@
+{
+  "package": "@tanstack/react-query",
+  "version": "5.105.0",
+  "sha256": {
+    "useSuspenseQuery.ts": "f62ef9ab924536421d8967b5f1782096cbdc021aba5e9af9a38038b78a3bf9be",
+    "suspense.ts": "76c5f6ee224e376b964fac7d7c46c014a99545c1751e22f8380bf960e12e9455",
+    "types.ts": "702ca3e7f89f2f2b7aeae1154b5ae5de92044de5442aa76b52ecbfdaf00a4424"
+  }
+}

@@ -1,0 +1,215 @@
+{
+  "base": "29eb9c2341cd00fbc981ee394b22cc9a01180033",
+  "combined_sha256": "5f849667402f941ec9f99de87b9cd4469c89fd190c00d3d182b253c67e497df5",
+  "files": [
+    {
+      "path": "plans/08-typescript-react-and-vue.md",
+      "sha256": "957b23c4e3fd233d04aa8b2931be49660d486f8e34de35a500f83969190e51fa"
+    },
+    {
+      "path": "plans/README.md",
+      "sha256": "d18dd63f3b6eabd360b2f6b3a77ffc2e03de3f418a1bd86e81f2828af1cbf3c9"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/.gitignore",
+      "sha256": "174f7d98b691f0d6d67e6631450ae38baa05d39d80122e53999b333616b951c1"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/README.md",
+      "sha256": "cf0a194c362311afce3c64453fffddfbdb786af33d9b5422a9b4079d99d93884"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/checks.test.mjs",
+      "sha256": "cc130a74b40a9407a0597d0abcec556e61afb33582f1df0906fd1b7e65ca935e"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/evidence-integrity.test.mjs",
+      "sha256": "aa9b6a33a60f9a03956d45ed31753e61c261d6638ff42cebf873de350e60aea9"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/fixtures/answer-key.json",
+      "sha256": "e3ce53f6a04986277073939bc2b8232bac29eafccd3f8259a310a97b1dfd19a8"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/fixtures/case-01/base/reader.ts",
+      "sha256": "2eb350b3b1c660c7c5cf0af9cba30cbafea9fb8a5041696667be50fd58525ca2"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/fixtures/case-01/head/reader.ts",
+      "sha256": "5f06a0be5fa8591edeb43fe623af13ee7c1124147ee82669022bcda6372cb399"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/fixtures/case-01/requirements.md",
+      "sha256": "73d5e7cdc80a8dd7f6cdb7b51395308158861aeb5efc9f7bf4e5e9290d49c654"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/fixtures/case-02/base/react.tsx",
+      "sha256": "11f30f252630976bfdd8e6535fee23444bfc86fafe0fa275b0df60d5836df0ad"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/fixtures/case-02/head/react.tsx",
+      "sha256": "8d033b6300e113570ab81087eb1cfbddd06ae107dc5c1468e5281f5e0a5d33e4"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/fixtures/case-02/requirements.md",
+      "sha256": "2ba3e697607d560c323d9334611213d0a13e8f7bd73b7ec9311b6f8b9b118a84"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/fixtures/case-03/base/vue.ts",
+      "sha256": "24ff7747833e16f52a322cee13b4486407d8151ee3df3bb2a6767e4e5637fef0"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/fixtures/case-03/head/vue.ts",
+      "sha256": "cb300bb847e6d3a801d53ce6cfac24878e7dc3ebfe27d8bf3ae16dc29f48c718"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/fixtures/case-03/requirements.md",
+      "sha256": "347b68769366869a5250cf329b536a8720c5feae919de069725cbb57721db7fe"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/package.json",
+      "sha256": "41753a286f330085358aa3e0a5677649140cd1dea0855f3660d11f1e32c979b1"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/pnpm-lock.yaml",
+      "sha256": "55564e1a839c8359be809868c16d801894333544711a7f29ca896a5e427e6b10"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/prepare.mjs",
+      "sha256": "1ff429840c0748ee44466e9125f4eb5561a5599665d015884d517580fd3ab447"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/results/framework-final.txt",
+      "sha256": "5c6c86ee604574064769d052f118e1378cc264d52ca86f2caf208e69560ed8b5"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/results/framework-initial.txt",
+      "sha256": "134af35e4cf91bdea0ffdb68606f5dcf9960791ef14768b01d2bed616e51cfc7"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/results/framework-second.txt",
+      "sha256": "89195824849b0ad2a7919480862a2ef5ce24f3df60aff80d8fc8f6296b0568a3"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/results/framework-third.txt",
+      "sha256": "a7b1a132bd8a6f89c72aad20219419e0ca0ed83a79db680b02186344036815e0"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/results/green-react.txt",
+      "sha256": "e4aa01ac6362e5f754d1aab4362d77b14ec5d8101d1770a8590cc9964c35c26a"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/results/green-reader.txt",
+      "sha256": "948f89f876bea6365c3d4c0d9744c6f34f5b993af84fbbf6e7f9bacce89529b4"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/results/green-vue.txt",
+      "sha256": "6eefd37a746b6349cfe8cf6a3c62980a8c4a2de2976c833519812620093a2c6f"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/results/initial.txt",
+      "sha256": "35c46837d28900b2e97af0fd89bf5117574097c35468582a2c77cd5173f026b0"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/results/install-frozen.txt",
+      "sha256": "7f590d69cede7855fc269a77057f0c9de1f23d0647924450fc2d3300bf6d83e2"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/results/peers-final.txt",
+      "sha256": "5ecf82a3fc1f9007eeea79ce3bf0d9c587150219ef245bb5a5a23609cdb562fb"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/results/query-source-identities.json",
+      "sha256": "14532dd928a0dc8d9f391fe64d6ee57a8935af90a4329b22cfe16c5e68554ce1"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/results/red-react.txt.gz",
+      "sha256": "29bbae4bf4ea628af1e3dcdd77ea96b6427bfc9faeb3653e81b7f654c58bc9b2"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/results/red-reader.txt.gz",
+      "sha256": "a6aa7f99ba47c57a1993c0f9d95efbd85f851b61168a6590a02fc25a35e0811f"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/results/red-vue.txt.gz",
+      "sha256": "50ebe725b026a5f5c38af2fa448d67c946c0a40f732d1d40db11074db5090647"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/results/repository-unittest.txt",
+      "sha256": "17b9424d3497e5ada7d0db097152c9cd6d2c3140c3b7082a1d7ebc81f6b28623"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/results/review-integrity-green.txt",
+      "sha256": "28e9162c774444bfbca71d4f898092cf65c55bebdf23e96c59519f3331034dd9"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/results/review-integrity-red.txt.gz",
+      "sha256": "1d0ce0ecf2efb005f1729e18d0267649c5cd7af808424d4b300e1aeb43c2531c"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/results/review-sensitivity.txt",
+      "sha256": "511822f4e19cd57531afee23fbf47b63bc87f7809cfc1907c953c2cbf34d4a1e"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/results/sensitivity-final.txt",
+      "sha256": "511822f4e19cd57531afee23fbf47b63bc87f7809cfc1907c953c2cbf34d4a1e"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/results/source-identities.json",
+      "sha256": "c137e122811315f65a08163c6d41a22fc40895d6fb36d6004f5efe1336fd0036"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/sensitivity.mjs",
+      "sha256": "905a57843aec420d83e0f90954f60ffbee4fab2e2a1b9e7f4f68976a47d7a95c"
+    },
+    {
+      "path": "plans/evidence/08-executable-checks/type-controls.ts",
+      "sha256": "44e80509eea4f38b243f2726eb195f6cdbfb55f7bb00d23caf05037dea262534"
+    },
+    {
+      "path": "plans/evidence/08-handoff.md",
+      "sha256": "5ba7b068d4f3bee1cb7faa64ac51397981b549f8ae06413d37ca3dabf69cf699"
+    },
+    {
+      "path": "plans/evidence/08-pr-approval.md",
+      "sha256": "488602a0b99d9c12ca75a2221a8879c8e7cfef774176a3a0a7b4197b69792e2b"
+    },
+    {
+      "path": "plans/evidence/08-review-fixes.md",
+      "sha256": "a89c6aa205f2997980f75f84b166d5b446f9e884bd80ef7a6fdbfd19e769461e"
+    },
+    {
+      "path": "plans/evidence/08-typescript-react-and-vue.md",
+      "sha256": "f0adfc0fe656347283778f9765bd490632db32c6473724a87d1710776087fb8e"
+    },
+    {
+      "path": "reference/common-bugs-checklist.md",
+      "sha256": "ddd84abe23ebcc3a597f9db652864e91c14e38625476215d81e49170a7e1c34c"
+    },
+    {
+      "path": "reference/provenance.md",
+      "sha256": "de3b00ca96d769d7b1641780f7ba2d09fd3387c3c84a9197a23045aa003b714d"
+    },
+    {
+      "path": "reference/react.md",
+      "sha256": "4116975a73cd742b568ce41c2bcc890930a7e18aaae80b5dc049cefd08408073"
+    },
+    {
+      "path": "reference/reference-status.md",
+      "sha256": "022239386c7f185d038a3fa25139cfe160e175c5350f9857bef1a97db53359c4"
+    },
+    {
+      "path": "reference/typescript.md",
+      "sha256": "814258a08c631fe6b4737fdf826296fcf56e2d5976714c74845f661932ec9f3a"
+    },
+    {
+      "path": "reference/vue.md",
+      "sha256": "881f8806f3386499123b68503da50b4802e1d4a0186eb2fa05674a87ef2f35cc"
+    }
+  ],
+  "exclusions": [
+    "plans/evidence/08-executable-verification.md",
+    "this manifest",
+    "installed dependencies and generated files"
+  ]
+}
