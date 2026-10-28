@@ -268,6 +268,11 @@ class JpaFetchTest {
             assertFalse(Hibernate.isInitialized(proxied),
                 "identifier equality left the proxy uninitialised");
             boolean wasInitial = !Hibernate.isInitialized(proxied);
+            assertTrue(proxied.equals(found),
+                "identifier equality holds with the proxy as receiver (observed direction)");
+            System.out.println("OBSERVED proxied.equals(found) initialised the proxy: "
+                + Hibernate.isInitialized(proxied));
+            boolean stillInitial = Hibernate.isInitialized(proxied);
             String constant = found.getClass().getName() + "@" + found.hashCode();
             int proxyHash = proxied.hashCode();
             assertEquals(found.hashCode(), proxyHash,

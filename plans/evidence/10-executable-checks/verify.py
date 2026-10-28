@@ -7,6 +7,7 @@ the expected reason; the base must pass. This proves the assertions separate
 the variants; it measures no model review behaviour.
 """
 from pathlib import Path
+import os
 import shutil
 import subprocess
 import tempfile
@@ -15,9 +16,10 @@ HERE = Path(__file__).resolve().parent
 RESULTS = HERE / ".generated/results"
 RESULTS.mkdir(parents=True, exist_ok=True)
 
-MVB = Path.home() / ".cache/cr-plan-10/tools/apache-maven-3.9.9/bin/mvn"
-JAVA_HOME = Path.home() / ".cache/cr-plan-10/tools/jdk-21.0.13+9"
-REPO = ["-Dmaven.repo.local=" + str(Path.home() / ".cache/cr-plan-10/m2"), "-o"]
+CACHE = Path.home() / ".cache/cr-plan-10"
+MVB = Path(os.environ.get("MVN_BIN", str(CACHE / "tools/apache-maven-3.9.9/bin/mvn")))
+JAVA_HOME = Path(os.environ.get("JDK21_HOME", str(CACHE / "tools/jdk-21.0.13+9")))
+REPO = ["-Dmaven.repo.local=" + os.environ.get("M2_REPO", str(CACHE / "m2")), "-o"]
 
 
 def run(name, command, cwd, *, seconds, expect_failure=None):

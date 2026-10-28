@@ -52,10 +52,11 @@ JUnit sources under `src/test/java/invalid/example/package10`:
   virtual-thread execution, `compute()` totals, shared formatter).
 - `ExecutorContractTest` checks `Future.cancel(true)` interruption and that
   `close()` waits for a submitted task.
-- `ConcurrentMapContractTest` holds the two-record contract under a forced
-  interleave for the guide's `compute()` example, and demonstrates that a
-  check-then-act variant under the same two-record contract loses exactly
-  one record.
+- `ConcurrentMapContractTest` holds the two-record contract for the guide's
+  `compute()` example under plain concurrent submission (no interleave is
+  forced there; the 8×2000 contention in `GuideExamplesTest` is the stronger
+  evidence), and forces a read/write interleave for a check-then-act
+  variant, which loses exactly one record.
 - `JpaFetchTest` measures eager-collection statement counts (N+1), inner
   versus left join fetch membership, single-query counts, in-memory
   pagination (no LIMIT pushed to H2), identifier equality across an
@@ -67,7 +68,16 @@ JUnit sources under `src/test/java/invalid/example/package10`:
 
 `verify.py` copies the module into temporary directories, swaps in either
 the [fixture head/base pair](fixtures/README.md), and runs the matching
-contract test with a 180-second bound. Each head must fail for the expected
+contract test with a 180-second bound. It honours `MVN_BIN`, `JDK21_HOME`,
+and `M2_REPO` environment overrides with the `~/.cache/cr-plan-10` defaults,
+for example:
+
+```bash
+MVN_BIN=/path/to/apache-maven-3.9.9/bin/mvn \
+JDK21_HOME=/path/to/jdk-21.0.13+9 \
+M2_REPO=/path/to/local/repo \
+python3 plans/evidence/10-executable-checks/verify.py
+``` Each head must fail for the expected
 reason; each base must pass. Fresh outputs write to `.generated/results/`;
 copy a deliberate run into `results/` when preparing evidence.
 

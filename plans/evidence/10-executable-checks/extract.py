@@ -27,7 +27,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 GENERATED = HERE / ".generated"
 RESULTS = GENERATED / "results"
-PARSER = re.compile(r"^```java\n(.*?)^```$", re.M | re.S)
+PARSER = re.compile(r"^ {0,3}```java\n(.*?)^ {0,3}```[ \t]*$", re.M | re.S)
 PUBLIC_TYPE = re.compile(r"^public\s+(?:\w+\s+)*?(class|record|interface|enum)\s+(\w+)", re.M)
 
 

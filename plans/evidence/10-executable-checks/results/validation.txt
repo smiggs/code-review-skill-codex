@@ -1,16 +1,39 @@
 == date (UTC):
-Wed Oct 28 11:12:06 PM UTC 2026
+Wed Oct 28 11:30:52 PM UTC 2026
 
 == branch:
 codex/package-10-java
 == head:
-5a2d2e034ad6ce975ff02849f196ae5e5fd28c1c
+03b0df9ef99a1c8f20df04b261e26a3d856e7a26
 
 == git diff --check (unstaged+staged):
 whitespace clean
 
-== git status --porcelain vs origin/main (tracked files only shown; new files are the evidence directory):
-(empty above means the committed tree matches origin/main plus new files)
+== committed changes relative to origin/main (git diff --stat origin/main HEAD):
+ reference/reference-status.md                      |  16 +-
+ 38 files changed, 3226 insertions(+), 350 deletions(-)
+
+== untracked files relative to HEAD (git status --porcelain):
+ M plans/evidence/10-executable-checks/README.md
+ M plans/evidence/10-executable-checks/extract.py
+ M plans/evidence/10-executable-checks/fixtures/answer-key.md
+ M plans/evidence/10-executable-checks/fixtures/failure-observability/base/BatchRunner.java
+ M plans/evidence/10-executable-checks/fixtures/failure-observability/head/BatchRunner.java
+ M plans/evidence/10-executable-checks/results/candidate-manifest.json
+ M plans/evidence/10-executable-checks/results/fixture-failure-observability-base.txt
+ M plans/evidence/10-executable-checks/results/fixture-failure-observability-head.txt
+ M plans/evidence/10-executable-checks/results/fixture-jpa-membership-base.txt
+ M plans/evidence/10-executable-checks/results/fixture-jpa-membership-head.txt
+ M plans/evidence/10-executable-checks/results/full-suite.txt
+ M plans/evidence/10-executable-checks/results/source-identities.json
+ M plans/evidence/10-executable-checks/results/validation.txt
+ M plans/evidence/10-executable-checks/src/test/java/invalid/example/package10/JpaFetchTest.java
+ M plans/evidence/10-executable-checks/verify.py
+ M plans/evidence/10-java.md
+ M reference/java.md
+ M reference/reference-status.md
+?? plans/evidence/10-executable-checks/results/extract-verify-run.txt
+(empty means the worktree contains no unstaged or untracked changes; the committed changes vs origin/main are the diff stat above)
 
 == repository helper/validator tests:
 Ran 18 tests in 2.314s
@@ -18,7 +41,7 @@ Ran 18 tests in 2.314s
 OK
 
 == package 03 guide-example checks:
-Ran 13 tests in 0.014s
+Ran 13 tests in 0.021s
 
 OK
 

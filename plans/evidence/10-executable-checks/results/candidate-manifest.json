@@ -1,8 +1,8 @@
 {
   "base_revision": "ae61df8803e4d7d21ec67c63eba3523f8df3e25b (main after PR 11)",
   "branch": "codex/package-10-java",
-  "algorithm": "SHA-256 of sorted UTF-8 path, NUL, sha256 hex of file bytes, NUL",
-  "combined_sha256": "561eb5f7226be0d1caf4e9b2fc050fb274ad9ba30d6500630778edb0f7bc760b",
+  "algorithm": "SHA-256 of the sorted concatenation of each file's UTF-8 path, NUL, SHA-256 hex digest of the file bytes, NUL",
+  "combined_sha256": "4f3fcc1c5b32652d7624013f008c3650fc28b84c91106718cf0b480ed95e6b0d",
   "excludes": [
     "plans/evidence/10-java.md",
     "this manifest",
@@ -27,11 +27,11 @@
     },
     {
       "path": "plans/evidence/10-executable-checks/README.md",
-      "sha256": "0c5fbd05c9701ea3618eb891acf24d34ac16c4ecbc9a3cfa7b3a4aa6c57d2871"
+      "sha256": "3537d68da3d1f43ed99ba3bf405c1515903668889309f7ae36137c5ff47b477e"
     },
     {
       "path": "plans/evidence/10-executable-checks/extract.py",
-      "sha256": "080cb55fb9a121bff79028e0506717faa371f0ae81b8565f7b36361c3a14538f"
+      "sha256": "f01ca4ffef40949e0a1b22215caf6dadc4686ee4ed8755c057f116b625497f36"
     },
     {
       "path": "plans/evidence/10-executable-checks/fixtures/README.md",
@@ -39,15 +39,15 @@
     },
     {
       "path": "plans/evidence/10-executable-checks/fixtures/answer-key.md",
-      "sha256": "2c4ee14ebffc26f498cb577ac52b8b202291a3ffe3ca2918682b8a8f0e6a89ab"
+      "sha256": "f46e5dc4695ce9dad288860eb5c955239a5d4058f9852c20b1f2b67c6cc71e39"
     },
     {
       "path": "plans/evidence/10-executable-checks/fixtures/failure-observability/base/BatchRunner.java",
-      "sha256": "86b132df718e84f3a226fba1037c4f2d7d229691e89bf4633b5a204c60b1a8e2"
+      "sha256": "edb85e13bfab79e6ea0ab29837ed1c583c246e9985a5e23f5a549e06c475ed60"
     },
     {
       "path": "plans/evidence/10-executable-checks/fixtures/failure-observability/head/BatchRunner.java",
-      "sha256": "2ba488ac37213d6b0661569a7d41d29f5955d2501c52b667cba7324c510a1239"
+      "sha256": "8b419ea9c93ea8ce297da18cbf794d9a56c33d636b041f821eb0bc7352db393c"
     },
     {
       "path": "plans/evidence/10-executable-checks/fixtures/jpa-membership/base/ParentReader.java",
@@ -62,28 +62,32 @@
       "sha256": "56be3fe6fdc5c5f052f78fb399e97b25a90be25dac4558df35a9faa2969c0ced"
     },
     {
+      "path": "plans/evidence/10-executable-checks/results/extract-verify-run.txt",
+      "sha256": "8636837cc84c9fef939c1ca37daaa88563b9f393c08c22d3c82efe66119b9bf9"
+    },
+    {
       "path": "plans/evidence/10-executable-checks/results/extract.txt",
       "sha256": "e4e140699381870a51239edac7f8858879cc63434f2561e10a2fc066c4ba5c12"
     },
     {
       "path": "plans/evidence/10-executable-checks/results/fixture-failure-observability-base.txt",
-      "sha256": "b88e3ec67a145823a8601d1f572514842831b6d8280c75f726104a3f3cde96b3"
+      "sha256": "88e2e5239d7990b965bdbb01eeaf5fcb89209863e168f63aaa0aa928f8afc637"
     },
     {
       "path": "plans/evidence/10-executable-checks/results/fixture-failure-observability-head.txt",
-      "sha256": "e338075a4644400ec2ce5a36e167861918e9d8cc01836f69bd8b0b325dca7947"
+      "sha256": "d1a25bbc159827a77de7a0872e834f0f470c01ea89eeb5805c9754cf45e43d2c"
     },
     {
       "path": "plans/evidence/10-executable-checks/results/fixture-jpa-membership-base.txt",
-      "sha256": "ae83c4ffe7e4c228d1f09e440a5c45b7cdda644e87541c407d8eac5d5477a0be"
+      "sha256": "8db0db56f0f20011a297a48dbf715db28be4b01f8bf3c1667c9e33260aa7acf5"
     },
     {
       "path": "plans/evidence/10-executable-checks/results/fixture-jpa-membership-head.txt",
-      "sha256": "7285996c5e5294b4f4bcc6a833586c33d6b0b2e0da170ef0ef626ef3ecc457a2"
+      "sha256": "9e5251219616a0b3083b1b0f3808fc4ce8859dcd910337aad82e4b79615da74a"
     },
     {
       "path": "plans/evidence/10-executable-checks/results/full-suite.txt",
-      "sha256": "d734d03836e2cfea8a97a791494787d2a9bc60c58aef4719bf909de25c127935"
+      "sha256": "aec3eb50ad18035e9e65d0e593640791793a0281c08785b918534d94ce7d12b4"
     },
     {
       "path": "plans/evidence/10-executable-checks/results/sensitivity.txt",
@@ -91,11 +95,11 @@
     },
     {
       "path": "plans/evidence/10-executable-checks/results/source-identities.json",
-      "sha256": "4d2e4cfafef3f301b92ce8b67ed5a856d208806d0b70632416f914b53f8e8528"
+      "sha256": "a43c1b6ee97f1873099db108c942b57fd6c5d14a2c5ee39734193085176d1d4b"
     },
     {
       "path": "plans/evidence/10-executable-checks/results/validation.txt",
-      "sha256": "6e1a0477f9a961d0902f8f4e3ac250eab7497ec62e71f0722ba5f5df328476f7"
+      "sha256": "2c91fb8e111343ab27154be0ba8c08fdc1e1c0b677f7c0b1da30ddf36bf3eef3"
     },
     {
       "path": "plans/evidence/10-executable-checks/src/test/java/invalid/example/package10/ConcurrentMapContractTest.java",
@@ -115,7 +119,7 @@
     },
     {
       "path": "plans/evidence/10-executable-checks/src/test/java/invalid/example/package10/JpaFetchTest.java",
-      "sha256": "ad508b63bb9e7786f5a91144b5cc509abfecb6c200a5a382cb9dda2838d42704"
+      "sha256": "1ecce8b55a27ca8a7070421de0edf7c4c1bf783bb879904284f71b7f94d2bff2"
     },
     {
       "path": "plans/evidence/10-executable-checks/src/test/java/invalid/example/package10/SpringProxyTransactionTest.java",
@@ -131,7 +135,7 @@
     },
     {
       "path": "plans/evidence/10-executable-checks/verify.py",
-      "sha256": "ba28a9c1b5be5a21c29baff4d9f1efb797ff87004bca17febba5c0b5804c5b9d"
+      "sha256": "80c2b31f6d8f7b4543796b624691ae5f29482ba419b80bacef4cdf8fe8978239"
     },
     {
       "path": "plans/evidence/10-pr-approval.md",
@@ -143,7 +147,7 @@
     },
     {
       "path": "reference/java.md",
-      "sha256": "6d82d013b0157abe64a35d165372122d35566b20083d8dcc7b5ce45b7d96184b"
+      "sha256": "56e8a375dfab4fd7a49ecadd67f3a2b86d1f832177952a6a1619a0fe727d5535"
     },
     {
       "path": "reference/provenance.md",
@@ -151,7 +155,7 @@
     },
     {
       "path": "reference/reference-status.md",
-      "sha256": "d1d7bc947ab900706ca9d5ef27af1cec4fc2a64ff0ae038142c8102dbf3e0333"
+      "sha256": "90c98907f66323cd6e23e526564fc16faf3d2958477821fc7e7a8ad7247637a7"
     }
   ]
 }

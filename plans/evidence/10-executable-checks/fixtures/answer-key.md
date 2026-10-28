@@ -30,5 +30,5 @@ material provided to a reviewer whose answers are meant to be independent.
   caller's contract requiring observable outcomes; fix is publishing the
   failure (recorded outcome, propagated call, or equivalent visible handling).
 - Non-findings: `Executors.newFixedThreadPool` use, try-with-resources
-  executor ownership, the `ArrayList` atomicity question, or the missing
-  per-job timeout.
+  executor ownership, the thread-safe `CopyOnWriteArrayList` outcomes list,
+  or the missing per-job timeout.

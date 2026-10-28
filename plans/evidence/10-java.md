@@ -1,9 +1,11 @@
 # Package 10: Java audit evidence
 
 Date: 28 October 2026. Technical audit candidate prepared at the user's
-request under [the plan](../10-java.md); no human checkpoint has yet
-reviewed it. This work does not reopen package 05, authorise publication,
-or establish review accuracy for the changed guide. The [package 03
+request under [the plan](../10-java.md); the user supplied conditional
+acceptance on 28 October 2026
+([approval record](10-pr-approval.md)), effective after the CodeRabbit and
+merge gates hold. This work does not reopen package 05, authorise
+publication, or establish review accuracy for the changed guide. The [package 03
 method](03-python-and-reference-quality.md) and the shared audit
 requirements in [the plans README](../README.md) govern scope.
 
@@ -12,7 +14,8 @@ requirements in [the plans README](../README.md) govern scope.
 Work began on `main` at `118253c` (the package 09 merge). The working
 candidate is identified by the [manifest](10-executable-checks/results/candidate-manifest.json)
 built the same way as
-package 09's: SHA-256 over sorted `path NUL bytes NUL` records. It covers
+package 09's: SHA-256 of the sorted concatenation of each file's UTF-8
+path, NUL, SHA-256 hex digest of the file bytes, and NUL. It covers
 the guide, checklist, disposition, provenance, plan documents, harness,
 fixtures, and result records; it excludes this narrative, the manifest
 itself, and generated sources, caches, and toolchains. The human
@@ -77,7 +80,7 @@ carried-over guidance, and everything was re-fetched into
 | Full Maven suite | 28 tests: 26 executed, failures 0 and errors 0, 2 gated fixture-contract tests skip in the plain suite and run only under `verify.py`. [Output](10-executable-checks/results/full-suite.txt). |
 | Guide example behaviour | Record validation, switch branches including `case null`, text block output, reverse close order with suppression, executor drain and interruption, virtual-thread execution, `compute()` exactness under concurrency, and shared formatter correctness all pass over the exact extracted bytes. |
 | JDK contracts | `Future.cancel(true)` interrupt delivery and `close()`'s wait for a running task pass with bounded waits. |
-| Shared mutable state | Forced-interleave contract: the `compute()` guide example keeps both records; the check-then-act variant loses exactly one. |
+| Shared mutable state | The `compute()` guide example keeps both records under concurrent submission (the 8×2000 contention test is the stronger check); a check-then-act variant forced to interleave between its read and write loses exactly one record. |
 | Hibernate/H2 | EAGER `@OneToMany` costs 1 + N statements; `JOIN FETCH` runs 1 statement and drops the child-less parent; `LEFT JOIN FETCH` runs 1 statement and preserves all three parents (no duplicate rows for the 3-user sample); with `setMaxResults(2)` no LIMIT appears in H2 SQL (in-memory application) and the first two parents are returned; identifier equality over an uninitialised `getReference` proxy holds without initialisation through the conventional getter, while the proxy's `hashCode()` initialises it (recorded observation); lazy owner access outside the session raises `LazyInitializationException`. [Output](10-executable-checks/results/full-suite.txt). |
 | Spring Framework 6.1.14 | Public interface method advised through a JDK proxy; self-invocation bypasses the proxy (no transaction); package-visible method advised through CGLIB under 6.x defaults; the private method is not routable on the proxy class and runs without a transaction through self-invocation; `readOnly` visible on the transaction status; unannotated bean and concrete-interface validations pass as clean controls. |
 | Fixture sensitivity | Both defective heads rejected for the expected contract reasons; both clean bases passed. [Summary](10-executable-checks/results/sensitivity.txt) with per-run [head](10-executable-checks/results/fixture-jpa-membership-head.txt)/[base](10-executable-checks/results/fixture-jpa-membership-base.txt) and [head](10-executable-checks/results/fixture-failure-observability-head.txt)/[base](10-executable-checks/results/fixture-failure-observability-base.txt) outputs. |

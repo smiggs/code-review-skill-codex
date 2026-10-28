@@ -1,6 +1,6 @@
 {
   "guide": "reference/java.md",
-  "guide_sha256": "6d82d013b0157abe64a35d165372122d35566b20083d8dcc7b5ce45b7d96184b",
+  "guide_sha256": "56e8a375dfab4fd7a49ecadd67f3a2b86d1f832177952a6a1619a0fe727d5535",
   "blocks": 8,
   "jdk_versions": {
     "21": "openjdk version \"21.0.13\" 2026-10-20 LTS",

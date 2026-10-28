@@ -36,7 +36,7 @@ working code.
   [JDK 16](https://openjdk.org/jeps/394)). Compiling such a switch for JDK 17
   needs `--enable-preview`.
 - [Virtual threads](https://openjdk.org/jeps/444): final in JDK 21, previewed in
-  19 and 20; `Stream.toList()` was added in JDK 16.
+  19 and 20.
 
 A record's compact constructor can enforce declared invariants:
 
@@ -79,7 +79,7 @@ public class JsonTemplates {
 }
 ```
 
-## Optional and stream usage
+## Optional usage
 
 `Optional` as a return type makes absence visible to callers; fields,
 parameters, and collections of `Optional` usually signal a modelling problem,
@@ -361,9 +361,10 @@ subclasses and identifier access through the conventional getter does not
 initialise the proxy ("does not initialize an entity proxy when its
 identifier attribute is accessed",
 [Hibernate ORM 6.4 user guide](https://docs.jboss.org/hibernate/orm/6.4/userguide/html_single/Hibernate_User_Guide.html)).
-In the audited Hibernate 6.4.10 the uninitialised proxy also served
-identifier-based equality without initialising, while the proxy's own
-`hashCode()` did initialise it: verifying such behaviour against the
+In the audited Hibernate 6.4.10 the uninitialised proxy served
+identifier-based equality without initialising when it was the argument to
+`equals`; with the proxy as the receiver, equality held but initialising it,
+as did the proxy's own `hashCode()`. Verifying such behaviour against the
 project's provider and mapping is part of the review evidence. Generated
 `equals`/`hashCode` covering every field (Lombok [`@Data`
 generates them over all non-static, non-transient

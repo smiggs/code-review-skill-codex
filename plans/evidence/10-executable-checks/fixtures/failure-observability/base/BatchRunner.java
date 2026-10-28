@@ -1,6 +1,6 @@
 package invalid.example.package10.fixture;
 
-import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
@@ -9,7 +9,7 @@ import java.util.concurrent.Executors;
 /** Runs the nightly maintenance jobs and reports every outcome to the caller. */
 public class BatchRunner {
     public static List<String> collectResults() throws InterruptedException {
-        List<String> outcomes = new ArrayList<>();
+        List<String> outcomes = new CopyOnWriteArrayList<>();
         try (ExecutorService executor = Executors.newFixedThreadPool(2)) {
             List<Callable<String>> jobs = List.of(
                 () -> "job-1-completed",
