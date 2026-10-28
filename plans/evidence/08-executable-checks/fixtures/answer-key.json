@@ -1,0 +1,25 @@
+{
+  "status": "Prepared, not an agreed or executed model review batch",
+  "cases": [
+    {
+      "case": "case-01",
+      "defect": "The property existence check admits non-string values despite the string return contract.",
+      "trigger": {
+        "value": 4
+      },
+      "clean_control": "base/reader.ts"
+    },
+    {
+      "case": "case-02",
+      "defect": "Abort-ignoring obsolete success/error overwrites the current view.",
+      "trigger": "Resolve B, then settle A after cleanup.",
+      "clean_control": "base/react.tsx"
+    },
+    {
+      "case": "case-03",
+      "defect": "The watcher observes an initial snapshot instead of the changing reactive ID.",
+      "trigger": "Change a ref or getter from A to B and await nextTick.",
+      "clean_control": "base/vue.ts"
+    }
+  ]
+}

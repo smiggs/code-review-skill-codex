@@ -18,6 +18,10 @@ preserved byte for byte. No new licence or claim to upstream authorship is added
 Local adaptations replace the entry point and templates with an evidence-based
 review contract, selectively audit Python and topic guides, replace heuristic
 scores with a counts-only helper, add validation, and document evaluation limits.
+Package 08 also rewrites TypeScript, React, and Vue guidance and consolidates its
+common-bug duplicates. Scoped TypeScript compilation and React/Vue checks pass
+under the versions and limits in the reference status; its human checkpoint and
+any separate review evaluation remain pending.
 The skill name and singular `reference/` directory remain unchanged.
 
 ## Verification

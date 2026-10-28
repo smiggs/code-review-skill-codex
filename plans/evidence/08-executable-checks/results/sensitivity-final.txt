@@ -1,0 +1,5 @@
+Compiled exact TypeScript/React/Vue guide blocks and both SFC compiler modes.
+reader: defect rejected and clean control accepted by behavioural assertions
+react: defect rejected and clean control accepted by behavioural assertions
+vue: defect rejected and clean control accepted by behavioural assertions
+$ node prepare.mjs && node sensitivity.mjs

@@ -1,0 +1,4 @@
+$ node prepare.mjs && node --test --test-concurrency=1 checks.test.mjs
+Compiled exact TypeScript/React/Vue guide blocks and both SFC compiler modes.
+Could not find 'checks.test.mjs'
+[ELIFECYCLE] Test failed. See above for more details.

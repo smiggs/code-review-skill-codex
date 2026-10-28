@@ -1,6 +1,6 @@
 # Reference audit status
 
-Approved by the user at the package 03 checkpoint on 18 October 2026. This is an audit
+Approved by the user at the package 03 checkpoint on 18 October 2026. Package 08 additions await their own human checkpoint. This is an audit
 disposition, not a claim that all supported languages have been technically
 verified. The [review contract](review-contract.md) governs all inherited advice.
 
@@ -24,11 +24,11 @@ conflict or unsupported recommendation, without inventing a broader audit.
 | [Architecture](architecture-review-guide.md) | Verified within scope | Requirement-based prompts replace universal patterns, metric thresholds, and automatic severity. Target architectures still require their own evidence. |
 | [Performance](performance-review-guide.md) | Verified within scope | Evidence and workload rules reconciled; selected browser, caching, and PostgreSQL claims checked in primary documentation. No framework benchmarks or universal thresholds. |
 | [Security](security-review-guide.md) | Verified within scope | Scope, authority, and evidence rules reconciled; bounded authorisation and command/path guidance checked. No complete application, cryptography, or dependency audit. |
-| [Common bugs](common-bugs-checklist.md) | Partially reconciled; retained, not technically verified | Python duplicates consolidated into the Python guide; inherited framework examples remain unverified. Patterns are prompts rather than defect evidence. |
-| [React](react.md) | Retained, not technically verified | React and query-library version assumptions and examples need a technical pass. |
-| [Vue](vue.md) | Retained, not technically verified | Version-sensitive reactivity and lifecycle examples need a technical pass. |
+| [Common bugs](common-bugs-checklist.md) | Partially reconciled; retained, not technically verified | Python duplicates consolidated into the Python guide; TypeScript/React/Vue duplicates consolidated after a documentation audit; other inherited examples remain unverified. Patterns are prompts rather than defect evidence. |
+| [React](react.md) | Checked within package 08 scope; approval pending | React/React DOM 19.3.1 Hook, form, action, and state-identity checks passed in jsdom 30.1.3; exact Hook compiled with TypeScript 6.0.3. Query 5.105.0 source inspected and cached-data refetch error exercised. Next.js 15 remains documentation-only; no browser, hydration, or review-accuracy claim. |
+| [Vue](vue.md) | Checked within package 08 scope; approval pending | Exact composable compiled with TypeScript 6.0.3 and passed controlled request tests in Vue 3.5.44/jsdom. SFC compiled/executed with 3.4.38 and 3.5.44; no full vue-tsc, browser, hydration, general patch matrix, or review-accuracy claim. |
 | [Rust](rust.md) | Retained, not technically verified | Ownership, unsafe, runtime, and cancellation examples need a technical pass. |
-| [TypeScript](typescript.md) | Retained, not technically verified | Compiler and lint recommendations must defer to project versions and configuration. |
+| [TypeScript](typescript.md) | Checked within package 08 scope; approval pending | TypeScript 6.0.3 strict compilation and Node.js 24.22.1 runtime cases passed for the retained reader and synthetic type controls. Compiler/lint settings stay project-specific; no broad runtime matrix or review-accuracy claim. |
 | [Java](java.md) | Retained, not technically verified | JDK, Spring, persistence, and concurrency claims need version-specific verification. |
 | [Go](go.md) | Retained, not technically verified | Runtime, generics, error, and concurrency examples need a technical pass. |
 | [C](c.md) | Retained, not technically verified | Language mode, implementation, ownership, and undefined-behaviour examples need verification. |
@@ -44,14 +44,21 @@ additional verification.
 ## Consolidation and deferred work
 
 The Python section in the common-bug checklist now routes to `python.md` instead
-of duplicating examples and string-concatenation advice. Its other language
-sections retain their original role as pattern prompts. The four topic/process
+of duplicating examples and string-concatenation advice. Its TypeScript, React,
+and Vue sections now route to their audited guides; other language sections
+retain their original role as pattern prompts. The four topic/process
 guides were shortened because their automatic severity, unqualified code recipes,
 and review-time or metric gates conflicted with the approved contract. Their paths
-and review scope remain available; no language guide was rewritten by that change.
+and review scope remain available; only the Python language guide was rewritten
+by package 03.
 
-Nine non-Python language guides are unchanged. The CSS guide has only scoped
-English policy corrections; its technical examples retain their original content.
+Package 08 rewrites TypeScript, React, and Vue in British English, with source
+checks recorded in `plans/evidence/08-typescript-react-and-vue.md` in the source
+checkout. Scoped compilation and framework checks, fixture sensitivity, and
+remaining limits are recorded in `plans/evidence/08-executable-verification.md`.
+Human acceptance and any separately agreed review evaluation remain outstanding.
+The other six non-Python language guides are unchanged. The CSS guide has only
+scoped English policy corrections; its technical examples retain their original content.
 The rewritten guides and audit evidence are English only. These limits are
 intentional deferrals for human review, not successful multilingual validation.
 Helper correctness remains package 04 work and independent review-behaviour

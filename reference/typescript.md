@@ -1,543 +1,94 @@
-# TypeScript/JavaScript Code Review Guide
+# TypeScript and JavaScript review guide
 
-> TypeScript 代码审查指南，覆盖类型系统、泛型、条件类型、strict 模式、async/await 模式等核心主题。
+Use the [review contract](review-contract.md) and the target's compiler, runtime,
+`tsconfig`, and lint configuration. Record TypeScript, Node.js or browser, and
+library versions before applying version-sensitive advice. This audit uses the
+TypeScript 6.0 documentation; it does not establish a supported compiler matrix.
+The [reference status](reference-status.md) records the exercised versions and remaining limits.
 
-## 目录
+## Types and runtime boundaries
 
-- [类型安全基础](#类型安全基础)
-- [泛型模式](#泛型模式)
-- [高级类型](#高级类型)
-- [Strict 模式配置](#strict-模式配置)
-- [异步处理](#异步处理)
-- [不可变性](#不可变性)
-- [ESLint 规则](#eslint-规则)
-- [Review Checklist](#review-checklist)
-
----
-
-## 类型安全基础
-
-### 避免使用 any
+Type annotations, assertions (`as T`, `!`), and generic response types do not
+validate external data. Follow untrusted JSON, storage, and message inputs to
+their first use. Check the actual fields needed by the consumer. For example,
+testing that `value` exists does not prove that it is a string:
 
 ```typescript
-// ❌ Using any defeats type safety
-function processData(data: any) {
-  return data.value;  // 无类型检查，运行时可能崩溃
-}
-
-// ✅ Use proper types
-interface DataPayload {
-  value: string;
-}
-function processData(data: DataPayload) {
+function readValue(data: unknown): string {
+  if (typeof data !== 'object' || data === null ||
+      !('value' in data) || typeof data.value !== 'string') {
+    throw new Error('Expected a string value');
+  }
   return data.value;
 }
-
-// ✅ 未知类型用 unknown + 类型守卫
-function processUnknown(data: unknown) {
-  if (typeof data === 'object' && data !== null && 'value' in data) {
-    return (data as { value: string }).value;
-  }
-  throw new Error('Invalid data');
-}
 ```
 
-### 类型收窄
-
-```typescript
-// ❌ 不安全的类型断言
-function getLength(value: string | string[]) {
-  return (value as string[]).length;  // 如果是 string 会出错
-}
-
-// ✅ 使用类型守卫
-function getLength(value: string | string[]): number {
-  if (Array.isArray(value)) {
-    return value.length;
-  }
-  return value.length;
-}
-
-// ✅ 使用 in 操作符
-interface Dog { bark(): void }
-interface Cat { meow(): void }
-
-function speak(animal: Dog | Cat) {
-  if ('bark' in animal) {
-    animal.bark();
-  } else {
-    animal.meow();
-  }
-}
-```
-
-### 字面量类型与 as const
-
-```typescript
-// ❌ 类型过于宽泛
-const config = {
-  endpoint: '/api',
-  method: 'GET'  // 类型是 string
-};
-
-// ✅ 使用 as const 获得字面量类型
-const config = {
-  endpoint: '/api',
-  method: 'GET'
-} as const;  // method 类型是 'GET'
-
-// ✅ 用于函数参数
-function request(method: 'GET' | 'POST', url: string) { ... }
-request(config.method, config.endpoint);  // 正确！
-```
-
----
-
-## 泛型模式
-
-### 基础泛型
-
-```typescript
-// ❌ 重复代码
-function getFirstString(arr: string[]): string | undefined {
-  return arr[0];
-}
-function getFirstNumber(arr: number[]): number | undefined {
-  return arr[0];
-}
-
-// ✅ 使用泛型
-function getFirst<T>(arr: T[]): T | undefined {
-  return arr[0];
-}
-```
-
-### 泛型约束
-
-```typescript
-// ❌ 泛型没有约束，无法访问属性
-function getProperty<T>(obj: T, key: string) {
-  return obj[key];  // Error: 无法索引
-}
-
-// ✅ 使用 keyof 约束
-function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
-  return obj[key];
-}
-
-const user = { name: 'Alice', age: 30 };
-getProperty(user, 'name');  // 返回类型是 string
-getProperty(user, 'age');   // 返回类型是 number
-getProperty(user, 'foo');   // Error: 'foo' 不在 keyof User
-```
-
-### 泛型默认值
-
-```typescript
-// ✅ 提供合理的默认类型
-interface ApiResponse<T = unknown> {
-  data: T;
-  status: number;
-  message: string;
-}
-
-// 可以不指定泛型参数
-const response: ApiResponse = { data: null, status: 200, message: 'OK' };
-// 也可以指定
-const userResponse: ApiResponse<User> = { ... };
-```
-
-### 常见泛型工具类型
-
-```typescript
-// ✅ 善用内置工具类型
-interface User {
-  id: number;
-  name: string;
-  email: string;
-}
-
-type PartialUser = Partial<User>;         // 所有属性可选
-type RequiredUser = Required<User>;       // 所有属性必需
-type ReadonlyUser = Readonly<User>;       // 所有属性只读
-type UserKeys = keyof User;               // 'id' | 'name' | 'email'
-type NameOnly = Pick<User, 'name'>;       // { name: string }
-type WithoutId = Omit<User, 'id'>;        // { name: string; email: string }
-type UserRecord = Record<string, User>;   // { [key: string]: User }
-```
-
----
-
-## 高级类型
-
-### 条件类型
-
-```typescript
-// ✅ 根据输入类型返回不同类型
-type IsString<T> = T extends string ? true : false;
-
-type A = IsString<string>;  // true
-type B = IsString<number>;  // false
-
-// ✅ 提取数组元素类型
-type ElementType<T> = T extends (infer U)[] ? U : never;
-
-type Elem = ElementType<string[]>;  // string
-
-// ✅ 提取函数返回类型（内置 ReturnType）
-type MyReturnType<T> = T extends (...args: any[]) => infer R ? R : never;
-```
-
-### 映射类型
-
-```typescript
-// ✅ 转换对象类型的所有属性
-type Nullable<T> = {
-  [K in keyof T]: T[K] | null;
-};
-
-interface User {
-  name: string;
-  age: number;
-}
-
-type NullableUser = Nullable<User>;
-// { name: string | null; age: number | null }
-
-// ✅ 添加前缀
-type Getters<T> = {
-  [K in keyof T as `get${Capitalize<string & K>}`]: () => T[K];
-};
-
-type UserGetters = Getters<User>;
-// { getName: () => string; getAge: () => number }
-```
-
-### 模板字面量类型
-
-```typescript
-// ✅ 类型安全的事件名称
-type EventName = 'click' | 'focus' | 'blur';
-type HandlerName = `on${Capitalize<EventName>}`;
-// 'onClick' | 'onFocus' | 'onBlur'
-
-// ✅ API 路由类型
-type ApiRoute = `/api/${string}`;
-const route: ApiRoute = '/api/users';  // OK
-const badRoute: ApiRoute = '/users';   // Error
-```
-
-### Discriminated Unions
-
-```typescript
-// ✅ 使用判别属性实现类型安全
-type Result<T, E> =
-  | { success: true; data: T }
-  | { success: false; error: E };
-
-function handleResult(result: Result<User, Error>) {
-  if (result.success) {
-    console.log(result.data.name);  // TypeScript 知道 data 存在
-  } else {
-    console.log(result.error.message);  // TypeScript 知道 error 存在
-  }
-}
-
-// ✅ Redux Action 模式
-type Action =
-  | { type: 'INCREMENT'; payload: number }
-  | { type: 'DECREMENT'; payload: number }
-  | { type: 'RESET' };
-
-function reducer(state: number, action: Action): number {
-  switch (action.type) {
-    case 'INCREMENT':
-      return state + action.payload;  // payload 类型已知
-    case 'DECREMENT':
-      return state - action.payload;
-    case 'RESET':
-      return 0;  // 这里没有 payload
-  }
-}
-```
-
----
-
-## Strict 模式配置
-
-### 推荐的 tsconfig.json
-
-```json
-{
-  "compilerOptions": {
-    // ✅ 必须开启的 strict 选项
-    "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "strictBindCallApply": true,
-    "strictPropertyInitialization": true,
-    "noImplicitThis": true,
-    "useUnknownInCatchVariables": true,
-
-    // ✅ 额外推荐选项
-    "noUncheckedIndexedAccess": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "exactOptionalPropertyTypes": true,
-    "noPropertyAccessFromIndexSignature": true
-  }
-}
-```
-
-### noUncheckedIndexedAccess 的影响
-
-```typescript
-// tsconfig: "noUncheckedIndexedAccess": true
-
-const arr = [1, 2, 3];
-const first = arr[0];  // 类型是 number | undefined
-
-// ❌ 直接使用可能出错
-console.log(first.toFixed(2));  // Error: 可能是 undefined
-
-// ✅ 先检查
-if (first !== undefined) {
-  console.log(first.toFixed(2));
-}
-
-// ✅ 或使用非空断言（确定时）
-console.log(arr[0]!.toFixed(2));
-```
-
----
-
-## 异步处理
-
-### Promise 错误处理
-
-```typescript
-// ❌ Not handling async errors
-async function fetchUser(id: string) {
-  const response = await fetch(`/api/users/${id}`);
-  return response.json();  // 网络错误未处理
-}
-
-// ✅ Handle errors properly
-async function fetchUser(id: string): Promise<User> {
-  try {
-    const response = await fetch(`/api/users/${id}`);
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-    }
-    return await response.json();
-  } catch (error) {
-    if (error instanceof Error) {
-      throw new Error(`Failed to fetch user: ${error.message}`);
-    }
-    throw error;
-  }
-}
-```
-
-### Promise.all vs Promise.allSettled
-
-```typescript
-// ❌ Promise.all 一个失败全部失败
-async function fetchAllUsers(ids: string[]) {
-  const users = await Promise.all(ids.map(fetchUser));
-  return users;  // 一个失败就全部失败
-}
-
-// ✅ Promise.allSettled 获取所有结果
-async function fetchAllUsers(ids: string[]) {
-  const results = await Promise.allSettled(ids.map(fetchUser));
-
-  const users: User[] = [];
-  const errors: Error[] = [];
-
-  for (const result of results) {
-    if (result.status === 'fulfilled') {
-      users.push(result.value);
-    } else {
-      errors.push(result.reason);
-    }
-  }
-
-  return { users, errors };
-}
-```
-
-### 竞态条件处理
-
-```typescript
-// ❌ 竞态条件：旧请求可能覆盖新请求
-function useSearch() {
-  const [query, setQuery] = useState('');
-  const [results, setResults] = useState([]);
-
-  useEffect(() => {
-    fetch(`/api/search?q=${query}`)
-      .then(r => r.json())
-      .then(setResults);  // 旧请求可能后返回！
-  }, [query]);
-}
-
-// ✅ 使用 AbortController
-function useSearch() {
-  const [query, setQuery] = useState('');
-  const [results, setResults] = useState([]);
-
-  useEffect(() => {
-    const controller = new AbortController();
-
-    fetch(`/api/search?q=${query}`, { signal: controller.signal })
-      .then(r => r.json())
-      .then(setResults)
-      .catch(e => {
-        if (e.name !== 'AbortError') throw e;
-      });
-
-    return () => controller.abort();
-  }, [query]);
-}
-```
-
----
-
-## 不可变性
-
-### Readonly 与 ReadonlyArray
-
-```typescript
-// ❌ 可变参数可能被意外修改
-function processUsers(users: User[]) {
-  users.sort((a, b) => a.name.localeCompare(b.name));  // 修改了原数组！
-  return users;
-}
-
-// ✅ 使用 readonly 防止修改
-function processUsers(users: readonly User[]): User[] {
-  return [...users].sort((a, b) => a.name.localeCompare(b.name));
-}
-
-// ✅ 深度只读
-type DeepReadonly<T> = {
-  readonly [K in keyof T]: T[K] extends object ? DeepReadonly<T[K]> : T[K];
-};
-```
-
-### 不变式函数参数
-
-```typescript
-// ✅ 使用 as const 和 readonly 保护数据
-function createConfig<T extends readonly string[]>(routes: T) {
-  return routes;
-}
-
-const routes = createConfig(['home', 'about', 'contact'] as const);
-// 类型是 readonly ['home', 'about', 'contact']
-```
-
----
-
-## ESLint 规则
-
-### 推荐的 @typescript-eslint 规则
-
-```javascript
-// .eslintrc.js
-module.exports = {
-  extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
-    'plugin:@typescript-eslint/strict'
-  ],
-  rules: {
-    // ✅ 类型安全
-    '@typescript-eslint/no-explicit-any': 'error',
-    '@typescript-eslint/no-unsafe-assignment': 'error',
-    '@typescript-eslint/no-unsafe-member-access': 'error',
-    '@typescript-eslint/no-unsafe-call': 'error',
-    '@typescript-eslint/no-unsafe-return': 'error',
-
-    // ✅ 最佳实践
-    '@typescript-eslint/explicit-function-return-type': 'warn',
-    '@typescript-eslint/no-floating-promises': 'error',
-    '@typescript-eslint/await-thenable': 'error',
-    '@typescript-eslint/no-misused-promises': 'error',
-
-    // ✅ 代码风格
-    '@typescript-eslint/consistent-type-imports': 'error',
-    '@typescript-eslint/prefer-nullish-coalescing': 'error',
-    '@typescript-eslint/prefer-optional-chain': 'error'
-  }
-};
-```
-
-### 常见 ESLint 错误修复
-
-```typescript
-// ❌ no-floating-promises: Promise 必须被处理
-async function save() { ... }
-save();  // Error: 未处理的 Promise
-
-// ✅ 显式处理
-await save();
-// 或
-save().catch(console.error);
-// 或明确忽略
-void save();
-
-// ❌ no-misused-promises: 不能在非 async 位置使用 Promise
-const items = [1, 2, 3];
-items.forEach(async (item) => {  // Error!
-  await processItem(item);
-});
-
-// ✅ 使用 for...of
-for (const item of items) {
-  await processItem(item);
-}
-// 或 Promise.all
-await Promise.all(items.map(processItem));
-```
-
----
-
-## Review Checklist
-
-### 类型系统
-- [ ] 没有使用 `any`（使用 `unknown` + 类型守卫代替）
-- [ ] 接口和类型定义完整且有意义的命名
-- [ ] 使用泛型提高代码复用性
-- [ ] 联合类型有正确的类型收窄
-- [ ] 善用工具类型（Partial、Pick、Omit 等）
-
-### 泛型
-- [ ] 泛型有适当的约束（extends）
-- [ ] 泛型参数有合理的默认值
-- [ ] 避免过度泛型化（KISS 原则）
-
-### Strict 模式
-- [ ] tsconfig.json 启用了 strict: true
-- [ ] 启用了 noUncheckedIndexedAccess
-- [ ] 没有使用 @ts-ignore（改用 @ts-expect-error）
-
-### 异步代码
-- [ ] async 函数有错误处理
-- [ ] Promise rejection 被正确处理
-- [ ] 没有 floating promises（未处理的 Promise）
-- [ ] 并发请求使用 Promise.all 或 Promise.allSettled
-- [ ] 竞态条件使用 AbortController 处理
-
-### 不可变性
-- [ ] 不直接修改函数参数
-- [ ] 使用 spread 操作符创建新对象/数组
-- [ ] 考虑使用 readonly 修饰符
-
-### ESLint
-- [ ] 使用 @typescript-eslint/recommended
-- [ ] 没有 ESLint 警告或错误
-- [ ] 使用 consistent-type-imports
+This standalone example targets TypeScript 6.0 with `strict: true`,
+`noUncheckedIndexedAccess: true`, and `target: ES2022`. Compilation and runtime
+checks passed on TypeScript 6.0.3 and Node.js 24.22.1. It validates one field,
+not a complete application schema.
+`unknown` forces inspection; a truthful type guard or schema validator must still
+establish its claimed type. An intentional `any` at an integration boundary is
+not independently a defect. Identify an unsafe consumer or violated project rule.
+See [everyday types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
+and [narrowing](https://www.typescriptlang.org/docs/handbook/2/narrowing.html).
+
+For unions, check that narrowing matches the operation: both `string` and
+`string[]` have `.length`, so reading that property is a valid clean control.
+An array-only operation such as `.push()` requires different evidence. Check
+null, missing discriminants, and exhaustive handling where the input contract
+requires them. Compile-time exhaustiveness cannot establish the shape of JSON.
+
+## Indexed access, generics, and compiler settings
+
+An empty array or absent dictionary key can produce `undefined`. Inspect the
+lookup's bounds and caller guarantees even when the compiler reports a plain
+value type. `noUncheckedIndexedAccess` adds `undefined` to unchecked indexed
+reads; a tuple with a known element has different guarantees. See the
+[compiler option](https://www.typescriptlang.org/tsconfig/noUncheckedIndexedAccess.html).
+Do not prescribe `strict` or extra flags as universal correctness gates.
+
+Check that generics preserve a real relation between inputs and outputs.
+`K extends keyof T` constrains a typed key, but does not validate an arbitrary
+runtime string. Mapped, conditional, and template literal types remain
+compile-time descriptions. Prefer the project's working design over a rewrite
+for generic reuse. See [generics](https://www.typescriptlang.org/docs/handbook/2/generics.html).
+
+`readonly`, `Readonly<T>`, and `as const` do not freeze runtime objects.
+Readonly properties also do not make nested objects immutable. Trace shared
+aliases and ownership before calling mutation a defect; copying an array leaves
+its elements shared. See [object types](https://www.typescriptlang.org/docs/handbook/2/objects.html).
+
+## Promise rejection and task ownership
+
+Trace each promise to an awaiting caller, returned chain, or terminal rejection
+handler. An async function may correctly propagate failure to its caller without
+local `try/catch`. Conversely, throwing inside a detached `.catch()` creates a
+new rejected promise. `void task()` discards a value; it does not handle rejection.
+Lint configuration and intentional background work need the project's contract.
+See [no-floating-promises](https://typescript-eslint.io/rules/no-floating-promises/).
+
+`forEach(async ...)` does not wait for its callbacks. If completion matters,
+check that the owner awaits sequential work or a collected promise set.
+`Promise.all` is valid when every result is required: early rejection does not
+cancel the other operations. `allSettled` is appropriate when independent
+outcomes must all be observed. Neither choice alone is a bug. See the
+[ECMAScript promise algorithms](https://tc39.es/ecma262/multipage/control-abstraction-objects.html#sec-promise.all).
+
+## Fetch, cancellation, and stale results
+
+Fetch resolves on HTTP error responses; inspect `response.ok` when success is
+required, then validate the body for the consumer. Cancellation can reject fetch
+or body consumption. It does not undo a server mutation or cancel arbitrary
+post-processing. See the [Fetch standard](https://fetch.spec.whatwg.org/#fetch-method).
+
+For a latest-request-wins interface, trace success, error, and loading writes.
+An obsolete request must not publish any of them after replacement or disposal.
+Pair cancellation with an ownership check when continuations can outlive the
+request. An abort-only chain that rethrows other errors without an owner is not
+a complete repair. See the illustrative [React effect](react.md#effects-and-request-ownership)
+and [Vue watcher](vue.md#watchers-and-request-ownership); both have scoped checks under the versions recorded in the reference status.
+
+Use controlled promises to finish B before A, reject A after B succeeds, dispose
+before settlement, and change reactive input. Check both a transport that honours
+abort and one whose work is already completing. Avoid network timing as evidence.
