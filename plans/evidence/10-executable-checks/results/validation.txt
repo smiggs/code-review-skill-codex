@@ -1,0 +1,46 @@
+== date (UTC):
+Wed Oct 28 11:41:29 PM UTC 2026
+
+== branch:
+codex/package-10-java
+== validated head:
+da80b7dbd37388d5f12ebb5284022c0505b165fd
+
+== git diff --check (unstaged+staged):
+whitespace clean
+
+== committed changes relative to origin/main (git diff --stat origin/main HEAD):
+ reference/reference-status.md                      |  16 +-
+ 39 files changed, 3279 insertions(+), 350 deletions(-)
+
+== worktree state relative to validated head (git status --porcelain):
+(empty above means no unstaged or untracked changes at capture time; this record and the candidate manifest are regenerated in the finalising commit, so a recorded head cannot record itself)
+
+== content identity for the checked files:
+The checked files are pinned by the per-file SHA-256 list in
+plans/evidence/10-executable-checks/results/candidate-manifest.json,
+regenerated for the same commit that contains this record; its combined
+digest is stated inside that manifest.
+
+== repository helper/validator tests:
+Ran 18 tests in 2.295s
+
+OK
+
+== package 03 guide-example checks:
+Ran 13 tests in 0.015s
+
+OK
+
+== skill structural validation (checks all relative links):
+Skill structure and local link targets are valid (review quality is not evaluated).
+
+== skill-creator quick validation (preserved copy of the system script):
+Skill is valid!
+
+== house-style lint (changed files; --allow for verbatim quote words):
+reference/common-bugs-checklist.md:1:1: warning: title-case: heading may be Title Case: "# Common Bugs Checklist"; use sentence case unless the capitals are proper nouns
+reference/common-bugs-checklist.md:151:11: error: ize-spelling: -ize spelling "sanitizing" in prose
+reference/common-bugs-checklist.md:156:1: warning: title-case: heading may be Title Case: "### Test Quality Issues"; use sentence case unless the capitals are proper nouns
+reference/common-bugs-checklist.md:157:49: error: us-spelling: American spelling "behavior" in prose
+2 error(s), 2 warning(s) in 12 file(s)

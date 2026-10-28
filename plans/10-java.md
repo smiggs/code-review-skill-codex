@@ -1,6 +1,11 @@
 # Package 10: Java
 
-Status: planned; implementation and technical verification have not begun.
+Status: technical audit candidate prepared; the user conditionally accepted
+it on 28 October 2026, subject to the
+[CodeRabbit and merge gates](evidence/10-pr-approval.md). See the
+[audit evidence](evidence/10-java.md) for the checked scope, commands,
+candidate identity, and the separately prepared evaluation boundary.
+Behavioural evaluation acceptance remains a separate decision.
 
 ## Outcome
 

@@ -1,0 +1,149 @@
+{
+  "guide": "reference/java.md",
+  "guide_sha256": "56e8a375dfab4fd7a49ecadd67f3a2b86d1f832177952a6a1619a0fe727d5535",
+  "blocks": 8,
+  "jdk_versions": {
+    "21": "openjdk version \"21.0.13\" 2026-10-20 LTS",
+    "17": "openjdk version \"17.0.21\" 2026-10-20"
+  },
+  "block_sha256": {
+    "UserDto": {
+      "sha256": "b23733162c94918867455288e684963ed7ec5bf6770ca3ba37db72e0cdb9d3c8"
+    },
+    "TypeDescriber": {
+      "sha256": "18a0a08dd8a4b79e603f13b976046c5fab21f10fbb7e26a6c0c679c7232b2d3d"
+    },
+    "JsonTemplates": {
+      "sha256": "c5250c2170d8aff8de75c8be55823e57be470f354c43828d8376a95eea967f24"
+    },
+    "LoggedResource": {
+      "sha256": "1ee437db792615f6c17a52ad44dbc32df6117358b85ab912c70e0958364df7bd"
+    },
+    "ExecutorOwnership": {
+      "sha256": "7fb7898dbd659c7aabdd83c0d4388cf960e35440f1811c8d70d968109d7abe16"
+    },
+    "VirtualExecutorOwnership": {
+      "sha256": "ba72dd4714b3dd62278d81021f65625da1ff88f57b2121e603f7bd7be2f6218b"
+    },
+    "ConcurrentLedger": {
+      "sha256": "5152a6a7263cd7d2cc3e500b8f138f8566bf6fce2ad10a07372c55ba42d8b0e2"
+    },
+    "EventFormatter": {
+      "sha256": "b1d3af9128400af0f076285890405bc5865d067737d5461e584d5f08cc6f7485"
+    }
+  },
+  "compile_matrix": {
+    "UserDto": {
+      "release-21": {
+        "status": "compiled",
+        "output": ""
+      },
+      "release-17-plain": {
+        "status": "compiled",
+        "output": ""
+      },
+      "release-17-preview": {
+        "status": "compiled",
+        "output": ""
+      }
+    },
+    "TypeDescriber": {
+      "release-21": {
+        "status": "compiled",
+        "output": ""
+      },
+      "release-17-plain": {
+        "status": "rejected",
+        "output": "/tmp/cr-plan-10/plans/evidence/10-executable-checks/.generated/guide-src/TypeDescriber.java:5: error: patterns in switch statements are not supported in -source 17\n            case Integer i -> \"integer %d\".formatted(i);\n                 ^\n  (use -source 21 or higher to enable patterns in switch statements)\n1 error"
+      },
+      "release-17-preview": {
+        "status": "compiled",
+        "output": ""
+      }
+    },
+    "JsonTemplates": {
+      "release-21": {
+        "status": "compiled",
+        "output": ""
+      },
+      "release-17-plain": {
+        "status": "compiled",
+        "output": ""
+      },
+      "release-17-preview": {
+        "status": "compiled",
+        "output": ""
+      }
+    },
+    "LoggedResource": {
+      "release-21": {
+        "status": "compiled",
+        "output": ""
+      },
+      "release-17-plain": {
+        "status": "compiled",
+        "output": ""
+      },
+      "release-17-preview": {
+        "status": "compiled",
+        "output": ""
+      }
+    },
+    "ExecutorOwnership": {
+      "release-21": {
+        "status": "compiled",
+        "output": ""
+      },
+      "release-17-plain": {
+        "status": "compiled",
+        "output": ""
+      },
+      "release-17-preview": {
+        "status": "compiled",
+        "output": ""
+      }
+    },
+    "VirtualExecutorOwnership": {
+      "release-21": {
+        "status": "compiled",
+        "output": ""
+      },
+      "release-17-plain": {
+        "status": "rejected",
+        "output": "/tmp/cr-plan-10/plans/evidence/10-executable-checks/.generated/guide-src/VirtualExecutorOwnership.java:7: error: cannot find symbol\n        try (ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()) {\n                                                 ^\n  symbol:   method newVirtualThreadPerTaskExecutor()\n  location: class Executors\n/tmp/cr-plan-10/plans/evidence/10-executable-checks/.generated/guide-src/VirtualExecutorOwnership.java:7: error: incompatible types: try-with-resources not applicable to variable type\n        try (ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()) {\n                             ^\n    (ExecutorService cannot be converted to AutoCloseable)\n/tmp/cr-plan-10/plans/evidence/10-executable-checks/.generated/guide-src/VirtualExecutorOwnership.java:8: error: cannot find symbol\n            return executor.submit(() -> Thread.currentThread().isVirtual()).get();\n                                                               ^\n  symbol:   method isVirtual()\n  location: class Thread\n/tmp/cr-plan-10/plans/evidence/10-executable-checks/.generated/guide-src/VirtualExecutorOwnership.java:8: error: incompatible types: Object cannot be converted to boolean\n            return executor.submit(() -> Thread.currentThread().isVirtual()).get();\n                                                                                ^\n4 errors"
+      },
+      "release-17-preview": {
+        "status": "rejected",
+        "output": "/tmp/cr-plan-10/plans/evidence/10-executable-checks/.generated/guide-src/VirtualExecutorOwnership.java:7: error: cannot find symbol\n        try (ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()) {\n                                                 ^\n  symbol:   method newVirtualThreadPerTaskExecutor()\n  location: class Executors\n/tmp/cr-plan-10/plans/evidence/10-executable-checks/.generated/guide-src/VirtualExecutorOwnership.java:7: error: incompatible types: try-with-resources not applicable to variable type\n        try (ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()) {\n                             ^\n    (ExecutorService cannot be converted to AutoCloseable)\n/tmp/cr-plan-10/plans/evidence/10-executable-checks/.generated/guide-src/VirtualExecutorOwnership.java:8: error: cannot find symbol\n            return executor.submit(() -> Thread.currentThread().isVirtual()).get();\n                                                               ^\n  symbol:   method isVirtual()\n  location: class Thread\n/tmp/cr-plan-10/plans/evidence/10-executable-checks/.generated/guide-src/VirtualExecutorOwnership.java:8: error: incompatible types: Object cannot be converted to boolean\n            return executor.submit(() -> Thread.currentThread().isVirtual()).get();\n                                                                                ^\n4 errors"
+      }
+    },
+    "ConcurrentLedger": {
+      "release-21": {
+        "status": "compiled",
+        "output": ""
+      },
+      "release-17-plain": {
+        "status": "compiled",
+        "output": ""
+      },
+      "release-17-preview": {
+        "status": "compiled",
+        "output": ""
+      }
+    },
+    "EventFormatter": {
+      "release-21": {
+        "status": "compiled",
+        "output": ""
+      },
+      "release-17-plain": {
+        "status": "compiled",
+        "output": ""
+      },
+      "release-17-preview": {
+        "status": "compiled",
+        "output": ""
+      }
+    }
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "base_revision": "ae61df8803e4d7d21ec67c63eba3523f8df3e25b (main after PR 11)",
+  "branch": "codex/package-10-java",
+  "algorithm": "SHA-256 of the sorted concatenation of each file's UTF-8 path, NUL, SHA-256 hex digest of the file bytes, NUL",
+  "combined_sha256": "1e4e4d724af3018044bf399085967824462ccd4916295255f9de5c35816a8042",
+  "excludes": [
+    "plans/evidence/10-java.md",
+    "this manifest",
+    "generated sources, classes, build caches, and toolchains under ~/.cache/cr-plan-10"
+  ],
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "9c8dcb048f9aae68db4cf199863ad4e83f292a19c37ed2f85fd1c80cbe17f98e"
+    },
+    {
+      "path": "plans/10-java.md",
+      "sha256": "cc30ad16914c69964c77e902149ce3c3b20f4e1efa5e05d13b87d907d839cf4a"
+    },
+    {
+      "path": "plans/README.md",
+      "sha256": "bb5d7c7d5ec08607727b95f70efa4146110028b1748a8af792654eb01666e9ec"
+    },
+    {
+      "path": "plans/evidence/10-executable-checks/.gitignore",
+      "sha256": "36bc22926a743f5b85f9c1f876628d55338d110f85c7ef300d462910d27cbe05"
+    },
+    {
+      "path": "plans/evidence/10-executable-checks/README.md",
+      "sha256": "3537d68da3d1f43ed99ba3bf405c1515903668889309f7ae36137c5ff47b477e"
+    },
+    {
+      "path": "plans/evidence/10-executable-checks/extract.py",
+      "sha256": "f01ca4ffef40949e0a1b22215caf6dadc4686ee4ed8755c057f116b625497f36"
+    },
+    {
+      "path": "plans/evidence/10-executable-checks/fixtures/README.md",
+      "sha256": "17f7736d1f4bab62e15a0c7c52fd26b1331a4363910f60f8a0ac53caed7f4468"
+    },
+    {
+      "path": "plans/evidence/10-executable-checks/fixtures/answer-key.md",
+      "sha256": "f46e5dc4695ce9dad288860eb5c955239a5d4058f9852c20b1f2b67c6cc71e39"
+    },
+    {
+      "path": "plans/evidence/10-executable-checks/fixtures/failure-observability/base/BatchRunner.java",
+      "sha256": "edb85e13bfab79e6ea0ab29837ed1c583c246e9985a5e23f5a549e06c475ed60"
+    },
+    {
+      "path": "plans/evidence/10-executable-checks/fixtures/failure-observability/head/BatchRunner.java",
+      "sha256": "8b419ea9c93ea8ce297da18cbf794d9a56c33d636b041f821eb0bc7352db393c"
+    },
+    {
+      "path": "plans/evidence/10-executable-checks/fixtures/jpa-membership/base/ParentReader.java",
+      "sha256": "2be79233fe432bfe8510f69b38d9e27923ccd96677a24bdb6e03b61fe4c66f35"
+    },
+    {
+      "path": "plans/evidence/10-executable-checks/fixtures/jpa-membership/head/ParentReader.java",
+      "sha256": "5d7983cc766325857e44d30e765430ecaf65d015911ccfb4b666d09fe78834c4"
+    },
+    {
+      "path": "plans/evidence/10-executable-checks/pom.xml",
+      "sha256": "56be3fe6fdc5c5f052f78fb399e97b25a90be25dac4558df35a9faa2969c0ced"
+    },
+    {
+      "path": "plans/evidence/10-executable-checks/results/extract-verify-run.txt",
+      "sha256": "8636837cc84c9fef939c1ca37daaa88563b9f393c08c22d3c82efe66119b9bf9"
+    },
+    {
+      "path": "plans/evidence/10-executable-checks/results/extract.txt",
+      "sha256": "e4e140699381870a51239edac7f8858879cc63434f2561e10a2fc066c4ba5c12"
+    },
+    {
+      "path": "plans/evidence/10-executable-checks/results/fixture-failure-observability-base.txt",
+      "sha256": "88e2e5239d7990b965bdbb01eeaf5fcb89209863e168f63aaa0aa928f8afc637"
+    },
+    {
+      "path": "plans/evidence/10-executable-checks/results/fixture-failure-observability-head.txt",
+      "sha256": "d1a25bbc159827a77de7a0872e834f0f470c01ea89eeb5805c9754cf45e43d2c"
+    },
+    {
+      "path": "plans/evidence/10-executable-checks/results/fixture-jpa-membership-base.txt",
+      "sha256": "8db0db56f0f20011a297a48dbf715db28be4b01f8bf3c1667c9e33260aa7acf5"
+    },
+    {
+      "path": "plans/evidence/10-executable-checks/results/fixture-jpa-membership-head.txt",
+      "sha256": "9e5251219616a0b3083b1b0f3808fc4ce8859dcd910337aad82e4b79615da74a"
+    },
+    {
+      "path": "plans/evidence/10-executable-checks/results/full-suite.txt",
+      "sha256": "aec3eb50ad18035e9e65d0e593640791793a0281c08785b918534d94ce7d12b4"
+    },
+    {
+      "path": "plans/evidence/10-executable-checks/results/sensitivity.txt",
+      "sha256": "8636837cc84c9fef939c1ca37daaa88563b9f393c08c22d3c82efe66119b9bf9"
+    },
+    {
+      "path": "plans/evidence/10-executable-checks/results/source-identities.json",
+      "sha256": "a43c1b6ee97f1873099db108c942b57fd6c5d14a2c5ee39734193085176d1d4b"
+    },
+    {
+      "path": "plans/evidence/10-executable-checks/results/validation.txt",
+      "sha256": "7146b16d1a185d0d20aea2041f24fa42b98a62aa3e1e289a704f6058ecb1caed"
+    },
+    {
+      "path": "plans/evidence/10-executable-checks/src/test/java/invalid/example/package10/ConcurrentMapContractTest.java",
+      "sha256": "e91b0abc1a7d9ef1e3db1d7c6f8f9ca6d93d75289f90cec904fc0cb33f8fa3ad"
+    },
+    {
+      "path": "plans/evidence/10-executable-checks/src/test/java/invalid/example/package10/ExecutorContractTest.java",
+      "sha256": "90010f6481220744ab057e1ec202254c67de9a2b51c8951520459fcff5037a7e"
+    },
+    {
+      "path": "plans/evidence/10-executable-checks/src/test/java/invalid/example/package10/Extracted.java",
+      "sha256": "1c8047ae08cc0bfd040dea7cdf5f7ea3b67aefaf227c412d15d3c8a7f9665b4d"
+    },
+    {
+      "path": "plans/evidence/10-executable-checks/src/test/java/invalid/example/package10/GuideExamplesTest.java",
+      "sha256": "1146d02f91f78908b527439c8312fada00c148936101bfa23dfa4ad0417cc6de"
+    },
+    {
+      "path": "plans/evidence/10-executable-checks/src/test/java/invalid/example/package10/JpaFetchTest.java",
+      "sha256": "1ecce8b55a27ca8a7070421de0edf7c4c1bf783bb879904284f71b7f94d2bff2"
+    },
+    {
+      "path": "plans/evidence/10-executable-checks/src/test/java/invalid/example/package10/SpringProxyTransactionTest.java",
+      "sha256": "4d5615edd212fde56b7bbbb75adea5672d46470bb40c716386a475888c0d109f"
+    },
+    {
+      "path": "plans/evidence/10-executable-checks/src/test/java/invalid/example/package10/fixturesupport/BatchRunnerContractTest.java",
+      "sha256": "664389f440386006d88dc9d6d888f3a7b6c2b0daab08c6958df3cc8b9a4cb58e"
+    },
+    {
+      "path": "plans/evidence/10-executable-checks/src/test/java/invalid/example/package10/fixturesupport/ParentReaderContractTest.java",
+      "sha256": "cf855ad760cffda6bfebb9516b707e150ac10f1fee965aea11e6b4fa5345895e"
+    },
+    {
+      "path": "plans/evidence/10-executable-checks/verify.py",
+      "sha256": "80c2b31f6d8f7b4543796b624691ae5f29482ba419b80bacef4cdf8fe8978239"
+    },
+    {
+      "path": "plans/evidence/10-pr-approval.md",
+      "sha256": "0d6c7d58335cd4f9fc8d006f324517c8a685e9e736edec5ef2d6c5f341eefcc9"
+    },
+    {
+      "path": "reference/common-bugs-checklist.md",
+      "sha256": "ded8944e8c1830ce5e4efc3e3d2b204fd51abbe08db90c6398f1a14f03ab96f4"
+    },
+    {
+      "path": "reference/java.md",
+      "sha256": "56e8a375dfab4fd7a49ecadd67f3a2b86d1f832177952a6a1619a0fe727d5535"
+    },
+    {
+      "path": "reference/provenance.md",
+      "sha256": "5f3181fb5c2cfed014ecb60574770250cffcc4d1e8901d8889643e9df69eef7a"
+    },
+    {
+      "path": "reference/reference-status.md",
+      "sha256": "90c98907f66323cd6e23e526564fc16faf3d2958477821fc7e7a8ad7247637a7"
+    }
+  ]
+}

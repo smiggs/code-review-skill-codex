@@ -1,0 +1,5 @@
+fixture-jpa-membership-head: expected defect detected
+fixture-jpa-membership-base: passed
+fixture-failure-observability-head: expected defect detected
+fixture-failure-observability-base: passed
+Both defective heads rejected; both clean bases passed. No model accuracy score.
