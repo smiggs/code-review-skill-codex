@@ -28,6 +28,11 @@ Package 09 also rewrites Go and Rust, replaces their inherited universal rules
 with requirement-based prompts, consolidates Rust checklist duplicates, and adds
 Go routing. Scoped executable checks and conditional human acceptance are recorded
 in `plans/evidence/09-go-and-rust.md` in the source checkout.
+Package 10 also rewrites Java with versioned JDK, Spring Framework, and
+Hibernate/H2 checks, adds Java checklist routing, and prepares review
+fixtures with answer keys; its candidate record and limits are in
+`plans/evidence/10-java.md` in the source checkout, and the runnable checks
+live in `plans/evidence/10-executable-checks/`.
 The skill name and singular `reference/` directory remain unchanged.
 
 ## Verification

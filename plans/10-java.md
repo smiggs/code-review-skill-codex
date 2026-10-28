@@ -1,6 +1,10 @@
 # Package 10: Java
 
-Status: planned; implementation and technical verification have not begun.
+Status: technical audit candidate prepared; the human checkpoint on the
+corrections, supported versions, retained scope, and translation limits is
+outstanding. See the [audit evidence](evidence/10-java.md) for the checked
+scope, commands, candidate identity, and the separately prepared evaluation
+boundary. Behavioural evaluation acceptance remains a separate decision.
 
 ## Outcome
 

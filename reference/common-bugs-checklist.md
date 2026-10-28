@@ -93,6 +93,22 @@ necessary clones, short standard mutex critical sections, and proven panic
 invariants are valid controls. Crate, trait, and allocation preferences alone
 do not establish defects.
 
+## Java
+
+Use the [Java guide](java.md) for JDK feature boundaries (records, switch
+patterns, text blocks, virtual threads with their preview and API limits),
+resource closure under failure, executor ownership and interruption, and the
+difference between a thread-safe collection and atomic caller compound
+actions. Check Spring transaction advice against the real proxy mode and
+invocation path before reporting visibility or self-invocation problems, and
+treat `readOnly` as a hint with a project-specific effect. For persistence,
+verify fetch-join result membership (inner joins drop child-less parents),
+statement counts for eager associations, pagination behaviour with
+collection fetches, and entity equality over proxies. Fixed thread pools,
+unannotated beans, and hand-written identifier-based equality are valid
+controls; feature choice, annotation style, and framework preference alone
+do not establish defects.
+
 ## SQL
 
 ### Injection Vulnerabilities

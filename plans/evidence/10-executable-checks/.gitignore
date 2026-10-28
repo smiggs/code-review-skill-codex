@@ -1,0 +1,4 @@
+.generated/
+target/
+src/test/generated/
+src/test/java/invalid/example/package10/fixture/
