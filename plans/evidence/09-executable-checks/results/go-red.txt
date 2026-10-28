@@ -1,0 +1,6 @@
+=== RUN   TestWorkerBoundaries
+    pool_test.go:25: workers=-1 accepted
+--- FAIL: TestWorkerBoundaries (0.00s)
+FAIL
+FAIL	example.invalid/package09	0.006s
+FAIL

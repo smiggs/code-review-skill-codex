@@ -1,0 +1,53 @@
+PyYAML 6.0.3
+
+$ /usr/bin/python3 --version
+Python 3.14.4
+Exit: 0
+
+$ /tmp/package-09-toolchains/go/bin/go version
+go version go1.22.12 linux/amd64
+Exit: 0
+
+$ /tmp/package-09-toolchains/rust/bin/rustc -Vv
+rustc 1.85.0 (4d91de4e4 2025-02-17)
+binary: rustc
+commit-hash: 4d91de4e48198da2e33413efdcd9cd2cc0c46688
+commit-date: 2025-02-17
+host: x86_64-unknown-linux-gnu
+release: 1.85.0
+LLVM version: 19.1.7
+Exit: 0
+
+$ /tmp/package-09-toolchains/rust/bin/cargo --version
+cargo 1.85.0 (d73d2caf9 2024-12-31)
+Exit: 0
+
+$ git diff --check
+Exit: 0
+
+$ git diff --stat
+ plans/09-go-and-rust.md            |    4 +-
+ plans/README.md                    |    4 +-
+ reference/common-bugs-checklist.md |  384 +-----------
+ reference/go.md                    | 1157 ++++++------------------------------
+ reference/provenance.md            |    4 +
+ reference/reference-status.md      |   17 +-
+ reference/rust.md                  |  976 ++++++------------------------
+ 7 files changed, 392 insertions(+), 2154 deletions(-)
+Exit: 0
+
+$ /usr/bin/python3 -B scripts/validate-skill.py
+Skill structure and local link targets are valid (review quality is not evaluated).
+Exit: 0
+
+Repository tests: 18/18 passed; see repository-unittest.txt.
+Package 03 examples: 13/13 passed; see python-examples.txt.
+System quick validator: passed; see quick-validate.txt.
+House style: zero errors, one proper-name title warning; see house-style.txt.
+Checklist prefix before Go and suffix from SQL match the original. SKILL.md, LICENSE, and English/Chinese installation/contribution files are unchanged.
+
+All new evidence files also passed individual git diff --no-index --check checks. Captured terminal logs have only final blank lines trimmed.
+
+Miri follow-up: ten tests passed on nightly-2025-02-20, one seed/target, edition 2021. Interpreter-only inherited bounds probe exited 1 with the expected undefined-behaviour diagnostic. Updated structure/link and whitespace checks passed; house-style lint found zero errors/warnings in four changed Markdown files. Miri installation logs have terminal trailing whitespace trimmed.
+
+PR preparation: 18 repository tests, 13 Python examples, six severity fixtures, five context comparisons, six archive tests, and verification of 31 restored candidate files/seven manifests passed. The evidence-integrity regression first failed on six recorded files, then passed after routine outputs moved to ignored .generated/results/. Go/Rust guide bodies and their recorded source hashes remain unchanged.

@@ -1,0 +1,12 @@
+{
+  "reference/go.md": {
+    "sha256": "c8b0ceece0ccefe29cab9fd52e8bcb3e8f880c7941ddee0b2702272b87545b30",
+    "code_blocks": 1,
+    "extracted_sha256": "9e6e7ce2d1d0d6cc7d82f3571a30c6020ae9ce628162ef807fbf9706d0b09552"
+  },
+  "reference/rust.md": {
+    "sha256": "039972a57dbe4748b7d01a3186e4b29a45a9a4ee58dbf00e011db37e69bd9b08",
+    "code_blocks": 4,
+    "extracted_sha256": "0953ba47e98e9bf22c1bdd33f5bedb8e10ee71a36306588b7cdeec3e552ad484"
+  }
+}

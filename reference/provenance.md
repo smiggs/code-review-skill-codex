@@ -22,6 +22,10 @@ Package 08 also rewrites TypeScript, React, and Vue guidance and consolidates it
 common-bug duplicates. Scoped TypeScript compilation and React/Vue checks pass
 under the versions and limits in the reference status; its human checkpoint and
 any separate review evaluation remain pending.
+Package 09 also rewrites Go and Rust, replaces their inherited universal rules
+with requirement-based prompts, consolidates Rust checklist duplicates, and adds
+Go routing. Scoped executable checks and conditional human acceptance are recorded
+in `plans/evidence/09-go-and-rust.md` in the source checkout.
 The skill name and singular `reference/` directory remain unchanged.
 
 ## Verification

@@ -1,0 +1,261 @@
+{
+  "base_revision": "128b6a908bdeefd5a6d1a73b2fce91c5139294f6",
+  "source_revision": "957988a23e59285ef71fa8a298734093a5a914d6",
+  "algorithm": "SHA-256 of sorted UTF-8 path, NUL, raw file bytes, NUL",
+  "combined_sha256": "aba6e6f013afdc63204e2506dae950aed4c2547e7457f0686897537cd3f69e9b",
+  "excludes": [
+    "plans/evidence/09-go-and-rust.md",
+    "this manifest",
+    "generated examples and build/cache/toolchain files"
+  ],
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "51a7ad82f976e926a846a15dd26ec42137474c0e4e1c72cc18c69ce895d424b1"
+    },
+    {
+      "path": "plans/09-go-and-rust.md",
+      "sha256": "c240c16c2c9e087c119609845c272a07d7ae311d19d510806de465c20b58bb2e"
+    },
+    {
+      "path": "plans/README.md",
+      "sha256": "75ec93b222c5aeb6748e3450d7c420ea860714e82045f53980014b826823cfd7"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/.gitignore",
+      "sha256": "2c3c3cc9bdb5aeb905588e3f1f8b5300d1beca7d7343aa124e93f72832ba9349"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/README.md",
+      "sha256": "3d76a4ab21748de47436bc64443107aff013376c60a9c24c5382088647b21512"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/extract.py",
+      "sha256": "bd4cd72db7eab722f82254b5b6c5c8c00f1ec08d946b1aafc40e253ec0989e9d"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/fixtures/README.md",
+      "sha256": "6272894baca3e838bb08dadb9a51b8d121b4055fb367f81f0518b7ff07f03a19"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/fixtures/answer-key.md",
+      "sha256": "b1ee809db6b31bac93375aa511f027b7b465acab672e44aef3e68710f8a2ed69"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/fixtures/go-worker/base/pool.go",
+      "sha256": "9e6e7ce2d1d0d6cc7d82f3571a30c6020ae9ce628162ef807fbf9706d0b09552"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/fixtures/go-worker/head/pool.go",
+      "sha256": "9deddfa30a8302b202e21ed406bda181292b6e70e42cdd7b59fbdccd25f01981"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/fixtures/rust-reader/base/reader.rs",
+      "sha256": "45c05e84bec717f4fd3da1c9dbfe233cead060904231890939262b72894c5785"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/fixtures/rust-reader/head/reader.rs",
+      "sha256": "7ee55356670fc9a0894824ffae447411e4905bddf23a698ef10684bf01d23ac9"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/go/go.mod",
+      "sha256": "2e6cee1ba764fcec0da23c0035f588f6761070f4ca5e9ce4e952ca4a15b57def"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/go/pool_test.go",
+      "sha256": "9a40a1eb8d1bbfc79a25c29b31380b013ea300eb51650c66ccaf7067f1991bc1"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/go/values_test.go",
+      "sha256": "4970d5773f6e3ea18cd069cdebf28463190d031e3ccc1d0e4c9b55730402f1b0"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/miri-probes/inherited-bounds.rs",
+      "sha256": "c0b14cfa292c52b62b773169ef61f657d2ec37310867730235ae510c269c5dd2"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/miri-verification.md",
+      "sha256": "b958ac11691271d3b3398472ec6e6cc1b58e6dde63def0cedb5d961d5ea4f43d"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/evidence-integrity-green.txt",
+      "sha256": "30418f43639a5c7094c3ed836cfa8b8bb6bc62deef94b4b896b0dde17708aba7"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/evidence-integrity-red.txt.gz",
+      "sha256": "342841560cecef34283eeff9fd7f7292e7d6fd6d25f51463763a8ea947763ac5"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/fixture-go-base.txt",
+      "sha256": "4932caedb92f0f9781cee6487375f951690bf07199bae32a7802dead3230a3ca"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/fixture-go-head.txt",
+      "sha256": "646fcb063ae8060fa8bd331fd7705a5e8db1175e37fe659e9622f67a4a22b4cd"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/fixture-rust-base.txt",
+      "sha256": "184a4881849aca76db5771876e22612f95a201000e15e50bafa90cac3904fa74"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/fixture-rust-head.txt",
+      "sha256": "377905618176d77f5597fb81aa88088a0412d6d963ffe98fc626898ebc6cf825"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/go-green.txt",
+      "sha256": "2ccfbb88931ae2dbf06974cc97182831ccc0fca8e37c03ea492ed4e212586b32"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/go-race.txt",
+      "sha256": "c4e8415e279cc3bf19f58c39d466d183efe400a45023097d1f992641fd2529d9"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/go-red.txt",
+      "sha256": "e471f8cdbb1da5d43c57bacd40f4eab7e6fa3c0991ca9c6c27138ccc34b00f0f"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/house-style.txt",
+      "sha256": "82018b34d385b2bd0c967c8163fc4a2d0989200cdfa3277ec45e7b0c8f579ac7"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/loop-1.21.txt",
+      "sha256": "7fca911131d726fcb7ebb72d2833a8e423f05bc7c019cc681e9d84dce6aad83e"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/loop-1.22.txt",
+      "sha256": "2f3abf823dd6efa985e144f32b44026e2728fb5a074738f0fe00ef34b34ea77a"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/miri-negative.txt",
+      "sha256": "4a964a6b76cb3eeb1c36de9c81a5de65a37eadf3095c540a2c36e9122360cef1"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/miri-rustup-install.txt",
+      "sha256": "b410666350b2ccf7115623ebb87905cc9835e1154b3c29f1f7e46f6b1d450280"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/miri-setup-initial.txt",
+      "sha256": "944f8c4e7a52516db0a08efc21d75e5297cd35607b7b1cd233331c65edc34270"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/miri-setup.txt",
+      "sha256": "1a18a351db51bbf8dc41a5ed5e5318c34fc9a37d403db64f06711a5e7d14b7f3"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/miri-tests.txt",
+      "sha256": "845c8ae82f16ba9a1d13b32f22a69d407c2be75d120b9d7b091d5fb876381b21"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/miri-toolchain-install.txt",
+      "sha256": "f1ff945544877244f3b970c6c65b3bccbf5475ca11ef075bb02addd62ca9befb"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/miri-versions.json",
+      "sha256": "adada5167dd3dcee52b10facbc2b5e115b500fa68703abd92bfc68285c6ef8ab"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/miri.txt",
+      "sha256": "aa496612986dadbe1e7ac59298bf0bb87b86f02b92e57f9d73490dd614f4180f"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/primary-source-identities.json",
+      "sha256": "eb126a2df9f2afa38ee6265d3fc5d4e198bcc08a98c1163f3c7922f3bbec140b"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/python-examples.txt",
+      "sha256": "fc1a209c548564032028b715bb6315e16fe2642bdd75e7d310803537d48626eb"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/quick-validate.txt",
+      "sha256": "db349825903d66adffea3ecf1bd8e1803043e8a71cf1a051235dabc5371f5bb0"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/repository-unittest.txt",
+      "sha256": "0d03086f68dde35be5d9f966a0fff7bb6b2da388b1f772c0a0759797e66fbebb"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/rust-build.txt",
+      "sha256": "cd70bbea9bbc2a6360ae08ace7c7e1c92f6c6ee7751b78b6ff15eebae99b4867"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/rust-edition-2024.txt",
+      "sha256": "0bc8f5921c9ed5da70c179347621f76698d71f69683fb92022c1bb59f4acfb02"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/rust-final.txt",
+      "sha256": "e3053e87c21f646012578b3355d6aa0ba7059bd22e1e7aacf6730d754fc35c37"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/rust-green.txt",
+      "sha256": "a6768095eb0601bff8ef999487a51f4412678971fa624e86fe6fe25922ecad72"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/rust-red.txt",
+      "sha256": "e5a690e3d7990f4c5a0e96a124d8f74818d98a53c98c81677bcb6d3c83f6df96"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/rust-release.txt",
+      "sha256": "49e187b885ba83d3a7e31c07e64fd7851c4267a12b739618f9aad8e9bc84050c"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/sensitivity-final.txt",
+      "sha256": "8f6d6acd0dfe42a502c26d1c83f6f52dcf9b328c1ab3a0c4ae05ad634cfc9f12"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/sensitivity.txt",
+      "sha256": "6f7659210d49044a98e24442217a87043113e700da59ca9e6f803e4a0e74ae9f"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/source-identities.json",
+      "sha256": "626a562fe0164ec5d09aff15830e10ac544506221e06159c37da8a6eea2155e3"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/results/validation.txt",
+      "sha256": "714c106630e74b5d6ef5e8e699a9e7f128eedf755b87e12c49383ce868ac878d"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/rust/Cargo.lock",
+      "sha256": "7913f06ac29f604705f5d317ab6c4b1edcf37cfd81db11b424a7a06109c7ace9"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/rust/Cargo.toml",
+      "sha256": "b59f91a86f5c61e68ac2f6ffb1227d5dad632b45a7c35852fce5c75c62e71bc5"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/rust/tests.rs",
+      "sha256": "c95d39ebbdb5b3c67db0354a1c3e91134d4d9a6746f4580655286b5f31fab693"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/test_evidence_integrity.py",
+      "sha256": "1f61b554e19124e61ed66d06813ff918ab589a645c14fdae4795a19329880e02"
+    },
+    {
+      "path": "plans/evidence/09-executable-checks/verify.py",
+      "sha256": "59516b0d8386858244d4310e09bc557b50a7a5d5c59465544a0cd5668ed046d2"
+    },
+    {
+      "path": "plans/evidence/09-pr-approval.md",
+      "sha256": "b6acf61aad77f64ce5ae97ac49964e88fdd640a5fa6364f430f3b7b610ec5262"
+    },
+    {
+      "path": "reference/common-bugs-checklist.md",
+      "sha256": "924b8b5c7de68d1bd8a0bd19a75cd6e88408d80b4610b69073aefae2f07a2322"
+    },
+    {
+      "path": "reference/go.md",
+      "sha256": "c8b0ceece0ccefe29cab9fd52e8bcb3e8f880c7941ddee0b2702272b87545b30"
+    },
+    {
+      "path": "reference/provenance.md",
+      "sha256": "3413e527954c83d3a9ec971ff46104bc809d91ea2eb36de9de506742a7ae4e69"
+    },
+    {
+      "path": "reference/reference-status.md",
+      "sha256": "b7027c4d71311a1e5ad377b906104cb6ecb573e6c12b9dee3b224cb4e627377b"
+    },
+    {
+      "path": "reference/rust.md",
+      "sha256": "039972a57dbe4748b7d01a3186e4b29a45a9a4ee58dbf00e011db37e69bd9b08"
+    }
+  ]
+}

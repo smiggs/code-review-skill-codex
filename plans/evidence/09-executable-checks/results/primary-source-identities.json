@@ -1,0 +1,9 @@
+{
+  "package-09-cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tokio-1.48.0/src/io/util/async_read_ext.rs": "8144159bc923640f659482056ba3db8f0f6c8f54575e100ab3b3a2c9aaef3e42",
+  "package-09-cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tokio-1.48.0/src/runtime/task/join.rs": "d20cf461ed8c453723185adad07048bede12c8e7541e502478e8ff61daefc5eb",
+  "package-09-cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tokio-1.48.0/src/task/blocking.rs": "821efe697c70bf6b4d3203d5fad43d466ade5707fe03f5e925db6d6b91535e71",
+  "package-09-toolchains/go/doc/go_spec.html": "bc68b40a68b26d858c2dce0bf70a5e4d88f58877efdabea042e94dcad6aeea22",
+  "package-09-toolchains/go/src/encoding/json/encode.go": "acedd478b48d87d82243bde26acfa6d5f27f228fabf86f54f3155a0e2f11590c",
+  "package-09-toolchains/go/src/strings/clone.go": "980cf5a2e7b650dd50970b6a85b818268130ba37a2584820bfef26174213f82c",
+  "package-09-toolchains/go/VERSION": "93b5929859752bb4f2545d06ac3fb9b1b5994178c596e428074e3e6042a1452d"
+}

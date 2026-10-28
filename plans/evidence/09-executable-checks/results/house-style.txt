@@ -1,0 +1,2 @@
+plans/09-go-and-rust.md:1:1: warning: title-case: heading may be Title Case: "# Package 09: Go and Rust"; use sentence case unless the capitals are proper nouns
+0 error(s), 1 warning(s) in 9 file(s)

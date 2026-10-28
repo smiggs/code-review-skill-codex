@@ -103,7 +103,10 @@ Packages 08–12 are follow-on audits of the references deferred by package 03.
 Package 08 has a technical audit candidate with scoped executable checks and
 prepared fixtures; human acceptance remains pending in its
 [execution record](evidence/08-executable-verification.md).
-Packages 09–12 remain planned. The user requested insertion of task 07 on
+Package 09 has a technical audit candidate with scoped Go/Rust checks and
+prepared fixtures; its [evidence](evidence/09-go-and-rust.md) records the
+conditional human acceptance and CodeRabbit/merge gates. Packages 10–12 remain
+planned. The user requested insertion of task 07 on
 25 October 2026; pending language audits formerly numbered 07–11 are now 08–12. Package 06 retains its number
 and scope. The language audits do not require package 06 or task 07 to run first.
 Planning authorisation does not mark implementation, validation, or human

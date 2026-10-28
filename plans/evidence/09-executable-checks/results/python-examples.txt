@@ -1,0 +1,18 @@
+test_await_only_loop_can_be_cancelled (__main__.AsyncExamples.test_await_only_loop_can_be_cancelled) ... ok
+test_queue_sentinel_needs_completion_accounting (__main__.AsyncExamples.test_queue_sentinel_needs_completion_accounting) ... ok
+test_worker_propagates_cancellation_and_cleans_up (__main__.AsyncExamples.test_worker_propagates_cancellation_and_cleans_up) ... ok
+test_accepts_one_shot_iterator (__main__.PythonGuideExamples.test_accepts_one_shot_iterator) ... ok
+test_closes_stream_when_read_fails (__main__.PythonGuideExamples.test_closes_stream_when_read_fails) ... ok
+test_consumer_append_requirement_detects_truncation (__main__.PythonGuideExamples.test_consumer_append_requirement_detects_truncation) ... ok
+test_default_accumulators_are_independent (__main__.PythonGuideExamples.test_default_accumulators_are_independent) ... ok
+test_existing_path_rejects_traversal_sibling_and_symlink (__main__.PythonGuideExamples.test_existing_path_rejects_traversal_sibling_and_symlink) ... ok
+test_explicit_empty_accumulator_is_preserved (__main__.PythonGuideExamples.test_explicit_empty_accumulator_is_preserved) ... ok
+test_fetch_all_generator_still_materialises_source (__main__.PythonGuideExamples.test_fetch_all_generator_still_materialises_source) ... ok
+test_from_none_keeps_context_but_suppresses_display (__main__.PythonGuideExamples.test_from_none_keeps_context_but_suppresses_display) ... ok
+test_implicit_exception_context_is_retained (__main__.PythonGuideExamples.test_implicit_exception_context_is_retained) ... ok
+test_reads_utf8_first_line (__main__.PythonGuideExamples.test_reads_utf8_first_line) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.067s
+
+OK

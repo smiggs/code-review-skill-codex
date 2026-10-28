@@ -1,6 +1,8 @@
 # Reference audit status
 
-Approved by the user at the package 03 checkpoint on 18 October 2026. Package 08 additions await their own human checkpoint. This is an audit
+Approved by the user at the package 03 checkpoint on 18 October 2026.
+Package 08 retains its recorded checkpoint wording. Package 09 has conditional
+human acceptance subject to current-head CodeRabbit and merge gates. This is an audit
 disposition, not a claim that all supported languages have been technically
 verified. The [review contract](review-contract.md) governs all inherited advice.
 
@@ -24,13 +26,13 @@ conflict or unsupported recommendation, without inventing a broader audit.
 | [Architecture](architecture-review-guide.md) | Verified within scope | Requirement-based prompts replace universal patterns, metric thresholds, and automatic severity. Target architectures still require their own evidence. |
 | [Performance](performance-review-guide.md) | Verified within scope | Evidence and workload rules reconciled; selected browser, caching, and PostgreSQL claims checked in primary documentation. No framework benchmarks or universal thresholds. |
 | [Security](security-review-guide.md) | Verified within scope | Scope, authority, and evidence rules reconciled; bounded authorisation and command/path guidance checked. No complete application, cryptography, or dependency audit. |
-| [Common bugs](common-bugs-checklist.md) | Partially reconciled; retained, not technically verified | Python duplicates consolidated into the Python guide; TypeScript/React/Vue duplicates consolidated after a documentation audit; other inherited examples remain unverified. Patterns are prompts rather than defect evidence. |
+| [Common bugs](common-bugs-checklist.md) | Partially reconciled; retained, not technically verified | Python, TypeScript/React/Vue, and Rust duplicates consolidated into their guides; Go routing added. Other inherited examples remain unverified. Patterns are prompts rather than defect evidence. |
 | [React](react.md) | Checked within package 08 scope; approval pending | React/React DOM 19.3.1 Hook, form, action, and state-identity checks passed in jsdom 30.1.3; exact Hook compiled with TypeScript 6.0.3. Query 5.105.0 source inspected and cached-data refetch error exercised. Next.js 15 remains documentation-only; no browser, hydration, or review-accuracy claim. |
 | [Vue](vue.md) | Checked within package 08 scope; approval pending | Exact composable compiled with TypeScript 6.0.3 and passed controlled request tests in Vue 3.5.44/jsdom. SFC compiled/executed with 3.4.38 and 3.5.44; no full vue-tsc, browser, hydration, general patch matrix, or review-accuracy claim. |
-| [Rust](rust.md) | Retained, not technically verified | Ownership, unsafe, runtime, and cancellation examples need a technical pass. |
+| [Rust](rust.md) | Checked within package 09 scope; conditional acceptance | Exact fragments compiled on Rust 1.85.0, editions 2021/2024, Tokio 1.48.0. Controlled partial I/O, cancellation, task shutdown, and valid unsafe calls passed; release mode checked. All ten harness tests also passed Miri on nightly-2025-02-20, one seed/target, edition 2021; inherited bounds defect reproduced. No sanitiser, FFI, full feature/target matrix, or review-accuracy claim. |
 | [TypeScript](typescript.md) | Checked within package 08 scope; approval pending | TypeScript 6.0.3 strict compilation and Node.js 24.22.1 runtime cases passed for the retained reader and synthetic type controls. Compiler/lint settings stay project-specific; no broad runtime matrix or review-accuracy claim. |
 | [Java](java.md) | Retained, not technically verified | JDK, Spring, persistence, and concurrency claims need version-specific verification. |
-| [Go](go.md) | Retained, not technically verified | Runtime, generics, error, and concurrency examples need a technical pass. |
+| [Go](go.md) | Checked within package 09 scope; conditional acceptance | Exact worker example compiled on Go 1.22.12 with boundary, cancellation, closure, shutdown, and race checks; module 1.21/1.22 loop comparisons passed. No broad toolchain/platform matrix, performance benchmark, or review-accuracy claim. |
 | [C](c.md) | Retained, not technically verified | Language mode, implementation, ownership, and undefined-behaviour examples need verification. |
 | [C++](cpp.md) | Retained, not technically verified | Standard-version, lifetime, library, and tooling assumptions need verification. |
 | [CSS, Less, and Sass](css-less-sass.md) | Retained, not technically verified; policy feedback corrected | Removed count-based blocking feedback and automatic checklist priority. Browser and preprocessor examples remain unverified. |
@@ -45,7 +47,8 @@ additional verification.
 
 The Python section in the common-bug checklist now routes to `python.md` instead
 of duplicating examples and string-concatenation advice. Its TypeScript, React,
-and Vue sections now route to their audited guides; other language sections
+and Vue sections now route to their audited guides. Package 09 consolidates Rust
+and adds Go routing; other language sections
 retain their original role as pattern prompts. The four topic/process
 guides were shortened because their automatic severity, unqualified code recipes,
 and review-time or metric gates conflicted with the approved contract. Their paths
@@ -57,7 +60,10 @@ checks recorded in `plans/evidence/08-typescript-react-and-vue.md` in the source
 checkout. Scoped compilation and framework checks, fixture sensitivity, and
 remaining limits are recorded in `plans/evidence/08-executable-verification.md`.
 Human acceptance and any separately agreed review evaluation remain outstanding.
-The other six non-Python language guides are unchanged. The CSS guide has only
+Package 09 rewrites Go and Rust in British English, with exact-example checks,
+source records, fixture sensitivity, and conditional human acceptance recorded in
+`plans/evidence/09-go-and-rust.md` in the source checkout. The other four
+non-Python language guides are unchanged. The CSS guide has only
 scoped English policy corrections; its technical examples retain their original content.
 The rewritten guides and audit evidence are English only. These limits are
 intentional deferrals for human review, not successful multilingual validation.

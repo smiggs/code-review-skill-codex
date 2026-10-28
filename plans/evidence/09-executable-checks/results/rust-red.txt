@@ -1,0 +1,21 @@
+   Compiling package-09-examples v0.0.0 (/home/andrew/projects/code-review-skill-codex/plans/evidence/09-executable-checks/rust)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.80s
+     Running unittests src/lib.rs (/tmp/package-09-rust-target/debug/deps/package_09_examples-2a92e9b082b753c5)
+
+running 1 test
+
+thread 'tests::partial_frame_survives_cancellation' panicked at src/../tests.rs:60:5:
+assertion `left == right` failed
+  left: [99, 100, 101, 102]
+ right: [97, 98, 99, 100]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test tests::partial_frame_survives_cancellation ... FAILED
+
+failures:
+
+failures:
+    tests::partial_frame_survives_cancellation
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--lib`

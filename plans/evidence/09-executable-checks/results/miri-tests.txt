@@ -1,0 +1,31 @@
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.27
+   Compiling bytes v1.12.1
+   Compiling pin-project-lite v0.2.17
+   Compiling syn v2.0.119
+   Compiling tokio-macros v2.6.1
+   Compiling tokio v1.48.0
+   Compiling package-09-examples v0.0.0 (/home/andrew/projects/code-review-skill-codex/plans/evidence/09-executable-checks/rust)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 21.28s
+     Running unittests src/lib.rs (/tmp/package-09-miri-target/miri/x86_64-unknown-linux-gnu/debug/deps/package_09_examples-4b32d1947eb0e37e)
+
+running 10 tests
+test tests::abort_and_join_observes_destructors ... ok
+test tests::dropping_handle_detaches_work ... ok
+test tests::frame_eof_is_an_error ... ok
+test tests::join_failure_and_inner_error_are_distinct ... ok
+test tests::losing_single_read_consumes_nothing ... ok
+test tests::partial_frame_survives_cancellation ... ok
+test tests::pinned_read_exact_can_resume_same_future ... ok
+test tests::restarting_read_exact_loses_frame_alignment ... ok
+test tests::started_blocking_work_ignores_abort ... ok
+test tests::valid_ownership_bounds_and_panic_invariant ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 3.43s
+
+   Doc-tests package_09_examples
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
