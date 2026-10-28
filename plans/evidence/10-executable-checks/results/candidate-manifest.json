@@ -2,7 +2,7 @@
   "base_revision": "ae61df8803e4d7d21ec67c63eba3523f8df3e25b (main after PR 11)",
   "branch": "codex/package-10-java",
   "algorithm": "SHA-256 of the sorted concatenation of each file's UTF-8 path, NUL, SHA-256 hex digest of the file bytes, NUL",
-  "combined_sha256": "4f3fcc1c5b32652d7624013f008c3650fc28b84c91106718cf0b480ed95e6b0d",
+  "combined_sha256": "1e4e4d724af3018044bf399085967824462ccd4916295255f9de5c35816a8042",
   "excludes": [
     "plans/evidence/10-java.md",
     "this manifest",
@@ -99,7 +99,7 @@
     },
     {
       "path": "plans/evidence/10-executable-checks/results/validation.txt",
-      "sha256": "2c91fb8e111343ab27154be0ba8c08fdc1e1c0b677f7c0b1da30ddf36bf3eef3"
+      "sha256": "7146b16d1a185d0d20aea2041f24fa42b98a62aa3e1e289a704f6058ecb1caed"
     },
     {
       "path": "plans/evidence/10-executable-checks/src/test/java/invalid/example/package10/ConcurrentMapContractTest.java",
