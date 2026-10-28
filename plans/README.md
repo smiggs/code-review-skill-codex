@@ -102,8 +102,9 @@ exact candidate and retained limitations, effective after the requested
 CodeRabbit loop and PR merge gates hold. Task 07 awaits those gates.
 
 Package 13 is a distribution follow-up prepared on 28 October 2026 at the
-user's request, documenting installation of the same pinned candidates beyond
-Codex for Claude Code, ZCode, OpenCode, and Antigravity. Its
+user's request. It validates the existing `~/.agents/skills/` install path for
+ZCode and OpenCode and adds installation support for Claude Code and
+Antigravity. Its
 [plan](13-multi-harness-installation.md) awaits agreement on the install
 layout. It does not require the language audits or task 07, does not reopen
 package 06's conditional completion, and does not authorise release

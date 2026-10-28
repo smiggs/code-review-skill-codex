@@ -48,6 +48,11 @@ merges.
   layout, the Antigravity symlink caveat, and an update and rollback procedure
   extended from one location to several (move-and-replace per location,
   rechecking discovery each time).
+- Specify a preflight collision check in the same documentation: before
+  installing, enumerate every location the target harness scans for the
+  same-named skill in discovery order, and reject the installation with removal
+  guidance when a higher-priority duplicate exists. The documented installer
+  must not silently remove, rename, or overwrite another location's copy.
 - Update the English and Chinese README install sections so they name the
   supported harnesses and paths, keeping the two languages aligned and
   recording translation limits honestly.
@@ -81,7 +86,13 @@ symlink at `~/.claude/skills/code-review-codex` only if Claude Code is verified
 to discover symlinked skills, and a real directory copy under Antigravity's
 skills directory. The alternative, independent copies in every scanned
 location, avoids symlink quirks at the cost of a synchronisation burden on
-every update, and the chosen trade-off must be recorded. Review the completed
+every update, and the chosen trade-off must be recorded. Project scope is part
+of the same decision: the discovery table records project locations from
+vendor documentation, validation exercises personal scope by default, and
+project-scope instructions are labelled documented but untested unless the
+user agrees to exercise them. Antigravity's project path is unspecified in its
+published documentation and stays out of the documentation unless verification
+finds an official source. Review the completed
 documentation and per-harness evidence against the exit criteria before any
 approval; publication remains out of scope.
 
