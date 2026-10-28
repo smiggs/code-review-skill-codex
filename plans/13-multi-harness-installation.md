@@ -32,7 +32,7 @@ merges.
 | ZCode | `~/.zcode/skills/`, `~/.agents/skills/` | `.zcode/skills/`, `.agents/skills/` | First same-named skill wins in discovery order; keep one copy to avoid shadowing. |
 | OpenCode | `~/.config/opencode/skills/`, `~/.claude/skills/`, `~/.agents/skills/` | `.opencode/skills/`, `.claude/skills/`, `.agents/skills/` | Paths are reportedly fixed in the client, not configurable; verify on the tested version. |
 | Claude Code | `~/.claude/skills/` | `.claude/skills/` | Standard Agent Skills frontmatter; whether symlinked skill folders are discovered must be verified. |
-| Antigravity | `~/.gemini/antigravity/skills/` | project skills directory | An open upstream report says symlinked skills may not be discovered; plan a real directory copy. |
+| Antigravity | `~/.gemini/antigravity/skills/` | unspecified in published documentation | An open upstream report says symlinked skills may not be discovered; plan a real directory copy. |
 
 ## Deliverables and responsibilities
 
