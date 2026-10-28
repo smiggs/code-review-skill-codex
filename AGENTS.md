@@ -21,9 +21,9 @@ Task 07 is an optional severity-calibration follow-up, scoped in
 a scoped Go/Rust technical candidate and Miri follow-up; its human acceptance
 is conditional on the current-head CodeRabbit and merge gates recorded in
 [its approval record](plans/evidence/09-pr-approval.md). Package 10 has a scoped
-Java technical audit candidate with prepared review fixtures; its
-[evidence](plans/evidence/10-java.md) records the checked scope and the
-outstanding human checkpoint. No new model evaluation
+Java technical audit candidate with prepared review fixtures; its human
+acceptance is conditional on the CodeRabbit and merge gates recorded in
+[its approval record](plans/evidence/10-pr-approval.md). No new model evaluation
 or release is authorised.
 
 `SKILL.md` defines discovery and the core review process. `agents/openai.yaml`

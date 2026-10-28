@@ -1,34 +1,24 @@
 == date (UTC):
-Wed Oct 28 11:03:04 PM UTC 2026
+Wed Oct 28 11:12:06 PM UTC 2026
 
 == branch:
 codex/package-10-java
+== head:
+5a2d2e034ad6ce975ff02849f196ae5e5fd28c1c
 
 == git diff --check (unstaged+staged):
 whitespace clean
 
-== git diff --stat vs main (tracked); new files are listed by status below:
- reference/reference-status.md      |  16 +-
- 7 files changed, 370 insertions(+), 350 deletions(-)
-
-== git status --porcelain (untracked + modified):
- M AGENTS.md
- M plans/10-java.md
- M plans/README.md
- M reference/common-bugs-checklist.md
- M reference/java.md
- M reference/provenance.md
- M reference/reference-status.md
-?? plans/evidence/10-executable-checks/
-?? plans/evidence/10-java.md
+== git status --porcelain vs origin/main (tracked files only shown; new files are the evidence directory):
+(empty above means the committed tree matches origin/main plus new files)
 
 == repository helper/validator tests:
-Ran 18 tests in 2.363s
+Ran 18 tests in 2.314s
 
 OK
 
 == package 03 guide-example checks:
-Ran 13 tests in 0.015s
+Ran 13 tests in 0.014s
 
 OK
 
@@ -43,4 +33,4 @@ reference/common-bugs-checklist.md:1:1: warning: title-case: heading may be Titl
 reference/common-bugs-checklist.md:151:11: error: ize-spelling: -ize spelling "sanitizing" in prose
 reference/common-bugs-checklist.md:156:1: warning: title-case: heading may be Title Case: "### Test Quality Issues"; use sentence case unless the capitals are proper nouns
 reference/common-bugs-checklist.md:157:49: error: us-spelling: American spelling "behavior" in prose
-2 error(s), 2 warning(s) in 11 file(s)
+2 error(s), 2 warning(s) in 12 file(s)

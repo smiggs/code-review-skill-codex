@@ -1,10 +1,11 @@
 # Package 10: Java
 
-Status: technical audit candidate prepared; the human checkpoint on the
-corrections, supported versions, retained scope, and translation limits is
-outstanding. See the [audit evidence](evidence/10-java.md) for the checked
-scope, commands, candidate identity, and the separately prepared evaluation
-boundary. Behavioural evaluation acceptance remains a separate decision.
+Status: technical audit candidate prepared; the user conditionally accepted
+it on 28 October 2026, subject to the
+[CodeRabbit and merge gates](evidence/10-pr-approval.md). See the
+[audit evidence](evidence/10-java.md) for the checked scope, commands,
+candidate identity, and the separately prepared evaluation boundary.
+Behavioural evaluation acceptance remains a separate decision.
 
 ## Outcome
 

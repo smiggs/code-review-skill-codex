@@ -32,7 +32,8 @@ Package 10 also rewrites Java with versioned JDK, Spring Framework, and
 Hibernate/H2 checks, adds Java checklist routing, and prepares review
 fixtures with answer keys; its candidate record and limits are in
 `plans/evidence/10-java.md` in the source checkout, and the runnable checks
-live in `plans/evidence/10-executable-checks/`.
+live in `plans/evidence/10-executable-checks/`. Its human acceptance is
+conditional on the PR's CodeRabbit and merge gates.
 The skill name and singular `reference/` directory remain unchanged.
 
 ## Verification

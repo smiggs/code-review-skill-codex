@@ -105,11 +105,14 @@ inherited checklist lines and two title warnings in sections packages 03–09
 deliberately retained unchanged. These checks establish mechanical
 consistency only; they do not establish useful review behaviour.
 
-Human decision: none yet. The user should review the corrections, declared
-versions, retained scope, translation limits, and the evaluation boundary
-against the manifest digest or an exact committed revision, then record
-approval or outstanding work against the exact revision in this file or a
-PR conversation.
+Human decision: the user supplied conditional acceptance on 28 October
+2026, recorded in the [approval record](10-pr-approval.md) and effective
+after a completed clean CodeRabbit review of the current head, resolved
+threads, dispositions and replies for review-body findings, passing required
+checks and approvals, and a GitHub merge commit guarded by that exact head.
+The reviewer should still check the corrections, declared versions, retained
+scope, translation limits, and the evaluation boundary against the manifest
+digest or an exact committed revision.
 
 The Chinese installation and contribution documents need no shared-behaviour
 change: this work changes reference guidance only. The rewritten guide and

@@ -1,8 +1,8 @@
 {
-  "base_revision": "118253c2ad794925417761fd7f95396bdb682539 (main)",
+  "base_revision": "ae61df8803e4d7d21ec67c63eba3523f8df3e25b (main after PR 11)",
   "branch": "codex/package-10-java",
   "algorithm": "SHA-256 of sorted UTF-8 path, NUL, sha256 hex of file bytes, NUL",
-  "combined_sha256": "08bc6149e62b710d6eaa7fb9d6754c8c74e85ed248afa3a40e361c776813746e",
+  "combined_sha256": "561eb5f7226be0d1caf4e9b2fc050fb274ad9ba30d6500630778edb0f7bc760b",
   "excludes": [
     "plans/evidence/10-java.md",
     "this manifest",
@@ -11,15 +11,15 @@
   "files": [
     {
       "path": "AGENTS.md",
-      "sha256": "e17da548c33a90c176039a9f08b3f68cae5dfdca5d3d050276992e6d52ebec98"
+      "sha256": "9c8dcb048f9aae68db4cf199863ad4e83f292a19c37ed2f85fd1c80cbe17f98e"
     },
     {
       "path": "plans/10-java.md",
-      "sha256": "b8492d3512b685d25c9316711a437abe6453ba0228cdf587966c360a8c9a88af"
+      "sha256": "cc30ad16914c69964c77e902149ce3c3b20f4e1efa5e05d13b87d907d839cf4a"
     },
     {
       "path": "plans/README.md",
-      "sha256": "76cb279da7b9916bb900baee3a286fe46ab6693456b85a13b4adbdd5704c2db8"
+      "sha256": "bb5d7c7d5ec08607727b95f70efa4146110028b1748a8af792654eb01666e9ec"
     },
     {
       "path": "plans/evidence/10-executable-checks/.gitignore",
@@ -95,7 +95,7 @@
     },
     {
       "path": "plans/evidence/10-executable-checks/results/validation.txt",
-      "sha256": "449f9ede9fbae1fbb28eca928b40df299e9943991f58087fd4356558b951f0f0"
+      "sha256": "6e1a0477f9a961d0902f8f4e3ac250eab7497ec62e71f0722ba5f5df328476f7"
     },
     {
       "path": "plans/evidence/10-executable-checks/src/test/java/invalid/example/package10/ConcurrentMapContractTest.java",
@@ -134,6 +134,10 @@
       "sha256": "ba28a9c1b5be5a21c29baff4d9f1efb797ff87004bca17febba5c0b5804c5b9d"
     },
     {
+      "path": "plans/evidence/10-pr-approval.md",
+      "sha256": "0d6c7d58335cd4f9fc8d006f324517c8a685e9e736edec5ef2d6c5f341eefcc9"
+    },
+    {
       "path": "reference/common-bugs-checklist.md",
       "sha256": "ded8944e8c1830ce5e4efc3e3d2b204fd51abbe08db90c6398f1a14f03ab96f4"
     },
@@ -143,11 +147,11 @@
     },
     {
       "path": "reference/provenance.md",
-      "sha256": "38228c26715e616acdaa15329cf03b1b0d2d897afa2cd5ad24206f7498121a53"
+      "sha256": "5f3181fb5c2cfed014ecb60574770250cffcc4d1e8901d8889643e9df69eef7a"
     },
     {
       "path": "reference/reference-status.md",
-      "sha256": "04654f4bc072b91952e523990ace976968503dd5e2364acc501f0b7a88515291"
+      "sha256": "d1d7bc947ab900706ca9d5ef27af1cec4fc2a64ff0ae038142c8102dbf3e0333"
     }
   ]
 }

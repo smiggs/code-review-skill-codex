@@ -4,8 +4,8 @@ Approved by the user at the package 03 checkpoint on 18 October 2026.
 Package 08 acceptance is effective following
 [PR 9 completion](https://github.com/smiggs/code-review-skill-codex/pull/9#issuecomment-6464622303). Package 09 has conditional
 human acceptance subject to current-head CodeRabbit and merge gates. Package
-10 has a technical audit candidate; its disposition below awaits the
-package 10 human checkpoint. This is an audit
+10 has conditional human acceptance subject to current-head CodeRabbit and
+merge gates. This is an audit
 disposition, not a claim that all supported languages have been technically
 verified. The [review contract](review-contract.md) governs all inherited advice.
 
@@ -34,7 +34,7 @@ conflict or unsupported recommendation, without inventing a broader audit.
 | [Vue](vue.md) | Checked within package 08 scope; accepted via PR 9 | Exact composable compiled with TypeScript 6.0.3 and passed controlled request tests in Vue 3.5.44/jsdom. SFC compiled/executed with 3.4.38 and 3.5.44; no full vue-tsc, browser, hydration, general patch matrix, or review-accuracy claim. |
 | [Rust](rust.md) | Checked within package 09 scope; conditional acceptance | Exact fragments compiled on Rust 1.85.0, editions 2021/2024, Tokio 1.48.0. Controlled partial I/O, cancellation, task shutdown, and valid unsafe calls passed; release mode checked. All ten harness tests also passed Miri on nightly-2025-02-20, one seed/target, edition 2021; inherited bounds defect reproduced. No sanitiser, FFI, full feature/target matrix, or review-accuracy claim. |
 | [TypeScript](typescript.md) | Checked within package 08 scope; accepted via PR 9 | TypeScript 6.0.3 strict compilation and Node.js 24.22.1 runtime cases passed for the retained reader and synthetic type controls. Compiler/lint settings stay project-specific; no broad runtime matrix or review-accuracy claim. |
-| [Java](java.md) | Checked within package 10 scope; candidate awaiting the human checkpoint | Exact guide examples compiled on JDK 17.0.21/21.0.13, including the switch-pattern preview boundary and the JDK 19+ executor API boundary. Hibernate 6.4.10.Final with H2 2.2.224 checked eager-collection statement counts, inner versus left fetch-join membership, in-memory pagination, and proxy-safe identifier equality. Spring 6.1.14 checked proxy mode, self-invocation, package-visible advice, non-routable private methods, and the readOnly hint. No Spring Boot autoconfiguration, other providers or JDK releases, or review-accuracy claim. |
+| [Java](java.md) | Checked within package 10 scope; conditional acceptance | Exact guide examples compiled on JDK 17.0.21/21.0.13, including the switch-pattern preview boundary and the JDK 19+ executor API boundary. Hibernate 6.4.10.Final with H2 2.2.224 checked eager-collection statement counts, inner versus left fetch-join membership, in-memory pagination, and proxy-safe identifier equality. Spring 6.1.14 checked proxy mode, self-invocation, package-visible advice, non-routable private methods, and the readOnly hint. No Spring Boot autoconfiguration, other providers or JDK releases, or review-accuracy claim. |
 | [Go](go.md) | Checked within package 09 scope; conditional acceptance | Exact worker example compiled on Go 1.22.12 with boundary, cancellation, closure, shutdown, and race checks; module 1.21/1.22 loop comparisons passed. No broad toolchain/platform matrix, performance benchmark, or review-accuracy claim. |
 | [C](c.md) | Retained, not technically verified | Language mode, implementation, ownership, and undefined-behaviour examples need verification. |
 | [C++](cpp.md) | Retained, not technically verified | Standard-version, lifetime, library, and tooling assumptions need verification. |
