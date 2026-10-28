@@ -4,7 +4,7 @@
   "type": "module",
   "packageManager": "pnpm@11.25.0",
   "scripts": {
-    "test": "node prepare.mjs && node --test --test-isolation=none --test-concurrency=1 checks.test.mjs",
+    "test": "node prepare.mjs && node --test --test-isolation=none --test-concurrency=1 checks.test.mjs evidence-integrity.test.mjs",
     "sensitivity": "node prepare.mjs && node sensitivity.mjs"
   },
   "devDependencies": {

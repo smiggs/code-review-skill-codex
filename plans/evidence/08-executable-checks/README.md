@@ -70,8 +70,13 @@ with the key, harness assertions, and prior reports withheld.
 `sensitivity.mjs` runs selected behavioural assertions against each defective
 head and requires an assertion failure, then runs the same assertions against
 the clean base and requires success. These are technical sensitivity checks,
-not model review scores. Expected-failure TAP output is stored as `.txt.gz` to
+not model review scores. Routine red and green output is written under ignored
+`.generated/results/`; it does not overwrite the recorded `results/` evidence or
+its candidate manifest. `evidence-integrity.test.mjs` reproduces routine execution
+in an isolated workspace and verifies that recorded bytes remain unchanged.
+Preparing fresh recorded evidence requires an explicit copy and manifest update.
+Expected-failure TAP output is stored as `.txt.gz` to
 preserve its whitespace without introducing patch whitespace errors; use
-`gzip -dc results/red-react.txt.gz` to read a failure. The acceptance criteria and execution of a separate
+`gzip -dc .generated/results/red-react.txt.gz` to read a failure. The acceptance criteria and execution of a separate
 model review batch still need agreement. See the
 [execution record](../08-executable-verification.md) for results and limits.
