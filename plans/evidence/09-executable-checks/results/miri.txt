@@ -1,0 +1,6 @@
+error: no such command: `miri`
+
+	Did you mean `fix`?
+
+	View all installed commands with `cargo --list`
+	Find a package to install `miri` with `cargo search cargo-miri`

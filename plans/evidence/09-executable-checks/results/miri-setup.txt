@@ -1,0 +1,30 @@
+Preparing a sysroot for Miri (target: x86_64-unknown-linux-gnu)...
+   Compiling compiler_builtins v0.1.146
+    Checking core v0.0.0 (/tmp/package-09-rustup/toolchains/nightly-2025-02-20-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core)
+   Compiling libc v0.2.169
+   Compiling object v0.36.7
+   Compiling std v0.0.0 (/tmp/package-09-rustup/toolchains/nightly-2025-02-20-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/std)
+    Checking rustc-std-workspace-core v1.99.0 (/tmp/package-09-rustup/toolchains/nightly-2025-02-20-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/rustc-std-workspace-core)
+    Checking alloc v0.0.0 (/tmp/package-09-rustup/toolchains/nightly-2025-02-20-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc)
+    Checking cfg-if v1.0.0
+    Checking memchr v2.7.4
+    Checking adler2 v2.0.0
+    Checking rustc-demangle v0.1.24
+    Checking unwind v0.0.0 (/tmp/package-09-rustup/toolchains/nightly-2025-02-20-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/unwind)
+    Checking rustc-std-workspace-alloc v1.99.0 (/tmp/package-09-rustup/toolchains/nightly-2025-02-20-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/rustc-std-workspace-alloc)
+    Checking panic_unwind v0.0.0 (/tmp/package-09-rustup/toolchains/nightly-2025-02-20-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/panic_unwind)
+    Checking panic_abort v0.0.0 (/tmp/package-09-rustup/toolchains/nightly-2025-02-20-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/panic_abort)
+    Checking gimli v0.31.1
+    Checking miniz_oxide v0.8.3
+    Checking hashbrown v0.15.2
+    Checking std_detect v0.1.5 (/tmp/package-09-rustup/toolchains/nightly-2025-02-20-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/stdarch/crates/std_detect)
+    Checking addr2line v0.24.2
+    Checking rustc-std-workspace-std v1.99.0 (/tmp/package-09-rustup/toolchains/nightly-2025-02-20-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/rustc-std-workspace-std)
+    Checking proc_macro v0.0.0 (/tmp/package-09-rustup/toolchains/nightly-2025-02-20-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/proc_macro)
+    Checking unicode-width v0.1.14
+    Checking getopts v0.2.21
+    Checking test v0.0.0 (/tmp/package-09-rustup/toolchains/nightly-2025-02-20-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/test)
+    Checking sysroot v0.0.0 (/tmp/package-09-rustup/toolchains/nightly-2025-02-20-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/sysroot)
+    Checking custom-local-sysroot v0.0.0 (/tmp/.tmpmY3u0a)
+    Finished `custom_sysroot` profile [optimized] target(s) in 55.06s
+A sysroot for Miri is now available in `/tmp/package-09-miri-sysroot`.

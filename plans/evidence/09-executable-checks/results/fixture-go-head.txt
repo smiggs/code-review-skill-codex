@@ -1,0 +1,14 @@
+=== RUN   TestCancellationAndBound
+    pool_test.go:102: active=2 maximum=2
+--- FAIL: TestCancellationAndBound (0.00s)
+=== RUN   TestNonpositiveNonemptyTerminates
+=== RUN   TestNonpositiveNonemptyTerminates/-1
+    pool_test.go:135: operation did not terminate
+=== RUN   TestNonpositiveNonemptyTerminates/0
+    pool_test.go:135: operation did not terminate
+--- FAIL: TestNonpositiveNonemptyTerminates (4.00s)
+    --- FAIL: TestNonpositiveNonemptyTerminates/-1 (2.00s)
+    --- FAIL: TestNonpositiveNonemptyTerminates/0 (2.00s)
+FAIL
+FAIL	example.invalid/package09	4.009s
+FAIL

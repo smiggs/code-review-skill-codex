@@ -1,0 +1,8 @@
+loop-1.21: passed
+loop-1.22: passed
+fixture-go-head: expected defect detected
+fixture-go-base: passed
+rust-edition-2024: passed
+fixture-rust-head: expected defect detected
+fixture-rust-base: passed
+Two defect fixtures rejected; both clean controls passed. No model accuracy score.

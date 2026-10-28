@@ -1,0 +1,29 @@
+    Updating crates.io index
+     Locking 8 packages to latest compatible versions
+      Adding tokio v1.48.0 (available: v1.54.1)
+      Adding tokio-macros v2.6.1 (available: v2.7.2)
+ Downloading crates ...
+  Downloaded pin-project-lite v0.2.17
+  Downloaded bytes v1.12.1
+  Downloaded quote v1.0.47
+  Downloaded tokio-macros v2.6.1
+  Downloaded syn v2.0.119
+  Downloaded unicode-ident v1.0.27
+  Downloaded proc-macro2 v1.0.107
+  Downloaded tokio v1.48.0
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.27
+   Compiling bytes v1.12.1
+   Compiling pin-project-lite v0.2.17
+   Compiling syn v2.0.119
+   Compiling tokio-macros v2.6.1
+   Compiling tokio v1.48.0
+   Compiling package-09-examples v0.0.0 (/home/andrew/projects/code-review-skill-codex/plans/evidence/09-executable-checks/rust)
+error: couldn't read src/../../tests.rs: No such file or directory (os error 2)
+  --> src/lib.rs:64:1
+   |
+64 | mod tests;
+   | ^^^^^^^^^^
+
+error: could not compile `package-09-examples` (lib test) due to 1 previous error

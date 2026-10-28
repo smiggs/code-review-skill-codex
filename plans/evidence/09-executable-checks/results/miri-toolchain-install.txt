@@ -1,0 +1,8 @@
+info: syncing channel updates for nightly-2025-02-20-x86_64-unknown-linux-gnu
+info: latest update on 2025-02-20 for version 1.87.0-nightly (f280acf4c 2025-02-19)
+info: downloading 5 components
+
+  nightly-2025-02-20-x86_64-unknown-linux-gnu installed - rustc 1.87.0-nightly (f280acf4c 2025-02-19)
+
+info: default toolchain set to nightly-2025-02-20-x86_64-unknown-linux-gnu
+info: checking for self-update (current version: 1.29.2)

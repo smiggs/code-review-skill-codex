@@ -20,8 +20,14 @@ review contract, selectively audit Python and topic guides, replace heuristic
 scores with a counts-only helper, add validation, and document evaluation limits.
 Package 08 also rewrites TypeScript, React, and Vue guidance and consolidates its
 common-bug duplicates. Scoped TypeScript compilation and React/Vue checks pass
-under the versions and limits in the reference status; its human checkpoint and
-any separate review evaluation remain pending.
+under the versions and limits in the reference status. Its human acceptance is
+effective following [PR 9 completion](https://github.com/smiggs/code-review-skill-codex/pull/9#issuecomment-6464622303).
+Any separately agreed model review evaluation remains outside that technical
+acceptance.
+Package 09 also rewrites Go and Rust, replaces their inherited universal rules
+with requirement-based prompts, consolidates Rust checklist duplicates, and adds
+Go routing. Scoped executable checks and conditional human acceptance are recorded
+in `plans/evidence/09-go-and-rust.md` in the source checkout.
 The skill name and singular `reference/` directory remain unchanged.
 
 ## Verification

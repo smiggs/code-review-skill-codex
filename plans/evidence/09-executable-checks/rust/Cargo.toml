@@ -1,0 +1,9 @@
+[package]
+name = "package-09-examples"
+version = "0.0.0"
+edition = "2021"
+rust-version = "1.85"
+publish = false
+
+[dependencies]
+tokio = { version = "=1.48.0", features = ["rt", "macros", "io-util", "sync", "time"] }

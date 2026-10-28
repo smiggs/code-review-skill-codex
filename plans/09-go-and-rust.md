@@ -1,6 +1,9 @@
 # Package 09: Go and Rust
 
-Status: planned; implementation and technical verification have not begun.
+Status: technical audit candidate prepared; the user conditionally accepted it
+on 28 October 2026, subject to the [CodeRabbit and merge gates](evidence/09-pr-approval.md).
+See the [audit evidence](evidence/09-go-and-rust.md) for the checked scope,
+commands, candidate identity, and outstanding human decision.
 
 ## Outcome
 

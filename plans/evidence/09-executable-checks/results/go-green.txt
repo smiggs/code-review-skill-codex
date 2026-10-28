@@ -1,0 +1,10 @@
+=== RUN   TestWorkerBoundaries
+--- PASS: TestWorkerBoundaries (0.00s)
+=== RUN   TestCompletesEveryItemAndJoins
+--- PASS: TestCompletesEveryItemAndJoins (0.00s)
+=== RUN   TestCancellationAndBound
+--- PASS: TestCancellationAndBound (0.00s)
+=== RUN   TestCallbackFailureCancelsSiblingAndJoins
+--- PASS: TestCallbackFailureCancelsSiblingAndJoins (0.00s)
+PASS
+ok  	example.invalid/package09	0.017s

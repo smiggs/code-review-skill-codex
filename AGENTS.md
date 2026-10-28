@@ -17,7 +17,11 @@ and human approval conditional on PR 6 completing the CodeRabbit loop and
 merging under its gates. No release publication is approved.
 Task 07 is an optional severity-calibration follow-up, scoped in
 [its plan](plans/07-severity-calibration.md). Pending language audits are numbered
-08–12; neither they nor task 07 reopen package 05's completion.
+08–12; neither they nor task 07 reopen package 05's completion. Package 09 has
+a scoped Go/Rust technical candidate and Miri follow-up; its human acceptance
+is conditional on the current-head CodeRabbit and merge gates recorded in
+[its approval record](plans/evidence/09-pr-approval.md). No new model evaluation
+or release is authorised.
 
 `SKILL.md` defines discovery and the core review process. `agents/openai.yaml`
 contains UI metadata. `reference/` holds selectively loaded language and topic

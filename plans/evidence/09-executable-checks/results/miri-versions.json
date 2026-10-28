@@ -1,0 +1,13 @@
+{
+  "rustc": "rustc 1.87.0-nightly (f280acf4c 2025-02-19)",
+  "cargo": "cargo 1.87.0-nightly (ce948f461 2025-02-14)",
+  "miri": "miri 0.1.0 (f280acf4c7 2025-02-19)",
+  "toolchain": "nightly-2025-02-20-x86_64-unknown-linux-gnu",
+  "rustup": "1.29.2 (reported by installer)",
+  "rustup_init_sha256": "5be191e8c70a5007074254cb74d78dbfdd25cd5a61c27de7b8e5410122ec24f4",
+  "installation_root": "/tmp/package-09-rustup",
+  "cargo_home": "/tmp/package-09-cargo",
+  "sysroot": "/tmp/package-09-miri-sysroot",
+  "miri_flags": "-Zmiri-seed=0",
+  "target": "x86_64-unknown-linux-gnu"
+}
