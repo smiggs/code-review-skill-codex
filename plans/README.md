@@ -68,6 +68,10 @@ is authorised by package 05's completion decision.
    scoped technical audit and verification of retained guidance.
 12. [CSS, Less, and Sass](12-css-less-and-sass.md):
    scoped technical audit and verification of retained guidance.
+13. [Multi-harness installation](13-multi-harness-installation.md):
+   install documentation and per-harness validation for Claude Code, ZCode,
+   OpenCode, and Antigravity; package 06's completion and publication
+   boundaries are not reopened.
 
 [Human and AI checkpoints](human-ai-checkpoints.md) records the judgements that
 automated checks cannot establish.
@@ -96,6 +100,14 @@ amendment. The [completion proposal](evidence/07-severity-execution/completion-p
 has [conditional human acceptance](evidence/07-severity-pr-approval.md) of the
 exact candidate and retained limitations, effective after the requested
 CodeRabbit loop and PR merge gates hold. Task 07 awaits those gates.
+
+Package 13 is a distribution follow-up prepared on 28 October 2026 at the
+user's request, documenting installation of the same pinned candidates beyond
+Codex for Claude Code, ZCode, OpenCode, and Antigravity. Its
+[plan](13-multi-harness-installation.md) awaits agreement on the install
+layout. It does not require the language audits or task 07, does not reopen
+package 06's conditional completion, and does not authorise release
+publication.
 
 ## Language audit requirements
 
