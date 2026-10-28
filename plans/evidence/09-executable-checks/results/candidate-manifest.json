@@ -2,7 +2,7 @@
   "base_revision": "128b6a908bdeefd5a6d1a73b2fce91c5139294f6",
   "source_revision": "957988a23e59285ef71fa8a298734093a5a914d6",
   "algorithm": "SHA-256 of sorted UTF-8 path, NUL, raw file bytes, NUL",
-  "combined_sha256": "aba6e6f013afdc63204e2506dae950aed4c2547e7457f0686897537cd3f69e9b",
+  "combined_sha256": "c5bc730bc692669cf57c331b95395ed5f502b8e066ac0db92fb9fd0bdc5f43f1",
   "excludes": [
     "plans/evidence/09-go-and-rust.md",
     "this manifest",
@@ -19,7 +19,7 @@
     },
     {
       "path": "plans/README.md",
-      "sha256": "75ec93b222c5aeb6748e3450d7c420ea860714e82045f53980014b826823cfd7"
+      "sha256": "8a038dcf747988ccb9bedaae18abbc7e5013f0a5aa70ad195116c0dd3ea00342"
     },
     {
       "path": "plans/evidence/09-executable-checks/.gitignore",
@@ -211,7 +211,7 @@
     },
     {
       "path": "plans/evidence/09-executable-checks/results/validation.txt",
-      "sha256": "714c106630e74b5d6ef5e8e699a9e7f128eedf755b87e12c49383ce868ac878d"
+      "sha256": "1a2dd85c1feabfe5f642fb3bb8a99447473677669c1302a982775f9b0a300a9f"
     },
     {
       "path": "plans/evidence/09-executable-checks/rust/Cargo.lock",
@@ -247,11 +247,11 @@
     },
     {
       "path": "reference/provenance.md",
-      "sha256": "3413e527954c83d3a9ec971ff46104bc809d91ea2eb36de9de506742a7ae4e69"
+      "sha256": "ef4fcad641a8df708018859549afe535e3396b84ab28d5fa2649f9158de7c23e"
     },
     {
       "path": "reference/reference-status.md",
-      "sha256": "b7027c4d71311a1e5ad377b906104cb6ecb573e6c12b9dee3b224cb4e627377b"
+      "sha256": "7cd6229a55387b7041006c72ad31b547701f5b2cddde1ff65ab75613559430bc"
     },
     {
       "path": "reference/rust.md",

@@ -100,9 +100,11 @@ CodeRabbit loop and PR merge gates hold. Task 07 awaits those gates.
 ## Language audit requirements
 
 Packages 08–12 are follow-on audits of the references deferred by package 03.
-Package 08 has a technical audit candidate with scoped executable checks and
-prepared fixtures; human acceptance remains pending in its
-[execution record](evidence/08-executable-verification.md).
+Package 08's scoped technical audit is complete under the human acceptance made
+effective by [PR 9 completion](https://github.com/smiggs/code-review-skill-codex/pull/9#issuecomment-6464622303). Its
+[execution record](evidence/08-executable-verification.md) preserves the checked
+scope and limits; a separately agreed model evaluation remains outside that
+acceptance.
 Package 09 has a technical audit candidate with scoped Go/Rust checks and
 prepared fixtures; its [evidence](evidence/09-go-and-rust.md) records the
 conditional human acceptance and CodeRabbit/merge gates. Packages 10–12 remain
