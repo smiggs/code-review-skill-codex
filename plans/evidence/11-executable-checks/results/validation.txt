@@ -1,0 +1,38 @@
+# Package 11 validation log
+Date: 2026-10-30
+
+## git diff --check
+clean
+
+## git diff --stat (tracked files; new files appear after add)
+ .../11-executable-checks/results/validation.txt    | 29 --------------
+ plans/evidence/11-executable-checks/run_checks.py  | 46 ++++++++++++++--------
+ .../test_evidence_integrity.py                     | 11 ++++--
+ plans/evidence/11-executable-checks/tests/test_c.c | 14 +++----
+ reference/cpp.md                                   |  7 +++-
+ reference/qt.md                                    | 14 +++----
+ reference/reference-status.md                      |  2 +-
+ 13 files changed, 77 insertions(+), 93 deletions(-)
+
+## helper and structural tests
+Ran 18 tests in 2.287s
+
+OK
+
+## repository structural validator
+Skill structure and local link targets are valid (review quality is not evaluated).
+
+## skill-creator quick validator
+Skill is valid!
+
+## house-style lint (changed English documents)
+reference/c.md: 0 error(s), 0 warning(s) in 1 file(s)
+reference/cpp.md: 0 error(s), 0 warning(s) in 1 file(s)
+reference/qt.md: 0 error(s), 0 warning(s) in 1 file(s)
+plans/evidence/11-executable-checks/README.md: 0 error(s), 0 warning(s) in 1 file(s)
+plans/evidence/11-executable-checks/fixtures/README.md: 0 error(s), 0 warning(s) in 1 file(s)
+plans/11-c-cpp-and-qt.md: 0 error(s), 0 warning(s) in 1 file(s)
+plans/evidence/11-c-cpp-and-qt.md: 0 error(s), 0 warning(s) in 1 file(s)
+reference/common-bugs-checklist.md (new section only): 2 error(s), 2 warning(s) in 1 file(s)
+
+The candidate manifest digest lives in results/candidate-manifest.json.

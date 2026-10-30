@@ -1,6 +1,10 @@
 # Package 11: C, C++, and Qt
 
-Status: planned; implementation and technical verification have not begun.
+Status: technical audit candidate prepared at the user's request. Human
+acceptance follows the PR review and merge gates under the user's standing
+workflow. See the [audit evidence](evidence/11-c-cpp-and-qt.md) for the
+checked scope, commands, corrections, candidate identity, and limits.
+Behavioural evaluation remains a separate decision.
 
 ## Outcome
 
