@@ -109,6 +109,23 @@ unannotated beans, and hand-written identifier-based equality are valid
 controls; feature choice, annotation style, and framework preference alone
 do not establish defects.
 
+## C, C++, and Qt
+
+Use the [C guide](c.md), [C++ guide](cpp.md), and [Qt guide](qt.md) for
+buffer and copy contracts, partial-I/O and allocation-failure handling,
+undefined-behaviour triggers, ownership transfer and move correctness, view
+and capture lifetimes, and Qt parent ownership, deferred deletion, thread
+affinity, and connection types. Check the declared language mode
+(`-std=c11`/`c17`), the C++ standard, and the project's Qt version before
+reporting version-boundary findings. Overlapping `memcpy` is undefined
+behaviour while `memmove` is defined for it; a defaulted move of a class
+whose destructor releases a raw handle double-closes; a negative count
+converted to `size_t` for `reserve` throws `std::length_error`. A context
+object on a lambda connection disconnects it with the receiver;
+subclassing `QThread::run()` is valid when `run()` owns the work and the
+subclass adds no slots. Deliberate macros, by-value containers, and missing
+`reserve` alone do not establish defects.
+
 ## SQL
 
 ### Injection Vulnerabilities

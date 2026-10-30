@@ -1,0 +1,110 @@
+{
+  "reference/c.md": {
+    "sha256": "a285b094a532c76397b273fd0f838c8b267835389d3189e254a7e1b8421a8710",
+    "code_blocks": 4,
+    "blocks": [
+      {
+        "file": "00-copies-without-truncation-returns-false-if-src-does-not-fit.c",
+        "sha256": "18a1c639c1ef000d48e5db57776b20df75f158bb938fa5a9fc3e71545011d295",
+        "lines": 9
+      },
+      {
+        "file": "01-reads-the-whole-file-into-a-caller-freed-buffer.c",
+        "sha256": "20350a5df19b34109f0f466e8a2660bf91b0e6991c755eddfd9a0846ea9d690a",
+        "lines": 51
+      },
+      {
+        "file": "02-int-sum-tail-const-int-arr-size-t-n.c",
+        "sha256": "db4d4f031976238f84acc8039273bba7ce0c73815f07016d5ea75b94f332ad2a",
+        "lines": 8
+      },
+      {
+        "file": "03-stop-is-shared-with-worker-threads.c",
+        "sha256": "22c4b4583769fb261b5490e07461d373de992003e5f449b9a66a37005f0443f3",
+        "lines": 9
+      }
+    ]
+  },
+  "reference/cpp.md": {
+    "sha256": "7d14c10b7b4170d4533b70112b76d50c8f3244a8205254690338a92e6276c1e2",
+    "code_blocks": 10,
+    "blocks": [
+      {
+        "file": "00-std-unique-ptr-foo-make-foo.cpp",
+        "sha256": "aa8de96b074821f7a7beee8bd596fdf7dc48336f21cd407fc290595d79962981",
+        "lines": 7
+      },
+      {
+        "file": "01-using-fileptr-std-unique-ptr-file-decltype-fclose.cpp",
+        "sha256": "eb86878934d220155873790986d955e573d57352938fd9dc27bb8c7fd4d8dfbf",
+        "lines": 5
+      },
+      {
+        "file": "02-std-string-view-good-view-const-std-string-s.cpp",
+        "sha256": "423dca15451f150927a35053bee9c52b6e55f5fb4d3e351912caf13afd29127d",
+        "lines": 7
+      },
+      {
+        "file": "03-std-function-void-make-task.cpp",
+        "sha256": "d5c7443cfe47ecc07f2c49008ec0918b4a70736dcdb767a14cc542b3ae0971a1",
+        "lines": 4
+      },
+      {
+        "file": "04-struct-buffer.cpp",
+        "sha256": "33c17bc3de1b9df2e92ebb9c391e7ca3c6f322499d830bb19a457220bdbe8491",
+        "lines": 4
+      },
+      {
+        "file": "05-class-socket.cpp",
+        "sha256": "31bbe6792e2993ee3c03df0231bc13f3e977558194cb8d32362729ddcafb1d64",
+        "lines": 28
+      },
+      {
+        "file": "06-std-optional-int-parse-int-const-std-string-s.cpp",
+        "sha256": "12f11e72dea796cea8a9f445cd72f93033ac0529d3293ac8aeeefc756b9f25dc",
+        "lines": 7
+      },
+      {
+        "file": "07-std-atomic-int-counter-0.cpp",
+        "sha256": "7a0cf2439988081087c5556cd92cc9eb1e0a61dfd8bc9dfbe44ee91cd53c3fc8",
+        "lines": 2
+      },
+      {
+        "file": "08-std-mutex-mu.cpp",
+        "sha256": "65190b5a2c547bf5f6b504ab04e7996c0165bd21c2202892fa2b95ef95751e3c",
+        "lines": 7
+      },
+      {
+        "file": "09-std-vector-int-build-int-n.cpp",
+        "sha256": "9b222dce5521644f5ca2a02a94d194ce1308a3845c4e8001c34e7d17eafd8757",
+        "lines": 11
+      }
+    ]
+  },
+  "reference/qt.md": {
+    "sha256": "a7692222a6ec9bbd1ae74ec916ccc3428a5d4cb81bea1448e7d78b35c035097b",
+    "code_blocks": 4,
+    "blocks": [
+      {
+        "file": "00-auto-label-new-qlabel-parentwidget-parentwidget-owns-label.cpp",
+        "sha256": "c61a346587958b1adfeb1bc5262f19b3c08b603b2ff91be2f12de4bf0293d33c",
+        "lines": 1
+      },
+      {
+        "file": "01-connect-sender-sender-valuechanged-worker-this-int-v.cpp",
+        "sha256": "771b5990abfd7392360ddc843a49366acbb57168b55ca205af030d2fbec0b739",
+        "lines": 3
+      },
+      {
+        "file": "02-void-myclass-setvalue-int-v.cpp",
+        "sha256": "c999dd396480d7da8a5c3307372e0821c6d5bbaaf74809efec648319ea0c5816",
+        "lines": 7
+      },
+      {
+        "file": "03-auto-thread-new-qthread.cpp",
+        "sha256": "d100192d648a2757749738280c8f5eaf5bd5e2aa797588f9d0357e170fb27fbd",
+        "lines": 8
+      }
+    ]
+  }
+}

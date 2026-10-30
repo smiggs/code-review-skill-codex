@@ -124,7 +124,11 @@ conditional human acceptance and CodeRabbit/merge gates. Package 10 has a
 technical audit candidate with scoped JDK/Spring/Hibernate checks and prepared
 fixtures; the user supplied conditional acceptance on 28 October 2026 recorded
 in [evidence/10-pr-approval.md](evidence/10-pr-approval.md), effective after
-the CodeRabbit and merge gates hold. Packages 11–12 remain planned. The user requested insertion of task 07 on
+the CodeRabbit and merge gates hold. Package 11 has a technical audit
+candidate with scoped GCC/Qt checks and prepared fixtures; its
+[evidence](evidence/11-c-cpp-and-qt.md) records the checked scope, and human
+acceptance follows the PR review and merge gates under the user's standing
+workflow. Package 12 remains planned. The user requested insertion of task 07 on
 25 October 2026; pending language audits formerly numbered 07–11 are now 08–12. Package 06 retains its number
 and scope. The language audits do not require package 06 or task 07 to run first.
 Planning authorisation does not mark implementation, validation, or human

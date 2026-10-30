@@ -1,0 +1,286 @@
+cc: x86_64-conda-linux-gnu-gcc (conda-forge gcc 13.3.0-2) 13.3.0
+cxx: x86_64-conda-linux-gnu-g++ (conda-forge gcc 13.3.0-2) 13.3.0
+platform: Linux-7.0.0-38-generic-x86_64-with-glibc2.43
+run-c-c11-asan: rc=0
+copy_name fits exactly                        ok
+copy_name stores content                      ok
+copy_name rejects truncation                  ok
+copy_name accepts empty                       ok
+copy_name terminates empty copy               ok
+copy_name rejects zero capacity               ok
+load_file reads a small file                  ok
+load_file content matches                     ok
+load_file grows past 4096 bytes               ok
+load_file grown content matches               ok
+load_file empty file                          ok
+load_file reports missing file                ok
+load_file leaves no buffer on failure         ok
+load_file reports directory read error        ok
+load_file cleans up after read error          ok
+sum_tail adds a full array                    ok
+sum_tail accepts empty range                  ok
+stop flag starts false                        ok
+stop flag becomes true                        ok
+two readers observe stop without hanging      ok
+ALL-OK
+
+run-c-c11-o2: rc=0
+copy_name fits exactly                        ok
+copy_name stores content                      ok
+copy_name rejects truncation                  ok
+copy_name accepts empty                       ok
+copy_name terminates empty copy               ok
+copy_name rejects zero capacity               ok
+load_file reads a small file                  ok
+load_file content matches                     ok
+load_file grows past 4096 bytes               ok
+load_file grown content matches               ok
+load_file empty file                          ok
+load_file reports missing file                ok
+load_file leaves no buffer on failure         ok
+load_file reports directory read error        ok
+load_file cleans up after read error          ok
+sum_tail adds a full array                    ok
+sum_tail accepts empty range                  ok
+stop flag starts false                        ok
+stop flag becomes true                        ok
+two readers observe stop without hanging      ok
+ALL-OK
+
+run-c-c11-tsan: rc=0
+copy_name fits exactly                        ok
+copy_name stores content                      ok
+copy_name rejects truncation                  ok
+copy_name accepts empty                       ok
+copy_name terminates empty copy               ok
+copy_name rejects zero capacity               ok
+load_file reads a small file                  ok
+load_file content matches                     ok
+load_file grows past 4096 bytes               ok
+load_file grown content matches               ok
+load_file empty file                          ok
+load_file reports missing file                ok
+load_file leaves no buffer on failure         ok
+load_file reports directory read error        ok
+load_file cleans up after read error          ok
+sum_tail adds a full array                    ok
+sum_tail accepts empty range                  ok
+stop flag starts false                        ok
+stop flag becomes true                        ok
+two readers observe stop without hanging      ok
+ALL-OK
+
+run-c-c17-asan: rc=0
+copy_name fits exactly                        ok
+copy_name stores content                      ok
+copy_name rejects truncation                  ok
+copy_name accepts empty                       ok
+copy_name terminates empty copy               ok
+copy_name rejects zero capacity               ok
+load_file reads a small file                  ok
+load_file content matches                     ok
+load_file grows past 4096 bytes               ok
+load_file grown content matches               ok
+load_file empty file                          ok
+load_file reports missing file                ok
+load_file leaves no buffer on failure         ok
+load_file reports directory read error        ok
+load_file cleans up after read error          ok
+sum_tail adds a full array                    ok
+sum_tail accepts empty range                  ok
+stop flag starts false                        ok
+stop flag becomes true                        ok
+two readers observe stop without hanging      ok
+ALL-OK
+
+run-cpp-cpp20-asan: rc=0
+make_foo returns an owner                      ok
+make_foo returns empty on failed Init          ok
+open_file opens an existing file               ok
+open_file tolerates a missing path             ok
+good_view reads caller-owned data              ok
+good_name returns an owned copy                ok
+make_task returns a callable                   ok
+Buffer copies own independent storage          ok
+Socket rejects copies                          ok
+moving does not close                          ok
+destruction closes exactly once                ok
+moved-from Socket closes nothing               ok
+move-assignment releases the old handle        ok
+chain closes twice: assignment and final destruction ok
+parse_int reads a value                        ok
+parse_int reports invalid text                 ok
+parse_int reports out of range                 ok
+parse_int reports empty input                  ok
+atomic counter counts every increment          ok
+guarded vector holds every push                ok
+build fills positive counts                    ok
+build accepts zero                             ok
+build rejects negative counts explicitly       ok
+ALL-OK
+
+run-cpp-cpp20-o2: rc=0
+make_foo returns an owner                      ok
+make_foo returns empty on failed Init          ok
+open_file opens an existing file               ok
+open_file tolerates a missing path             ok
+good_view reads caller-owned data              ok
+good_name returns an owned copy                ok
+make_task returns a callable                   ok
+Buffer copies own independent storage          ok
+Socket rejects copies                          ok
+moving does not close                          ok
+destruction closes exactly once                ok
+moved-from Socket closes nothing               ok
+move-assignment releases the old handle        ok
+chain closes twice: assignment and final destruction ok
+parse_int reads a value                        ok
+parse_int reports invalid text                 ok
+parse_int reports out of range                 ok
+parse_int reports empty input                  ok
+atomic counter counts every increment          ok
+guarded vector holds every push                ok
+build fills positive counts                    ok
+build accepts zero                             ok
+build rejects negative counts explicitly       ok
+ALL-OK
+
+run-cpp-cpp20-tsan: rc=0
+make_foo returns an owner                      ok
+make_foo returns empty on failed Init          ok
+open_file opens an existing file               ok
+open_file tolerates a missing path             ok
+good_view reads caller-owned data              ok
+good_name returns an owned copy                ok
+make_task returns a callable                   ok
+Buffer copies own independent storage          ok
+Socket rejects copies                          ok
+moving does not close                          ok
+destruction closes exactly once                ok
+moved-from Socket closes nothing               ok
+move-assignment releases the old handle        ok
+chain closes twice: assignment and final destruction ok
+parse_int reads a value                        ok
+parse_int reports invalid text                 ok
+parse_int reports out of range                 ok
+parse_int reports empty input                  ok
+atomic counter counts every increment          ok
+guarded vector holds every push                ok
+build fills positive counts                    ok
+build accepts zero                             ok
+build rejects negative counts explicitly       ok
+ALL-OK
+
+run-cpp-cpp17-asan: rc=0
+make_foo returns an owner                      ok
+make_foo returns empty on failed Init          ok
+open_file opens an existing file               ok
+open_file tolerates a missing path             ok
+good_view reads caller-owned data              ok
+good_name returns an owned copy                ok
+make_task returns a callable                   ok
+Buffer copies own independent storage          ok
+Socket rejects copies                          ok
+moving does not close                          ok
+destruction closes exactly once                ok
+moved-from Socket closes nothing               ok
+move-assignment releases the old handle        ok
+chain closes twice: assignment and final destruction ok
+parse_int reads a value                        ok
+parse_int reports invalid text                 ok
+parse_int reports out of range                 ok
+parse_int reports empty input                  ok
+atomic counter counts every increment          ok
+guarded vector holds every push                ok
+build fills positive counts                    ok
+build accepts zero                             ok
+build rejects negative counts explicitly       ok
+ALL-OK
+
+run-cpp-cpp17-o2: rc=0
+make_foo returns an owner                      ok
+make_foo returns empty on failed Init          ok
+open_file opens an existing file               ok
+open_file tolerates a missing path             ok
+good_view reads caller-owned data              ok
+good_name returns an owned copy                ok
+make_task returns a callable                   ok
+Buffer copies own independent storage          ok
+Socket rejects copies                          ok
+moving does not close                          ok
+destruction closes exactly once                ok
+moved-from Socket closes nothing               ok
+move-assignment releases the old handle        ok
+chain closes twice: assignment and final destruction ok
+parse_int reads a value                        ok
+parse_int reports invalid text                 ok
+parse_int reports out of range                 ok
+parse_int reports empty input                  ok
+atomic counter counts every increment          ok
+guarded vector holds every push                ok
+build fills positive counts                    ok
+build accepts zero                             ok
+build rejects negative counts explicitly       ok
+ALL-OK
+
+fixture-c-partial-io-defect.c: rc=0 ok
+record 0: REC-0001
+record 1: REC-0002
+record 2: REC-0003
+record 3: REC-ER8
+
+fixture-c-partial-io-clean.c: rc=3 ok
+record 0: REC-0001
+record 1: REC-0002
+record 2: REC-0003
+
+fixture-cpp-move-close-defect.cpp: rc=0 ok
+handle 100 closed 2 times
+closes=2
+
+fixture-cpp-move-close-clean.cpp: rc=0 ok
+handle 100 closed 1 times
+closes=1
+
+moc-qt-sender-worker.hpp: rc=0
+moc-qt-valueguard-classes.hpp: rc=0
+run-qt-context-lambda: rc=0
+context connection delivers directly           ok
+destroyed context auto-disconnects the lambda  ok
+ALL-OK
+
+run-qt-worker-shutdown: rc=0
+worker object exists after start               ok
+thread stops through the quit connection       ok
+finished deletes the worker                    ok
+finished deletes the thread                    ok
+ALL-OK
+
+run-qt-valueguard: rc=0
+guarded setter stores the new value            ok
+guarded setter skips duplicate emissions       ok
+ALL-OK
+
+run-qt-metacast: rc=0
+qobject_cast returns the object                ok
+qobject_cast returns null for an unrelated type ok
+qobject_cast returns null for a plain QObject  ok
+QPointer tracks a live object                  ok
+QPointer tracks before destruction             ok
+QPointer clears after destruction              ok
+ALL-OK
+
+run-qt-parentowner: rc=0
+child exists with its parent                   ok
+constructor records the parent owner           ok
+parent destruction deletes the child           ok
+ALL-OK
+
+qt-widgets-platform: ok
+run-qt-fixture-defect.cpp: rc=0 ok
+ownerAlive=0 calls=2
+
+run-qt-fixture-clean.cpp: rc=0 ok
+ownerAlive=0 calls=1
+
+PACKAGE-11-CHECKS: ALL-OK

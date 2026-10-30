@@ -5,7 +5,9 @@ Package 08 acceptance is effective following
 [PR 9 completion](https://github.com/smiggs/code-review-skill-codex/pull/9#issuecomment-6464622303). Package 09 has conditional
 human acceptance subject to current-head CodeRabbit and merge gates. Package
 10 has conditional human acceptance subject to current-head CodeRabbit and
-merge gates. This is an audit
+merge gates. Package 11 has a technical audit candidate whose human
+acceptance follows the PR review and merge gates under the user's standing
+workflow. This is an audit
 disposition, not a claim that all supported languages have been technically
 verified. The [review contract](review-contract.md) governs all inherited advice.
 
@@ -29,17 +31,17 @@ conflict or unsupported recommendation, without inventing a broader audit.
 | [Architecture](architecture-review-guide.md) | Verified within scope | Requirement-based prompts replace universal patterns, metric thresholds, and automatic severity. Target architectures still require their own evidence. |
 | [Performance](performance-review-guide.md) | Verified within scope | Evidence and workload rules reconciled; selected browser, caching, and PostgreSQL claims checked in primary documentation. No framework benchmarks or universal thresholds. |
 | [Security](security-review-guide.md) | Verified within scope | Scope, authority, and evidence rules reconciled; bounded authorisation and command/path guidance checked. No complete application, cryptography, or dependency audit. |
-| [Common bugs](common-bugs-checklist.md) | Partially reconciled; retained, not technically verified | Python, TypeScript/React/Vue, and Rust duplicates consolidated into their guides; Go routing added. Other inherited examples remain unverified. Patterns are prompts rather than defect evidence. |
+| [Common bugs](common-bugs-checklist.md) | Partially reconciled; retained, not technically verified | Python, TypeScript/React/Vue, and Rust duplicates consolidated into their guides; Go and Java routing added; a combined C/C++/Qt routing section added. Other inherited examples remain unverified. Patterns are prompts rather than defect evidence. |
 | [React](react.md) | Checked within package 08 scope; accepted via PR 9 | React/React DOM 19.3.1 Hook, form, action, and state-identity checks passed in jsdom 30.1.3; exact Hook compiled with TypeScript 6.0.3. Query 5.105.0 source inspected and cached-data refetch error exercised. Next.js 15 remains documentation-only; no browser, hydration, or review-accuracy claim. |
 | [Vue](vue.md) | Checked within package 08 scope; accepted via PR 9 | Exact composable compiled with TypeScript 6.0.3 and passed controlled request tests in Vue 3.5.44/jsdom. SFC compiled/executed with 3.4.38 and 3.5.44; no full vue-tsc, browser, hydration, general patch matrix, or review-accuracy claim. |
 | [Rust](rust.md) | Checked within package 09 scope; conditional acceptance | Exact fragments compiled on Rust 1.85.0, editions 2021/2024, Tokio 1.48.0. Controlled partial I/O, cancellation, task shutdown, and valid unsafe calls passed; release mode checked. All ten harness tests also passed Miri on nightly-2025-02-20, one seed/target, edition 2021; inherited bounds defect reproduced. No sanitiser, FFI, full feature/target matrix, or review-accuracy claim. |
 | [TypeScript](typescript.md) | Checked within package 08 scope; accepted via PR 9 | TypeScript 6.0.3 strict compilation and Node.js 24.22.1 runtime cases passed for the retained reader and synthetic type controls. Compiler/lint settings stay project-specific; no broad runtime matrix or review-accuracy claim. |
 | [Java](java.md) | Checked within package 10 scope; conditional acceptance | Exact guide examples compiled on JDK 21.0.13; the pattern-switch example needed the JDK 17 preview flag and the virtual-thread example was rejected on both JDK 17 targets (JDK 19+ API boundary). Hibernate 6.4.10.Final with H2 2.2.224 checked eager-collection statement counts, inner versus left fetch-join membership, in-memory pagination, and proxy-safe identifier equality. Spring 6.1.14 checked proxy mode, self-invocation, package-visible advice, non-routable private methods, and the readOnly hint. No Spring Boot autoconfiguration, other providers or JDK releases, or review-accuracy claim. |
 | [Go](go.md) | Checked within package 09 scope; conditional acceptance | Exact worker example compiled on Go 1.22.12 with boundary, cancellation, closure, shutdown, and race checks; module 1.21/1.22 loop comparisons passed. No broad toolchain/platform matrix, performance benchmark, or review-accuracy claim. |
-| [C](c.md) | Retained, not technically verified | Language mode, implementation, ownership, and undefined-behaviour examples need verification. |
-| [C++](cpp.md) | Retained, not technically verified | Standard-version, lifetime, library, and tooling assumptions need verification. |
+| [C](c.md) | Checked within package 11 scope; conditional acceptance | Exact fences compiled and exercised on GCC 13.3.0 (C11, Linux/x86_64) under address/undefined and thread sanitisers: bounded-copy contracts, whole-file reading with failure cleanup, one-past-the-end iteration, and the C11 atomic stop flag read by threads. C23, other compilers and platforms, and device I/O remain documentation-only; no review-accuracy claim. |
+| [C++](cpp.md) | Checked within package 11 scope; conditional acceptance | Exact fences compiled and exercised on GCC 13.3.0 for C++17 and C++20 (sanitiser, `-O2`, and thread-sanitiser variants): ownership and the `fclose` wrapper, view and capture lifetimes, the corrected move contract with a double-close control, `std::stoi` failure mapping, threaded atomic and guarded updates, and the negative-count `reserve` rejection. No broader standard-library matrix or review-accuracy claim. |
 | [CSS, Less, and Sass](css-less-sass.md) | Retained, not technically verified; policy feedback corrected | Removed count-based blocking feedback and automatic checklist priority. Browser and preprocessor examples remain unverified. |
-| [Qt](qt.md) | Retained, not technically verified | Qt version, threading, ownership, and signal examples need a technical pass. |
+| [Qt](qt.md) | Checked within package 11 scope; conditional acceptance | Event-loop checks ran against Qt 6.12.0 on Linux with `QCoreApplication` and the offscreen widget platform: parent destruction, `deleteLater` after the loop stops, `qobject_cast` and `QPointer` contracts, context-object lambda disconnection, the guarded setter, and full worker-object shutdown. Qt 5.15 differences, other platforms, embedded targets, and rendering remain documentation-only; no review-accuracy claim. |
 
 This status file records its own scope rather than claiming an independent audit
 of itself. No language guide was removed or renamed. The entry point retains
@@ -73,8 +75,14 @@ compile checks on the declared JDK targets, Hibernate/H2 and Spring Framework
 fixture checks, and prepared review fixtures with answer keys under
 `plans/evidence/10-executable-checks/` in the source checkout. The Java section
 in the common-bug checklist now routes to `java.md`; other inherited checklist
-sections retain their original role as pattern prompts. The other three non-Python
-language guides are unchanged. The CSS guide has only
+sections retain their original role as pattern prompts.
+Package 11 rewrites C, C++, and Qt in British English with the same method:
+exact-fence compile and runtime checks on GCC 13.3.0 (C11, C++17, C++20) with
+sanitiser variants, Qt 6.12.0 event-loop adapters including the offscreen
+widget platform, and prepared review fixtures with answer keys under
+`plans/evidence/11-executable-checks/` in the source checkout. A combined
+C/C++/Qt routing section was added to the common-bug checklist. The CSS guide
+has only
 scoped English policy corrections; its technical examples retain their original content.
 The rewritten guides and audit evidence are English only. These limits are
 intentional deferrals for human review, not successful multilingual validation.
