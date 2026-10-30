@@ -22,9 +22,9 @@ the project's own version first. See the
 A QObject's parent takes ownership: the parent's destructor destroys all
 child objects, and a child created with a parent must not also be deleted by
 hand. A child that lives on the stack or as a global while it has a heap
-parent is destroyed twice, which the
+parent is destroyed twice if the parent is destroyed first, which the
 [QObject documentation](https://doc.qt.io/qt-6/qobject.html) warns leads to
-a crash. An unparented heap object needs another stated owner, such as a
+a crash; a child destroyed first removes itself from the parent. An unparented heap object needs another stated owner, such as a
 `std::unique_ptr`, or a documented transfer into the object tree.
 
 ```cpp
@@ -77,17 +77,17 @@ documented semantics:
 | `Qt::DirectConnection` | The slot runs immediately in the emitting thread. |
 | `Qt::QueuedConnection` | The slot runs when the receiver's thread event loop regains control; arguments are copied, so custom types must be registered with `qRegisterMetaType`. |
 | `Qt::BlockingQueuedConnection` | Like queued, but the emitting thread blocks. It deadlocks if the receiver lives in the emitting thread. |
-| `Qt::UniqueConnection` | Flag combined with the types above; `connect` fails if the connection already exists. |
+| `Qt::UniqueConnection` | Flag combined with the types above; `connect` fails if the connection already exists. Uniqueness is not enforced for lambdas, functors, or non-member functions, so duplicate invocations remain possible there. |
 
 A direct connection across threads runs slot code in the wrong thread; with
 queued connections, an unregistered argument type fails to deliver at
 runtime. Review the thread that each side lives in, not the connection site
 alone.
 
-Lambdas connected without a context object are never disconnected
-automatically: `connect(sender, &Sender::sig, receiver, lambda)` keeps the
-lambda alive until the sender is destroyed, so any captured raw pointer can
-outlive its owner. Passing a context object
+The contextless overload, `connect(sender, &Sender::sig, lambda)`, is
+disconnected when the sender is destroyed but does not track any captured
+owner, so a captured raw pointer can outlive its owner and be used after
+destruction. Passing a context object
 
 ```cpp
 connect(sender, &Sender::valueChanged, worker, [this](int v) {

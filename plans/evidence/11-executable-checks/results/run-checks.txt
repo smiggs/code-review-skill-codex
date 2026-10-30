@@ -20,8 +20,8 @@ load_file cleans up after read error          ok
 sum_tail adds a full array                    ok
 sum_tail accepts empty range                  ok
 stop flag starts false                        ok
-stop flag becomes true                        ok
 two readers observe stop without hanging      ok
+stop flag becomes true                        ok
 ALL-OK
 
 run-c-c11-o2: rc=0
@@ -43,8 +43,8 @@ load_file cleans up after read error          ok
 sum_tail adds a full array                    ok
 sum_tail accepts empty range                  ok
 stop flag starts false                        ok
-stop flag becomes true                        ok
 two readers observe stop without hanging      ok
+stop flag becomes true                        ok
 ALL-OK
 
 run-c-c11-tsan: rc=0
@@ -66,8 +66,8 @@ load_file cleans up after read error          ok
 sum_tail adds a full array                    ok
 sum_tail accepts empty range                  ok
 stop flag starts false                        ok
-stop flag becomes true                        ok
 two readers observe stop without hanging      ok
+stop flag becomes true                        ok
 ALL-OK
 
 run-c-c17-asan: rc=0
@@ -89,8 +89,8 @@ load_file cleans up after read error          ok
 sum_tail adds a full array                    ok
 sum_tail accepts empty range                  ok
 stop flag starts false                        ok
-stop flag becomes true                        ok
 two readers observe stop without hanging      ok
+stop flag becomes true                        ok
 ALL-OK
 
 run-cpp-cpp20-asan: rc=0

@@ -45,7 +45,7 @@ for language, fence, extension in (
     records = []
     for index, body in enumerate(bodies):
         path = destination / f"{index:02d}-{slug(body)}.{extension}"
-        path.write_text(body)
+        path.write_text(body, encoding="utf-8")
         records.append(
             {
                 "file": path.name,
@@ -62,7 +62,7 @@ for language, fence, extension in (
 results = GENERATED / "results"
 results.mkdir(parents=True, exist_ok=True)
 (results / "source-identities.json").write_text(
-    json.dumps(identities, indent=2) + "\n"
+    json.dumps(identities, indent=2) + "\n", encoding="utf-8"
 )
 total = sum(v["code_blocks"] for v in identities.values())
 print(f"Extracted {total} code blocks into {GUIDE_SRC.relative_to(ROOT)}")

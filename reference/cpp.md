@@ -59,7 +59,9 @@ stored view, or a view captured by a lambda that outlives the owner.
 
 ```cpp
 std::string_view good_view(const std::string& s) {
-    return s; // Caller owns the storage for the duration of the call.
+    return s; // Caller owns the storage for the duration of the call;
+              // note that a const& also binds temporaries, so a view
+              // produced from one dangles with them.
 }
 
 std::string good_name() {
@@ -245,7 +247,8 @@ verdicts. A clean run does not prove the absence of undefined behaviour.
 # Warnings and language mode (read-only checks)
 g++ -std=c++20 -Wall -Wextra -Wconversion -Wshadow -c src.cpp
 
-# Sanitisers (debug builds)
+# Sanitiser instrumentation (compile-only; link and run the binary for
+# the sanitiser checks to report)
 g++ -std=c++20 -fsanitize=address,undefined -fno-omit-frame-pointer -g -c src.cpp
 g++ -std=c++20 -fsanitize=thread -fno-omit-frame-pointer -g -c src.cpp
 

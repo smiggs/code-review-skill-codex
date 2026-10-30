@@ -56,8 +56,14 @@ def sh(cmd, timeout=RUN_TIMEOUT, env=None):
     merged["LD_LIBRARY_PATH"] = lib + ":" + merged.get("LD_LIBRARY_PATH", "")
     if env:
         merged.update(env)
-    proc = subprocess.run(cmd, capture_output=True, text=True,
-                          timeout=timeout, env=merged, cwd=str(HERE))
+    try:
+        proc = subprocess.run(cmd, capture_output=True, text=True,
+                              timeout=timeout, env=merged, cwd=str(HERE),
+                              check=False)
+    except subprocess.TimeoutExpired:
+        return 124, "", f"timeout after {timeout}s: {cmd}", time.time() - started
+    except FileNotFoundError as exc:
+        return 127, "", str(exc), time.time() - started
     return proc.returncode, proc.stdout, proc.stderr, time.time() - started
 
 
@@ -84,7 +90,7 @@ def fence_path(guide, index):
 
 
 def assemble_units():
-    c_ids = json.loads((RESULTS / "source-identities.json").read_text())
+    c_ids = json.loads((RESULTS / "source-identities.json").read_text(encoding="utf-8"))
     counts = {k.split("/")[-1].removesuffix(".md"): v["code_blocks"]
               for k, v in c_ids.items()}
     expected = {"c": len(C_UNITS) + len(C_FRAGMENTS), "cpp": len(CPP_UNITS),
@@ -95,10 +101,10 @@ def assemble_units():
                 f"guide {guide}.md now has {counts[guide]} fences; "
                 f"harness expects {want}. Update the fence classification.")
 
-    units_c = "\n".join(fence_path("c", i).read_text() for i in C_UNITS)
-    (BUILD / "units_c.c").write_text(units_c + C_APPENDIX)
-    units_cpp = "\n".join(fence_path("cpp", i).read_text() for i in CPP_UNITS)
-    (BUILD / "units_cpp.cpp").write_text(units_cpp)
+    units_c = "\n".join(fence_path("c", i).read_text(encoding="utf-8") for i in C_UNITS)
+    (BUILD / "units_c.c").write_text(units_c + C_APPENDIX, encoding="utf-8")
+    units_cpp = "\n".join(fence_path("cpp", i).read_text(encoding="utf-8") for i in CPP_UNITS)
+    (BUILD / "units_cpp.cpp").write_text(units_cpp, encoding="utf-8")
 
 
 def run_section_c(lines):
@@ -114,7 +120,7 @@ def run_section_c(lines):
     for name, std, extra in variants:
         out = BUILD / f"test_c_{name}"
         rc, out_txt, err, secs = sh(compile_cmd(CC, std, BUILD / "units_c.c",
-                                                out, []) +
+                                                out, extra) +
                                     ["-include", str(prelude)] +
                                     [str(HERE / "tests" / "test_c.c")])
         if rc != 0:
@@ -135,8 +141,10 @@ def run_section_cpp(lines):
     prelude = HERE / "tests" / "cpp-prelude.hpp"
     # Units and tests share types, so they compile as one translation unit.
     combined = BUILD / "test_cpp_all.cpp"
-    combined.write_text((BUILD / "units_cpp.cpp").read_text() + "\n" +
-                        (HERE / "tests" / "test_cpp.cpp").read_text())
+    combined.write_text(
+        (BUILD / "units_cpp.cpp").read_text(encoding="utf-8") + "\n" +
+        (HERE / "tests" / "test_cpp.cpp").read_text(encoding="utf-8"),
+        encoding="utf-8")
     variants = [
         ("cpp20-asan", "c++20", ["-fsanitize=address,undefined",
                                  "-fno-omit-frame-pointer", "-g"]),
@@ -149,7 +157,7 @@ def run_section_cpp(lines):
     ok = True
     for name, std, extra in variants:
         out = BUILD / f"test_cpp_{name}"
-        rc, out_txt, err, secs = sh(compile_cmd(CXX, std, combined, out, []) +
+        rc, out_txt, err, secs = sh(compile_cmd(CXX, std, combined, out, extra) +
                                     ["-include", str(prelude)])
         if rc != 0:
             lines.append(log_line(f"build-cpp-{name}", rc, secs))
@@ -232,16 +240,16 @@ def run_section_qt(lines, qt_prefix):
     ok = True
 
     def build_and_run(tag, adapter, extra_inc, libs):
-        src_text = adapter.read_text()
+        src_text = adapter.read_text(encoding="utf-8")
         for fence, fname in QT_FENCE_FILES.items():
             if fname == adapter.name:
-                body = fence_path("qt", fence).read_text()
+                body = fence_path("qt", fence).read_text(encoding="utf-8")
                 marker = f"/* FENCE:{fence} */"
                 if marker not in src_text:
                     raise SystemExit(f"{adapter.name} lost marker {marker}")
                 src_text = src_text.replace(marker, body)
         gen_src = BUILD / adapter.name
-        gen_src.write_text(src_text)
+        gen_src.write_text(src_text, encoding="utf-8")
         out = BUILD / f"qt-{tag}"
         cmd = [str(CXX), "-std=c++17", "-Wall", "-Wextra", "-pthread",
                f"--sysroot={SYSROOT}", f"-B{PREFIX / 'bin'}", "-fPIC"] + \
@@ -362,7 +370,10 @@ def candidate_manifest():
         if path.exists():
             files.append(rel)
     for path in sorted(HERE.rglob("*")):
-        if path.is_file() and ".generated" not in path.parts:
+        if path.is_file() and ".generated" not in path.parts \
+                and "__pycache__" not in path.parts \
+                and path.name != "candidate-manifest.json" \
+                and not path.name.startswith(".generated-load-"):
             files.append(str(path.relative_to(ROOT)))
     digest = hashlib.sha256()
     entries = {}
@@ -418,7 +429,7 @@ def main():
     lines.append(summary)
 
     fresh = RESULTS / "run-checks.txt"
-    fresh.write_text("\n".join(lines) + "\n")
+    fresh.write_text("\n".join(lines) + "\n", encoding="utf-8")
     print("\n".join(lines[-6:]))
     if args.record:
         recorded = HERE / "results"
@@ -427,7 +438,8 @@ def main():
         shutil.copyfile(RESULTS / "source-identities.json",
                         recorded / "source-identities.json")
         (recorded / "candidate-manifest.json").write_text(
-            json.dumps(candidate_manifest(), indent=2) + "\n")
+            json.dumps(candidate_manifest(), indent=2) + "\n",
+            encoding="utf-8")
         print("recorded to results/ and refreshed candidate manifest")
     sys.exit(0 if ok else 1)
 

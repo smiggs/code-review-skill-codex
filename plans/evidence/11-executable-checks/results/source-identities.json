@@ -26,7 +26,7 @@
     ]
   },
   "reference/cpp.md": {
-    "sha256": "7d14c10b7b4170d4533b70112b76d50c8f3244a8205254690338a92e6276c1e2",
+    "sha256": "c72aa9bc17bb6a2bc2001215000d86372a7677c5a49654c7761d88caa721edef",
     "code_blocks": 10,
     "blocks": [
       {
@@ -41,8 +41,8 @@
       },
       {
         "file": "02-std-string-view-good-view-const-std-string-s.cpp",
-        "sha256": "423dca15451f150927a35053bee9c52b6e55f5fb4d3e351912caf13afd29127d",
-        "lines": 7
+        "sha256": "c6998a82ccc419623fab31b4497d9ccb9c6b23c655c0597746a0e556b04b92f6",
+        "lines": 9
       },
       {
         "file": "03-std-function-void-make-task.cpp",
@@ -82,7 +82,7 @@
     ]
   },
   "reference/qt.md": {
-    "sha256": "a7692222a6ec9bbd1ae74ec916ccc3428a5d4cb81bea1448e7d78b35c035097b",
+    "sha256": "11bbb7e397167faea40783e6226c95a580f89aa4fcd9a3db2808e90df87fe396",
     "code_blocks": 4,
     "blocks": [
       {

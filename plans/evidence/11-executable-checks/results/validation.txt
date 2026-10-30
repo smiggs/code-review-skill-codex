@@ -5,15 +5,17 @@ Date: 2026-10-30
 clean
 
 ## git diff --stat (tracked files; new files appear after add)
- plans/evidence/11-c-cpp-and-qt.md                  |  2 +-
- .../results/candidate-manifest.json                |  8 +++---
- .../11-executable-checks/results/run-checks.txt    | 23 ++++++++++++++++
- .../11-executable-checks/results/validation.txt    | 31 ----------------------
- plans/evidence/11-executable-checks/run_checks.py  |  2 ++
- 5 files changed, 30 insertions(+), 36 deletions(-)
+ .../11-executable-checks/results/validation.txt    | 29 --------------
+ plans/evidence/11-executable-checks/run_checks.py  | 46 ++++++++++++++--------
+ .../test_evidence_integrity.py                     | 11 ++++--
+ plans/evidence/11-executable-checks/tests/test_c.c | 14 +++----
+ reference/cpp.md                                   |  7 +++-
+ reference/qt.md                                    | 14 +++----
+ reference/reference-status.md                      |  2 +-
+ 13 files changed, 77 insertions(+), 93 deletions(-)
 
 ## helper and structural tests
-Ran 18 tests in 2.295s
+Ran 18 tests in 2.287s
 
 OK
 

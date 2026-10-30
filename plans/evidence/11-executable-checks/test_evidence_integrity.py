@@ -40,14 +40,16 @@ shutil.copytree(HERE, SANDBOX / "plans" / "evidence" / "11-executable-checks",
                 ignore=shutil.ignore_patterns(".generated"))
 
 guide = SANDBOX / "reference" / "c.md"
-text = guide.read_text()
+text = guide.read_text(encoding="utf-8")
 assert text.rstrip().endswith("separate process.")
-guide.write_text(text.rstrip() + " Integrity probe.\n")
+guide.write_text(text.rstrip() + " Integrity probe.\n",
+                 encoding="utf-8")
 
 env_out = subprocess.run(
     [sys.executable, str(SANDBOX / "plans" / "evidence" /
                          "11-executable-checks" / "extract.py")],
-    capture_output=True, text=True)
+    capture_output=True, text=True, encoding="utf-8", check=False,
+    timeout=600)
 if env_out.returncode != 0:
     print(env_out.stderr)
     sys.exit(1)
@@ -56,7 +58,8 @@ cmd = [sys.executable, str(SANDBOX / "plans" / "evidence" /
 default_prefix = Path.home() / ".cache" / "cr-plan-11" / "prefix"
 if (default_prefix / "lib" / "libQt6Core.so.6").exists():
     cmd += ["--qt-prefix", str(default_prefix)]
-run_out = subprocess.run(cmd, capture_output=True, text=True)
+run_out = subprocess.run(cmd, capture_output=True, text=True,
+                         encoding="utf-8", check=False, timeout=1800)
 if run_out.returncode != 0:
     print(run_out.stdout[-2000:])
     print(run_out.stderr[-2000:])

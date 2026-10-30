@@ -104,17 +104,10 @@ static void test_sum_tail(void) {
     check(sum_tail(a, 0) == 0, "sum_tail accepts empty range");
 }
 
-static void test_atomic_stop(void) {
-    check(!should_stop(), "stop flag starts false");
-    request_stop();
-    check(should_stop(), "stop flag becomes true");
-}
-
 static void *spin_reader(void *arg) {
     long spins = 0;
     (void)arg;
-    /* The stop flag may already be set by the earlier test; this reader
-     * must exit rather than hang either way. */
+    /* Reads the flag while the main thread writes it below. */
     while (!should_stop() && spins < 1000000L) {
         spins++;
         sched_yield();
@@ -125,17 +118,21 @@ static void *spin_reader(void *arg) {
 static void test_stop_readers(void) {
     pthread_t t[2];
     bool exit_ok = true;
+    check(!should_stop(), "stop flag starts false");
     for (int i = 0; i < 2; i++) {
         if (pthread_create(&t[i], NULL, spin_reader, NULL) != 0) {
             exit_ok = false;
         }
     }
+    /* The write below overlaps the readers' loads, so the atomics are
+     * exercised concurrently under the thread sanitiser. */
     request_stop();
     for (int i = 0; i < 2; i++) {
         void *retval = NULL;
         exit_ok = exit_ok && pthread_join(t[i], &retval) == 0;
     }
     check(exit_ok, "two readers observe stop without hanging");
+    check(should_stop(), "stop flag becomes true");
 }
 
 int main(void) {
@@ -143,7 +140,6 @@ int main(void) {
     test_copy_name();
     test_load_file();
     test_sum_tail();
-    test_atomic_stop();
     test_stop_readers();
     printf("%s\n", failures ? "FAILURES" : "ALL-OK");
     return failures ? 1 : 0;

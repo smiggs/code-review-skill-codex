@@ -51,7 +51,7 @@ silently checking different bytes.
 
 ## What is exercised
 
-- C, three compiler variants (address/undefined sanitiser, `-O2`, thread
+- C, four compiler variants (address/undefined sanitiser, `-O2`, thread
   sanitiser): the bounded-copy contract (exact fit, truncation, empty,
   zero capacity), whole-file reading (small, grown past the initial
   capacity, empty, missing, and a directory whose read fails, with buffer
