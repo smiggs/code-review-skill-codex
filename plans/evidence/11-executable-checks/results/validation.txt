@@ -1,21 +1,24 @@
 # Package 11 validation log
-Date: 2026-10-30
+Date: 2026-11-09
+
+## Python and PyYAML
+Python 3.14.4
+
+## PyYAML
+PyYAML 6.0.3
 
 ## git diff --check
+(no output)
 clean
 
-## git diff --stat (tracked files; new files appear after add)
- .../11-executable-checks/results/validation.txt    | 29 --------------
- plans/evidence/11-executable-checks/run_checks.py  | 46 ++++++++++++++--------
- .../test_evidence_integrity.py                     | 11 ++++--
- plans/evidence/11-executable-checks/tests/test_c.c | 14 +++----
- reference/cpp.md                                   |  7 +++-
- reference/qt.md                                    | 14 +++----
- reference/reference-status.md                      |  2 +-
- 13 files changed, 77 insertions(+), 93 deletions(-)
+## git diff --stat
+plans/evidence/11-executable-checks/run_checks.py | 106 ++++++++++++++++++----
+ 1 file changed, 88 insertions(+), 18 deletions(-)
 
 ## helper and structural tests
-Ran 18 tests in 2.287s
+..................
+----------------------------------------------------------------------
+Ran 18 tests in 2.221s
 
 OK
 
@@ -33,6 +36,7 @@ plans/evidence/11-executable-checks/README.md: 0 error(s), 0 warning(s) in 1 fil
 plans/evidence/11-executable-checks/fixtures/README.md: 0 error(s), 0 warning(s) in 1 file(s)
 plans/11-c-cpp-and-qt.md: 0 error(s), 0 warning(s) in 1 file(s)
 plans/evidence/11-c-cpp-and-qt.md: 0 error(s), 0 warning(s) in 1 file(s)
-reference/common-bugs-checklist.md (new section only): 2 error(s), 2 warning(s) in 1 file(s)
 
-The candidate manifest digest lives in results/candidate-manifest.json.
+Run by the --record flow in run_checks.py so the recorded log always describes the candidate being hashed; the manifest digest lives in results/candidate-manifest.json.
+
+FAILED REQUIRED CHECKS: none

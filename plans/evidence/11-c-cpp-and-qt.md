@@ -1,9 +1,11 @@
 # Package 11: C, C++, and Qt audit evidence
 
-Date: 30 October 2026. Technical audit candidate prepared at the user's
-request under [the plan](../11-c-cpp-and-qt.md); human acceptance follows
-the PR review and merge gates under the user's standing workflow (branch,
-PR, `pr-coderabbit-loop` until clean, guarded merge commit). This work does
+Started 30 October 2026 as a technical audit candidate prepared at the
+user's request under [the plan](../11-c-cpp-and-qt.md); the CodeRabbit
+review rounds and the final candidate were completed on 8 November 2026.
+Human acceptance follows the PR review and merge gates under the user's
+standing workflow (branch, PR, `pr-coderabbit-loop` until clean, guarded
+merge commit). This work does
 not reopen package 05, authorise publication, or establish review accuracy
 for the changed guides. The [package 03
 method](03-python-and-reference-quality.md) and the shared audit
@@ -60,10 +62,10 @@ pipeline could read them; clause citations for 6.5.6p8, 6.5.7, and 5.1.2.4
 were corroborated through the standard-draft text where machine-readable
 and recorded as clause-level citations otherwise.
 
-| Claims checked | Primary sources |
+| Claims checked | Sources (primary where machine-readable; standard-derived reproductions marked) |
 | --- | --- |
-| C library and language rules | [memcpy overlap](https://en.cppreference.com/w/c/string/byte/memcpy) (C11 7.24.2.1), [fread](https://en.cppreference.com/w/c/io/fread) (short reads, `feof`/`ferror`, indeterminate partial element), [gets removal](https://en.wikipedia.org/wiki/C11_(C_standard_revision)) and the [C11 feature list](https://en.cppreference.com/c/11) (`_Atomic`, removal of `gets`), N1570 4p2/3.4.3 (undefined behaviour), 6.5.6p8 (one-past-the-end), 6.5p5 (signed overflow), 6.5.7 (shifts), 5.1.2.4 (data races). |
-| C++ library and language rules | [vector.capacity](https://eel.is/c++draft/vector.capacity) (`length_error` above `max_size()`), [depr.impldec](https://eel.is/c++draft/depr.impldec) (deprecated implicit copies with a user-declared destructor), [class.copy.ctor](https://eel.is/c++draft/class.copy.ctor) (conditions for implicit moves), [std::string_view ownership](https://en.cppreference.com/w/cpp/string/basic_string_view), [std::expected](https://en.cppreference.com/cpp/utility/expected) (C++23), [std::stoi](https://en.cppreference.com/w/cpp/string/basic_string/stol) (documented exceptions). |
+| C library and language rules | WG14 N1570 clauses: 4p2 and 3.4.3 (undefined behaviour), 5.1.2.4 (data races), 6.5p5 (signed overflow), 6.5.6p8 (one-past-the-end), 6.5.7 (shifts), Foreword with C99 TC3 (gets deprecated then removed in C11), 7.21.8.1 (`fread` short reads, indeterminate partial element), 7.24.2.1 (`memcpy` overlap); `memcpy` and `fread` wording additionally verified through standard-derived reproductions ([memcpy](https://en.cppreference.com/w/c/string/byte/memcpy), [fread](https://en.cppreference.com/w/c/io/fread), [C11 feature list](https://en.cppreference.com/c/11)). |
+| C++ library and language rules | Draft-standard pages: [vector.capacity](https://eel.is/c++draft/vector.capacity) (`length_error` above `max_size()`), [depr.impldec](https://eel.is/c++draft/depr.impldec) (deprecated implicit copies with a user-declared destructor), [class.copy.ctor](https://eel.is/c++draft/class.copy.ctor) (conditions for implicit moves), [expected](https://eel.is/c++draft/expected) (C++23 vocabulary type); standard-derived reproductions for [std::string_view ownership](https://en.cppreference.com/w/cpp/string/basic_string_view) and [std::stoi](https://en.cppreference.com/w/cpp/string/basic_string/stol) (documented exceptions). |
 | Qt object model and threads | [QObject](https://doc.qt.io/qt-6/qobject.html) (parent ownership, destructor destroys children, same-thread parent rule, `moveToThread` constraints, `deleteLater` contract and thread-safety, `~QObject` deferred-deletion note), [QThread](https://doc.qt.io/qt-6/qthread.html) (lifecycle, deleting a running thread, subclassing `run()`, worker-object pattern, `finished` → `deleteLater`), [Threads and QObjects](https://doc.qt.io/qt-6/threads-qobject.html) (GUI classes main-thread-only, single-thread object use, QApplication creation order), [Signals and Slots](https://doc.qt.io/qt-6/signalsandslots.html) (context-object lambda disconnection, destruction delivery caveat), [ConnectionType enum](https://doc.qt.io/qt-6/qt.html#ConnectionType-enum) (all five documented types), [QPointer](https://doc.qt.io/qt-6/qpointer.html), [QScopedPointer](https://doc.qt.io/qt-6/qscopedpointer.html), [QList](https://doc.qt.io/qt-6/qlist.html) (Qt 5 `QVector` recommendation, implicit sharing), [QString](https://doc.qt.io/qt-6/qstring.html) (`u"..."_s` since 6.4, `_L1`, UTF-8 conversion cost, `QT_NO_CAST_FROM_ASCII`). |
 
 ## Executable verification
@@ -80,8 +82,12 @@ runs execute under `setarch -R` because this kernel's address-space
 randomisation prevents the sanitisers' shadow mappings; this is a runner
 detail, not a project requirement.
 
-Fence classification is checked loudly: the runner fails when a guide's
-fence count or marked bodies change. The C++ units and tests compile as
+Fence identity is checked loudly: the runner compares the extracted fence
+hashes against the recorded
+[source identities](11-executable-checks/results/source-identities.json)
+and fails when a guide's fence count, bytes, or marked adapter positions
+change; re-record with `--record` only after deliberately preparing
+replacement evidence. The C++ units and tests compile as
 one translation unit because they share types; the Socket's `close` call
 is redirected to a recording stub and the worker fence's unqualified
 `connect` resolves to the static `QObject::connect` by macro, both without
@@ -90,7 +96,7 @@ touching extracted bytes, and both documented in the harness README.
 | Check | Observed result |
 | --- | --- |
 | C, four variants (address+undefined sanitiser, `-O2`, thread sanitiser on C11; address+undefined sanitiser on C17) | All 20 contract checks passed in each variant: copy bounds (exact fit, truncation, empty, zero capacity), whole-file reading (small, grown, empty, missing, directory read failure) with cleanup on every path, one-past-the-end iteration, atomic stop flag with two threaded readers. [Output](11-executable-checks/results/run-checks.txt). |
-| C++, five variants (C++20 and C++17 sanitisers, C++20 thread sanitiser, C++17/C++20 `-O2`) | All 20 contract checks passed in each variant: `make_foo` success/failure, `fclose` wrapper open and failed-open, caller-owned views, value-captured lambda, rule-of-zero buffer copy, the corrected Socket move contract (no close on move, exactly one close, assignment releases the old handle, copies rejected), `stoi` mapping, eight-thread atomic counter, guarded eight-thread vector, negative-count rejection. |
+| C++, five variants (C++20 and C++17 sanitisers, C++20 thread sanitiser, C++17/C++20 `-O2`) | All 23 contract checks passed in each variant: `make_foo` success/failure, `fclose` wrapper open and failed-open, caller-owned views, value-captured lambda, rule-of-zero buffer copy, the corrected Socket move contract (no close on move, exactly one close, assignment releases the old handle, copies rejected), `stoi` mapping, eight-thread atomic counter, guarded eight-thread vector, negative-count rejection. |
 | Qt 6.12.0 adapters | 18 checks passed across five adapters: parent destruction deletes the child (offscreen widgets platform); `qobject_cast` returns the object or null and `QPointer` clears on destruction; the context-object lambda disconnects when its context dies; the guarded setter skips duplicate emissions; the worker-object pattern runs, quits, and both worker and thread are deleted through `finished` → `deleteLater` within bounded waits. |
 | Fixture sensitivity | Each defective variant fails its expectation and each clean control passes: C partial-I/O (defect exits 0 with four records including the mixed stale bytes; clean exits 3 with a truncation report), C++ double close (2 versus 1 recorded closes), Qt context lambda (2 versus 1 invocations, none dereferencing a destroyed object). |
 | Evidence integrity | The regression re-runs extraction and the C/C++ checks in an isolated checkout with a prose edit: recorded files unchanged, fresh output byte-for-byte equal to the recorded run ([README](11-executable-checks/README.md)). |
@@ -101,6 +107,25 @@ installation, or publication. Known setup errors during toolchain assembly
 (wrong conda subdir URLs, a stale binutils selection, missing Qt runtime
 libraries) were corrected before the recorded runs; none is counted as a
 passing or failing assertion.
+
+## CodeRabbit review rounds
+
+The PR received four completed CodeRabbit review rounds on successive
+heads, plus one review that did not complete before its head was amended.
+Every finding received a reply and a disposition comment; all threads were
+resolved after their replies. The significant verified defects, with their
+effect on the evidence:
+
+| Finding | Effect and fix |
+| --- | --- |
+| The variant loops passed an empty flag list to `compile_cmd`, so the recorded "sanitiser/-O2/TSan variants" were plain builds | Major: flagged in the first round. The flags are now passed through; the whole suite was re-run so the variants genuinely differ before anything was re-recorded. |
+| The manifest walk included its own file, so `combined_sha256` changed on every record and was not recomputable | Fixed by excluding it from the walk. |
+| `--record` could bind a changed guide to a stale passing validation log | The record flow now regenerates the validation log (running every required command from the repository root) and publishes it only after the validation gate and the executable-check gate both pass; a failed gate aborts before any recorded file or the manifest changes. |
+| In-place guide prose edits could pass under `--skip-build` | Identity verification now compares the extracted fence bytes and the current in-memory guide fences against the recorded identities, so a stale cache or edited fence fails with its path; `--record` is the deliberate-refresh path. |
+| The Qt platform-failure verdict and parent-owner checks could be masked by an `ALL-OK` from a partial run | Platform-plugin errors are detected before the success verdict; parentowner `ALL-OK` is accepted only when its checks ran; a genuine failure propagates into the section result. |
+| UBSan recovery could let a diagnostic pass | Sanitiser variants now compile with `-fno-sanitize-recover=undefined`. |
+| Qt link ordering and compiler-library runtime paths | Qt libraries now follow all source and object files (robust under `--as-needed`), and both Qt run environments keep the compiler runtime in `LD_LIBRARY_PATH`. |
+| Harness-level robustness findings (encodings, timeout handling, catch of launcher failures, timeouts in the integrity regression, duplicated work) | All fixed; a missing `re` import and a wrong Qt fence tag caught by the mid-loop review were both verified against the regression before fixing. |
 
 ## Documentation checks and human decision
 
