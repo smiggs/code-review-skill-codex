@@ -1,0 +1,42 @@
+# Package 11 validation log
+Date: 2026-11-09
+
+## Python and PyYAML
+Python 3.14.4
+
+## PyYAML
+PyYAML 6.0.3
+
+## git diff --check
+(no output)
+clean
+
+## git diff --stat
+plans/evidence/11-executable-checks/run_checks.py | 106 ++++++++++++++++++----
+ 1 file changed, 88 insertions(+), 18 deletions(-)
+
+## helper and structural tests
+..................
+----------------------------------------------------------------------
+Ran 18 tests in 2.221s
+
+OK
+
+## repository structural validator
+Skill structure and local link targets are valid (review quality is not evaluated).
+
+## skill-creator quick validator
+Skill is valid!
+
+## house-style lint (changed English documents)
+reference/c.md: 0 error(s), 0 warning(s) in 1 file(s)
+reference/cpp.md: 0 error(s), 0 warning(s) in 1 file(s)
+reference/qt.md: 0 error(s), 0 warning(s) in 1 file(s)
+plans/evidence/11-executable-checks/README.md: 0 error(s), 0 warning(s) in 1 file(s)
+plans/evidence/11-executable-checks/fixtures/README.md: 0 error(s), 0 warning(s) in 1 file(s)
+plans/11-c-cpp-and-qt.md: 0 error(s), 0 warning(s) in 1 file(s)
+plans/evidence/11-c-cpp-and-qt.md: 0 error(s), 0 warning(s) in 1 file(s)
+
+Run by the --record flow in run_checks.py so the recorded log always describes the candidate being hashed; the manifest digest lives in results/candidate-manifest.json.
+
+FAILED REQUIRED CHECKS: none

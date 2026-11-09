@@ -34,6 +34,14 @@ fixtures with answer keys; its candidate record and limits are in
 `plans/evidence/10-java.md` in the source checkout, and the runnable checks
 live in `plans/evidence/10-executable-checks/`. Its human acceptance is
 conditional on the PR's CodeRabbit and merge gates.
+Package 11 also rewrites C, C++, and Qt with versioned GCC 13.3.0 (C11,
+C++17, C++20) compile and runtime checks including sanitiser variants, Qt
+6.12.0 event-loop adapters and fixtures, a combined C/C++/Qt checklist
+routing section, and prepared review fixtures with answer keys; its audit
+record and limits are in `plans/evidence/11-c-cpp-and-qt.md` in the source
+checkout, and the runnable checks live in
+`plans/evidence/11-executable-checks/`. Its human acceptance follows the
+PR review and merge gates under the user's standing workflow.
 The skill name and singular `reference/` directory remain unchanged.
 
 ## Verification
